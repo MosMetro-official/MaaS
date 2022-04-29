@@ -5,24 +5,35 @@ import PackageDescription
 
 let package = Package(
     name: "MaaS",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MaaS",
             targets: ["MaaS"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(name: "MMCoreNetwork", url: "https://github.com/MosMetro-official/MMCoreNetwork", .exactItem("0.0.3-callbacks")),
+        .package(name: "CoreTableView", url: "https://github.com/MosMetro-official/CoreTableView", from: "0.0.6")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "MaaS",
-            dependencies: []),
+            dependencies: [
+                "MMCoreNetwork",
+                "CoreTableView"
+            ],
+            resources: [
+                .copy("Fonts/MoscowSans-Bold.otf"),
+                .copy("Fonts/MoscowSans-Regular.otf"),
+                .copy("Fonts/MoscowSans-Medium.otf"),
+                .copy("Fonts/Comfortaa.ttf")
+            ]
+        ),
         .testTarget(
             name: "MaaSTests",
-            dependencies: ["MaaS"]),
+            dependencies: ["MaaS"]
+        ),
     ]
 )

@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		95CD34C72816E2500048A29D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD34C62816E2500048A29D /* AppDelegate.swift */; };
 		95CD34C92816E2500048A29D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD34C82816E2500048A29D /* SceneDelegate.swift */; };
-		95CD34CB2816E2500048A29D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD34CA2816E2500048A29D /* ViewController.swift */; };
-		95CD34CE2816E2500048A29D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CD34CC2816E2500048A29D /* Main.storyboard */; };
 		95CD34D02816E2510048A29D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95CD34CF2816E2510048A29D /* Assets.xcassets */; };
 		95CD34D32816E2510048A29D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CD34D12816E2510048A29D /* LaunchScreen.storyboard */; };
+		95CD34DE2816EFBA0048A29D /* MaaS in Frameworks */ = {isa = PBXBuildFile; productRef = 95CD34DD2816EFBA0048A29D /* MaaS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +19,10 @@
 		95CD34C62816E2500048A29D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95CD34C82816E2500048A29D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		95CD34CA2816E2500048A29D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		95CD34CD2816E2500048A29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95CD34CF2816E2510048A29D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95CD34D22816E2510048A29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95CD34D42816E2510048A29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95CD34DB2816E9E70048A29D /* MaaS */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MaaS; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95CD34DE2816EFBA0048A29D /* MaaS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +40,10 @@
 		95CD34BA2816E2500048A29D = {
 			isa = PBXGroup;
 			children = (
+				95CD34DA2816E9E70048A29D /* Packages */,
 				95CD34C52816E2500048A29D /* MetroMaaS */,
 				95CD34C42816E2500048A29D /* Products */,
+				95CD34DC2816EFBA0048A29D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +61,26 @@
 				95CD34C62816E2500048A29D /* AppDelegate.swift */,
 				95CD34C82816E2500048A29D /* SceneDelegate.swift */,
 				95CD34CA2816E2500048A29D /* ViewController.swift */,
-				95CD34CC2816E2500048A29D /* Main.storyboard */,
 				95CD34CF2816E2510048A29D /* Assets.xcassets */,
 				95CD34D12816E2510048A29D /* LaunchScreen.storyboard */,
 				95CD34D42816E2510048A29D /* Info.plist */,
 			);
 			path = MetroMaaS;
+			sourceTree = "<group>";
+		};
+		95CD34DA2816E9E70048A29D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				95CD34DB2816E9E70048A29D /* MaaS */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		95CD34DC2816EFBA0048A29D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +99,9 @@
 			dependencies = (
 			);
 			name = MetroMaaS;
+			packageProductDependencies = (
+				95CD34DD2816EFBA0048A29D /* MaaS */,
+			);
 			productName = MetroMaaS;
 			productReference = 95CD34C32816E2500048A29D /* MetroMaaS.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,10 @@
 				Base,
 			);
 			mainGroup = 95CD34BA2816E2500048A29D;
+			packageReferences = (
+				959B375F281BE3F400A322EE /* XCRemoteSwiftPackageReference "CoreTableView" */,
+				959B3762281BE47A00A322EE /* XCRemoteSwiftPackageReference "MMCoreNetwork" */,
+			);
 			productRefGroup = 95CD34C42816E2500048A29D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +150,6 @@
 			files = (
 				95CD34D32816E2510048A29D /* LaunchScreen.storyboard in Resources */,
 				95CD34D02816E2510048A29D /* Assets.xcassets in Resources */,
-				95CD34CE2816E2500048A29D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +160,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95CD34CB2816E2500048A29D /* ViewController.swift in Sources */,
 				95CD34C72816E2500048A29D /* AppDelegate.swift in Sources */,
 				95CD34C92816E2500048A29D /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +168,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		95CD34CC2816E2500048A29D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				95CD34CD2816E2500048A29D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		95CD34D12816E2510048A29D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +305,6 @@
 				INFOPLIST_FILE = MetroMaaS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +332,6 @@
 				INFOPLIST_FILE = MetroMaaS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +369,32 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		959B375F281BE3F400A322EE /* XCRemoteSwiftPackageReference "CoreTableView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MosMetro-official/CoreTableView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
+		959B3762281BE47A00A322EE /* XCRemoteSwiftPackageReference "MMCoreNetwork" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MosMetro-official/MMCoreNetwork";
+			requirement = {
+				branch = callbacks;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		95CD34DD2816EFBA0048A29D /* MaaS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MaaS;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 95CD34BB2816E2500048A29D /* Project object */;
 }
