@@ -58,18 +58,18 @@ class MakeMySubRow: UITableViewCell {
         guard let gradient = gradient else {
             return
         }
-        gradient.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: .init(width: UIScreen.main.bounds.width - 32, height: frame.height - 20))
+        gradient.frame =  CGRect(origin: CGPoint(x: 0, y: 0), size: .init(width: UIScreen.main.bounds.width - 40, height: frame.height - 20))
         gradient.colors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 1)
         gradient.endPoint = CGPoint(x: 1, y: 1)
-        
+
         let shape = CAShapeLayer()
         shape.lineWidth = 1.5
         shape.path =  UIBezierPath(roundedRect: CGRect(origin: .zero, size: gradient.frame.size).insetBy(dx: 1, dy: 1.5), cornerRadius: 15).cgPath
         shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor
         gradient.mask = shape
-        
+
         cardView.layer.addSublayer(gradient)
     }
     
