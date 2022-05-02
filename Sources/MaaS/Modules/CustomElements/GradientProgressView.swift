@@ -14,7 +14,7 @@ class GradientProgressView: UIView {
         }
     }
 
-    private let progressLayer = CALayer()
+    private let progressLayer = CAShapeLayer()
     private let gradientLayer = CAGradientLayer()
 
     override init(frame: CGRect) {
