@@ -59,7 +59,6 @@ class M_ChooseSubView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 100, right: 0)
-        //tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.shouldUseReload = true
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false

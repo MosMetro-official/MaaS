@@ -52,8 +52,11 @@ class SubSectionRow: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var taxiCountLabel: UILabel!
+    @IBOutlet weak var taxiLabel: UILabel!
     @IBOutlet weak var transportTariffLabel: UILabel!
+    @IBOutlet weak var transportLabel: UILabel!
     @IBOutlet weak var bikeTariffLabel: UILabel!
+    @IBOutlet weak var bikeLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var selectImage: UIImageView!
     
@@ -61,6 +64,12 @@ class SubSectionRow: UITableViewCell {
         super.awakeFromNib()
         titleLabel.font = UIFont(name: "MoscowSans-bold", size: 20)
         priceLabel.font = UIFont(name: "MoscowSans-regular", size: 20)
+        taxiCountLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        taxiLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        transportTariffLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        transportLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        bikeTariffLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        bikeLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
         cardView.layer.cornerRadius = 15
         cardView.layer.borderWidth = 1
         cardView.layer.borderColor = UIColor.systemGray.cgColor

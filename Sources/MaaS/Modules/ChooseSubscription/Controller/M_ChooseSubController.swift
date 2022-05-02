@@ -27,6 +27,12 @@ class M_ChooseSubController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackButton()
+        showActiveSubTest()
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+        ]
+        title = "Подписка"
         makeState()
     }
     
