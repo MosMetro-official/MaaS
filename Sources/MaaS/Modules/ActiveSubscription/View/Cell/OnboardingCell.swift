@@ -42,8 +42,6 @@ class OnboardingCell: UITableViewCell {
         super.awakeFromNib()
         onboardingLabel.text = "Как это \nработает?"
         historyLabel.text = "История \nпоездок"
-        onboardingLabel.font = UIFont(name: "MoscowSans-medium", size: 18)
-        historyLabel.font = UIFont(name: "MoscowSans-medium", size: 18)
     }
 
     @IBAction func onboardingTapped() {

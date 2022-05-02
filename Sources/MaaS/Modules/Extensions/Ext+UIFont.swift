@@ -27,4 +27,8 @@ extension UIFont {
         }
         return true
     }
+    
+    open class func customFont(forTextStyle style: FontTextStyle) -> UIFont {
+        return Appearance.customFonts[style] ?? UIFont.systemFont(ofSize: 17, weight: .regular)
+    }
 }

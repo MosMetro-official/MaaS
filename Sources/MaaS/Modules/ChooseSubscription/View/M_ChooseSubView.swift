@@ -64,8 +64,6 @@ class M_ChooseSubView: UIView {
         tableView.showsHorizontalScrollIndicator = false
         payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
-        titleLabel.font = UIFont(name: "Comfortaa", size: 30)
-        changeLabel.font = UIFont(name: "MoscowSans-bold", size: 22)
         addHorizontalGradientLayer()
     }
     
@@ -93,10 +91,10 @@ class M_ChooseSubView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            self.payButton.setTitle(viewState.payButtonTitle, for: .normal)
             self.payButton.isHidden = !viewState.payButtonEnable
-            self.payButton.titleLabel?.font = UIFont(name: "MoscowSans-regular", size: 17)
+            self.payButton.titleLabel?.font = Appearance.customFonts[.button]
             self.tableView.viewStateInput = viewState.state
+            self.payButton.setTitle(viewState.payButtonTitle, for: .normal)
         case .loading:
             print("loading")
         case .error:

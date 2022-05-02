@@ -44,8 +44,6 @@ class TariffInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        transportTitleLabel.font = UIFont(name: "MoscowSans-regular", size: 15)
-        tariffLabel.font = UIFont(name: "MoscowSans-regular", size: 15)
         
     }
     

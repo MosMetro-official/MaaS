@@ -19,6 +19,11 @@ class M_ChooseSubController: UIViewController {
             makeState()
         }
     }
+    private var selectMakeMySub = false {
+        didSet {
+            makeState()
+        }
+    }
 
     override func loadView() {
         super.loadView()
@@ -36,6 +41,11 @@ class M_ChooseSubController: UIViewController {
         makeState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedSub = nil
+    }
+    
     private func setState(state: M_ChooseSubView.ViewState) {
         self.nestedView.viewState = state
     }
@@ -45,6 +55,7 @@ class M_ChooseSubController: UIViewController {
         subscriptions.forEach { sub in
             let onItemSelect = Command {
                 self.selectedSub = sub
+                self.selectMakeMySub = false
             }
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
                 title: sub.title,
@@ -58,15 +69,22 @@ class M_ChooseSubController: UIViewController {
             let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
             subStates.append(subState)
         }
-        let emptySub = Subscription(title: "", price: "", taxiCount: "", trasnportTariff: "", bikeTariff: "")
         let onItemSelect = Command {
-            self.selectedSub = emptySub
+            self.selectMakeMySub = true
+            self.selectedSub = nil
         }
-        let makeMySubElement = M_ChooseSubView.ViewState.MakeMySubRow(isSelect: selectedSub == emptySub, onItemSelect: onItemSelect).toElement()
+        let makeMySubElement = M_ChooseSubView.ViewState.MakeMySubRow(isSelect: selectMakeMySub, onItemSelect: onItemSelect).toElement()
         let makeMySubState = State(model: SectionState(header: nil, footer: nil), elements: [makeMySubElement])
         subStates.append(makeMySubState)
-        let buttonTitle = selectedSub == emptySub ? "Продолжить" : "Оплатить \(selectedSub?.price ?? "")"
-        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil, payButtonTitle: buttonTitle, payCommand: nil)
+        var buttonTitle: String
+        if let price = selectedSub?.price {
+            buttonTitle = "Оплатить \(price)"
+        } else if selectMakeMySub {
+            buttonTitle = "Продолжить"
+        } else {
+            buttonTitle = ""
+        }
+        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub == true, payButtonTitle: buttonTitle, payCommand: nil)
         setState(state: viewState)
     }
 }

@@ -43,8 +43,7 @@ class CardInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cardNumberLabel.font = UIFont(name: "MoscowSans-regular", size: 17)
-        cardDescriptionLabel.font = UIFont(name: "MoscowSans-regular", size: 13)
+        
     }
 
     public func configure(with data: _CardInfo) {

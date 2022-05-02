@@ -65,8 +65,6 @@ class M_ActiveSubView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
-        titleLabel.font = UIFont(name: "Comfortaa", size: 30)
-        timeLeftLabel.font = UIFont(name: "MoscowSans-regular", size: 15)
     }
     
     private func render() {

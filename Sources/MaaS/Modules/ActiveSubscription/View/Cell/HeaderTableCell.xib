@@ -23,6 +23,9 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="primaryText"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="header"/>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
                 <constraints>

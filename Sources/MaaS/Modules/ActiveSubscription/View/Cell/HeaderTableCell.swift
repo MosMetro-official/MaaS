@@ -29,6 +29,6 @@ class HeaderTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = UIFont(name: "MoscowSans-bold", size: 20)
+
     }
 }

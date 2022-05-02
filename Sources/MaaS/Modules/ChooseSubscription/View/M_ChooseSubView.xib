@@ -21,6 +21,9 @@
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="largeTitle"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-ec-ufk" customClass="BaseTableView" customModule="CoreTableView">
                     <rect key="frame" x="0.0" y="192.5" width="414" height="669.5"/>
@@ -31,6 +34,9 @@
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="boldTitle"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lt-xh-dNq">
                     <rect key="frame" x="20" y="773" width="374" height="44"/>
@@ -75,6 +81,11 @@
             <point key="canvasLocation" x="139" y="98"/>
         </view>
     </objects>
+    <designables>
+        <designable name="8ke-Fi-jzm">
+            <size key="intrinsicContentSize" width="245.5" height="36"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="background">
             <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
