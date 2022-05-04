@@ -45,6 +45,9 @@ extension _SubSectionRow {
     }
 }
 
+// TODO: Нейминг
+/// Если уже придерживаемся одного стиля, то, наверное, надо так – M_SubscriptionCell
+/// Опять же сделать блоки тарифов динамическими, например через StackView
 class SubSectionRow: UITableViewCell {
     
     var gradient: CAGradientLayer?

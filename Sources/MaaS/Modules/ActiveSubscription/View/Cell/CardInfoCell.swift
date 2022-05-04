@@ -15,6 +15,8 @@ protocol _CardInfo: CellData {
 }
 
 extension _CardInfo {
+    // TODO: Прошу тут не хардкодить высоты, а вычислять размер в создании стейта
+    #warning("константная высота в динамическом контенте")
     var height: CGFloat {
         return 80
     }

@@ -46,7 +46,8 @@ class TariffInfoCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-    
+    // TODO: Это нужно делать в создании стейта (в контроллере), а не в ячейке
+    #warning("Логика в View")
     private func getCurrentTariffLabel(from data: _TariffInfo) -> String {
         var result = ""
         if let type = data.tariffType {
@@ -57,6 +58,8 @@ class TariffInfoCell: UITableViewCell {
         return result
     }
     
+    // TODO: Это нужно делать в создании стейта (в контроллере), а не в ячейке
+    #warning("Логика в View")
     private func getCurrentProgress(from data: _TariffInfo) -> CGFloat {
         var progress: Float = 0
         if let leftTrip = data.leftTripCount {

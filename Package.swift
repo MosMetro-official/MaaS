@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         //.package(name: "MMCoreNetwork", url: "https://github.com/MosMetro-official/MMCoreNetwork", .exactItem("0.0.3-callbacks")),
-        .package(url: "https://github.com/MosMetro-official/MMCoreNetwork", exact: Version("0.0.3-callbacks")),
+        .package(name: "MMCoreNetwork", url: "https://github.com/MosMetro-official/MMCoreNetwork", .exactItem(Version("0.0.3-callbacks"))),
         //.package(name: "CoreTableView", url: "https://github.com/MosMetro-official/CoreTableView", from: "0.0.6"),
         .package(url: "https://github.com/MosMetro-official/CoreTableView", from: "0.0.6")
         

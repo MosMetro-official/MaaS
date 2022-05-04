@@ -57,6 +57,8 @@ class M_ChooseSubController: UIViewController {
                 self.selectedSub = sub
                 self.selectMakeMySub = false
             }
+            // TODO: Сделать стейт динамическим. В реальном маасе, например, не будет такси, а будет только байк и транспорт.
+            /// То есть сделать элементы ВНУТРИ ячейки в виде массива
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
                 title: sub.title,
                 price: sub.price,

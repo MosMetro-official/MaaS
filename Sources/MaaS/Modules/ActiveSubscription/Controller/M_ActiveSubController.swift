@@ -27,6 +27,7 @@ class M_ActiveSubController: UIViewController {
         title = "Подписка"
     }
     
+    // TODO: а для чего данная функция? 
     private func setState(with states: [State]) {
         let viewState = M_ActiveSubView.ViewState(timeLeft: "Активна до 22 марта 2022", state: states, dataState: .loaded)
         nestedView.viewState = viewState
@@ -46,9 +47,12 @@ class M_ActiveSubController: UIViewController {
         let tariffState = State(model: SectionState(header: nil, footer: nil), elements: [tariffSection, tariffOne, tariffTwo])
         states.append(tariffState)
         
+        
+        // TODO: camel case
         let onboardSelect = Command {
             print("show onboarding controller")
         }
+        
         let onHistorySelect = Command {
             print("show history controller")
         }
