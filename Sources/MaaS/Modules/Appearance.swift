@@ -22,6 +22,10 @@ public enum FontTextStyle: String {
     case onboarding = "onboarding"
     case price = "price"
     case button = "button"
+    case errorTitle = "errorTitle"
+    case errorDescr = "errorDescr"
+    case loading = "loading"
+    case retryButton = "retryButton"
 }
 
 public final class Appearance: _Appearance {
@@ -36,6 +40,10 @@ public final class Appearance: _Appearance {
         .onboarding: UIFont(name: "MoscowSans-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .medium),
         .price: UIFont(name: "MoscowSans-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular),
         .button: UIFont(name: "MoscowSans-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15, weight: .medium),
-        .boldTitle: UIFont(name: "MoscowSans-Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .bold)
+        .boldTitle: UIFont(name: "MoscowSans-Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .bold),
+        .errorTitle: UIFont(name: "MoscowSans-Regular", size: 25) ?? UIFont.systemFont(ofSize: 30, weight: .regular),
+        .errorDescr: UIFont(name: "MoscowSans-Regular", size: 18) ?? UIFont.systemFont(ofSize: 23, weight: .regular),
+        .loading: UIFont(name: "MoscowSans-Regular", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .regular),
+        .retryButton: UIFont(name: "MoscowSans-Regular", size: 21) ?? UIFont.systemFont(ofSize: 21, weight: .regular)
     ]
 }
