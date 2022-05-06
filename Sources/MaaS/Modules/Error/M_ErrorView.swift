@@ -52,6 +52,7 @@ class M_ErrorView: UIView {
 extension UIView {
     func showError(on view: UIView, data: _Error) {
         let errorView = M_ErrorView.loadFromNib()
+        errorView.frame = view.frame
         errorView.tag = 222
         errorView.configure(with: data)
         let animator = UIViewPropertyAnimator(duration: 5, curve: .easeInOut) {

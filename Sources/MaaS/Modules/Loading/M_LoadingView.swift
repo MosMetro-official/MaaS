@@ -27,6 +27,7 @@ class M_LoadingView: UIView {
 extension UIView {
     func showLoading(on view: UIView, data: _Loading) {
         let loadingView = M_LoadingView.loadFromNib()
+        loadingView.frame = view.frame
         loadingView.tag = 111
         loadingView.configure(with: data)
         let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
