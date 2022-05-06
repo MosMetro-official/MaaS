@@ -63,7 +63,6 @@ class M_ChooseSubController: UIViewController {
     }
     
     private func makeState() {
-        showLoading()
         var subStates: [State] = []
         subscriptions.forEach { sub in
             let onItemSelect = Command {
