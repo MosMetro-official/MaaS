@@ -53,7 +53,7 @@ class M_ChooseSubController: UIViewController {
             self?.makeState()
         }
         let onClose = Command { }
-        let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану :(", onRetry: onRetry, onClose: onClose)
+        let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
     }
     
@@ -77,6 +77,7 @@ class M_ChooseSubController: UIViewController {
                 title: sub.title,
                 price: sub.price,
                 isSelect: sub == selectedSub,
+                showSelectImage: true,
                 tariffs: sub.tariffs,
                 onItemSelect: onItemSelect,
                 height: titleHeight + stackViewHeight + spacingHeight
@@ -110,7 +111,15 @@ class M_ChooseSubController: UIViewController {
         } else {
             buttonTitle = ""
         }
-        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: nil)
+        let payCommand = Command { [weak self] in
+            guard
+                let sub = self?.selectedSub,
+                let navigation = self?.navigationController else { return }
+            let buySubController = M_BuySubController()
+            buySubController.selectedSub = sub
+            navigation.pushViewController(buySubController, animated: true)
+        }
+        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
         nestedView.viewState = viewState
     }
 }

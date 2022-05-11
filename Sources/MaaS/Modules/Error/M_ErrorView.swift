@@ -55,7 +55,7 @@ extension UIView {
         errorView.frame = view.frame
         errorView.tag = 222
         errorView.configure(with: data)
-        let animator = UIViewPropertyAnimator(duration: 5, curve: .easeInOut) {
+        let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
             view.addSubview(errorView)
         }
         animator.startAnimation()
