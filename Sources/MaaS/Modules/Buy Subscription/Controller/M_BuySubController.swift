@@ -35,13 +35,12 @@ class M_BuySubController: UIViewController {
         let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont()) + 48
         let stackViewHeight = sub.tariffs[0].transportImage.size.height * CGFloat(sub.tariffs.count)
         let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
-        let subElement = M_ChooseSubView.ViewState.SubSectionRow(
+        let subElement = M_BuySubView.ViewState.SubSectionRow(
             title: sub.title,
             price: sub.price,
             isSelect: true,
             showSelectImage: false,
             tariffs: sub.tariffs,
-            onItemSelect: Command(action: {}),
             height: titleHeight + stackViewHeight + spacingHeight
         ).toElement()
         let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
