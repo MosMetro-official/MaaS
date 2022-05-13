@@ -1,39 +1,19 @@
 //
-//  M_ChooseSubView.swift
+//  M_BuySubView.swift
 //  
 //
-//  Created by Слава Платонов on 29.04.2022.
+//  Created by Слава Платонов on 11.05.2022.
 //
 
 import UIKit
 import CoreTableView
 
-class M_ChooseSubView: UIView {
+class M_BuySubView: UIView {
 
     struct ViewState {
+        
         let state: [State]
-        let dataState: DataState
-        let payButtonEnable: Bool
-        let payButtonTitle: String
-        let payCommand: Command<Void>?
-        
-        enum DataState {
-            case loading(_Loading)
-            case loaded
-            case error(_Error)
-        }
-        
-        struct Loading: _Loading {
-            let title: String
-            let descr: String
-        }
-        
-        struct Error: _Error {
-            let title: String
-            let descr: String
-            let onRetry: Command<Void>
-            let onClose: Command<Void>
-        }
+        let linkCardCommand: Command<Void>
         
         struct SubSectionRow: _SubSectionRow {
             let title: String
@@ -41,19 +21,10 @@ class M_ChooseSubView: UIView {
             let isSelect: Bool
             let showSelectImage: Bool
             let tariffs: [SubTariffs]
-            let onItemSelect: Command<Void>
             let height: CGFloat
         }
         
-        struct MakeMySubRow: _MakeMySubRow {
-            let title: String
-            let descr: String
-            let isSelect: Bool
-            let onItemSelect: Command<Void>
-            let height: CGFloat
-        }
-        
-        static let initial = ViewState(state: [], dataState: .loaded, payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        static let initial = ViewState(state: [], linkCardCommand: Command(action: {}))
     }
     
     public var viewState: ViewState = .initial {
@@ -65,7 +36,6 @@ class M_ChooseSubView: UIView {
     }
     
     @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var changeLabel: UILabel!
     @IBOutlet weak var tableView: BaseTableView!
     @IBOutlet weak var payButton: UIButton!
     
@@ -73,12 +43,14 @@ class M_ChooseSubView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 100, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
+        payButton.titleLabel?.font = Appearance.customFonts[.button]
+        payButton.setTitle("Привязать карту", for: .normal)
         addHorizontalGradientLayer()
     }
     
@@ -88,8 +60,8 @@ class M_ChooseSubView: UIView {
         buttonGradient.frame = CGRect(x: 0, y: 0, width: payButton.bounds.width, height: payButton.bounds.height)
     }
     
-    @IBAction func payButtonTapped() {
-        viewState.payCommand?.perform(with: ())
+    @IBAction func linkCardButtonTapped() {
+        viewState.linkCardCommand.perform(with: ())
     }
     
     private func addHorizontalGradientLayer() {
@@ -104,21 +76,6 @@ class M_ChooseSubView: UIView {
     }
     
     private func render() {
-        self.payButton.isHidden = !viewState.payButtonEnable
-        self.payButton.titleLabel?.font = Appearance.customFonts[.button]
-        self.payButton.setTitle(viewState.payButtonTitle, for: .normal)
         self.tableView.viewStateInput = viewState.state
-        switch viewState.dataState {
-        case .loaded:
-            self.removeLoading(from: self)
-            self.removeError(from: self)
-        case .loading(let data):
-            self.removeError(from: self)
-            showLoading(on: self, data: data)
-        case .error(let data):
-            self.removeLoading(from: self)
-            showError(on: self, data: data)
-        }
     }
-    
 }

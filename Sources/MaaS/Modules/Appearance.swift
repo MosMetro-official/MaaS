@@ -12,19 +12,19 @@ protocol _Appearance: AnyObject {
 }
 
 public enum FontTextStyle: String {
-    case navTitle = "navTitle"
-    case largeTitle = "largeTitle"
-    case boldTitle = "boldTitle"
-    case header = "header"
     case body = "body"
     case card = "card"
-    case smallBody = "smallBody"
-    case onboarding = "onboarding"
     case price = "price"
+    case header = "header"
     case button = "button"
+    case loading = "loading"
+    case navTitle = "navTitle"
+    case smallBody = "smallBody"
+    case boldTitle = "boldTitle"
+    case largeTitle = "largeTitle"
+    case onboarding = "onboarding"
     case errorTitle = "errorTitle"
     case errorDescr = "errorDescr"
-    case loading = "loading"
     case retryButton = "retryButton"
 }
 

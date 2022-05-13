@@ -12,6 +12,7 @@ protocol _SubSectionRow: CellData {
     var title: String { get }
     var price: String { get }
     var isSelect: Bool { get }
+    var showSelectImage: Bool { get }
     var tariffs: [SubTariffs] { get }
 }
 
@@ -65,7 +66,7 @@ class M_SubSectionRow: UITableViewCell {
         guard let gradient = gradient else {
             return
         }
-        gradient.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: cardView.bounds.width, height: gradientHeight ?? 0))
+        gradient.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIScreen.main.bounds.width - 40, height: gradientHeight ?? 0))
         gradient.colors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 1)
         gradient.endPoint = CGPoint(x: 1, y: 1)
@@ -129,6 +130,7 @@ class M_SubSectionRow: UITableViewCell {
         priceLabel.text = data.price
         tariffs = data.tariffs
         gradientHeight = data.height
+        selectImage.isHidden = !data.showSelectImage
         selectImage.image = data.isSelect ? UIImage.getAssetImage(image: "select") : UIImage.getAssetImage(image: "unselect")
         gradient?.isHidden = !data.isSelect
         cardView.layer.borderWidth = data.isSelect ? 0 : 1
