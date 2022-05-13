@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreTableView
+import SafariServices
 
 class M_BuySubController: UIViewController {
     
@@ -44,8 +45,13 @@ class M_BuySubController: UIViewController {
             height: titleHeight + stackViewHeight + spacingHeight
         ).toElement()
         let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
-        let linkCommand = Command {
+        let linkCommand = Command { [weak self] in
             // do some
+            guard
+                let url = URL(string: "https://mosmetro.ru/app/"),
+                let self = self else { return }
+            let svc = SFSafariViewController(url: url)
+            self.present(svc, animated: true)
         }
         nestedView.viewState = .init(state: [subState], linkCardCommand: linkCommand)
     }

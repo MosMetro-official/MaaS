@@ -10,13 +10,6 @@ import CoreTableView
 
 class M_ChooseSubView: UIView {
 
-    @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var changeLabel: UILabel!
-    @IBOutlet weak var tableView: BaseTableView!
-    @IBOutlet weak var payButton: UIButton!
-    
-    private var buttonGradient: CAGradientLayer?
-    
     struct ViewState {
         let state: [State]
         let dataState: DataState
@@ -70,6 +63,13 @@ class M_ChooseSubView: UIView {
             }
         }
     }
+    
+    @IBOutlet weak var titleLabel: GradientLabel!
+    @IBOutlet weak var changeLabel: UILabel!
+    @IBOutlet weak var tableView: BaseTableView!
+    @IBOutlet weak var payButton: UIButton!
+    
+    private var buttonGradient: CAGradientLayer?
     
     override func awakeFromNib() {
         super.awakeFromNib()

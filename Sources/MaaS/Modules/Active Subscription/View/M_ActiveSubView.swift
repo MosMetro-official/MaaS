@@ -10,8 +10,6 @@ import CoreTableView
 
 class M_ActiveSubView: UIView {
 
-    @IBOutlet weak var tableView: BaseTableView!
-
     struct ViewState {
         let timeLeft: String
         let state: [State]
@@ -63,6 +61,8 @@ class M_ActiveSubView: UIView {
             }
         }
     }
+    
+    @IBOutlet weak var tableView: BaseTableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

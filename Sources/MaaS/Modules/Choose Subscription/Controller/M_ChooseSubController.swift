@@ -50,7 +50,10 @@ class M_ChooseSubController: UIViewController {
     
     private func showError() {
         let onRetry = Command { [weak self] in
-            self?.makeState()
+            self?.showLoading()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self?.makeState()
+            }
         }
         let onClose = Command { }
         let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
@@ -112,12 +115,17 @@ class M_ChooseSubController: UIViewController {
             buttonTitle = ""
         }
         let payCommand = Command { [weak self] in
-            guard
-                let sub = self?.selectedSub,
-                let navigation = self?.navigationController else { return }
-            let buySubController = M_BuySubController()
-            buySubController.selectedSub = sub
-            navigation.pushViewController(buySubController, animated: true)
+            guard let self = self,
+                  let navigation = self.navigationController else { return }
+            if self.selectMakeMySub {
+                // open create sub screen
+            } else {
+                if let sub = self.selectedSub {
+                    let buySubController = M_BuySubController()
+                    buySubController.selectedSub = sub
+                    navigation.pushViewController(buySubController, animated: true)
+                }
+            }
         }
         let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
         nestedView.viewState = viewState
