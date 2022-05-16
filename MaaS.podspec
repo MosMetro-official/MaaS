@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "13.0"
   spec.swift_version = '5.0'
 
-  spec.source       = { :git => "https://github.com/MosMetro-official/MaaS", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/MosMetro-official/MaaS.git", :tag => "#{spec.version}" }
 
   spec.source_files  = "Sources/MaaS/**/*.{swift}"
   spec.exclude_files = "Tests/MaaS/**/*"
