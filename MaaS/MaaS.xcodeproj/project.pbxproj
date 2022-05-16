@@ -54,6 +54,10 @@
 		950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */; };
 		950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */; };
 		950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
+		951D035F28323F29005647F5 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
+		951D036028323F29005647F5 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; };
+		951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
 		953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AD282ED95E00374DF2 /* SceneDelegate.swift */; };
 		953E96B0282ED95E00374DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AF282ED95E00374DF2 /* ViewController.swift */; };
@@ -63,8 +67,17 @@
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F9E703A2CCF3E4D9093F16E /* Pods_MaaSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; };
-		D29693DCE7E1DE2B7EA0B7A5 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9E5246AE40CBC7B725127C /* Pods_MaaS.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		951D036128323F29005647F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95092052282E535B00C4E573 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9509205A282E535B00C4E573;
+			remoteInfo = MaaS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		95427AF82831025A001FC0FD /* Embed Frameworks */ = {
@@ -73,6 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				951D036028323F29005647F5 /* MaaS.framework in Embed Frameworks */,
 				95427AF72831025A001FC0FD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -84,6 +98,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */,
 				95427AFB28310262001FC0FD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -139,11 +154,12 @@
 		950920B7282E55DC00C4E573 /* M_BuySubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_BuySubView.xib; sourceTree = "<group>"; };
 		950920B9282E55DC00C4E573 /* M_ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ErrorView.xib; sourceTree = "<group>"; };
 		950920BA282E55DC00C4E573 /* M_ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ErrorView.swift; sourceTree = "<group>"; };
-		950920BB282E55DC00C4E573 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		950920BB282E55DC00C4E573 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Appearance.swift; path = Modules/Appearance.swift; sourceTree = "<group>"; };
 		950920BD282E55DC00C4E573 /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
 		950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Regular.otf"; sourceTree = "<group>"; };
 		950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Medium.otf"; sourceTree = "<group>"; };
 		950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Bold.otf"; sourceTree = "<group>"; };
+		951D036328323F7F005647F5 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96A9282ED95E00374DF2 /* MaaSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaaSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96AB282ED95E00374DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		953E96AD282ED95E00374DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29693DCE7E1DE2B7EA0B7A5 /* Pods_MaaS.framework in Frameworks */,
+				951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951D035F28323F29005647F5 /* MaaS.framework in Frameworks */,
 				9F9E703A2CCF3E4D9093F16E /* Pods_MaaSExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +456,7 @@
 		B7F46A3F0D6E2E299AC20203 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				951D036328323F7F005647F5 /* Pods_MaaS.framework */,
 				7A9E5246AE40CBC7B725127C /* Pods_MaaS.framework */,
 				0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */,
 			);
@@ -493,6 +511,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				951D036228323F29005647F5 /* PBXTargetDependency */,
 			);
 			name = MaaSExample;
 			productName = MaaSExample;
@@ -685,6 +704,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		951D036228323F29005647F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 9509205A282E535B00C4E573 /* MaaS */;
+			targetProxy = 951D036128323F29005647F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		953E96B1282ED95E00374DF2 /* Main.storyboard */ = {
