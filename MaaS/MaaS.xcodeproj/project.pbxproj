@@ -54,8 +54,6 @@
 		950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */; };
 		950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */; };
 		950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
-		951D035F28323F29005647F5 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
-		951D036028323F29005647F5 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; };
 		951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
@@ -66,18 +64,9 @@
 		953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9F9E703A2CCF3E4D9093F16E /* Pods_MaaSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; };
+		9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; };
+		9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		951D036128323F29005647F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95092052282E535B00C4E573 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9509205A282E535B00C4E573;
-			remoteInfo = MaaS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		95427AF82831025A001FC0FD /* Embed Frameworks */ = {
@@ -86,8 +75,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				951D036028323F29005647F5 /* MaaS.framework in Embed Frameworks */,
 				95427AF72831025A001FC0FD /* (null) in Embed Frameworks */,
+				9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +99,6 @@
 		0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaaSExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		346B99C334AB1C0797260F94 /* Pods-MaaSExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.release.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.release.xcconfig"; sourceTree = "<group>"; };
 		5D47A7E93DA21A561862673D /* Pods-MaaS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.release.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.release.xcconfig"; sourceTree = "<group>"; };
-		7A9E5246AE40CBC7B725127C /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9509205B282E535B00C4E573 /* MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9509205E282E535B00C4E573 /* MaaS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaaS.h; sourceTree = "<group>"; };
 		95092081282E55DC00C4E573 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -185,8 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951D035F28323F29005647F5 /* MaaS.framework in Frameworks */,
-				9F9E703A2CCF3E4D9093F16E /* Pods_MaaSExample.framework in Frameworks */,
+				9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +444,6 @@
 			isa = PBXGroup;
 			children = (
 				951D036328323F7F005647F5 /* Pods_MaaS.framework */,
-				7A9E5246AE40CBC7B725127C /* Pods_MaaS.framework */,
 				0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */,
 			);
 			name = Frameworks;
@@ -511,7 +497,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				951D036228323F29005647F5 /* PBXTargetDependency */,
 			);
 			name = MaaSExample;
 			productName = MaaSExample;
@@ -704,15 +689,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		951D036228323F29005647F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 9509205A282E535B00C4E573 /* MaaS */;
-			targetProxy = 951D036128323F29005647F5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		953E96B1282ED95E00374DF2 /* Main.storyboard */ = {

@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
 
   spec.license      = "MIT"
 
-  spec.author           = { 'viacheslavplatonov' => 'slava.p12@yandex.ru' }
+  spec.author           = { 'vplatonov' => 'slava.p12@yandex.ru' }
 
   spec.platform     = :ios
   spec.platform     = :ios, "13.0"
@@ -33,6 +33,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'MMCoreNetworkCallbacks'
   spec.dependency 'CoreTableView'
 
-  spec.resource_bundle = { 'MaaS' => "Sources/MaaS/**/*. {png,jpeg,jpg,pdf,storyboard,xib,xcassets}" }
+  spec.resource_bundle = { 'MaaS' => 'Sources/MaaS/**/*.{png,jpeg,jpg,pdf,storyboard,xib,xcassets,otf,ttf}' }
 
 end
