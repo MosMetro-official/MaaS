@@ -9,7 +9,7 @@ import UIKit
 
 extension UITableViewCell {
     static internal var nib  : UINib {
-        return UINib(nibName: identifire, bundle: .module)
+        return UINib(nibName: identifire, bundle: MaaS.shared.bundle)
     }
     static internal var identifire : String {
         return String(describing: self)

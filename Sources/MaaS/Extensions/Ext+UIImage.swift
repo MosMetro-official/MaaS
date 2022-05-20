@@ -9,6 +9,6 @@ import UIKit
 
 extension UIImage {
     static internal func getAssetImage(image name: String) -> UIImage {
-        return UIImage(named: name, in: .module, with: nil) ?? UIImage()
+        return UIImage(named: name, in: MaaS.shared.bundle, with: nil) ?? UIImage()
     }
 }
