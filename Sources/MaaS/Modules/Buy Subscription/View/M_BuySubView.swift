@@ -49,8 +49,7 @@ class M_BuySubView: UIView {
         tableView.showsHorizontalScrollIndicator = false
         payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
-        payButton.titleLabel?.font = Appearance.customFonts[.button]
-        payButton.setTitle("Привязать карту", for: .normal)
+        payButton.titleLabel?.font = Appearance.getFont(.button)
         addHorizontalGradientLayer()
     }
     

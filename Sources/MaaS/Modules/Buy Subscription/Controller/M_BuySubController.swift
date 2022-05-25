@@ -33,7 +33,7 @@ class M_BuySubController: UIViewController {
     private func makeState() {
         guard let sub = selectedSub else { return }
         let width = UIScreen.main.bounds.width - 72
-        let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont()) + 48
+        let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 48
         let stackViewHeight = sub.tariffs[0].transportImage.size.height * CGFloat(sub.tariffs.count)
         let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
         let subElement = M_BuySubView.ViewState.SubSectionRow(

@@ -27,17 +27,29 @@ class M_ActiveSubController: UIViewController {
         ]
         title = "Подписка"
     }
-    
+        
     private func makeState() {
         var states: [State] = []
-        var elements: [Element] = []
+        let cardState = makeCardState(from: userSubscritpion)
+        states.append(cardState)
+        let tariffState = makeTariffState(from: userSubscritpion)
+        states.append(tariffState)
+        let onboardingState = makeOnboardingState()
+        states.append(onboardingState)
+        let viewState = M_ActiveSubView.ViewState(timeLeft: userSubscritpion.active, state: states, dataState: .loaded)
+        nestedView.viewState = viewState
+    }
+}
+
+extension M_ActiveSubController {
+    private func makeCardState(from sub: UserSubscription) -> State {
         let cardNumberHeight = userSubscritpion.cardNumber.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
-            font: Appearance.customFonts[.card] ?? UIFont.systemFont(ofSize: 17, weight: .regular)
+            font: Appearance.getFont(.card)
         )
         let cardDescriptionHeight = "Для прохода в транспорте".height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
-            font: Appearance.customFonts[.smallBody] ?? UIFont.systemFont(ofSize: 13, weight: .regular)
+            font: Appearance.getFont(.smallBody)
         )
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
             cardImage: userSubscritpion.cardImage,
@@ -48,11 +60,11 @@ class M_ActiveSubController: UIViewController {
         let title = "МультиТранспорт"
         let titleHeight = title.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
-            font: Appearance.customFonts[.largeTitle] ?? UIFont.systemFont(ofSize: 30, weight: .bold)
+            font: Appearance.getFont(.largeTitle)
         )
         let activeHeight = userSubscritpion.active.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
-            font: Appearance.customFonts[.body] ?? UIFont.systemFont(ofSize: 15, weight: .regular)
+            font: Appearance.getFont(.body)
         )
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
@@ -60,11 +72,15 @@ class M_ActiveSubController: UIViewController {
             height: titleHeight + activeHeight + 83
         )
         let cardState = State(model: SectionState(header: titleHeader, footer: nil), elements: [cardInfo])
-        states.append(cardState)
+        return cardState
+    }
+    
+    private func makeTariffState(from sub: UserSubscription) -> State {
+        var elements: [Element] = []
         let tariffTitle = "Баланс"
         let tariffHeight = tariffTitle.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 16,
-            font: Appearance.customFonts[.header] ?? UIFont.systemFont(ofSize: 20, weight: .bold)
+            font: Appearance.getFont(.header)
         )
         let tariffSection = M_ActiveSubView.ViewState.HeaderCell(height: tariffHeight + 24).toElement()
         elements.append(tariffSection)
@@ -77,11 +93,11 @@ class M_ActiveSubController: UIViewController {
             }
             let titleHeight = tariff.title.height(
                 withConstrainedWidth: 100,
-                font: Appearance.customFonts[.body] ?? UIFont.systemFont(ofSize: 15, weight: .regular)
+                font: Appearance.getFont(.body)
             )
             let typeHeight = typeTitle.height(
                 withConstrainedWidth: 100,
-                font: Appearance.customFonts[.body] ?? UIFont.systemFont(ofSize: 15, weight: .regular)
+                font: Appearance.getFont(.body)
             )
             let progressHeight: CGFloat = currentProgress == nil ? 0 : 23
             let tariffRow = M_ActiveSubView.ViewState.TariffInfo(
@@ -94,8 +110,10 @@ class M_ActiveSubController: UIViewController {
             elements.append(tariffRow)
         }
         let tariffState = State(model: SectionState(header: nil, footer: nil), elements: elements)
-        states.append(tariffState)
-        
+        return tariffState
+    }
+    
+    private func makeOnboardingState() -> State {
         let onOnboardingSelect = Command {
             print("show onboarding controller")
         }
@@ -105,8 +123,6 @@ class M_ActiveSubController: UIViewController {
         }
         let onboarding = M_ActiveSubView.ViewState.Onboarding(onOnboardingSelect: onOnboardingSelect, onHistorySelect: onHistorySelect).toElement()
         let onboardingState = State(model: SectionState(header: nil, footer: nil), elements: [onboarding])
-        states.append(onboardingState)
-        let viewState = M_ActiveSubView.ViewState(timeLeft: "Активна до 22 марта 2022", state: states, dataState: .loaded)
-        nestedView.viewState = viewState
+        return onboardingState
     }
 }

@@ -30,7 +30,7 @@ public enum FontTextStyle: String {
 
 public final class Appearance: _Appearance {
 
-    public static var customFonts: [FontTextStyle: UIFont] = [
+    static var customFonts: [FontTextStyle: UIFont] = [
         .navTitle: UIFont(name: "MoscowSans-Medium", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .medium),
         .largeTitle: UIFont(name: "Comfortaa", size: 30) ?? UIFont.systemFont(ofSize: 30, weight: .bold),
         .header: UIFont(name: "MoscowSans-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular),
@@ -46,4 +46,8 @@ public final class Appearance: _Appearance {
         .loading: UIFont(name: "MoscowSans-Regular", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .regular),
         .retryButton: UIFont(name: "MoscowSans-Regular", size: 21) ?? UIFont.systemFont(ofSize: 21, weight: .regular)
     ]
+    
+    static func getFont(_ fontStyle: FontTextStyle) -> UIFont {
+        return Appearance.customFonts[fontStyle] ?? UIFont.systemFont(ofSize: 15)
+    }
 }

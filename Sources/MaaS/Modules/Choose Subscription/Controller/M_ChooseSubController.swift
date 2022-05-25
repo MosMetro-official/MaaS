@@ -88,6 +88,29 @@ class M_ChooseSubController: UIViewController {
             let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
             subStates.append(subState)
         }
+        let makeMySubState = createMySubState()
+        subStates.append(makeMySubState)
+        let buttonTitle = confirmButton()
+        let payCommand = Command { [weak self] in
+            guard let self = self,
+                  let navigation = self.navigationController else { return }
+            if self.selectMakeMySub {
+                // open create sub screen
+            } else {
+                if let sub = self.selectedSub {
+                    let buySubController = M_BuySubController()
+                    buySubController.selectedSub = sub
+                    navigation.pushViewController(buySubController, animated: true)
+                }
+            }
+        }
+        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
+        nestedView.viewState = viewState
+    }
+}
+
+extension M_ChooseSubController {
+    private func createMySubState() -> State {
         let onItemSelect = Command {
             self.selectMakeMySub = true
             self.selectedSub = nil
@@ -105,7 +128,10 @@ class M_ChooseSubController: UIViewController {
             height: titleHeight + descrHeight + 70
         ).toElement()
         let makeMySubState = State(model: SectionState(header: nil, footer: nil), elements: [makeMySubElement])
-        subStates.append(makeMySubState)
+        return makeMySubState
+    }
+    
+    private func confirmButton() -> String {
         var buttonTitle: String
         if let price = selectedSub?.price {
             buttonTitle = "Оплатить \(price)"
@@ -114,20 +140,6 @@ class M_ChooseSubController: UIViewController {
         } else {
             buttonTitle = ""
         }
-        let payCommand = Command { [weak self] in
-            guard let self = self,
-                  let navigation = self.navigationController else { return }
-            if self.selectMakeMySub {
-                // open create sub screen
-            } else {
-                if let sub = self.selectedSub {
-                    let buySubController = M_BuySubController()
-                    buySubController.selectedSub = sub
-                    navigation.pushViewController(buySubController, animated: true)
-                }
-            }
-        }
-        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
-        nestedView.viewState = viewState
+        return buttonTitle
     }
 }

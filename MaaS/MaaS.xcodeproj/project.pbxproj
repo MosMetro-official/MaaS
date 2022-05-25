@@ -64,9 +64,21 @@
 		953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		955569AE2838B99D00ADA171 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
+		955569AF2838B99D00ADA171 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; };
 		9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		955569B02838B99D00ADA171 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95092052282E535B00C4E573 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9509205A282E535B00C4E573;
+			remoteInfo = MaaS;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		95427AF82831025A001FC0FD /* Embed Frameworks */ = {
@@ -77,6 +89,7 @@
 			files = (
 				95427AF72831025A001FC0FD /* (null) in Embed Frameworks */,
 				9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */,
+				955569AF2838B99D00ADA171 /* MaaS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955569AE2838B99D00ADA171 /* MaaS.framework in Frameworks */,
 				9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,10 +323,8 @@
 		95092099282E55DC00C4E573 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				9509209A282E55DC00C4E573 /* M_MakeMySubRow.swift */,
-				9509209B282E55DC00C4E573 /* M_MakeMySubRow.xib */,
-				9509209C282E55DC00C4E573 /* M_SubSectionRow.xib */,
-				9509209D282E55DC00C4E573 /* M_SubSectionRow.swift */,
+				95B9D8F1283D387300CC7433 /* Make my sub */,
+				95B9D8F2283D388000CC7433 /* Subscription */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -348,14 +360,11 @@
 		950920A6282E55DC00C4E573 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				950920A7282E55DC00C4E573 /* M_OnboardingCell.swift */,
-				950920A8282E55DC00C4E573 /* M_TariffInfoCell.xib */,
-				950920A9282E55DC00C4E573 /* M_OnboardingCell.xib */,
-				950920AA282E55DC00C4E573 /* M_CardInfoCell.xib */,
+				95B9D8EE283D34E400CC7433 /* Onboarding */,
+				95B9D8EF283D34EE00CC7433 /* Tariff info */,
+				95B9D8F0283D34F800CC7433 /* Card info */,
 				950920AB282E55DC00C4E573 /* M_HeaderTableCell.swift */,
-				950920AC282E55DC00C4E573 /* M_TariffInfoCell.swift */,
 				950920AD282E55DC00C4E573 /* M_HeaderTableCell.xib */,
-				950920AE282E55DC00C4E573 /* M_CardInfoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -429,6 +438,51 @@
 			path = MaaSExample;
 			sourceTree = "<group>";
 		};
+		95B9D8EE283D34E400CC7433 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				950920A7282E55DC00C4E573 /* M_OnboardingCell.swift */,
+				950920A9282E55DC00C4E573 /* M_OnboardingCell.xib */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		95B9D8EF283D34EE00CC7433 /* Tariff info */ = {
+			isa = PBXGroup;
+			children = (
+				950920A8282E55DC00C4E573 /* M_TariffInfoCell.xib */,
+				950920AC282E55DC00C4E573 /* M_TariffInfoCell.swift */,
+			);
+			path = "Tariff info";
+			sourceTree = "<group>";
+		};
+		95B9D8F0283D34F800CC7433 /* Card info */ = {
+			isa = PBXGroup;
+			children = (
+				950920AA282E55DC00C4E573 /* M_CardInfoCell.xib */,
+				950920AE282E55DC00C4E573 /* M_CardInfoCell.swift */,
+			);
+			path = "Card info";
+			sourceTree = "<group>";
+		};
+		95B9D8F1283D387300CC7433 /* Make my sub */ = {
+			isa = PBXGroup;
+			children = (
+				9509209B282E55DC00C4E573 /* M_MakeMySubRow.xib */,
+				9509209A282E55DC00C4E573 /* M_MakeMySubRow.swift */,
+			);
+			path = "Make my sub";
+			sourceTree = "<group>";
+		};
+		95B9D8F2283D388000CC7433 /* Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				9509209C282E55DC00C4E573 /* M_SubSectionRow.xib */,
+				9509209D282E55DC00C4E573 /* M_SubSectionRow.swift */,
+			);
+			path = Subscription;
+			sourceTree = "<group>";
+		};
 		AEF68435CC216EBF4EA7DF96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +551,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				955569B12838B99D00ADA171 /* PBXTargetDependency */,
 			);
 			name = MaaSExample;
 			productName = MaaSExample;
@@ -689,6 +744,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		955569B12838B99D00ADA171 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 9509205A282E535B00C4E573 /* MaaS */;
+			targetProxy = 955569B02838B99D00ADA171 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		953E96B1282ED95E00374DF2 /* Main.storyboard */ = {
