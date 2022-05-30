@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GradientProgressView: UIView {
+public class GradientProgressView: UIView {
     var progress: CGFloat = 0 {
         didSet {
             setNeedsDisplay()
@@ -36,7 +36,7 @@ class GradientProgressView: UIView {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
     }
 
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let progressRect = CGRect(origin: .zero, size: CGSize(width: rect.width * progress, height: rect.height))
 
         progressLayer.frame = progressRect

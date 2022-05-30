@@ -89,7 +89,9 @@ extension M_ActiveSubController {
             var typeTitle = tariff.type ?? ""
             if let totalCount = tariff.totalTripCount, let leftCount = tariff.leftTripCount {
                 currentProgress = CGFloat(1 - (Float(leftCount) / Float(totalCount)))
-                typeTitle = "Осталось \(leftCount) поездки из \(totalCount)"
+                let firstWord = leftCount == 1 ? "Осталась" : "Осталось"
+                let leftString = getDeclensionOf(counts: leftCount)
+                typeTitle = "\(firstWord) \(leftCount) \(leftString) из \(totalCount)"
             }
             let titleHeight = tariff.title.height(
                 withConstrainedWidth: 100,
@@ -121,8 +123,22 @@ extension M_ActiveSubController {
         let onHistorySelect = Command {
             print("show history controller")
         }
-        let onboarding = M_ActiveSubView.ViewState.Onboarding(onOnboardingSelect: onOnboardingSelect, onHistorySelect: onHistorySelect).toElement()
+        let onboarding = M_ActiveSubView.ViewState.Onboarding(
+            onOnboardingSelect: onOnboardingSelect,
+            onHistorySelect: onHistorySelect
+        ).toElement()
         let onboardingState = State(model: SectionState(header: nil, footer: nil), elements: [onboarding])
         return onboardingState
+    }
+    
+    private func getDeclensionOf(counts: Int) -> String {
+        switch counts {
+        case 1:
+            return "поездка"
+        case 2, 3, 4:
+            return "поездки"
+        default:
+            return "поездок"
+        }
     }
 }

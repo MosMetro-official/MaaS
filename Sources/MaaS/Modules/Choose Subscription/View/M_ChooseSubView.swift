@@ -120,5 +120,4 @@ class M_ChooseSubView: UIView {
             showError(on: self, data: data)
         }
     }
-    
 }

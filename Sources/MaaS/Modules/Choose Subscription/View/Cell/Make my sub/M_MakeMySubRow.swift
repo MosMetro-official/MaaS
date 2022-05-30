@@ -16,7 +16,11 @@ protocol _MakeMySubRow: CellData {
 
 extension _MakeMySubRow {    
     func hashValues() -> [Int] {
-        return [isSelect.hashValue]
+        return [
+            title.hashValue,
+            descr.hashValue,
+            isSelect.hashValue
+        ]
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {

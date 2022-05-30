@@ -57,12 +57,24 @@ class M_ChooseSubController: UIViewController {
         }
         let onClose = Command { }
         let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
-        nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .error(error),
+            payButtonEnable: false,
+            payButtonTitle: "",
+            payCommand: nil
+        )
     }
     
     private func showLoading() {
         let loading = M_ChooseSubView.ViewState.Loading(title: "Загрузка", descr: "Подождите еще чуть чуть :)")
-        nestedView.viewState = .init(state: [], dataState: .loading(loading), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .loading(loading),
+            payButtonEnable: false,
+            payButtonTitle: "",
+            payCommand: nil
+        )
     }
     
     private func makeState() {
@@ -73,7 +85,7 @@ class M_ChooseSubController: UIViewController {
                 self.selectMakeMySub = false
             }
             let width = UIScreen.main.bounds.width - 72
-            let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont()) + 48
+            let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 48
             let stackViewHeight = sub.tariffs[0].transportImage.size.height * CGFloat(sub.tariffs.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
@@ -104,8 +116,13 @@ class M_ChooseSubController: UIViewController {
                 }
             }
         }
-        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
-        nestedView.viewState = viewState
+        nestedView.viewState = .init(
+            state: subStates,
+            dataState: .loaded,
+            payButtonEnable: selectedSub != nil || selectMakeMySub,
+            payButtonTitle: buttonTitle,
+            payCommand: payCommand
+        )
     }
 }
 
@@ -118,8 +135,8 @@ extension M_ChooseSubController {
         let title = "Собрать свой тариф"
         let descr = "Выберите столько поездок, сколько нужно именно Вам"
         let width = UIScreen.main.bounds.width - 32
-        let titleHeight = title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont.systemFont(ofSize: 20, weight: .bold))
-        let descrHeight = descr.height(withConstrainedWidth: width, font: Appearance.customFonts[.smallBody] ?? UIFont.systemFont(ofSize: 13, weight: .regular))
+        let titleHeight = title.height(withConstrainedWidth: width, font: Appearance.getFont(.header))
+        let descrHeight = descr.height(withConstrainedWidth: width, font: Appearance.getFont(.smallBody))
         let makeMySubElement = M_ChooseSubView.ViewState.MakeMySubRow(
             title: title,
             descr: descr,

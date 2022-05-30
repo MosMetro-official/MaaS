@@ -22,6 +22,7 @@ extension _SubSectionRow {
             title.hashValue,
             price.hashValue,
             isSelect.hashValue,
+            showSelectImage.hashValue
         ]
     }
     

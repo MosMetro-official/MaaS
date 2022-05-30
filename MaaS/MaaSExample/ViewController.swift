@@ -15,7 +15,4 @@ class ViewController: UIViewController {
         let vc = MaaS.shared.showMaaSFlow()
         self.present(vc, animated: true)
     }
-
-
 }
-
