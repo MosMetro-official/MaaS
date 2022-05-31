@@ -78,4 +78,8 @@ class M_TestSomeData: XCTestCase {
     func test_SubNotEqualToNil() {
         XCTAssertNotNil(sub)
     }
+    
+    func test_SubsNotEqualToNil() {
+        XCTAssertNotNil(subs)
+    }
 }

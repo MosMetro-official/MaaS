@@ -58,8 +58,8 @@
 		950F831C2844E8BD0042F03F /* M_TestUserSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E668A2844D3910001EB2C /* M_TestUserSub.swift */; };
 		950F831D2844E8CC0042F03F /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
 		950F831E2844E8CC0042F03F /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; };
-		951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95226A9C28465FDF00CFC3BF /* M_TestActiveSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95226A9B28465FDF00CFC3BF /* M_TestActiveSubView.swift */; };
+		95226A9E2846601D00CFC3BF /* M_TestChooseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95226A9D2846601D00CFC3BF /* M_TestChooseSubView.swift */; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
 		953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AD282ED95E00374DF2 /* SceneDelegate.swift */; };
 		953E96B0282ED95E00374DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AF282ED95E00374DF2 /* ViewController.swift */; };
@@ -69,9 +69,9 @@
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		954D26302844DBDF00322FDF /* M_TestSomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D262F2844DBDF00322FDF /* M_TestSomeData.swift */; };
-		95746B3728463C43005230E4 /* MaaSExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95746B3628463C43005230E4 /* MaaSExampleUITests.swift */; };
-		95746B3928463C43005230E4 /* MaaSExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95746B3828463C43005230E4 /* MaaSExampleUITestsLaunchTests.swift */; };
 		9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9599A4FE2846768600AB1707 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9599A4FD2846768600AB1707 /* Pods_MaaS.framework */; };
+		9599A5022846778000AB1707 /* M_TestBuySubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599A5012846778000AB1707 /* M_TestBuySubView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +118,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */,
 				95427AFB28310262001FC0FD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -180,6 +179,8 @@
 		950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Bold.otf"; sourceTree = "<group>"; };
 		950E668A2844D3910001EB2C /* M_TestUserSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_TestUserSub.swift; sourceTree = "<group>"; };
 		951D036328323F7F005647F5 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95226A9B28465FDF00CFC3BF /* M_TestActiveSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = M_TestActiveSubView.swift; path = "MaaSExampleUITests/Active Sub Screen/M_TestActiveSubView.swift"; sourceTree = SOURCE_ROOT; };
+		95226A9D2846601D00CFC3BF /* M_TestChooseSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_TestChooseSubView.swift; sourceTree = "<group>"; };
 		953E96A9282ED95E00374DF2 /* MaaSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaaSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96AB282ED95E00374DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		953E96AD282ED95E00374DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,8 +192,8 @@
 		954D262D2844DBDF00322FDF /* MaaSExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaaSExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		954D262F2844DBDF00322FDF /* M_TestSomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_TestSomeData.swift; sourceTree = "<group>"; };
 		95746B3428463C43005230E4 /* MaaSExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaaSExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95746B3628463C43005230E4 /* MaaSExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSExampleUITests.swift; sourceTree = "<group>"; };
-		95746B3828463C43005230E4 /* MaaSExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9599A4FD2846768600AB1707 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9599A5012846778000AB1707 /* M_TestBuySubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_TestBuySubView.swift; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		C3540104BEBC0CD59BF521B7 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,7 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */,
+				9599A4FE2846768600AB1707 /* Pods_MaaS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +476,22 @@
 			path = "Model tests";
 			sourceTree = "<group>";
 		};
+		95226A9928465FA300CFC3BF /* Active Sub Screen */ = {
+			isa = PBXGroup;
+			children = (
+				95226A9B28465FDF00CFC3BF /* M_TestActiveSubView.swift */,
+			);
+			path = "Active Sub Screen";
+			sourceTree = "<group>";
+		};
+		95226A9A28465FAF00CFC3BF /* Choose Sub Screen */ = {
+			isa = PBXGroup;
+			children = (
+				95226A9D2846601D00CFC3BF /* M_TestChooseSubView.swift */,
+			);
+			path = "Choose Sub Screen";
+			sourceTree = "<group>";
+		};
 		953E96AA282ED95E00374DF2 /* MaaSExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,10 +517,19 @@
 		95746B3528463C43005230E4 /* MaaSExampleUITests */ = {
 			isa = PBXGroup;
 			children = (
-				95746B3628463C43005230E4 /* MaaSExampleUITests.swift */,
-				95746B3828463C43005230E4 /* MaaSExampleUITestsLaunchTests.swift */,
+				9599A5002846776500AB1707 /* Buy Sub Screen */,
+				95226A9A28465FAF00CFC3BF /* Choose Sub Screen */,
+				95226A9928465FA300CFC3BF /* Active Sub Screen */,
 			);
 			path = MaaSExampleUITests;
+			sourceTree = "<group>";
+		};
+		9599A5002846776500AB1707 /* Buy Sub Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9599A5012846778000AB1707 /* M_TestBuySubView.swift */,
+			);
+			path = "Buy Sub Screen";
 			sourceTree = "<group>";
 		};
 		95B9D8EE283D34E400CC7433 /* Onboarding */ = {
@@ -565,6 +591,7 @@
 		B7F46A3F0D6E2E299AC20203 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9599A4FD2846768600AB1707 /* Pods_MaaS.framework */,
 				951D036328323F7F005647F5 /* Pods_MaaS.framework */,
 				0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */,
 			);
@@ -884,8 +911,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95746B3728463C43005230E4 /* MaaSExampleUITests.swift in Sources */,
-				95746B3928463C43005230E4 /* MaaSExampleUITestsLaunchTests.swift in Sources */,
+				95226A9E2846601D00CFC3BF /* M_TestChooseSubView.swift in Sources */,
+				9599A5022846778000AB1707 /* M_TestBuySubView.swift in Sources */,
+				95226A9C28465FDF00CFC3BF /* M_TestActiveSubView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

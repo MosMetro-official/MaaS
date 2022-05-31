@@ -42,10 +42,10 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-Cy-1zV">
-                    <rect key="frame" x="20" y="760" width="374" height="44"/>
+                    <rect key="frame" x="20" y="754" width="374" height="50"/>
                     <color key="backgroundColor" name="primaryText"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="H3q-sd-p5G"/>
+                        <constraint firstAttribute="height" constant="50" id="H3q-sd-p5G"/>
                     </constraints>
                     <color key="tintColor" name="content"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -55,10 +55,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nZ-aW-QV4">
-                    <rect key="frame" x="20" y="700" width="374" height="44"/>
+                    <rect key="frame" x="20" y="688" width="374" height="50"/>
                     <color key="backgroundColor" name="progress"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Uvx-bF-a8P"/>
+                        <constraint firstAttribute="height" constant="50" id="Uvx-bF-a8P"/>
                     </constraints>
                     <color key="tintColor" name="backButton"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
