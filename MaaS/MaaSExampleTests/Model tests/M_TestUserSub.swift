@@ -23,21 +23,17 @@ class M_TestUserSub: XCTestCase {
     }
     
     private func getUserSub() -> UserSubscription {
-        return UserSubscription(
-            active: "Активна до 22 марта 2022",
-            cardNumber: "МИР •••• 2267",
-            cardImage: UIImage.getAssetImage(image: "mir"),
-            tariffs: [
-                UserTariff(title: "Такси", type: nil, leftTripCount: 2, totalTripCount: 10),
-                UserTariff(title: "Общественный транспорт", type: "Безлимит", leftTripCount: nil, totalTripCount: nil)
-            ]
-        )
+        return UserSubscription.getUserSubscription()
+    }
+    
+    func test_checkFakeTariffsCount() {
+        let totalCountOfTariffs = userSub.tariffs.count
+        XCTAssertEqual(totalCountOfTariffs, 2)
     }
 
     func test_UserSubProperties() {
         XCTAssertEqual(userSub.active, "Активна до 22 марта 2022")
         XCTAssertEqual(userSub.cardNumber, "МИР •••• 2267")
-        XCTAssertEqual(userSub.tariffs.count, 2)
     }
     
     func test_UserSubTariffs() {
@@ -52,5 +48,8 @@ class M_TestUserSub: XCTestCase {
         XCTAssertNil(secondTariff.leftTripCount)
         XCTAssertNil(secondTariff.totalTripCount)
     }
-
+    
+    func test_UserSubNotEqualToNil() {
+        XCTAssertNotNil(userSub)
+    }
 }

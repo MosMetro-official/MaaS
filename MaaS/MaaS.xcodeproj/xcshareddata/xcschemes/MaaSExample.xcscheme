@@ -27,7 +27,24 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9509205A282E535B00C4E573"
+            BuildableName = "MaaS.framework"
+            BlueprintName = "MaaS"
+            ReferencedContainer = "container:MaaS.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "953E96A8282ED95E00374DF2"
+            BuildableName = "MaaSExample.app"
+            BlueprintName = "MaaSExample"
+            ReferencedContainer = "container:MaaS.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -36,6 +53,16 @@
                BlueprintIdentifier = "954D262C2844DBDF00322FDF"
                BuildableName = "MaaSExampleTests.xctest"
                BlueprintName = "MaaSExampleTests"
+               ReferencedContainer = "container:MaaS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "95746B3328463C43005230E4"
+               BuildableName = "MaaSExampleUITests.xctest"
+               BlueprintName = "MaaSExampleUITests"
                ReferencedContainer = "container:MaaS.xcodeproj">
             </BuildableReference>
          </TestableReference>

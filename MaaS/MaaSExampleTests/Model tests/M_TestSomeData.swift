@@ -11,14 +11,17 @@ import XCTest
 class M_TestSomeData: XCTestCase {
     
     var sub: Subscription!
+    var subs: [Subscription]!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         sub = getSub()
+        subs = getSubs()
     }
 
     override func tearDownWithError() throws {
         sub = nil
+        subs = nil
         try super.tearDownWithError()
     }
     
@@ -45,9 +48,13 @@ class M_TestSomeData: XCTestCase {
             ]
         )
     }
+    
+    private func getSubs() -> [Subscription] {
+        return Subscription.getSubscriptions()
+    }
 
     func test_checkFakeSubscriptionsCount() {
-        let totalCountOfSubs = Subscription.getSubscriptions().count
+        let totalCountOfSubs = subs.count
         XCTAssertEqual(totalCountOfSubs, 3)
     }
     
