@@ -77,6 +77,10 @@
 		95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */; };
 		95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */; };
 		95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */; };
+		95C057CD2855025900CEDBE3 /* DebtInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */; };
+		95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */; };
+		95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D028550D9700CEDBE3 /* SupportCell.swift */; };
+		95C057D328550D9700CEDBE3 /* SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057D128550D9700CEDBE3 /* SupportCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +192,10 @@
 		95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_HistoryTrips.swift; sourceTree = "<group>"; };
 		95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartRequest.swift; sourceTree = "<group>"; };
 		95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartResponse.swift; sourceTree = "<group>"; };
+		95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtInfoCell.swift; sourceTree = "<group>"; };
+		95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtInfoCell.xib; sourceTree = "<group>"; };
+		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
+		95C057D128550D9700CEDBE3 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -383,6 +391,8 @@
 		950920A6282E55DC00C4E573 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				95C057CF28550D8200CEDBE3 /* SupportCell */,
+				95C057CA2855023500CEDBE3 /* Debt Info */,
 				95B9D8EE283D34E400CC7433 /* Onboarding */,
 				95B9D8EF283D34EE00CC7433 /* Tariff info */,
 				95B9D8F0283D34F800CC7433 /* Card info */,
@@ -535,6 +545,24 @@
 			path = Subscription;
 			sourceTree = "<group>";
 		};
+		95C057CA2855023500CEDBE3 /* Debt Info */ = {
+			isa = PBXGroup;
+			children = (
+				95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */,
+				95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */,
+			);
+			path = "Debt Info";
+			sourceTree = "<group>";
+		};
+		95C057CF28550D8200CEDBE3 /* SupportCell */ = {
+			isa = PBXGroup;
+			children = (
+				95C057D028550D9700CEDBE3 /* SupportCell.swift */,
+				95C057D128550D9700CEDBE3 /* SupportCell.xib */,
+			);
+			path = SupportCell;
+			sourceTree = "<group>";
+		};
 		AEF68435CC216EBF4EA7DF96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,12 +685,14 @@
 				950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */,
 				950920C1282E55DC00C4E573 /* Media.xcassets in Resources */,
 				950920E7282E55DC00C4E573 /* M_BuySubView.xib in Resources */,
+				95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */,
 				950920DC282E55DC00C4E573 /* M_TariffInfoCell.xib in Resources */,
 				950920DA282E55DC00C4E573 /* M_ActiveSubView.xib in Resources */,
 				950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */,
 				950920DE282E55DC00C4E573 /* M_CardInfoCell.xib in Resources */,
 				950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */,
 				950920D4282E55DC00C4E573 /* M_SubSectionRow.xib in Resources */,
+				95C057D328550D9700CEDBE3 /* SupportCell.xib in Resources */,
 				950920E1282E55DC00C4E573 /* M_HeaderTableCell.xib in Resources */,
 				950920DD282E55DC00C4E573 /* M_OnboardingCell.xib in Resources */,
 				950920D3282E55DC00C4E573 /* M_MakeMySubRow.xib in Resources */,
@@ -770,6 +800,8 @@
 				950920DB282E55DC00C4E573 /* M_OnboardingCell.swift in Sources */,
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
+				95C057CD2855025900CEDBE3 /* DebtInfoCell.swift in Sources */,
+				95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */,
 				95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */,
 				950920E9282E55DC00C4E573 /* M_ErrorView.swift in Sources */,
 				950920E6282E55DC00C4E573 /* M_BuySubView.swift in Sources */,

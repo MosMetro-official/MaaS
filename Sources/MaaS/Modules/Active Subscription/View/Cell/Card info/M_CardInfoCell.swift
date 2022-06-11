@@ -12,11 +12,17 @@ protocol _CardInfo: CellData {
     var cardImage: UIImage { get }
     var cardNumber: String { get }
     var cardDescription: String { get }
+    var leftCountChangeCard: String { get }
 }
 
 extension _CardInfo {
     func hashValues() -> [Int] {
-        return [cardImage.hashValue, cardNumber.hashValue, cardDescription.hashValue]
+        return [
+            cardImage.hashValue,
+            cardNumber.hashValue,
+            cardDescription.hashValue,
+            leftCountChangeCard.hashValue
+        ]
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
@@ -32,20 +38,22 @@ extension _CardInfo {
 }
 
 class M_CardInfoCell: UITableViewCell {
-
+    
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var cardNumberLabel: UILabel!
     @IBOutlet weak var cardDescriptionLabel: UILabel!
+    @IBOutlet weak var leftCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
     }
-
+    
     public func configure(with data: _CardInfo) {
         cardImage.image = data.cardImage
         cardNumberLabel.text = data.cardNumber
         cardDescriptionLabel.text = data.cardDescription
+        leftCountLabel.text = data.leftCountChangeCard
     }
     
 }

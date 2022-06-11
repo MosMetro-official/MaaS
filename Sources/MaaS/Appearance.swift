@@ -36,6 +36,8 @@ public enum FontTextStyle: String {
     case price = "price"
     case header = "header"
     case button = "button"
+    case debt = "debtText"
+    case more = "moreText"
     case loading = "loading"
     case navTitle = "navTitle"
     case smallBody = "smallBody"
@@ -61,6 +63,8 @@ public final class Appearance: _Appearance {
         .button: UIFont(name: "MoscowSans-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15, weight: .medium),
         .boldTitle: UIFont(name: "MoscowSans-Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .bold),
         .errorTitle: UIFont(name: "MoscowSans-Regular", size: 25) ?? UIFont.systemFont(ofSize: 30, weight: .regular),
+        .debt: UIFont(name: "MoscowSans-Medium", size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .medium),
+        .more: UIFont(name: "MoscowSans-Medium", size: 13) ?? UIFont.systemFont(ofSize: 13, weight: .medium),
         .errorDescr: UIFont(name: "MoscowSans-Regular", size: 18) ?? UIFont.systemFont(ofSize: 23, weight: .regular),
         .loading: UIFont(name: "MoscowSans-Regular", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .regular),
         .retryButton: UIFont(name: "MoscowSans-Regular", size: 21) ?? UIFont.systemFont(ofSize: 21, weight: .regular)

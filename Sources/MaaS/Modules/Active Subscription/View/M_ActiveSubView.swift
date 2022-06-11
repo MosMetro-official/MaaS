@@ -21,6 +21,12 @@ class M_ActiveSubView: UIView {
             case error
         }
         
+        struct DebtInfo: _DebtInfoCell {
+            let totalDebt: String
+            let onButton: Command<Void>
+            let height: CGFloat
+        }
+        
         struct TitleHeader: _TitleHeader {
             let title: String
             let timeLeft: String
@@ -31,6 +37,7 @@ class M_ActiveSubView: UIView {
             let cardImage: UIImage
             let cardNumber: String
             let cardDescription: String
+            let leftCountChangeCard: String
             let height: CGFloat
         }
         
@@ -49,6 +56,11 @@ class M_ActiveSubView: UIView {
         struct Onboarding: _Onboarding {
             let onOnboardingSelect: Command<Void>
             let onHistorySelect: Command<Void>
+        }
+        
+        struct Support: _SupportCell {
+            let onItemSelect: Command<Void>
+            let height: CGFloat
         }
         
         static let initial = ViewState(timeLeft: "", state: [], dataState: .loading)
