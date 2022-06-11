@@ -40,7 +40,7 @@ class M_ChooseSubView: UIView {
             let price: String
             let isSelect: Bool
             let showSelectImage: Bool
-            let tariffs: [SubTariffs]
+            let tariffs: [Service]
             let onItemSelect: Command<Void>
             let height: CGFloat
         }
@@ -69,10 +69,22 @@ class M_ChooseSubView: UIView {
     @IBOutlet weak var tableView: BaseTableView!
     @IBOutlet weak var payButton: UIButton!
     
+    private func hide() {
+        self.titleLabel.isHidden = true
+        self.changeLabel.isHidden = true
+        self.payButton.isHidden = true
+    }
+    
+    private func show() {
+        self.titleLabel.isHidden = false
+        self.changeLabel.isHidden = false
+    }
+    
     private var buttonGradient: CAGradientLayer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.hide()
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
         tableView.showsVerticalScrollIndicator = false
@@ -112,6 +124,7 @@ class M_ChooseSubView: UIView {
         case .loaded:
             self.removeLoading(from: self)
             self.removeError(from: self)
+            self.show()
         case .loading(let data):
             self.removeError(from: self)
             showLoading(on: self, data: data)

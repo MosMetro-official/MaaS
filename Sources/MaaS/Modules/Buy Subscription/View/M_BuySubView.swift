@@ -20,7 +20,7 @@ class M_BuySubView: UIView {
             let price: String
             let isSelect: Bool
             let showSelectImage: Bool
-            let tariffs: [SubTariffs]
+            var tariffs: [Service]
             let height: CGFloat
         }
         

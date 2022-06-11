@@ -13,7 +13,7 @@ protocol _SubSectionRow: CellData {
     var price: String { get }
     var isSelect: Bool { get }
     var showSelectImage: Bool { get }
-    var tariffs: [SubTariffs] { get }
+    var tariffs: [Service] { get }
 }
 
 extension _SubSectionRow {
@@ -22,6 +22,7 @@ extension _SubSectionRow {
             title.hashValue,
             price.hashValue,
             isSelect.hashValue,
+            showSelectImage.hashValue
         ]
     }
     
@@ -41,7 +42,7 @@ class M_SubSectionRow: UITableViewCell {
     
     var gradient: CAGradientLayer?
     var gradientHeight: CGFloat?
-    var tariffs: [SubTariffs]? {
+    var tariffs: [Service]? {
         didSet {
             setupStackView(with: tariffs ?? [])
         }
@@ -111,17 +112,31 @@ class M_SubSectionRow: UITableViewCell {
         return label
     }
     
-    private func setupStackView(with tariffs: [SubTariffs]) {
+    private func setupStackView(with tariffs: [Service]) {
         stackView.removeFullyAllArrangedSubviews()
         tariffs.forEach { tariff in
-            let lineStack = createLineStackView(with: tariff.transportImage)
+            let imageName = getServiceImage(by: tariff.serviceID)
+            let lineStack = createLineStackView(with: UIImage.getAssetImage(image: imageName))
             let textStackView = createTextStackView()
-            let tariffTitleLabel = createTextLabel(with: tariff.title, textColor: "secondaryText")
-            let tariffDescrLabel = createTextLabel(with: tariff.trasnportTariff, textColor: "primaryText")
+            let tariffTitleLabel = createTextLabel(with: tariff.name.ru, textColor: "secondaryText")
+            let tariffDescrLabel = createTextLabel(with: tariff.description.ru, textColor: "primaryText")
             textStackView.addArrangedSubview(tariffTitleLabel)
             textStackView.addArrangedSubview(tariffDescrLabel)
             lineStack.addArrangedSubview(textStackView)
             stackView.addArrangedSubview(lineStack)
+        }
+    }
+    
+    private func getServiceImage(by serviceId: String) -> String {
+        switch serviceId {
+        case "YANDEX_TAXI":
+            return "taxi"
+        case "MOSCOW_SUBWAY":
+            return "transport"
+        case "VELOBIKE":
+            return "transport"
+        default:
+            return ""
         }
     }
         

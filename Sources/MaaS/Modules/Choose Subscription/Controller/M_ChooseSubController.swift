@@ -11,9 +11,14 @@ import CoreTableView
 class M_ChooseSubController: UIViewController {
     
     private let nestedView = M_ChooseSubView.loadFromNib()
-    private var subscriptions = Subscription.getSubscriptions()
     
-    private var selectedSub: Subscription? {
+    private var subscriptions: [M_SubscriptionInfo] = [] {
+        didSet {
+            makeState()
+        }
+    }
+    
+    private var selectedSub: M_SubscriptionInfo? {
         didSet {
             makeState()
         }
@@ -31,15 +36,13 @@ class M_ChooseSubController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSubscriptions()
         showActiveSubTest()
+        
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
         title = "Подписка"
-        showLoading()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.showError()
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,12 +51,23 @@ class M_ChooseSubController: UIViewController {
         selectMakeMySub = false
     }
     
+    private func loadSubscriptions() {
+        showLoading()
+        M_SubscriptionInfo.getSubscriptions { resutl in
+            switch resutl {
+            case .success(let subscriptions):
+                self.subscriptions = subscriptions
+                print(subscriptions)
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.showError()
+            }
+        }
+    }
+    
     private func showError() {
         let onRetry = Command { [weak self] in
-            self?.showLoading()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self?.makeState()
-            }
+            self?.loadSubscriptions()
         }
         let onClose = Command { }
         let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
@@ -73,15 +87,17 @@ class M_ChooseSubController: UIViewController {
                 self.selectMakeMySub = false
             }
             let width = UIScreen.main.bounds.width - 72
-            let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont()) + 48
-            let stackViewHeight = sub.tariffs[0].transportImage.size.height * CGFloat(sub.tariffs.count)
-            let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
+            let imageHeight: CGFloat = 30
+            let titleHeight = sub.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
+            let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+            let stackViewHeight = imageHeight * CGFloat(sub.services.count)
+            let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
-                title: sub.title,
-                price: sub.price,
+                title: title,
+                price: "\(sub.price / 100) ₽",
                 isSelect: sub == selectedSub,
                 showSelectImage: true,
-                tariffs: sub.tariffs,
+                tariffs: sub.services,
                 onItemSelect: onItemSelect,
                 height: titleHeight + stackViewHeight + spacingHeight
             ).toElement()
@@ -118,8 +134,8 @@ extension M_ChooseSubController {
         let title = "Собрать свой тариф"
         let descr = "Выберите столько поездок, сколько нужно именно Вам"
         let width = UIScreen.main.bounds.width - 32
-        let titleHeight = title.height(withConstrainedWidth: width, font: Appearance.customFonts[.header] ?? UIFont.systemFont(ofSize: 20, weight: .bold))
-        let descrHeight = descr.height(withConstrainedWidth: width, font: Appearance.customFonts[.smallBody] ?? UIFont.systemFont(ofSize: 13, weight: .regular))
+        let titleHeight = title.height(withConstrainedWidth: width, font: Appearance.getFont(.header))
+        let descrHeight = descr.height(withConstrainedWidth: width, font: Appearance.getFont(.smallBody))
         let makeMySubElement = M_ChooseSubView.ViewState.MakeMySubRow(
             title: title,
             descr: descr,
@@ -133,8 +149,9 @@ extension M_ChooseSubController {
     
     private func confirmButton() -> String {
         var buttonTitle: String
-        if let price = selectedSub?.price {
-            buttonTitle = "Оплатить \(price)"
+        if var price = selectedSub?.price {
+            price /= 100
+            buttonTitle = "Оплатить \(price) ₽"
         } else if selectMakeMySub {
             buttonTitle = "Продолжить"
         } else {

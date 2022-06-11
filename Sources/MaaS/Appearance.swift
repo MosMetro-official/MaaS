@@ -7,6 +7,25 @@
 
 import UIKit
 
+struct Constans {
+    
+    struct Images {
+        static let taxi = UIImage.getAssetImage(image: "taxi")
+        static let transport = UIImage.getAssetImage(image: "transoprt")
+    }
+    
+    struct Fonts {
+        static let body = UIFont.customFont(forTextStyle: .body)
+        static let header = UIFont.customFont(forTextStyle: .header)
+    }
+    
+    struct Colors {
+        static let primaryText = UIColor.getAssetColor(name: "primaryText")
+        static let background = UIColor.getAssetColor(name: "background")
+    }
+    
+}
+
 protocol _Appearance: AnyObject {
     static var customFonts: [FontTextStyle: UIFont] { get }
 }

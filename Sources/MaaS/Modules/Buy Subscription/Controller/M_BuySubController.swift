@@ -13,7 +13,7 @@ class M_BuySubController: UIViewController {
     
     private let nestedView = M_BuySubView.loadFromNib()
     
-    var selectedSub: Subscription? {
+    var selectedSub: M_SubscriptionInfo? {
         didSet {
             makeState()
         }
@@ -33,15 +33,17 @@ class M_BuySubController: UIViewController {
     private func makeState() {
         guard let sub = selectedSub else { return }
         let width = UIScreen.main.bounds.width - 72
-        let titleHeight = sub.title.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 48
-        let stackViewHeight = sub.tariffs[0].transportImage.size.height * CGFloat(sub.tariffs.count)
-        let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
+        let imageHeight: CGFloat = 30
+        let titleHeight = sub.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
+        let stackViewHeight = imageHeight * CGFloat(sub.services.count)
+        let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
+        let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
         let subElement = M_BuySubView.ViewState.SubSectionRow(
-            title: sub.title,
-            price: sub.price,
+            title: title,
+            price: "\(sub.price / 100) ₽",
             isSelect: true,
             showSelectImage: false,
-            tariffs: sub.tariffs,
+            tariffs: sub.services,
             height: titleHeight + stackViewHeight + spacingHeight
         ).toElement()
         let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])

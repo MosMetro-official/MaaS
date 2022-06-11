@@ -14,11 +14,8 @@ let package = Package(
             targets: ["MaaS"]),
     ],
     dependencies: [
-        //.package(name: "MMCoreNetwork", url: "https://github.com/MosMetro-official/MMCoreNetwork", .exactItem("0.0.3-callbacks")),
         .package(name: "MMCoreNetwork", url: "https://github.com/MosMetro-official/MMCoreNetwork", .exactItem(Version("0.0.3-callbacks"))),
-        //.package(name: "CoreTableView", url: "https://github.com/MosMetro-official/CoreTableView", from: "0.0.6"),
         .package(url: "https://github.com/MosMetro-official/CoreTableView", from: "0.0.6")
-        
     ],
     targets: [
         .target(

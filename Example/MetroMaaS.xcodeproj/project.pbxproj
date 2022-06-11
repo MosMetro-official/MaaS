@@ -18,7 +18,6 @@
 		95CD34C32816E2500048A29D /* MetroMaaS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroMaaS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95CD34C62816E2500048A29D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95CD34C82816E2500048A29D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		95CD34CA2816E2500048A29D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95CD34CF2816E2510048A29D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95CD34D22816E2510048A29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95CD34D42816E2510048A29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 			children = (
 				95CD34C62816E2500048A29D /* AppDelegate.swift */,
 				95CD34C82816E2500048A29D /* SceneDelegate.swift */,
-				95CD34CA2816E2500048A29D /* ViewController.swift */,
 				95CD34CF2816E2510048A29D /* Assets.xcassets */,
 				95CD34D12816E2510048A29D /* LaunchScreen.storyboard */,
 				95CD34D42816E2510048A29D /* Info.plist */,

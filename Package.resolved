@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreTableView",
+        "repositoryURL": "https://github.com/MosMetro-official/CoreTableView",
+        "state": {
+          "branch": null,
+          "revision": "0f273f242967d755f547daf0e22560238166ebf1",
+          "version": "0.0.6"
+        }
+      },
+      {
+        "package": "MMCoreNetwork",
+        "repositoryURL": "https://github.com/MosMetro-official/MMCoreNetwork",
+        "state": {
+          "branch": null,
+          "revision": "534774963272230206c3ababb52490b8421f2197",
+          "version": "0.0.3-callbacks"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

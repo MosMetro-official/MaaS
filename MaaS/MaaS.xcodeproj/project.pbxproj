@@ -64,10 +64,17 @@
 		953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		955569AE2838B99D00ADA171 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
-		955569AF2838B99D00ADA171 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; };
-		9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
+		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
+		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
+		95795B7228531F9100634754 /* M_SubscriptionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B7128531F9100634754 /* M_SubscriptionInfo.swift */; };
+		95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B732853368800634754 /* MaaSNetworkDelegate.swift */; };
+		95A41D042854AEDB00637FA6 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; };
+		95A41D052854AEDB00637FA6 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95A41D062854AEDD00637FA6 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A41D012854AEC400637FA6 /* Pods_MaaS.framework */; };
+		95A41D072854AEDD00637FA6 /* Pods_MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 95A41D012854AEC400637FA6 /* Pods_MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95A41D092854B4E300637FA6 /* M_DebtInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D082854B4E300637FA6 /* M_DebtInfo.swift */; };
+		95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,9 +94,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				95A41D052854AEDB00637FA6 /* MaaS.framework in Embed Frameworks */,
+				95A41D072854AEDD00637FA6 /* Pods_MaaS.framework in Embed Frameworks */,
 				95427AF72831025A001FC0FD /* (null) in Embed Frameworks */,
-				9596E71E283262EC003C3FF1 /* Pods_MaaSExample.framework in Embed Frameworks */,
-				955569AF2838B99D00ADA171 /* MaaS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +176,14 @@
 		953E96B4282ED96100374DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
+		95795B6C28531BF100634754 /* Ext+URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+URLRequest.swift"; sourceTree = "<group>"; };
+		95795B6E28531C8300634754 /* Ext+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIDevice.swift"; sourceTree = "<group>"; };
+		95795B7128531F9100634754 /* M_SubscriptionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubscriptionInfo.swift; sourceTree = "<group>"; };
+		95795B732853368800634754 /* MaaSNetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSNetworkDelegate.swift; sourceTree = "<group>"; };
+		95A41D012854AEC400637FA6 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A41D082854B4E300637FA6 /* M_DebtInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_DebtInfo.swift; sourceTree = "<group>"; };
+		95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_HistoryTrips.swift; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,8 +201,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				955569AE2838B99D00ADA171 /* MaaS.framework in Frameworks */,
-				9596E71D283262EC003C3FF1 /* Pods_MaaSExample.framework in Frameworks */,
+				95A41D062854AEDD00637FA6 /* Pods_MaaS.framework in Frameworks */,
+				95A41D042854AEDB00637FA6 /* MaaS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,12 +250,14 @@
 		95092080282E55DC00C4E573 /* MaaS */ = {
 			isa = PBXGroup;
 			children = (
+				95795B6828531AFE00634754 /* Models */,
 				95092082282E55DC00C4E573 /* Custom Elements */,
 				95092085282E55DC00C4E573 /* Extensions */,
 				950920BC282E55DC00C4E573 /* Fonts */,
 				95092090282E55DC00C4E573 /* Modules */,
 				95092081282E55DC00C4E573 /* Media.xcassets */,
 				9509208F282E55DC00C4E573 /* MaaS.swift */,
+				95795B732853368800634754 /* MaaSNetworkDelegate.swift */,
 				950920BB282E55DC00C4E573 /* Appearance.swift */,
 			);
 			path = MaaS;
@@ -267,6 +284,8 @@
 				9509208C282E55DC00C4E573 /* Ext+UIView.swift */,
 				9509208D282E55DC00C4E573 /* Ext+UILabel.swift */,
 				9509208E282E55DC00C4E573 /* Ext+UIImage.swift */,
+				95795B6C28531BF100634754 /* Ext+URLRequest.swift */,
+				95795B6E28531C8300634754 /* Ext+UIDevice.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -438,6 +457,33 @@
 			path = MaaSExample;
 			sourceTree = "<group>";
 		};
+		95795B6828531AFE00634754 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				95795B7028531F7700634754 /* Subscriptions */,
+				95795B6928531B0B00634754 /* Api Client */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		95795B6928531B0B00634754 /* Api Client */ = {
+			isa = PBXGroup;
+			children = (
+				95795B6A28531B2700634754 /* AuthClient.swift */,
+			);
+			path = "Api Client";
+			sourceTree = "<group>";
+		};
+		95795B7028531F7700634754 /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				95795B7128531F9100634754 /* M_SubscriptionInfo.swift */,
+				95A41D082854B4E300637FA6 /* M_DebtInfo.swift */,
+				95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
 		95B9D8EE283D34E400CC7433 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +543,7 @@
 		B7F46A3F0D6E2E299AC20203 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95A41D012854AEC400637FA6 /* Pods_MaaS.framework */,
 				951D036328323F7F005647F5 /* Pods_MaaS.framework */,
 				0C03D452BF53D07569C9032C /* Pods_MaaSExample.framework */,
 			);
@@ -713,17 +760,24 @@
 				950920EA282E55DC00C4E573 /* Appearance.swift in Sources */,
 				950920E5282E55DC00C4E573 /* M_BuySubController.swift in Sources */,
 				950920E2282E55DC00C4E573 /* M_CardInfoCell.swift in Sources */,
+				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
 				950920DB282E55DC00C4E573 /* M_OnboardingCell.swift in Sources */,
+				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
+				95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */,
 				950920E9282E55DC00C4E573 /* M_ErrorView.swift in Sources */,
 				950920E6282E55DC00C4E573 /* M_BuySubView.swift in Sources */,
+				95A41D092854B4E300637FA6 /* M_DebtInfo.swift in Sources */,
+				95795B6B28531B2700634754 /* AuthClient.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
 				950920D8282E55DC00C4E573 /* M_ActiveSubController.swift in Sources */,
 				950920C5282E55DC00C4E573 /* Ext+UITableViewCell.swift in Sources */,
 				950920C3282E55DC00C4E573 /* GradientProgressView.swift in Sources */,
 				950920C4282E55DC00C4E573 /* Ext+UIColor.swift in Sources */,
+				95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */,
 				950920CC282E55DC00C4E573 /* Ext+UIImage.swift in Sources */,
 				950920C9282E55DC00C4E573 /* Ext+UIViewController.swift in Sources */,
+				95795B7228531F9100634754 /* M_SubscriptionInfo.swift in Sources */,
 				950920C7282E55DC00C4E573 /* Ext+UIStackView.swift in Sources */,
 				950920E4282E55DC00C4E573 /* M_TitleHeader.swift in Sources */,
 				950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */,
@@ -748,7 +802,6 @@
 /* Begin PBXTargetDependency section */
 		955569B12838B99D00ADA171 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 9509205A282E535B00C4E573 /* MaaS */;
 			targetProxy = 955569B02838B99D00ADA171 /* PBXContainerItemProxy */;
 		};
