@@ -14,7 +14,7 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "-v9WHnyFuDSLDzEElVlcJFGes5LdWFMifO2AwOtEb_U"
+    public var token: String? = "3Y4ghMI6qFIKRCF4yD2IAbe6Z15nxi8CzPSF0MRGecU"
     
     public static let shared = MaaS()
     

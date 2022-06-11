@@ -81,6 +81,7 @@
 		95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */; };
 		95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D028550D9700CEDBE3 /* SupportCell.swift */; };
 		95C057D328550D9700CEDBE3 /* SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057D128550D9700CEDBE3 /* SupportCell.xib */; };
+		95C057D52855151300CEDBE3 /* M_CurrentSubInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtInfoCell.xib; sourceTree = "<group>"; };
 		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		95C057D128550D9700CEDBE3 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
+		95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_CurrentSubInfo.swift; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -496,6 +498,7 @@
 				95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */,
 				95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */,
 				95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */,
+				95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				950920C9282E55DC00C4E573 /* Ext+UIViewController.swift in Sources */,
 				95795B7228531F9100634754 /* M_SubscriptionInfo.swift in Sources */,
 				950920C7282E55DC00C4E573 /* Ext+UIStackView.swift in Sources */,
+				95C057D52855151300CEDBE3 /* M_CurrentSubInfo.swift in Sources */,
 				950920E4282E55DC00C4E573 /* M_TitleHeader.swift in Sources */,
 				950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */,
 				950920D7282E55DC00C4E573 /* SomeData.swift in Sources */,
