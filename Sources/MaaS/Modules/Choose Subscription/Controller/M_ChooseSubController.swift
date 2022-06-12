@@ -53,24 +53,22 @@ class M_ChooseSubController: UIViewController {
     
     private func loadSubscriptions() {
         showLoading()
-        M_SubscriptionInfo.getSubscriptions { resutl in
-            switch resutl {
+        M_SubscriptionInfo.getSubscriptions { result in
+            switch result {
             case .success(let subscriptions):
                 self.subscriptions = subscriptions
-                print(subscriptions)
             case .failure(let error):
-                print(error.localizedDescription)
-                self.showError()
+                self.showError(with: error.errorTitle, and: error.errorSubtitle)
             }
         }
     }
     
-    private func showError() {
+    private func showError(with title: String, and descr: String) {
         let onRetry = Command { [weak self] in
             self?.loadSubscriptions()
         }
         let onClose = Command { }
-        let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
+        let error = M_ChooseSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
     }
     
@@ -86,10 +84,11 @@ class M_ChooseSubController: UIViewController {
                 self.selectedSub = sub
                 self.selectMakeMySub = false
             }
+            guard let nameOfSub = sub.name else { return }
             let width = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = sub.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
-            let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+            let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
+            let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
             let stackViewHeight = imageHeight * CGFloat(sub.services.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
@@ -97,9 +96,10 @@ class M_ChooseSubController: UIViewController {
                 price: "\(sub.price / 100) ₽",
                 isSelect: sub == selectedSub,
                 showSelectImage: true,
-                tariffs: sub.services,
+                // чтобы такси не прыгало, а то не красиво
+                tariffs: sub.services.sorted(by: { $0.serviceId > $1.serviceId }),
                 onItemSelect: onItemSelect,
-                height: titleHeight + stackViewHeight + spacingHeight
+                height: titleHeight + stackViewHeight + spacingHeight + 22
             ).toElement()
             let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
             subStates.append(subState)

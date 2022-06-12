@@ -2,7 +2,7 @@ import UIKit
 
 public class MaaS {
     
-    var bundle: Bundle {
+    internal var bundle: Bundle {
         let podBundle = Bundle(for: type(of: self))
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
             return podBundle
@@ -14,12 +14,21 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "3Y4ghMI6qFIKRCF4yD2IAbe6Z15nxi8CzPSF0MRGecU"
+    public var token: String? = ""
+    public var userHasSub: Bool!
     
     public static let shared = MaaS()
     
-    public func showMaaSFlow() -> UINavigationController {
-        return UINavigationController(rootViewController: M_ChooseSubController())
+    public func showMaaSFlow(completion: @escaping (UINavigationController) -> Void) {
+        var flow: UINavigationController = UINavigationController()
+        let chooseSubFlow = UINavigationController(rootViewController: M_ChooseSubController())
+        let activeSubFlow = UINavigationController(rootViewController: M_ActiveSubController())
+        getUserSubStatus {
+            DispatchQueue.main.async {
+                flow = self.userHasSub ? activeSubFlow : chooseSubFlow
+                completion(flow)
+            }
+        }
     }
     
     public static func registerFonts() {
@@ -27,6 +36,18 @@ public class MaaS {
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Regular", fontExtension: "otf")
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Medium", fontExtension: "otf")
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "Comfortaa", fontExtension: "ttf")
+    }
+    
+    public func getUserSubStatus(completion: @escaping () -> Void) {
+        M_CurrentSubInfo.getCurrentStatusOfUser { result in
+            switch result {
+            case .success(let currentSub):
+                self.userHasSub = currentSub.subscription.id != ""
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     internal var deviceOS : String {

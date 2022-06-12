@@ -10,10 +10,10 @@ import MMCoreNetworkCallbacks
 
 struct M_SubPayStartRequest {
     let maaSTariffId: String
-    let payment: PayData
-    let additionalData: [AppData]
+    let payment: M_PayData
+    let additionalData: [M_AppData]
     
-    static func purchaseRequestSub(with maasId: String, completion: @escaping (Result<M_SubPayStartResponse, Error>) -> Void) {
+    static func purchaseRequestSub(with maasId: String, completion: @escaping (Result<M_SubPayStartResponse, APIError>) -> Void) {
         let payment: [String: String] = [:]
         let additionalData: [String: String] = [:]
         
@@ -28,7 +28,10 @@ struct M_SubPayStartRequest {
             switch result {
             case .success(let response):
                 let json = JSON(response.data)
-                let startPayResponse = M_SubPayStartResponse(data: json)
+                guard let startPayResponse = M_SubPayStartResponse(data: json) else {
+                    completion(.failure(.badMapping))
+                    return
+                }
                 completion(.success(startPayResponse))
                 return
             case .failure(let error):
@@ -39,27 +42,27 @@ struct M_SubPayStartRequest {
     }
 }
 
-enum PaymentMethod: String {
+enum M_PaymentMethod: String {
     case CARD = "CARD"
     case APAY = "APAY"
     case GPAY = "GPAY"
     case SPAY = "SPAY"
 }
 
-struct PayData {
-    let paymentMethod: PaymentMethod
-    let redirectUrl: RedirectUrl
+struct M_PayData {
+    let paymentMethod: M_PaymentMethod
+    let redirectUrl: M_RedirectUrl
     let paymentToken: String
     let id: String
 }
 
-struct RedirectUrl {
+struct M_RedirectUrl {
     let succeed: String
     let declined: String
     let canceled: String
 }
 
-struct AppData {
+struct M_AppData {
     let serviceId: String
     let key: String
     let value: String

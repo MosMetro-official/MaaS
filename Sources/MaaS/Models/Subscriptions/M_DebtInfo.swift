@@ -15,19 +15,27 @@ struct M_DebtInfo {
     let amount: Int
     
     init?(data: JSON) {
-        self.date = data["date"].stringValue
-        self.service = data["service"].stringValue
-        self.trip = data["trip"].stringValue
-        self.amount = data["amount"].intValue
+        guard
+            let date = data["date"].string,
+            let service = data["service"].string,
+            let trip = data["trip"].string,
+            let amount = data["amount"].int else { return nil }
+        self.date = date
+        self.service = service
+        self.trip = trip
+        self.amount = amount
     }
     
-    static func getDebtInfo(completion: @escaping (Result<M_DebtInfo, Error>) -> Void) {
+    static func getDebtInfo(completion: @escaping (Result<M_DebtInfo, APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/user/v1/debt")) { result in
             switch result {
             case .success(let response):
                 let json = JSON(response.data)
-                guard let debtInfo = M_DebtInfo(data: json) else { return }
+                guard let debtInfo = M_DebtInfo(data: json["data"]) else {
+                    completion(.failure(.badMapping))
+                    return
+                }
                 completion(.success(debtInfo))
                 return
             case .failure(let error):

@@ -34,17 +34,24 @@ class M_BuySubController: UIViewController {
         guard let sub = selectedSub else { return }
         let width = UIScreen.main.bounds.width - 72
         let imageHeight: CGFloat = 30
-        let titleHeight = sub.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
+//        var bigHeight: CGFloat = 0
+//        sub.services.forEach { service in
+//            if service.serviceId == "YANDEX_TAXI" {
+//                bigHeight = service.description.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.smallBody))
+//            }
+//        }
+        guard let nameOfSub = sub.name else { return }
+        let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
         let stackViewHeight = imageHeight * CGFloat(sub.services.count)
         let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
-        let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+        let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
         let subElement = M_BuySubView.ViewState.SubSectionRow(
             title: title,
             price: "\(sub.price / 100) ₽",
             isSelect: true,
             showSelectImage: false,
             tariffs: sub.services,
-            height: titleHeight + stackViewHeight + spacingHeight
+            height: titleHeight + stackViewHeight + spacingHeight + 22
         ).toElement()
         let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
         let linkCommand = Command { [weak self] in

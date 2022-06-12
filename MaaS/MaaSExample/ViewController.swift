@@ -12,8 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vc = MaaS.shared.showMaaSFlow()
-        self.present(vc, animated: true)
+
     }
 
 

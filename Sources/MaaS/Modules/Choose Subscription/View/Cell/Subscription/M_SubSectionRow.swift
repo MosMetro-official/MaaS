@@ -13,7 +13,7 @@ protocol _SubSectionRow: CellData {
     var price: String { get }
     var isSelect: Bool { get }
     var showSelectImage: Bool { get }
-    var tariffs: [Service] { get }
+    var tariffs: [M_Service] { get }
 }
 
 extension _SubSectionRow {
@@ -42,7 +42,7 @@ class M_SubSectionRow: UITableViewCell {
     
     var gradient: CAGradientLayer?
     var gradientHeight: CGFloat?
-    var tariffs: [Service]? {
+    var tariffs: [M_Service]? {
         didSet {
             setupStackView(with: tariffs ?? [])
         }
@@ -112,10 +112,10 @@ class M_SubSectionRow: UITableViewCell {
         return label
     }
     
-    private func setupStackView(with tariffs: [Service]) {
+    private func setupStackView(with tariffs: [M_Service]) {
         stackView.removeFullyAllArrangedSubviews()
         tariffs.forEach { tariff in
-            let imageName = getServiceImage(by: tariff.serviceID)
+            let imageName = getServiceImage(by: tariff.serviceId)
             let lineStack = createLineStackView(with: UIImage.getAssetImage(image: imageName))
             let textStackView = createTextStackView()
             let tariffTitleLabel = createTextLabel(with: tariff.name.ru, textColor: "secondaryText")

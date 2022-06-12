@@ -64,6 +64,7 @@
 		953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
@@ -183,6 +184,7 @@
 		953E96B4282ED96100374DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		95795B6C28531BF100634754 /* Ext+URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+URLRequest.swift"; sourceTree = "<group>"; };
 		95795B6E28531C8300634754 /* Ext+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIDevice.swift"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */,
 				95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */,
 				95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */,
+				95574F592856398200CA934F /* M_PayStatusResponse.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				950920E5282E55DC00C4E573 /* M_BuySubController.swift in Sources */,
 				950920E2282E55DC00C4E573 /* M_CardInfoCell.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
+				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
 				950920DB282E55DC00C4E573 /* M_OnboardingCell.swift in Sources */,
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,

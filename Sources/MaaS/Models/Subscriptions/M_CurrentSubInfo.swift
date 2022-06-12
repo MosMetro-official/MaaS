@@ -12,18 +12,25 @@ struct M_CurrentSubInfo {
     let subscription: M_SubscriptionInfo
     let payment: M_AuthInfo
     
-    init(data: JSON) {
-        self.subscription = M_SubscriptionInfo(data: data["subscription"])
-        self.payment = M_AuthInfo(data: data["payment"])
+    init?(data: JSON) {
+        guard
+            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let payment = M_AuthInfo(data: data["payment"]) else { return nil }
+        self.subscription = sub
+        self.payment = payment
     }
     
-    static func getCurrentStatusOfUser(completion: @escaping (Result<M_CurrentSubInfo, Error>) -> Void) {
+    static func getCurrentStatusOfUser(completion: @escaping (Result<M_CurrentSubInfo, APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/subscription/v1/info")) { result in
             switch result {
             case .success(let response):
                 let json = JSON(response.data)
-                let currentSubInfo = M_CurrentSubInfo(data: json)
+                guard let currentSubInfo = M_CurrentSubInfo(data: json["data"]) else {
+                    print("CANT CONVERT USER SUB")
+                    completion(.failure(.badMapping))
+                    return
+                }
                 completion(.success(currentSubInfo))
                 return
             case .failure(let error):
@@ -35,20 +42,25 @@ struct M_CurrentSubInfo {
 }
 
 struct M_AuthInfo {
-    let status: M_AuthStatus
+    let status: M_AuthStatus?
     let date: String
     let rnn: String
     let code: String
-    let card: M_CardInfo
+    let card: M_CardInfo?
     let receiptUrl: String?
     
-    init(data: JSON) {
+    init?(data: JSON) {
+        guard
+            let rnn = data["rnn"].string,
+            let code = data["code"].string,
+            let receiptUrl = data["receiptUrl"].string else { return nil }
+                
         self.status = M_AuthStatus(data: data["status"])
         self.date = data["date"].stringValue
-        self.rnn = data["rnn"].stringValue
-        self.code = data["code"].stringValue
+        self.rnn = rnn
+        self.code = code
         self.card = M_CardInfo(data: data["card"])
-        self.receiptUrl = data["receiptUrl"].string
+        self.receiptUrl = receiptUrl
     }
 }
 
@@ -57,10 +69,15 @@ struct M_AuthStatus {
     let responseDescr: String
     let status: String
     
-    init(data: JSON) {
-        self.responseCode = data["responseCode"].stringValue
-        self.responseDescr = data["responseDescr"].stringValue
-        self.status = data["status"].stringValue
+    init?(data: JSON) {
+        guard
+            let responseCode = data["responseCode"].string,
+            let responseDescr = data["responseDescr"].string,
+            let status = data["status"].string else { return nil }
+        
+        self.responseCode = responseCode
+        self.responseDescr = responseDescr
+        self.status = status
     }
 }
 
@@ -72,12 +89,20 @@ struct M_CardInfo {
     let expDate: String
     let cardId: String
     
-    init(data: JSON) {
-        self.hashKey = data["hashKey"].stringValue
-        self.paySystem = data["paySystem"].stringValue
-        self.type = data["type"].stringValue
-        self.maskedPan = data["maskedPan"].stringValue
-        self.expDate = data["expDate"].stringValue
-        self.cardId = data["cardId"].stringValue
+    init?(data: JSON) {
+        guard
+            let hash = data["hashKey"].string,
+            let pay = data["paySystem"].string,
+            let type = data["type"].string,
+            let maskedPan = data["maskedPan"].string,
+            let expDate = data["expDate"].string,
+            let cardId = data["cardId"].string else { return nil }
+        
+        self.hashKey = hash
+        self.paySystem = pay
+        self.type = type
+        self.maskedPan = maskedPan
+        self.expDate = expDate
+        self.cardId = cardId
     }
 }

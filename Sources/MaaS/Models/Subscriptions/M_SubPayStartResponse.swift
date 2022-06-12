@@ -12,8 +12,9 @@ struct M_SubPayStartResponse {
     let paymentId: String
     let subscription: M_SubscriptionInfo
     
-    init(data: JSON) {
-        self.paymentId = data["paymentId"].stringValue
-        self.subscription = M_SubscriptionInfo(data: data["subscription"])
+    init?(data: JSON) {
+        guard let id = data["paymentId"].string, let sub = M_SubscriptionInfo(data: data["subscription"]) else { return nil }
+        self.paymentId = id
+        self.subscription = sub
     }
 }

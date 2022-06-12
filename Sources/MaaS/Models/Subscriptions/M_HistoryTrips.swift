@@ -10,14 +10,17 @@ import MMCoreNetworkCallbacks
 
 struct M_HistoryTrips {
     let subscription: M_SubscriptionInfo
-    let trip: TripDetails
+    let trip: M_TripDetails
     
-    init(data: JSON) {
-        self.subscription = M_SubscriptionInfo(data: data["subscription"])
-        self.trip = TripDetails(data: data["trip"])
+    init?(data: JSON) {
+        guard
+            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let trip = M_TripDetails(data: data["trip"]) else { return nil }
+        self.subscription = sub
+        self.trip = trip
     }
     
-    static func getHistoryTrips(by limit: Int, and offset: Int, completion: @escaping (Result<[M_HistoryTrips], Error>) -> Void) {
+    static func getHistoryTrips(by limit: Int, and offset: Int, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
         let client = APIClient.authClient
         let query = [
             "limit": "\(limit)",
@@ -27,8 +30,11 @@ struct M_HistoryTrips {
             switch result {
             case .success(let response):
                 let json = JSON(response.data)
-                guard let array = json["data"].array else { return }
-                let trips = array.map { M_HistoryTrips(data: $0) }
+                guard let array = json["data"].array else {
+                    completion(.failure(.badMapping))
+                    return
+                }
+                let trips = array.compactMap { M_HistoryTrips(data: $0) }
                 completion(.success(trips))
                 return
             case .failure(let error):
@@ -39,32 +45,42 @@ struct M_HistoryTrips {
     }
 }
 
-struct TripDetails {
+struct M_TripDetails {
     let serviceTripId: String
     let terminalId: String
     let count: Int
-    let time: TravelTime
+    let time: M_TravelTime
     let status: String
     let serviceId: String
-    let route: Description
+    let route: M_Description
     
-    init(data: JSON) {
-        self.serviceTripId = data["serviceTripId"].stringValue
-        self.terminalId = data["terminalId"].stringValue
-        self.count = data["count"].intValue
-        self.time = TravelTime(data: data["time"])
-        self.status = data["status"].stringValue
-        self.serviceId = data["serviceId"].stringValue
-        self.route = Description(data: data["route"])
+    init?(data: JSON) {
+        guard
+            let serviceTripId = data["serviceTripId"].string,
+            let terminalId = data["terminalId"].string,
+            let count = data["count"].int,
+            let time = M_TravelTime(data: data["time"]),
+            let status = data["status"].string,
+            let serviceId = data["serviceId"].string,
+            let route = M_Description(data: data["route"]) else { return nil }
+                
+        self.serviceTripId = serviceTripId
+        self.terminalId = terminalId
+        self.count = count
+        self.time = time
+        self.status = status
+        self.serviceId = serviceId
+        self.route = route
     }
 }
 
-struct TravelTime {
+struct M_TravelTime {
     let start: String
     let end: String
     
-    init(data: JSON) {
-        self.start = data["start"].stringValue
-        self.end = data["end"].stringValue
+    init?(data: JSON) {
+        guard let start = data["start"].string, let end = data["end"].string else { return nil }
+        self.start = start
+        self.end = end
     }
 }

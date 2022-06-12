@@ -40,7 +40,7 @@ class M_ChooseSubView: UIView {
             let price: String
             let isSelect: Bool
             let showSelectImage: Bool
-            let tariffs: [Service]
+            let tariffs: [M_Service]
             let onItemSelect: Command<Void>
             let height: CGFloat
         }
