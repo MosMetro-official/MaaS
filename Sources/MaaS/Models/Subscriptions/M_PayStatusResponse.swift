@@ -39,11 +39,11 @@ struct M_PayStatusResponse {
 
 struct M_PaymentInfo {
     let url: String
-    let authInfo: M_AuthInfo
+    let authInfo: M_AuthInfo?
     
     init?(data: JSON) {
-        guard let url = data["url"].string, let auth = M_AuthInfo(data: data["auth"]) else { return nil }
+        guard let url = data["url"].string else { return nil }
         self.url = url
-        self.authInfo = auth
+        self.authInfo = M_AuthInfo(data: data["auth"])
     }
 }

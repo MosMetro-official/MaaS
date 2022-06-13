@@ -10,14 +10,12 @@ import MMCoreNetworkCallbacks
 
 struct M_CurrentSubInfo {
     let subscription: M_SubscriptionInfo
-    let payment: M_AuthInfo
+    let payment: M_AuthInfo?
     
     init?(data: JSON) {
-        guard
-            let sub = M_SubscriptionInfo(data: data["subscription"]),
-            let payment = M_AuthInfo(data: data["payment"]) else { return nil }
+        guard let sub = M_SubscriptionInfo(data: data["subscription"]) else { return nil }
         self.subscription = sub
-        self.payment = payment
+        self.payment = M_AuthInfo(data: data["payment"])
     }
     
     static func getCurrentStatusOfUser(completion: @escaping (Result<M_CurrentSubInfo, APIError>) -> Void) {
@@ -27,7 +25,6 @@ struct M_CurrentSubInfo {
             case .success(let response):
                 let json = JSON(response.data)
                 guard let currentSubInfo = M_CurrentSubInfo(data: json["data"]) else {
-                    print("CANT CONVERT USER SUB")
                     completion(.failure(.badMapping))
                     return
                 }

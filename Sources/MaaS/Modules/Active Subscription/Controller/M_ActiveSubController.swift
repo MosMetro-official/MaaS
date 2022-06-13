@@ -95,11 +95,19 @@ extension M_ActiveSubController {
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
             font: Appearance.getFont(.smallBody)
         )
+        let onCardSelect = Command { [weak self] in
+            guard
+                let self = self,
+                let navigation = self.navigationController else { return }
+            let changeCardController = ChangeCardController()
+            navigation.pushViewController(changeCardController, animated: true)
+        }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
             cardImage: userSubscritpion.cardImage,
             cardNumber: userSubscritpion.cardNumber,
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты – 3",
+            onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()
         let cardState = State(model: SectionState(header: hasDebit ? nil : titleHeader, footer: nil), elements: [cardInfo])

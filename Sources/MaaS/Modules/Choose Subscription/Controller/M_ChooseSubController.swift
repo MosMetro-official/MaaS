@@ -42,13 +42,17 @@ class M_ChooseSubController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
-        title = "Подписка"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         selectedSub = nil
         selectMakeMySub = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Подписка"
     }
     
     private func loadSubscriptions() {

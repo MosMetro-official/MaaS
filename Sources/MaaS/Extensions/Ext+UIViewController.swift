@@ -16,7 +16,7 @@ extension UIViewController {
     // for check screen
     internal func showActiveSubTest() {
         let activeButton = UIBarButtonItem(
-            image: UIImage.getAssetImage(image: "mir"),
+            image: UIImage(systemName: "creditcard.fill"),
             style: .plain,
             target: self,
             action: #selector(showActiveSub)
