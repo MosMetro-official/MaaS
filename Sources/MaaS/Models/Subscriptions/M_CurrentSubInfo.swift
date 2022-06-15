@@ -78,8 +78,16 @@ struct M_AuthStatus {
 }
 
 struct M_CardInfo {
+    enum PaySystem: String {
+        case visa = "VISA"
+        case mc = "MC"
+        case mir = "MIR"
+        case cup = "CUP"
+        case unknown = "UNKNOWN_PS"
+    }
+    
     let hashKey: String
-    let paySystem: String
+    let paySystem: PaySystem?
     let type: String
     let maskedPan: String
     let expDate: String
@@ -88,14 +96,13 @@ struct M_CardInfo {
     init?(data: JSON) {
         guard
             let hash = data["hashKey"].string,
-            let pay = data["paySystem"].string,
             let type = data["type"].string,
             let maskedPan = data["maskedPan"].string,
             let expDate = data["expDate"].string,
             let cardId = data["cardId"].string else { return nil }
         
         self.hashKey = hash
-        self.paySystem = pay
+        self.paySystem = PaySystem(rawValue: data["paySystem"].stringValue)
         self.type = type
         self.maskedPan = maskedPan
         self.expDate = expDate

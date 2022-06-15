@@ -14,7 +14,7 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "2bsYOOUP7gDCjPVr0VA_KcBWHHzTgTFxUVo-ygyQLPs"
+    public var token: String? = "IiMqYjiZuxPbuTwgZQ3jLm3yUjxqBfCIFgV9rKnF3_w"
     public var userHasSub: Bool!
     public var currentSub: M_CurrentSubInfo?
     
@@ -35,9 +35,6 @@ public class MaaS {
                 completion(flow)
             }
         }
-//        DispatchQueue.main.async {
-//            completion(chooseSubFlow)
-//        }
     }
     
     public static func registerFonts() {

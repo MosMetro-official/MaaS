@@ -12,13 +12,23 @@ class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
     private let userSubscritpion = UserSubscription.getUserSubscription()
+    
     private var hasDebit = true
     
-    var currentSub: M_CurrentSubInfo? {
+    private var debit: [M_DebtInfo]? {
+        didSet {
+            guard let debit = debit else { return }
+            checkAllPossibleDebets(from: debit)
+        }
+    }
+    
+    private var userInfo: M_UserInfoResponse? {
         didSet {
             makeState()
         }
     }
+    
+    var currentSub: M_CurrentSubInfo?
     
     override func loadView() {
         super.loadView()
@@ -27,21 +37,70 @@ class M_ActiveSubController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUserInfo()
         setupBackButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
         title = "Подписка"
     }
+    
+    private func fetchUserInfo() {
+        showLoading()
+        let dispatchGroup = DispatchGroup()
+//        dispatchGroup.enter()
+//        M_DebtInfo.getDebtInfo { result in
+//            switch result {
+//            case .success(let debit):
+//                self.debit = debit
+//                dispatchGroup.leave()
+//            case .failure(let error):
+//                self.showError(with: error.errorTitle, and: error.errorDescription)
+//                dispatchGroup.leave()
+//            }
+//        }
+        dispatchGroup.enter()
+        M_UserInfoResponse.fetchShortUserInfo { result in
+            switch result {
+            case .success(let userInfo):
+                self.userInfo = userInfo
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.showError(with: error.errorTitle, and: error.errorDescription)
+                dispatchGroup.leave()
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            print("All done")
+        }
+    }
+    
+    private func showLoading() {
+        let loadingState = M_ActiveSubView.ViewState.Loading(title: "Загрузка...", descr: "Подождите немного")
+        nestedView.viewState = .init(timeLeft: "", state: [], dataState: .loading(loadingState))
+    }
+    
+    private func showError(with title: String, and descr: String) {
+        let onRetry = Command {
+            
+        }
+        let onClose = Command {
+            
+        }
+        let errorState = M_ActiveSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
+        nestedView.viewState = .init(timeLeft: "", state: [], dataState: .error(errorState))
+    }
         
     private func makeState() {
         var states: [State] = []
-        guard let currentSub = currentSub else {
-            return
-        }
+        guard let currentSub = currentSub else { return }
         let cardState = makeCardState(from: currentSub)
         states.append(contentsOf: cardState)
-        let tariffState = makeTariffState(from: userSubscritpion)
+        let tariffState = makeTariffState(from: currentSub)
         states.append(tariffState)
         let onboardingState = makeOnboardingState()
         states.append(onboardingState)
@@ -71,19 +130,20 @@ extension M_ActiveSubController {
     
     private func makeCardState(from sub: M_CurrentSubInfo) -> [State] {
         var states = [State]()
-        guard let sub = currentSub?.subscription else { return [] }
         let title = "МультиТранспорт"
         let titleHeight = title.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = sub.valid?.to.height(
+        let activeHeight = sub.subscription.valid?.to.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
         ) ?? 0
+        guard let timeTo = sub.subscription.valid?.to else { return [] }
+        let validDate = getCurrentDate(from: timeTo)
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
-            timeLeft: sub.valid?.to ?? "",
+            timeLeft: "Активна до \(validDate)",
             height: titleHeight + activeHeight + 83
         )
         if hasDebit {
@@ -91,8 +151,7 @@ extension M_ActiveSubController {
             let debtState = State(model: SectionState(header: titleHeader, footer: nil), elements: [debtElement])
             states.append(debtState)
         }
-        print("CURRENT SUB INFO \(currentSub?.payment)")
-        let cardNumberHeight = currentSub?.payment?.card?.maskedPan.height(
+        let cardNumberHeight = sub.payment?.card?.maskedPan.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
             font: Appearance.getFont(.card)
         ) ?? 0
@@ -108,14 +167,16 @@ extension M_ActiveSubController {
             guard
                 let self = self,
                 let navigation = self.navigationController else { return }
-            let changeCardController = ChangeCardController()
+            let changeCardController = M_ChangeCardController()
+            changeCardController.tranId = sub.payment?.card?.cardId
             navigation.pushViewController(changeCardController, animated: true)
         }
+        guard let limit = userInfo?.keyChangeLimit else { return [] }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
-            cardImage: userSubscritpion.cardImage,
-            cardNumber: currentSub?.payment?.card?.maskedPan ?? "",
+            cardImage: sub.payment?.card?.paySystem?.rawValue.lowercased() ?? "visa",
+            cardNumber: "••••" + " " + (currentSub?.payment?.card?.maskedPan ?? ""),
             cardDescription: "Для прохода в транспорте",
-            leftCountChangeCard: "Осталось смен карты – 3",
+            leftCountChangeCard: "Осталось смен карты - \(limit)",
             onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()
@@ -124,7 +185,7 @@ extension M_ActiveSubController {
         return states
     }
     
-    private func makeTariffState(from sub: UserSubscription) -> State {
+    private func makeTariffState(from sub: M_CurrentSubInfo) -> State {
         var elements: [Element] = []
         let tariffTitle = "Баланс"
         let tariffHeight = tariffTitle.height(
@@ -133,25 +194,21 @@ extension M_ActiveSubController {
         )
         let tariffSection = M_ActiveSubView.ViewState.HeaderCell(height: tariffHeight + 24).toElement()
         elements.append(tariffSection)
-        userSubscritpion.tariffs.forEach { tariff in
+        sub.subscription.services.forEach { service in
             var currentProgress: CGFloat? = nil
-            var typeTitle = tariff.type ?? ""
-            if let totalCount = tariff.totalTripCount, let leftCount = tariff.leftTripCount {
-                currentProgress = CGFloat(1 - (Float(leftCount) / Float(totalCount)))
-                typeTitle = "Осталось \(leftCount) поездки из \(totalCount)"
-            }
-            let titleHeight = tariff.title.height(
-                withConstrainedWidth: 100,
+            // расчет количества поездок
+            let titleHeight = service.name.ru.height(
+                withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
-            )
-            let typeHeight = typeTitle.height(
-                withConstrainedWidth: 100,
+            ) + 10
+            let typeHeight = service.description.ru.height(
+                withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
-            )
+            ) + 10
             let progressHeight: CGFloat = currentProgress == nil ? 0 : 23
             let tariffRow = M_ActiveSubView.ViewState.TariffInfo(
-                transportTitle: tariff.title,
-                tariffType: typeTitle,
+                transportTitle: service.name.ru,
+                tariffType: service.description.ru,
                 showProgress: currentProgress != nil,
                 currentProgress: currentProgress,
                 height: titleHeight + typeHeight + progressHeight + 26
@@ -186,5 +243,21 @@ extension M_ActiveSubController {
         ).toElement()
         let supportState = State(model: SectionState(header: nil, footer: nil), elements: [supportElement])
         return supportState
+    }
+    
+    private func checkAllPossibleDebets(from debits: [M_DebtInfo]) {
+        let total = debits.reduce(0) { $0 + $1.amount }
+        hasDebit = total != 0
+    }
+    
+    private func getCurrentDate(from string: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        if let date = dateFormatter.date(from: string) {
+            dateFormatter.dateFormat = "dd MMMM yyyy"
+            dateFormatter.locale = .current
+            return dateFormatter.string(from: date)
+        }
+        return "неизвестно"
     }
 }

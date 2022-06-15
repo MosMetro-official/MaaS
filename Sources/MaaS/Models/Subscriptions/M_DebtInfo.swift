@@ -26,16 +26,17 @@ struct M_DebtInfo {
         self.amount = amount
     }
     
-    static func getDebtInfo(completion: @escaping (Result<M_DebtInfo, APIError>) -> Void) {
+    static func getDebtInfo(completion: @escaping (Result<[M_DebtInfo], APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/user/v1/debt")) { result in
             switch result {
             case .success(let response):
                 let json = JSON(response.data)
-                guard let debtInfo = M_DebtInfo(data: json["data"]) else {
+                guard let array = json["data"].array else {
                     completion(.failure(.badMapping))
                     return
                 }
+                let debtInfo = array.compactMap { M_DebtInfo(data: $0) }
                 completion(.success(debtInfo))
                 return
             case .failure(let error):

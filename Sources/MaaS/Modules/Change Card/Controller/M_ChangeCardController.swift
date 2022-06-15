@@ -1,5 +1,5 @@
 //
-//  ChangeCardController.swift
+//  M_ChangeCardController.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 13.06.2022.
@@ -8,11 +8,13 @@
 import UIKit
 import CoreTableView
 
-class ChangeCardController: UIViewController {
+class M_ChangeCardController: UIViewController {
+    
+    public var tranId: String?
     
     private let fakeCard = FakeCard(type: "MIR", number: "1234", count: 3)
     
-    private let nestedView = ChangeCardView.loadFromNib()
+    private let nestedView = M_ChangeCardView.loadFromNib()
     
     override func loadView() {
         super.loadView()
@@ -37,7 +39,7 @@ class ChangeCardController: UIViewController {
         let onChangeButton = Command {
             print("open change url")
         }
-        let finalState = ChangeCardView.ViewState(
+        let finalState = M_ChangeCardView.ViewState(
             cardType: fakeCard.type.lowercased(),
             cardNumber: fakeCard.number,
             countOfChangeCard: fakeCard.count,

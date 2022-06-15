@@ -16,9 +16,21 @@ class M_ActiveSubView: UIView {
         let dataState: DataState
         
         enum DataState {
-            case loading
+            case loading(_Loading)
             case loaded
-            case error
+            case error(_Error)
+        }
+        
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
+        struct Error: _Error {
+            let title: String
+            let descr: String
+            let onRetry: Command<Void>
+            let onClose: Command<Void>
         }
         
         struct DebtInfo: _DebtInfoCell {
@@ -34,7 +46,7 @@ class M_ActiveSubView: UIView {
         }
         
         struct CardInfo: _CardInfo {
-            let cardImage: UIImage
+            let cardImage: String
             let cardNumber: String
             let cardDescription: String
             let leftCountChangeCard: String
@@ -64,7 +76,7 @@ class M_ActiveSubView: UIView {
             let height: CGFloat
         }
         
-        static let initial = ViewState(timeLeft: "", state: [], dataState: .loading)
+        static let initial = ViewState(timeLeft: "", state: [], dataState: .loaded)
     }
     
     public var viewState: ViewState = .initial {
@@ -87,12 +99,16 @@ class M_ActiveSubView: UIView {
     
     private func render() {
         switch viewState.dataState {
-        case .loading:
-            print("loading")
+        case .loading(let loading):
+            self.removeError(from: self)
+            self.showLoading(on: self, data: loading)
         case .loaded:
+            self.removeError(from: self)
+            self.removeLoading(from: self)
             tableView.viewStateInput = viewState.state
-        case .error:
-            print("error")
+        case .error(let error):
+            self.removeLoading(from: self)
+            self.showError(on: self, data: error)
         }
     }
     

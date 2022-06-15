@@ -82,10 +82,15 @@ class M_BuySubController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleCanceled), name: .maasPaymentCanceled, object: nil)
     }
     
-    @objc private func handleSuccess() { }
-    @objc private func handleDeclined() {
-        print("DECLINED")
+    @objc private func handleSuccess() {
+        let linkingController = M_LinkingSubController()
+        
     }
+    
+    @objc private func handleDeclined() {
+       
+    }
+    
     @objc private func handleCanceled() {
         print("CANCELED")
     }

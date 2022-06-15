@@ -1,5 +1,5 @@
 //
-//  ChangeCardView.swift
+//  M_ChangeCardView.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 13.06.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreTableView
 
-class ChangeCardView: UIView {
+class M_ChangeCardView: UIView {
     
     struct ViewState {
         let cardType: String
