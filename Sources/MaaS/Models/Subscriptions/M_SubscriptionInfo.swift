@@ -8,6 +8,14 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
+enum Status: String {
+    case unknown = "UNKNOWN"
+    case created = "CREATED"
+    case processing = "PROCESSING"
+    case active = "ACTIVE"
+    case expired = "EXPIRED"
+    case canceled = "CANCELED"
+}
 
 struct M_SubscriptionInfo {
     let id: String
@@ -18,23 +26,18 @@ struct M_SubscriptionInfo {
     let services: [M_Service]
     let serviceId: String?
     let valid: M_Valid?
-    let status: String?
+    let status: Status?
     
     init?(data: JSON) {
-        guard
-            let id = data["id"].string,
-            let price = data["price"].int,
-            let duration = data["duration"].int else { return nil }
-        
-        self.id = id
-        self.price = price
+        self.id = data["id"].stringValue
+        self.price = data["price"].intValue
         self.name = M_Description(data: data["name"])
         self.description = M_Description(data: data["description"])
-        self.duration = duration
+        self.duration = data["duration"].intValue
         self.services = data["services"].arrayValue.compactMap { M_Service(data: $0) }
         self.serviceId = data["serviceId"].stringValue
         self.valid = M_Valid(data: data["valid"])
-        self.status = data["status"].stringValue
+        self.status = Status(rawValue: data["status"].stringValue)
     }
     
     static func getSubscriptions(completion: @escaping (Result<[M_SubscriptionInfo], APIError>) -> Void) {
@@ -123,6 +126,15 @@ struct M_Trip {
         self.single = single
         self.total = total
     }
+    
+    var countDescr: String {
+        switch count {
+        case -1:
+            return "Безлимит"
+        default:
+            return "\(count) поездок"
+        }
+    }
 }
 
 struct M_Valid {
@@ -138,7 +150,6 @@ struct M_Valid {
 
 extension M_SubscriptionInfo: Equatable {
     static func == (lhs: M_SubscriptionInfo, rhs: M_SubscriptionInfo) -> Bool {
-//        return lhs.name.ru == rhs.name.ru
         return lhs.name?.ru == rhs.name?.ru
     }
 }

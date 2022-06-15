@@ -12,19 +12,42 @@ class M_BuySubView: UIView {
 
     struct ViewState {
         
-        let state: [State]
-        let linkCardCommand: Command<Void>
+        enum DataState {
+            case loaded
+            case loading(_Loading)
+            case error(_Error)
+        }
         
-        struct SubSectionRow: _SubSectionRow {
+        let state: [State]
+        let dataState: DataState
+        let linkCardCommand: Command<Void>?
+        
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
+        struct Error: _Error {
+            let title: String
+            let descr: String
+            let onRetry: Command<Void>
+            let onClose: Command<Void>
+        }
+        
+        struct SubHeader: _SubHeader {
             let title: String
             let price: String
-            let isSelect: Bool
-            let showSelectImage: Bool
-            var tariffs: [M_Service]
             let height: CGFloat
         }
         
-        static let initial = ViewState(state: [], linkCardCommand: Command(action: {}))
+        struct DescrRow: _DescriptionCell {
+            let title: String
+            let descr: String
+            let image: String
+            let height: CGFloat
+        }
+        
+        static let initial = ViewState(state: [], dataState: .loaded, linkCardCommand: Command(action: {}))
     }
     
     public var viewState: ViewState = .initial {
@@ -60,7 +83,7 @@ class M_BuySubView: UIView {
     }
     
     @IBAction func linkCardButtonTapped() {
-        viewState.linkCardCommand.perform(with: ())
+        viewState.linkCardCommand?.perform(with: ())
     }
     
     private func addHorizontalGradientLayer() {
@@ -75,6 +98,16 @@ class M_BuySubView: UIView {
     }
     
     private func render() {
+        switch viewState.dataState {
+        case .loaded:
+            self.removeError(from: self)
+            self.removeLoading(from: self)
+            self.tableView.viewStateInput = viewState.state
+        case .loading(let loading):
+            self.showLoading(on: self, data: loading)
+        case .error(let error):
+            self.showError(on: self, data: error)
+        }
         self.tableView.viewStateInput = viewState.state
     }
 }

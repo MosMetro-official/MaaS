@@ -91,7 +91,7 @@ class M_ChooseSubController: UIViewController {
             guard let nameOfSub = sub.name else { return }
             let width = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
+            let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 40
             let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
             let stackViewHeight = imageHeight * CGFloat(sub.services.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
@@ -101,7 +101,7 @@ class M_ChooseSubController: UIViewController {
                 isSelect: sub == selectedSub,
                 showSelectImage: true,
                 // чтобы такси не прыгало, а то не красиво
-                tariffs: sub.services.sorted(by: { $0.serviceId > $1.serviceId }),
+                tariffs: sub.services.sorted(by: { $0.serviceId < $1.serviceId }),
                 onItemSelect: onItemSelect,
                 height: titleHeight + stackViewHeight + spacingHeight + 22
             ).toElement()
@@ -115,7 +115,7 @@ class M_ChooseSubController: UIViewController {
             guard let self = self,
                   let navigation = self.navigationController else { return }
             if self.selectMakeMySub {
-                // open create sub screen
+                self.showAlert(with: "Еще не готово :(", and: "Данный функционал появится позже.")
             } else {
                 if let sub = self.selectedSub {
                     let buySubController = M_BuySubController()

@@ -54,6 +54,10 @@
 		950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */; };
 		950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */; };
 		950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
+		951C42D72858A32800DA975A /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951C42D52858A32800DA975A /* DescriptionCell.swift */; };
+		951C42D82858A32800DA975A /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951C42D62858A32800DA975A /* DescriptionCell.xib */; };
+		951C42DB2858AA9100DA975A /* M_SubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951C42DA2858AA9100DA975A /* M_SubHeader.swift */; };
+		951C42DD2858AA9800DA975A /* M_SubHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951C42DC2858AA9800DA975A /* M_SubHeader.xib */; };
 		951D036428323F7F005647F5 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; };
 		951D036528323F7F005647F5 /* Pods_MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 951D036328323F7F005647F5 /* Pods_MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
@@ -65,6 +69,7 @@
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
+		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
@@ -73,6 +78,9 @@
 		9585BF2D285746A500FF77FD /* ChangeCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF2C285746A500FF77FD /* ChangeCardController.swift */; };
 		9585BF2F285746BC00FF77FD /* ChangeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF2E285746BC00FF77FD /* ChangeCardView.swift */; };
 		9585BF31285746C500FF77FD /* ChangeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9585BF30285746C500FF77FD /* ChangeCardView.xib */; };
+		9585BF3628576E1900FF77FD /* LinkingSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF3528576E1900FF77FD /* LinkingSubController.swift */; };
+		9585BF3828576E2E00FF77FD /* LinkingSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF3728576E2E00FF77FD /* LinkingSubView.swift */; };
+		9585BF3A28576E3D00FF77FD /* LinkingSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9585BF3928576E3D00FF77FD /* LinkingSubView.xib */; };
 		95A41D042854AEDB00637FA6 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; };
 		95A41D052854AEDB00637FA6 /* MaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95A41D062854AEDD00637FA6 /* Pods_MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A41D012854AEC400637FA6 /* Pods_MaaS.framework */; };
@@ -178,6 +186,10 @@
 		950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Regular.otf"; sourceTree = "<group>"; };
 		950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Medium.otf"; sourceTree = "<group>"; };
 		950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Bold.otf"; sourceTree = "<group>"; };
+		951C42D52858A32800DA975A /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		951C42D62858A32800DA975A /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
+		951C42DA2858AA9100DA975A /* M_SubHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubHeader.swift; sourceTree = "<group>"; };
+		951C42DC2858AA9800DA975A /* M_SubHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = M_SubHeader.xib; sourceTree = "<group>"; };
 		951D036328323F7F005647F5 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96A9282ED95E00374DF2 /* MaaSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaaSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96AB282ED95E00374DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +200,7 @@
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
+		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		95795B6C28531BF100634754 /* Ext+URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+URLRequest.swift"; sourceTree = "<group>"; };
 		95795B6E28531C8300634754 /* Ext+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIDevice.swift"; sourceTree = "<group>"; };
@@ -196,6 +209,9 @@
 		9585BF2C285746A500FF77FD /* ChangeCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCardController.swift; sourceTree = "<group>"; };
 		9585BF2E285746BC00FF77FD /* ChangeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCardView.swift; sourceTree = "<group>"; };
 		9585BF30285746C500FF77FD /* ChangeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeCardView.xib; sourceTree = "<group>"; };
+		9585BF3528576E1900FF77FD /* LinkingSubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingSubController.swift; sourceTree = "<group>"; };
+		9585BF3728576E2E00FF77FD /* LinkingSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingSubView.swift; sourceTree = "<group>"; };
+		9585BF3928576E3D00FF77FD /* LinkingSubView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkingSubView.xib; sourceTree = "<group>"; };
 		95A41D012854AEC400637FA6 /* Pods_MaaS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MaaS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A41D082854B4E300637FA6 /* M_DebtInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_DebtInfo.swift; sourceTree = "<group>"; };
 		95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_HistoryTrips.swift; sourceTree = "<group>"; };
@@ -308,6 +324,7 @@
 				9509208E282E55DC00C4E573 /* Ext+UIImage.swift */,
 				95795B6C28531BF100634754 /* Ext+URLRequest.swift */,
 				95795B6E28531C8300634754 /* Ext+UIDevice.swift */,
+				956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +332,7 @@
 		95092090282E55DC00C4E573 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9585BF3228576DDC00FF77FD /* Linking Subscription */,
 				9585BF292857467D00FF77FD /* Change Card */,
 				95092094282E55DC00C4E573 /* Choose Subscription */,
 				950920A0282E55DC00C4E573 /* Active Subscription */,
@@ -442,6 +460,8 @@
 		950920B5282E55DC00C4E573 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				951C42D92858AA7C00DA975A /* Header */,
+				951C42D42858A30200DA975A /* Cell */,
 				950920B6282E55DC00C4E573 /* M_BuySubView.swift */,
 				950920B7282E55DC00C4E573 /* M_BuySubView.xib */,
 			);
@@ -466,6 +486,24 @@
 				950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		951C42D42858A30200DA975A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				951C42D52858A32800DA975A /* DescriptionCell.swift */,
+				951C42D62858A32800DA975A /* DescriptionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		951C42D92858AA7C00DA975A /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				951C42DA2858AA9100DA975A /* M_SubHeader.swift */,
+				951C42DC2858AA9800DA975A /* M_SubHeader.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		953E96AA282ED95E00374DF2 /* MaaSExample */ = {
@@ -535,6 +573,32 @@
 			children = (
 				9585BF2E285746BC00FF77FD /* ChangeCardView.swift */,
 				9585BF30285746C500FF77FD /* ChangeCardView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9585BF3228576DDC00FF77FD /* Linking Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				9585BF3428576DFE00FF77FD /* View */,
+				9585BF3328576DF800FF77FD /* Controller */,
+			);
+			path = "Linking Subscription";
+			sourceTree = "<group>";
+		};
+		9585BF3328576DF800FF77FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9585BF3528576E1900FF77FD /* LinkingSubController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9585BF3428576DFE00FF77FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9585BF3728576E2E00FF77FD /* LinkingSubView.swift */,
+				9585BF3928576E3D00FF77FD /* LinkingSubView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -731,12 +795,15 @@
 				950920DE282E55DC00C4E573 /* M_CardInfoCell.xib in Resources */,
 				950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */,
 				9585BF31285746C500FF77FD /* ChangeCardView.xib in Resources */,
+				951C42DD2858AA9800DA975A /* M_SubHeader.xib in Resources */,
 				950920D4282E55DC00C4E573 /* M_SubSectionRow.xib in Resources */,
 				95C057D328550D9700CEDBE3 /* SupportCell.xib in Resources */,
+				9585BF3A28576E3D00FF77FD /* LinkingSubView.xib in Resources */,
 				950920E1282E55DC00C4E573 /* M_HeaderTableCell.xib in Resources */,
 				950920DD282E55DC00C4E573 /* M_OnboardingCell.xib in Resources */,
 				950920D3282E55DC00C4E573 /* M_MakeMySubRow.xib in Resources */,
 				950920CE282E55DC00C4E573 /* M_LoadingView.xib in Resources */,
+				951C42D82858A32800DA975A /* DescriptionCell.xib in Resources */,
 				950920E8282E55DC00C4E573 /* M_ErrorView.xib in Resources */,
 				950920D1282E55DC00C4E573 /* M_ChooseSubView.xib in Resources */,
 				950920EB282E55DC00C4E573 /* Comfortaa.ttf in Resources */,
@@ -830,15 +897,18 @@
 				950920D5282E55DC00C4E573 /* M_SubSectionRow.swift in Sources */,
 				950920CB282E55DC00C4E573 /* Ext+UILabel.swift in Sources */,
 				950920D9282E55DC00C4E573 /* M_ActiveSubView.swift in Sources */,
+				951C42D72858A32800DA975A /* DescriptionCell.swift in Sources */,
 				950920D0282E55DC00C4E573 /* M_ChooseSubController.swift in Sources */,
 				950920D6282E55DC00C4E573 /* M_ChooseSubView.swift in Sources */,
 				950920CD282E55DC00C4E573 /* MaaS.swift in Sources */,
 				950920EA282E55DC00C4E573 /* Appearance.swift in Sources */,
 				950920E5282E55DC00C4E573 /* M_BuySubController.swift in Sources */,
 				950920E2282E55DC00C4E573 /* M_CardInfoCell.swift in Sources */,
+				951C42DB2858AA9100DA975A /* M_SubHeader.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
 				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
 				9585BF2F285746BC00FF77FD /* ChangeCardView.swift in Sources */,
+				9585BF3628576E1900FF77FD /* LinkingSubController.swift in Sources */,
 				950920DB282E55DC00C4E573 /* M_OnboardingCell.swift in Sources */,
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				9585BF2D285746A500FF77FD /* ChangeCardController.swift in Sources */,
@@ -865,7 +935,9 @@
 				950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */,
 				950920D7282E55DC00C4E573 /* SomeData.swift in Sources */,
 				95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */,
+				9585BF3828576E2E00FF77FD /* LinkingSubView.swift in Sources */,
 				950920DF282E55DC00C4E573 /* M_HeaderTableCell.swift in Sources */,
+				956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */,
 				950920E0282E55DC00C4E573 /* M_TariffInfoCell.swift in Sources */,
 				95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */,
 			);

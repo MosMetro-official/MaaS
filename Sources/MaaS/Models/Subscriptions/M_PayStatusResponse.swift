@@ -9,17 +9,21 @@ import Foundation
 import MMCoreNetworkCallbacks
 
 struct M_PayStatusResponse {
+    let subscription: M_SubscriptionInfo
     let payment: M_PaymentInfo
     
     init?(data: JSON) {
-        guard let payment = M_PaymentInfo(data: data["payment"]) else { return nil }
+        guard
+            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let payment = M_PaymentInfo(data: data["payment"]) else { return nil }
+        self.subscription = sub
         self.payment = payment
     }
     
     static func statusOfPayment(for paymentId: String, completion: @escaping (Result<M_PayStatusResponse, APIError>) -> Void) {
         let query: [String: String] = ["paymentId": "\(paymentId)"]
         let client = APIClient.authClient
-        client.send(.GET(path: "/api/payments/v1/status", query: query)) { result in
+        client.send(.GET(path: "/api/subscription/v1/pay/status", query: query)) { result in
             switch result {
             case .success(let response):
                 let json = JSON(response.data)

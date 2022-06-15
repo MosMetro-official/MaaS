@@ -36,7 +36,7 @@ public enum FontTextStyle: String {
     case price = "price"
     case header = "header"
     case button = "button"
-    case debt = "debtText"
+    case debt = "debt"
     case more = "moreText"
     case loading = "loading"
     case navTitle = "navTitle"

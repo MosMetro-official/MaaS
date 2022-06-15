@@ -10,11 +10,23 @@ import MMCoreNetworkCallbacks
 
 struct M_SubPayStartResponse {
     let paymentId: String
-    let subscription: M_SubscriptionInfo
+    let subscription: M_SubscriptionInfo?
     
     init?(data: JSON) {
-        guard let id = data["paymentId"].string, let sub = M_SubscriptionInfo(data: data["subscription"]) else { return nil }
-        self.paymentId = id
+        self.paymentId = data["paymentId"].stringValue
+        self.subscription = M_SubscriptionInfo(data: data["subscription"])
+    }
+}
+
+struct M_SubPayStatusResponse {
+    let subscription: M_SubscriptionInfo
+    let payment: M_PaymentInfo
+    
+    init?(data: JSON) {
+        guard
+            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let payment = M_PaymentInfo(data: data["payment"]) else { return nil }
         self.subscription = sub
+        self.payment = payment
     }
 }

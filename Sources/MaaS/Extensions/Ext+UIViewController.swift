@@ -30,4 +30,11 @@ extension UIViewController {
         let activeSubController = M_ActiveSubController()
         navigation.pushViewController(activeSubController, animated: true)
     }
+    
+    internal func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
 }

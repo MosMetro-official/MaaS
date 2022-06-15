@@ -14,21 +14,30 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "sBDsUT06X3JBJfmNEGjiXb-YWNhNDtbHwzjMm2WEIes"
+    public var token: String? = "2bsYOOUP7gDCjPVr0VA_KcBWHHzTgTFxUVo-ygyQLPs"
     public var userHasSub: Bool!
+    public var currentSub: M_CurrentSubInfo?
+    
+    public var succeedUrl = "maasexample://main/maasPaymentSuccess"
+    public var declinedUrl = "maasexample://main/maasPaymentDeclined"
+    public var canceledUrl = "maasexample://main/maasPaymentCanceled"
     
     public static let shared = MaaS()
     
-    public func showMaaSFlow(completion: @escaping (UINavigationController) -> Void) {
-        var flow: UINavigationController = UINavigationController()
-        let chooseSubFlow = UINavigationController(rootViewController: M_ChooseSubController())
-        let activeSubFlow = UINavigationController(rootViewController: M_ActiveSubController())
+    public func showMaaSFlow(completion: @escaping (UIViewController) -> Void) {
+        var flow: UIViewController = UIViewController()
+        let chooseSubFlow = M_ChooseSubController()
+        let activeSubFlow = M_ActiveSubController()
         getUserSubStatus {
             DispatchQueue.main.async {
+                activeSubFlow.currentSub = self.currentSub
                 flow = self.userHasSub ? activeSubFlow : chooseSubFlow
                 completion(flow)
             }
         }
+//        DispatchQueue.main.async {
+//            completion(chooseSubFlow)
+//        }
     }
     
     public static func registerFonts() {
@@ -43,6 +52,7 @@ public class MaaS {
             switch result {
             case .success(let currentSub):
                 self.userHasSub = currentSub.subscription.id != ""
+                self.currentSub = currentSub
                 completion()
             case .failure(let error):
                 print(error)

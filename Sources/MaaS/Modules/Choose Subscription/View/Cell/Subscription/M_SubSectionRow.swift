@@ -119,7 +119,7 @@ class M_SubSectionRow: UITableViewCell {
             let lineStack = createLineStackView(with: UIImage.getAssetImage(image: imageName))
             let textStackView = createTextStackView()
             let tariffTitleLabel = createTextLabel(with: tariff.name.ru, textColor: "secondaryText")
-            let tariffDescrLabel = createTextLabel(with: tariff.description.ru, textColor: "primaryText")
+            let tariffDescrLabel = createTextLabel(with: tariff.trip.countDescr, textColor: "primaryText")
             textStackView.addArrangedSubview(tariffTitleLabel)
             textStackView.addArrangedSubview(tariffDescrLabel)
             lineStack.addArrangedSubview(textStackView)

@@ -14,6 +14,12 @@ class M_ActiveSubController: UIViewController {
     private let userSubscritpion = UserSubscription.getUserSubscription()
     private var hasDebit = true
     
+    var currentSub: M_CurrentSubInfo? {
+        didSet {
+            makeState()
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         self.view = nestedView
@@ -22,7 +28,6 @@ class M_ActiveSubController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
-        makeState()
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
@@ -31,7 +36,10 @@ class M_ActiveSubController: UIViewController {
         
     private func makeState() {
         var states: [State] = []
-        let cardState = makeCardState(from: userSubscritpion)
+        guard let currentSub = currentSub else {
+            return
+        }
+        let cardState = makeCardState(from: currentSub)
         states.append(contentsOf: cardState)
         let tariffState = makeTariffState(from: userSubscritpion)
         states.append(tariffState)
@@ -61,20 +69,21 @@ extension M_ActiveSubController {
         return debtInfoCell
     }
     
-    private func makeCardState(from sub: UserSubscription) -> [State] {
+    private func makeCardState(from sub: M_CurrentSubInfo) -> [State] {
         var states = [State]()
+        guard let sub = currentSub?.subscription else { return [] }
         let title = "МультиТранспорт"
         let titleHeight = title.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = userSubscritpion.active.height(
+        let activeHeight = sub.valid?.to.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
-        )
+        ) ?? 0
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
-            timeLeft: userSubscritpion.active,
+            timeLeft: sub.valid?.to ?? "",
             height: titleHeight + activeHeight + 83
         )
         if hasDebit {
@@ -82,11 +91,11 @@ extension M_ActiveSubController {
             let debtState = State(model: SectionState(header: titleHeader, footer: nil), elements: [debtElement])
             states.append(debtState)
         }
-        
-        let cardNumberHeight = userSubscritpion.cardNumber.height(
+        print("CURRENT SUB INFO \(currentSub?.payment)")
+        let cardNumberHeight = currentSub?.payment?.card?.maskedPan.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
             font: Appearance.getFont(.card)
-        )
+        ) ?? 0
         let cardDescriptionHeight = "Для прохода в транспорте".height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
             font: Appearance.getFont(.smallBody)
@@ -104,7 +113,7 @@ extension M_ActiveSubController {
         }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
             cardImage: userSubscritpion.cardImage,
-            cardNumber: userSubscritpion.cardNumber,
+            cardNumber: currentSub?.payment?.card?.maskedPan ?? "",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты – 3",
             onItemSelect: onCardSelect,

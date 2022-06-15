@@ -8,7 +8,7 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_CurrentSubInfo {
+public struct M_CurrentSubInfo {
     let subscription: M_SubscriptionInfo
     let payment: M_AuthInfo?
     
@@ -49,15 +49,14 @@ struct M_AuthInfo {
     init?(data: JSON) {
         guard
             let rnn = data["rnn"].string,
-            let code = data["code"].string,
-            let receiptUrl = data["receiptUrl"].string else { return nil }
+            let code = data["code"].string else { return nil }
                 
         self.status = M_AuthStatus(data: data["status"])
         self.date = data["date"].stringValue
         self.rnn = rnn
         self.code = code
         self.card = M_CardInfo(data: data["card"])
-        self.receiptUrl = receiptUrl
+        self.receiptUrl = data["receiptUrl"].stringValue
     }
 }
 
