@@ -248,6 +248,8 @@ extension M_ActiveSubController {
         
         let onHistorySelect = Command {
             print("show history controller")
+            let historyController = M_TripsHistoryController()
+            self.navigationController?.pushViewController(historyController, animated: true)
         }
         let onboarding = M_ActiveSubView.ViewState.Onboarding(onOnboardingSelect: onOnboardingSelect, onHistorySelect: onHistorySelect).toElement()
         let onboardingState = State(model: SectionState(header: nil, footer: nil), elements: [onboarding])

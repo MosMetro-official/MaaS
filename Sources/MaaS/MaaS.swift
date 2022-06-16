@@ -23,7 +23,7 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "LhvbsT6vFy_YR7iz4DHVgk77zh5Hv9OgSrIo-Lu29Uk"
+    public var token: String? = "yKKnpWJWGfgK_x2fGGS9bJxbhkUScgJMdz8DfnWKkXw"
     public var userHasSub: Bool!
     public var currentSub: M_CurrentSubInfo?
     
