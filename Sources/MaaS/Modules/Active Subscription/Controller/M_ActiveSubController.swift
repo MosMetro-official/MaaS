@@ -11,14 +11,19 @@ import CoreTableView
 class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
-    private let userSubscritpion = UserSubscription.getUserSubscription()
     
-    private var hasDebit = true
+    private var hasDebit: (Bool, Int) = (true, 100)
     
     private var debit: [M_DebtInfo]? {
         didSet {
             guard let debit = debit else { return }
             checkAllPossibleDebets(from: debit)
+        }
+    }
+    
+    private var needReload: Bool = false {
+        didSet {
+            fetchUserInfo()
         }
     }
     
@@ -29,6 +34,8 @@ class M_ActiveSubController: UIViewController {
     }
     
     var currentSub: M_CurrentSubInfo?
+    
+    var handleClose: (() -> Void)?
     
     override func loadView() {
         super.loadView()
@@ -52,6 +59,17 @@ class M_ActiveSubController: UIViewController {
     private func fetchUserInfo() {
         showLoading()
         let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        M_CurrentSubInfo.getCurrentStatusOfUser { result in
+            switch result {
+            case .success(let currentSub):
+                self.currentSub = currentSub
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.showError(with: error.errorTitle, and: error.errorDescription)
+                dispatchGroup.leave()
+            }
+        }
 //        dispatchGroup.enter()
 //        M_DebtInfo.getDebtInfo { result in
 //            switch result {
@@ -81,18 +99,18 @@ class M_ActiveSubController: UIViewController {
     
     private func showLoading() {
         let loadingState = M_ActiveSubView.ViewState.Loading(title: "Загрузка...", descr: "Подождите немного")
-        nestedView.viewState = .init(timeLeft: "", state: [], dataState: .loading(loadingState))
+        nestedView.viewState = .init(state: [], dataState: .loading(loadingState))
     }
     
     private func showError(with title: String, and descr: String) {
-        let onRetry = Command {
-            
+        let onRetry = Command { [weak self] in
+            self?.fetchUserInfo()
         }
-        let onClose = Command {
-            
+        let onClose = Command { [weak self] in
+            self?.handleClose?()
         }
         let errorState = M_ActiveSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
-        nestedView.viewState = .init(timeLeft: "", state: [], dataState: .error(errorState))
+        nestedView.viewState = .init(state: [], dataState: .error(errorState))
     }
         
     private func makeState() {
@@ -106,7 +124,7 @@ class M_ActiveSubController: UIViewController {
         states.append(onboardingState)
         let supportState = makeSupportState()
         states.append(supportState)
-        let viewState = M_ActiveSubView.ViewState(timeLeft: userSubscritpion.active, state: states, dataState: .loaded)
+        let viewState = M_ActiveSubView.ViewState(state: states, dataState: .loaded)
         nestedView.viewState = viewState
     }
 }
@@ -114,7 +132,7 @@ class M_ActiveSubController: UIViewController {
 extension M_ActiveSubController {
     private func makeDebtElement() -> Element {
         let debtInfo = "У вас есть долг"
-        let debtTotal = "267,5 ₽"
+        let debtTotal = "\(hasDebit.1) ₽"
         let debtInfoHeight = debtInfo.height(withConstrainedWidth: 75, font: Appearance.getFont(.smallBody))
         let debtTotalHeight = debtTotal.height(withConstrainedWidth: 75, font: Appearance.getFont(.debt))
         let onMoreButton = Command {
@@ -146,7 +164,7 @@ extension M_ActiveSubController {
             timeLeft: "Активна до \(validDate)",
             height: titleHeight + activeHeight + 83
         )
-        if hasDebit {
+        if hasDebit.0 {
             let debtElement = makeDebtElement()
             let debtState = State(model: SectionState(header: titleHeader, footer: nil), elements: [debtElement])
             states.append(debtState)
@@ -168,19 +186,23 @@ extension M_ActiveSubController {
                 let self = self,
                 let navigation = self.navigationController else { return }
             let changeCardController = M_ChangeCardController()
-            changeCardController.tranId = sub.payment?.card?.cardId
+            changeCardController.cardInfo = sub.payment?.card
+            changeCardController.userInfo = self.userInfo
+            changeCardController.didChangeCard = {
+                self.fetchUserInfo()
+            }
             navigation.pushViewController(changeCardController, animated: true)
         }
-        guard let limit = userInfo?.keyChangeLimit else { return [] }
+        guard let limit = userInfo?.keyChangeLeft, let maskedPan = userInfo?.maskedPan else { return [] }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
             cardImage: sub.payment?.card?.paySystem?.rawValue.lowercased() ?? "visa",
-            cardNumber: "••••" + " " + (currentSub?.payment?.card?.maskedPan ?? ""),
+            cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",
             onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()
-        let cardState = State(model: SectionState(header: hasDebit ? nil : titleHeader, footer: nil), elements: [cardInfo])
+        let cardState = State(model: SectionState(header: hasDebit.0 ? nil : titleHeader, footer: nil), elements: [cardInfo])
         states.append(cardState)
         return states
     }
@@ -247,7 +269,8 @@ extension M_ActiveSubController {
     
     private func checkAllPossibleDebets(from debits: [M_DebtInfo]) {
         let total = debits.reduce(0) { $0 + $1.amount }
-        hasDebit = total != 0
+        hasDebit.1 = total
+        hasDebit.0 = total != 0
     }
     
     private func getCurrentDate(from string: String) -> String {

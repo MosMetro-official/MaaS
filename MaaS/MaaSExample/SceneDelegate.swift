@@ -34,19 +34,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let first = URLContexts.first?.url {
             print("🔥🔥🔥 URL FROM SCENEDELEGATE - \(first)")
-            if first.absoluteString.contains(MaaS.shared.succeedUrl) {
+            if first.absoluteString.contains(MaaS.RedirectUrls.succeedUrl.rawValue) {
                 NotificationCenter.default.post(name: .maasPaymentSuccess,
                                                 object: nil,
                                                 userInfo: nil)
             }
             
-            if first.absoluteString.contains(MaaS.shared.declinedUrl) {
+            if first.absoluteString.contains(MaaS.RedirectUrls.declinedUrl.rawValue) {
                 NotificationCenter.default.post(name: .maasPaymentDeclined,
                                                 object: nil,
                                                 userInfo: nil)
             }
-            if first.absoluteString.contains(MaaS.shared.canceledUrl) {
+            
+            if first.absoluteString.contains(MaaS.RedirectUrls.canceledUrl.rawValue) {
                 NotificationCenter.default.post(name: .maasPaymentCanceled,
+                                                object: nil,
+                                                userInfo: nil)
+            }
+            
+            if first.absoluteString.contains(MaaS.RedirectUrls.succeedUrlCard.rawValue) {
+                NotificationCenter.default.post(name: .maasChangeCardSucceed,
+                                                object: nil,
+                                                userInfo: nil)
+            }
+            
+            if first.absoluteString.contains(MaaS.RedirectUrls.declinedUrlCard.rawValue) {
+                NotificationCenter.default.post(name: .maasChangeCardDeclined,
+                                                object: nil,
+                                                userInfo: nil)
+            }
+            
+            if first.absoluteString.contains(MaaS.RedirectUrls.canceledUrlCard.rawValue) {
+                NotificationCenter.default.post(name: .maasChangeCardCanceled,
                                                 object: nil,
                                                 userInfo: nil)
             }

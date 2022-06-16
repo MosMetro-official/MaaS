@@ -30,4 +30,21 @@ extension UIColor {
     static func getAssetColor(name: String) -> UIColor {
         return UIColor(named: name, in: MaaS.shared.bundle, compatibleWith: nil) ?? UIColor.red
     }
+    
+    static func getCardHolderColor(for card: String) -> UIColor {
+        switch card {
+        case "MIR":
+            return UIColor.getAssetColor(name: "mirC")
+        case "VISA":
+            return UIColor.getAssetColor(name: "visaC")
+        case "RUBLE":
+            return UIColor.getAssetColor(name: "rubleC")
+        case "MC":
+            return UIColor.getAssetColor(name: "mastercardC")
+        case "UP":
+            return UIColor.getAssetColor(name: "unionpayC")
+        default:
+            return UIColor.getAssetColor(name: "unknown")
+        }
+    }
 }

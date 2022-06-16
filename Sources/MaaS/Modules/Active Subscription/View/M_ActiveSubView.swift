@@ -11,7 +11,6 @@ import CoreTableView
 class M_ActiveSubView: UIView {
 
     struct ViewState {
-        let timeLeft: String
         let state: [State]
         let dataState: DataState
         
@@ -76,7 +75,7 @@ class M_ActiveSubView: UIView {
             let height: CGFloat
         }
         
-        static let initial = ViewState(timeLeft: "", state: [], dataState: .loaded)
+        static let initial = ViewState(state: [], dataState: .loaded)
     }
     
     public var viewState: ViewState = .initial {

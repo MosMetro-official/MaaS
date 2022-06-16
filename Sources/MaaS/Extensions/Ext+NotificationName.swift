@@ -11,4 +11,7 @@ public extension Notification.Name {
     static let maasPaymentSuccess = Notification.Name("maasPaymentSuccess")
     static let maasPaymentDeclined = Notification.Name("maasPaymentDeclined")
     static let maasPaymentCanceled = Notification.Name("maasPaymentCanceled")
+    static let maasChangeCardSucceed = Notification.Name("maasChangeCardSuccess")
+    static let maasChangeCardDeclined = Notification.Name("maasChangeCardDeclined")
+    static let maasChangeCardCanceled = Notification.Name("maasChangeCardCanceled")
 }

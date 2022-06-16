@@ -2,6 +2,15 @@ import UIKit
 
 public class MaaS {
     
+    public enum RedirectUrls: String {
+        case succeedUrl = "maasexample://main/maasPaymentSuccess"
+        case declinedUrl = "maasexample://main/maasPaymentDeclined"
+        case canceledUrl = "maasexample://main/maasPaymentCanceled"
+        case succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
+        case declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
+        case canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
+    }
+    
     internal var bundle: Bundle {
         let podBundle = Bundle(for: type(of: self))
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
@@ -14,13 +23,9 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "IiMqYjiZuxPbuTwgZQ3jLm3yUjxqBfCIFgV9rKnF3_w"
+    public var token: String? = "LhvbsT6vFy_YR7iz4DHVgk77zh5Hv9OgSrIo-Lu29Uk"
     public var userHasSub: Bool!
     public var currentSub: M_CurrentSubInfo?
-    
-    public var succeedUrl = "maasexample://main/maasPaymentSuccess"
-    public var declinedUrl = "maasexample://main/maasPaymentDeclined"
-    public var canceledUrl = "maasexample://main/maasPaymentCanceled"
     
     public static let shared = MaaS()
     

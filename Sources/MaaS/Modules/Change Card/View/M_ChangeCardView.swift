@@ -11,17 +11,39 @@ import CoreTableView
 class M_ChangeCardView: UIView {
     
     struct ViewState {
+        
+        enum DataState {
+            case loading(_Loading)
+            case loaded
+            case error(_Error)
+        }
+        
+        var dataState: DataState
         let cardType: String
         let cardNumber: String
         let countOfChangeCard: Int
         let onChangeButton: Command<Void>?
         
-        static let initial = ViewState(cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
+        struct Error: _Error {
+            let title: String
+            let descr: String
+            let onRetry: Command<Void>
+            let onClose: Command<Void>
+        }
+        
+        static let initial = ViewState(dataState: .loaded, cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
     }
     
     public var viewState: ViewState = .initial {
         didSet {
-            render()
+            DispatchQueue.main.async {
+                self.render()
+            }
         }
     }
 
@@ -61,14 +83,26 @@ class M_ChangeCardView: UIView {
     }
     
     private func render() {
-        cardView.backgroundColor = UIColor.getAssetColor(name: viewState.cardType)
-        cardImageView.image = UIImage.getAssetImage(image: viewState.cardType)
-        cardNumberLabel.text = "•••• \(viewState.cardNumber)"
-        changeCardCountLabel.text = viewState.countOfChangeCard == 0 ? "В этом месяце смена карты недоступна" : "Осталось смен карты в этом месяце – \(viewState.countOfChangeCard)"
-        changeCardButton.isHidden = viewState.countOfChangeCard == 0
-        if viewState.countOfChangeCard == 0 {
-            countLabelBottomConstarint = nil
-            changeCardCountLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -58).isActive = true
+        switch viewState.dataState {
+        case .loaded:
+            self.removeError(from: self)
+            self.removeLoading(from: self)
+            cardView.backgroundColor = UIColor.getCardHolderColor(for: viewState.cardType)
+            cardImageView.image = UIImage.getCardHolderImage(for: viewState.cardType)
+            cardNumberLabel.text = "•••• \(viewState.cardNumber)"
+            changeCardCountLabel.text = viewState.countOfChangeCard == 0 ? "В этом месяце смена карты недоступна" : "Осталось смен карты в этом месяце – \(viewState.countOfChangeCard)"
+            changeCardButton.isHidden = viewState.countOfChangeCard == 0
+            if viewState.countOfChangeCard == 0 {
+                countLabelBottomConstarint = nil
+                changeCardCountLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -58).isActive = true
+            }
+        case .loading(let loading):
+            self.removeError(from: self)
+            self.showLoading(on: self, data: loading)
+        case .error(let error):
+            self.removeLoading(from: self)
+            self.showError(on: self, data: error)
         }
+        
     }
 }

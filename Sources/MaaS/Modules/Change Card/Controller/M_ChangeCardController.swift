@@ -7,13 +7,16 @@
 
 import UIKit
 import CoreTableView
+import SafariServices
 
 class M_ChangeCardController: UIViewController {
     
-    public var tranId: String?
+    public var didChangeCard: (() -> Void)?
     
-    private let fakeCard = FakeCard(type: "MIR", number: "1234", count: 3)
-    
+    public var cardInfo: M_CardInfo?
+    public var userInfo: M_UserInfoResponse?
+    private var safariController: SFSafariViewController?
+        
     private let nestedView = M_ChangeCardView.loadFromNib()
     
     override func loadView() {
@@ -26,6 +29,7 @@ class M_ChangeCardController: UIViewController {
         makeState()
         setupNavigationTitle()
         setupBackButton()
+        setListeners()
     }
     
     private func setupNavigationTitle() {
@@ -35,23 +39,123 @@ class M_ChangeCardController: UIViewController {
         title = "Карта"
     }
     
+    private func setListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSuccessChange), name: .maasChangeCardSucceed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDeclinedChange), name: .maasChangeCardDeclined, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCanceledChange), name: .maasChangeCardCanceled, object: nil)
+    }
+    
+    @objc private func handleSuccessChange() {
+        didChangeCard?()
+        hidePaymentController {
+            // show success screen
+        }
+    }
+    
+    @objc private func handleDeclinedChange() {
+        hidePaymentController {
+            self.makeState()
+        }
+    }
+    
+    @objc private func handleCanceledChange() {
+        hidePaymentController {
+            // show error screen
+        }
+    }
+    
+    private func hidePaymentController(onDismiss: @escaping () -> Void) {
+        guard let safariController = safariController else {
+            return
+        }
+        safariController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.safariController = nil
+            onDismiss()
+        }
+    }
+    
+    private func openSafariController(for path: String) {
+        guard let url = URL(string: path) else { return }
+        safariController = SFSafariViewController(url: url)
+        safariController?.delegate = self
+        DispatchQueue.main.async {
+            self.present(self.safariController!, animated: true)
+        }
+    }
+    
+    private func sendRequestKey() {
+        showLoading()
+        let request = M_UserKeyRequest(
+            payData: M_PayData(
+                tranId: String.randomString(of: 5),
+                price: "",
+                redirectUrl: M_RedirectUrl(
+                    succeed: .succeedUrlCard,
+                    declined: .declinedUrlCard,
+                    canceled: .canceledUrlCard
+                ),
+                paymentMethod: .CARD
+            )
+        )
+        let body = request.createRequestBody()
+        M_UserKeyResponse.changeUserCardKey(body: body) { result in
+            switch result {
+            case .success(let userResponse):
+                if let path = userResponse.payment?.url {
+                    self.openSafariController(for: path)
+                }
+            case .failure(let error):
+                self.showError(with: error.errorTitle, and: error.errorDescription)
+            }
+        }
+    }
+    
+    private func showLoading() {
+        let loadingState = M_ChangeCardView.ViewState.Loading(
+            title: "Загрузка...",
+            descr: "Осталось совсем немного"
+        )
+        nestedView.viewState = .init(dataState: .loading(loadingState), cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+    }
+    
+    private func showError(with title: String, and descr: String) {
+        let onRetry = Command {
+            
+        }
+        let onClose = Command {
+            
+        }
+        let errorState = M_ChangeCardView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
+        nestedView.viewState = .init(dataState: .error(errorState), cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+    }
+    
     private func makeState() {
-        let onChangeButton = Command {
-            print("open change url")
+        guard
+            let userInfo = userInfo else { return }
+        let onChangeButton = Command { [weak self] in
+            guard let self = self else { return }
+            self.sendRequestKey()
         }
         let finalState = M_ChangeCardView.ViewState(
-            cardType: fakeCard.type.lowercased(),
-            cardNumber: fakeCard.number,
-            countOfChangeCard: fakeCard.count,
-            onChangeButton: fakeCard.count == 0 ? nil : onChangeButton
+            dataState: .loaded,
+            cardType: userInfo.type,
+            cardNumber: "\(userInfo.maskedPan)",
+            countOfChangeCard: userInfo.keyChangeLeft,
+            onChangeButton: userInfo.keyChangeLeft == 0 ? nil : onChangeButton
         )
         self.nestedView.viewState = finalState
     }
 
 }
 
-struct FakeCard {
-    let type: String
-    let number: String
-    let count: Int
+extension M_ChangeCardController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        makeState()
+    }
 }

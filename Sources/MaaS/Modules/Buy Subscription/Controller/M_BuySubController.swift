@@ -84,15 +84,18 @@ class M_BuySubController: UIViewController {
     
     @objc private func handleSuccess() {
         let linkingController = M_LinkingSubController()
-        
+        linkingController.resultModel = .success
+        self.navigationController?.pushViewController(linkingController, animated: true)
     }
     
     @objc private func handleDeclined() {
-       
+        let linkingController = M_LinkingSubController()
+        linkingController.resultModel = .failure
+        self.navigationController?.pushViewController(linkingController, animated: true)
     }
     
     @objc private func handleCanceled() {
-        print("CANCELED")
+        makeState()
     }
     
     private func handlePaymentUrl(url: String) {
@@ -113,6 +116,7 @@ class M_BuySubController: UIViewController {
                     }
                 } else {
                     self.handlePaymentUrl(url: payResponse.payment.url)
+                    self.selectedSub = payResponse.subscription
                 }
             case .failure(let error):
                 let onRetry = Command {
@@ -131,9 +135,9 @@ class M_BuySubController: UIViewController {
             payment: .init(
                 paymentMethod: .CARD,
                 redirectUrl: .init(
-                    succeed: MaaS.shared.succeedUrl,
-                    declined: MaaS.shared.declinedUrl,
-                    canceled: MaaS.shared.canceledUrl
+                    succeed: .succeedUrl,
+                    declined: .declinedUrl,
+                    canceled: .canceledUrl
                 ),
                 paymentToken: nil,
                 id: nil

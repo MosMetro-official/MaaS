@@ -46,8 +46,7 @@ struct M_PaymentInfo {
     let authInfo: M_AuthInfo?
     
     init?(data: JSON) {
-        guard let url = data["url"].string else { return nil }
-        self.url = url
+        self.url = data["url"].stringValue
         self.authInfo = M_AuthInfo(data: data["auth"])
     }
 }

@@ -10,7 +10,7 @@ import MMCoreNetworkCallbacks
 
 struct M_SubPayStartRequest {
     let maaSTariffId: String
-    let payment: M_PayData
+    let payment: M_PayDataSub
     let additionalData: [M_AppData]?
     
     func createRequestBody() -> [String: Any] {
@@ -48,8 +48,8 @@ enum M_PaymentMethod: String {
     case SPAY = "SPAY"
 }
 
-struct M_PayData {
-    let paymentMethod: M_PaymentMethod
+struct M_PayDataSub {
+    let paymentMethod: M_PaymentMethod?
     let redirectUrl: M_RedirectUrl
     let paymentToken: String?
     let id: String?
@@ -64,15 +64,15 @@ struct M_PayData {
 }
 
 struct M_RedirectUrl {
-    let succeed: String
-    let declined: String
-    let canceled: String
+    let succeed: MaaS.RedirectUrls
+    let declined: MaaS.RedirectUrls
+    let canceled: MaaS.RedirectUrls
     
     func createRequsetBody() -> [String: Any] {
         var result = [String: Any]()
-        result.updateValue(MaaS.shared.succeedUrl, forKey: "succeed")
-        result.updateValue(MaaS.shared.declinedUrl, forKey: "declined")
-        result.updateValue(MaaS.shared.canceledUrl, forKey: "canceled")
+        result.updateValue(succeed.rawValue, forKey: "succeed")
+        result.updateValue(declined.rawValue, forKey: "declined")
+        result.updateValue(canceled.rawValue, forKey: "canceled")
         return result
     }
 }
