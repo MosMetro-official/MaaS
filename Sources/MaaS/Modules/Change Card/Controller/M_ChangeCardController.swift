@@ -47,20 +47,31 @@ class M_ChangeCardController: UIViewController {
     
     @objc private func handleSuccessChange() {
         didChangeCard?()
+        self.showLoading(with: "Меняем номер вашей карты...")
         hidePaymentController {
-            // show success screen
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let resultController = M_ResultController()
+                resultController.resultModel = .successCard
+                self.navigationController?.pushViewController(resultController, animated: true)
+            }
         }
     }
     
     @objc private func handleDeclinedChange() {
+        self.makeState()
         hidePaymentController {
-            self.makeState()
+            // anaLiticks?
         }
     }
     
     @objc private func handleCanceledChange() {
         hidePaymentController {
-            // show error screen
+            self.showLoading(with: "Меняем номер вашей карты...")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let resultController = M_ResultController()
+                resultController.resultModel = .failureCard
+                self.navigationController?.pushViewController(resultController, animated: true)
+            }
         }
     }
     
@@ -85,7 +96,7 @@ class M_ChangeCardController: UIViewController {
     }
     
     private func sendRequestKey() {
-        showLoading()
+        showLoading(with: "Загрузка...")
         let request = M_UserKeyRequest(
             payData: M_PayData(
                 tranId: String.randomString(of: 5),
@@ -111,9 +122,9 @@ class M_ChangeCardController: UIViewController {
         }
     }
     
-    private func showLoading() {
+    private func showLoading(with title: String) {
         let loadingState = M_ChangeCardView.ViewState.Loading(
-            title: "Загрузка...",
+            title: title,
             descr: "Осталось совсем немного"
         )
         nestedView.viewState = .init(dataState: .loading(loadingState), cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)

@@ -1,5 +1,5 @@
 //
-//  M_LinkingSubView.swift
+//  M_ResultView.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 13.06.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreTableView
 
-class M_LinkingSubView: UIView {
+class M_ResultView: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingTitleLabel: UILabel!
     @IBOutlet weak var loadingDescrLabel: UILabel!
@@ -34,10 +34,11 @@ class M_LinkingSubView: UIView {
         }
         
         let dataState: DataState
+        let logo: UIImage?
         let onAction: Command<Void>?
         let onClose: Command<Void>?
         
-        static let initial = ViewState(dataState: .loading, onAction: nil, onClose: nil)
+        static let initial = ViewState(dataState: .loading, logo: nil, onAction: nil, onClose: nil)
     }
     
     public var viewState: ViewState = .initial {
@@ -48,6 +49,10 @@ class M_LinkingSubView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        actionButton.titleLabel?.font = Appearance.getFont(.button)
+        closeButton.titleLabel?.font = Appearance.getFont(.button)
+        actionButton.layer.cornerRadius = 10
+        closeButton.layer.cornerRadius = 10
     }
     
     @IBAction func actionButtonPressed() {
@@ -55,7 +60,7 @@ class M_LinkingSubView: UIView {
     }
     
     @IBAction func closeButtonPressed() {
-        
+        viewState.onClose?.perform(with: ())
     }
     
     private func prepareLoadingState() {
@@ -88,7 +93,9 @@ class M_LinkingSubView: UIView {
             prepareLoadingState()
         case .success:
             prepareResultState()
+            logoImageView.image = UIImage.getAssetImage(image: "checkmark")
         case .failure:
+            logoImageView.image = UIImage.getAssetImage(image: "error")
             prepareResultState()
         }
     }

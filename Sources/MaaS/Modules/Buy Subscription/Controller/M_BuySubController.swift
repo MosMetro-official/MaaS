@@ -13,6 +13,8 @@ class M_BuySubController: UIViewController {
     
     private let nestedView = M_BuySubView.loadFromNib()
     
+    private var safariController: SFSafariViewController?
+    
     var selectedSub: M_SubscriptionInfo? {
         didSet {
             makeState()
@@ -82,20 +84,47 @@ class M_BuySubController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleCanceled), name: .maasPaymentCanceled, object: nil)
     }
     
+    private func hidePaymentController(onDismiss: @escaping () -> Void) {
+        guard let safariController = safariController else {
+            return
+        }
+        safariController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.safariController = nil
+            onDismiss()
+        }
+    }
+    
+    private func openSafariController(for path: String) {
+        guard let url = URL(string: path) else { return }
+        safariController = SFSafariViewController(url: url)
+        safariController?.delegate = self
+        DispatchQueue.main.async {
+            self.present(self.safariController!, animated: true)
+        }
+    }
+    
     @objc private func handleSuccess() {
-        let linkingController = M_LinkingSubController()
-        linkingController.resultModel = .success
-        self.navigationController?.pushViewController(linkingController, animated: true)
+        hidePaymentController {
+            let linkingController = M_ResultController()
+            linkingController.resultModel = .successSub
+            self.navigationController?.pushViewController(linkingController, animated: true)
+        }
     }
     
     @objc private func handleDeclined() {
-        let linkingController = M_LinkingSubController()
-        linkingController.resultModel = .failure
-        self.navigationController?.pushViewController(linkingController, animated: true)
+        hidePaymentController {
+            // anaLyticks?
+        }
+        
     }
     
     @objc private func handleCanceled() {
-        makeState()
+        hidePaymentController {
+            let linkingController = M_ResultController()
+            linkingController.resultModel = .failureSub
+            self.navigationController?.pushViewController(linkingController, animated: true)
+        }
     }
     
     private func handlePaymentUrl(url: String) {
@@ -177,5 +206,11 @@ class M_BuySubController: UIViewController {
         default:
             return ""
         }
+    }
+}
+
+extension M_BuySubController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        self.makeState()
     }
 }
