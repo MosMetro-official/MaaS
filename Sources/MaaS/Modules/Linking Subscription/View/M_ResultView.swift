@@ -21,7 +21,7 @@ class M_ResultView: UIView {
     @IBOutlet weak var closeButton: UIButton!
     
     struct ViewState {
-        
+                
         enum DataState {
             case loading
             case success(Action)
@@ -33,12 +33,13 @@ class M_ResultView: UIView {
             let descr: String
         }
         
+        let hideAction: Bool?
         let dataState: DataState
         let logo: UIImage?
         let onAction: Command<Void>?
         let onClose: Command<Void>?
         
-        static let initial = ViewState(dataState: .loading, logo: nil, onAction: nil, onClose: nil)
+        static let initial = ViewState(hideAction: nil, dataState: .loading, logo: nil, onAction: nil, onClose: nil)
     }
     
     public var viewState: ViewState = .initial {
@@ -92,6 +93,9 @@ class M_ResultView: UIView {
         case .loading:
             prepareLoadingState()
         case .success:
+            if let needHideAction = viewState.hideAction {
+                actionButton.isHidden = needHideAction
+            }
             prepareResultState()
             logoImageView.image = UIImage.getAssetImage(image: "checkmark")
         case .failure:

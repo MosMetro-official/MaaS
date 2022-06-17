@@ -33,8 +33,8 @@ class M_BuySubController: UIViewController {
         setListeners()
     }
     
-    private func showLoading() {
-        let loadingState = M_BuySubView.ViewState.Loading(title: "Загрузка", descr: "Немного подождите")
+    private func showLoading(with title: String) {
+        let loadingState = M_BuySubView.ViewState.Loading(title: title, descr: "Немного подождите")
         nestedView.viewState = .init(state: [], dataState: .loading(loadingState), linkCardCommand: nil)
     }
     
@@ -105,32 +105,37 @@ class M_BuySubController: UIViewController {
     }
     
     @objc private func handleSuccess() {
+        self.showLoading(with: "Привязываем подписку...")
         hidePaymentController {
-            let linkingController = M_ResultController()
-            linkingController.resultModel = .successSub
-            self.navigationController?.pushViewController(linkingController, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                guard let sub = self.selectedSub else { return }
+                let resultController = M_ResultController()
+                resultController.resultModel = .successSub(sub)
+                self.navigationController?.pushViewController(resultController, animated: true)
+            }
         }
     }
     
     @objc private func handleDeclined() {
+        self.makeState()
         hidePaymentController {
             // anaLyticks?
         }
-        
     }
     
     @objc private func handleCanceled() {
         hidePaymentController {
-            let linkingController = M_ResultController()
-            linkingController.resultModel = .failureSub
-            self.navigationController?.pushViewController(linkingController, animated: true)
+            self.showLoading(with: "Привязываем подписку...")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let resultController = M_ResultController()
+                resultController.resultModel = .failureCard
+                self.navigationController?.pushViewController(resultController, animated: true)
+            }
         }
     }
     
     private func handlePaymentUrl(url: String) {
-        DispatchQueue.main.async {
-            self.openSafariLink(on: url)
-        }
+        openSafariController(for: url)
     }
     
     private func handle(response: M_SubPayStartResponse) {
@@ -158,7 +163,7 @@ class M_BuySubController: UIViewController {
     }
     
     private func startPayRequest(with id: String) {
-        self.showLoading()
+        self.showLoading(with: "Загрузка...")
         let req = M_SubPayStartRequest(
             maaSTariffId: id,
             payment: .init(
@@ -181,18 +186,12 @@ class M_BuySubController: UIViewController {
                 self.handle(response: response)
             case .failure(let error):
                 let onRetry = Command { [weak self] in
-                    self?.showLoading()
+                    self?.showLoading(with: "Загрузка...")
                     self?.startPayRequest(with: id)
                 }
                 self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
             }
         }
-    }
-    
-    private func openSafariLink(on url: String) {
-        guard let url = URL(string: url) else { return }
-        let svc = SFSafariViewController(url: url)
-        self.present(svc, animated: true)
     }
     
     private func getServiceImage(by serviceId: String) -> String {
