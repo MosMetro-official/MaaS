@@ -58,7 +58,6 @@ class M_ChangeCardView: UIView {
     @IBOutlet weak var changeCardCountLabel: UILabel!
     @IBOutlet weak var countLabelBottomConstarint: NSLayoutConstraint!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupLabels()
@@ -93,8 +92,7 @@ class M_ChangeCardView: UIView {
             changeCardCountLabel.text = viewState.countOfChangeCard == 0 ? "В этом месяце смена карты недоступна" : "Осталось смен карты в этом месяце – \(viewState.countOfChangeCard)"
             changeCardButton.isHidden = viewState.countOfChangeCard == 0
             if viewState.countOfChangeCard == 0 {
-                countLabelBottomConstarint = nil
-                changeCardCountLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -58).isActive = true
+                countLabelBottomConstarint.constant = -changeCardButton.frame.height
             }
         case .loading(let loading):
             self.removeError(from: self)
@@ -103,6 +101,5 @@ class M_ChangeCardView: UIView {
             self.removeLoading(from: self)
             self.showError(on: self, data: error)
         }
-        
     }
 }

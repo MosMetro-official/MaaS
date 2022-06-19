@@ -38,7 +38,7 @@ public struct M_CurrentSubInfo {
     }
 }
 
-struct M_AuthInfo {
+public struct M_AuthInfo {
     let status: M_AuthStatus?
     let date: String
     let rnn: String

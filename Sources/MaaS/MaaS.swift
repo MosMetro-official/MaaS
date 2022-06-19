@@ -2,6 +2,20 @@ import UIKit
 
 public class MaaS {
     
+    /*
+     init(token: @token, delegate: MaaSNetworkDelegate) {
+        self.token = token
+        self.delegate = delegate
+     }
+     
+     private var currentUser: M_CurrentUser?
+     public func getCurrentSubscriptionOfUser() .. setup current user async {
+        fetch current sub of user
+        if success = func show active flow with current sub
+        else = func show choose flow
+     }
+     */
+    
     public enum RedirectUrls: String {
         case succeedUrl = "maasexample://main/maasPaymentSuccess"
         case declinedUrl = "maasexample://main/maasPaymentDeclined"
@@ -23,9 +37,9 @@ public class MaaS {
     public var applicationName: String = ""
     public var language: String = "ru_RU"
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "qyNS0wTNBeLZxeKZL5aW7l_Ud54FOE8ET-YRsok0n-Q"
-    public var userHasSub: Bool!
-    public var currentSub: M_CurrentSubInfo?
+    public var token: String? = "dgnNk2IS0_v8441Nz5Xq4M_vyiZhs9QzhMibweShP7M"
+    public var userHasSub: Bool = false
+    public var currentUser: M_UserInfo?
     
     public static let shared = MaaS()
     
@@ -35,7 +49,7 @@ public class MaaS {
         let activeSubFlow = M_ActiveSubController()
         getUserSubStatus {
             DispatchQueue.main.async {
-                activeSubFlow.currentSub = self.currentSub
+                activeSubFlow.userInfo = self.currentUser
                 flow = self.userHasSub ? activeSubFlow : chooseSubFlow
                 completion(flow)
             }
@@ -50,14 +64,15 @@ public class MaaS {
     }
     
     public func getUserSubStatus(completion: @escaping () -> Void) {
-        M_CurrentSubInfo.getCurrentStatusOfUser { result in
+        M_UserInfo.fetchShortUserInfo { result in
             switch result {
-            case .success(let currentSub):
-                self.userHasSub = currentSub.subscription.id != ""
-                self.currentSub = currentSub
+            case .success(let currentUser):
+                self.userHasSub = currentUser.subscription?.id != ""
+                self.currentUser = currentUser
                 completion()
             case .failure(let error):
                 print(error)
+                completion()
             }
         }
     }

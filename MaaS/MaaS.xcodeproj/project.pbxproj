@@ -66,6 +66,10 @@
 		9533A5F7285B71B900D77375 /* M_HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A5F5285B71B900D77375 /* M_HistoryCell.xib */; };
 		9533A5FC285B731B00D77375 /* M_EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A5FA285B731B00D77375 /* M_EmptyCell.swift */; };
 		9533A5FD285B731B00D77375 /* M_EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A5FB285B731B00D77375 /* M_EmptyCell.xib */; };
+		9533A604285C90B300D77375 /* MaaSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A602285C90B300D77375 /* MaaSCell.xib */; };
+		9533A605285C90B300D77375 /* MaaSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A603285C90B300D77375 /* MaaSCell.swift */; };
+		9533A608285C91A700D77375 /* TariffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A606285C91A700D77375 /* TariffCell.swift */; };
+		9533A609285C91A700D77375 /* TariffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A607285C91A700D77375 /* TariffCell.xib */; };
 		953822F8285B2C2E00F0915C /* M_UserKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953822F7285B2C2E00F0915C /* M_UserKey.swift */; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
 		953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AD282ED95E00374DF2 /* SceneDelegate.swift */; };
@@ -206,6 +210,10 @@
 		9533A5F5285B71B900D77375 /* M_HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = M_HistoryCell.xib; sourceTree = "<group>"; };
 		9533A5FA285B731B00D77375 /* M_EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_EmptyCell.swift; sourceTree = "<group>"; };
 		9533A5FB285B731B00D77375 /* M_EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = M_EmptyCell.xib; sourceTree = "<group>"; };
+		9533A602285C90B300D77375 /* MaaSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaaSCell.xib; sourceTree = "<group>"; };
+		9533A603285C90B300D77375 /* MaaSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaaSCell.swift; sourceTree = "<group>"; };
+		9533A606285C91A700D77375 /* TariffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffCell.swift; sourceTree = "<group>"; };
+		9533A607285C91A700D77375 /* TariffCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TariffCell.xib; sourceTree = "<group>"; };
 		953822F7285B2C2E00F0915C /* M_UserKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserKey.swift; sourceTree = "<group>"; };
 		953E96A9282ED95E00374DF2 /* MaaSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaaSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96AB282ED95E00374DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -585,6 +593,10 @@
 				953E96AB282ED95E00374DF2 /* AppDelegate.swift */,
 				953E96AD282ED95E00374DF2 /* SceneDelegate.swift */,
 				953E96AF282ED95E00374DF2 /* ViewController.swift */,
+				9533A603285C90B300D77375 /* MaaSCell.swift */,
+				9533A602285C90B300D77375 /* MaaSCell.xib */,
+				9533A606285C91A700D77375 /* TariffCell.swift */,
+				9533A607285C91A700D77375 /* TariffCell.xib */,
 				953E96B1282ED95E00374DF2 /* Main.storyboard */,
 				953E96B4282ED96100374DF2 /* Assets.xcassets */,
 				953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */,
@@ -893,8 +905,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */,
+				9533A609285C91A700D77375 /* TariffCell.xib in Resources */,
 				953E96B5282ED96100374DF2 /* Assets.xcassets in Resources */,
 				953E96B3282ED95E00374DF2 /* Main.storyboard in Resources */,
+				9533A604285C90B300D77375 /* MaaSCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,8 +1046,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				953E96B0282ED95E00374DF2 /* ViewController.swift in Sources */,
+				9533A608285C91A700D77375 /* TariffCell.swift in Sources */,
 				953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */,
 				953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */,
+				9533A605285C90B300D77375 /* MaaSCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -92,13 +92,17 @@ class M_ResultView: UIView {
         switch viewState.dataState {
         case .loading:
             prepareLoadingState()
-        case .success:
+        case .success(let success):
+            resultTitleLabel.text = success.title
+            resultDescrLabel.text = success.descr
             if let needHideAction = viewState.hideAction {
                 actionButton.isHidden = needHideAction
             }
             prepareResultState()
             logoImageView.image = UIImage.getAssetImage(image: "checkmark")
-        case .failure:
+        case .failure(let failure):
+            resultTitleLabel.text = failure.title
+            resultDescrLabel.text = failure.descr
             logoImageView.image = UIImage.getAssetImage(image: "error")
             prepareResultState()
         }

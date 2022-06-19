@@ -8,7 +8,7 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-enum Status: String {
+public enum Status: String {
     case unknown = "UNKNOWN"
     case created = "CREATED"
     case processing = "PROCESSING"
@@ -17,16 +17,16 @@ enum Status: String {
     case canceled = "CANCELED"
 }
 
-struct M_SubscriptionInfo {
-    let id: String
-    let price: Int
-    let name: M_Description?
-    let description: M_Description?
-    let duration: Int
-    let services: [M_Service]
-    let serviceId: String?
-    let valid: M_Valid?
-    let status: Status?
+public struct M_SubscriptionInfo {
+    public let id: String
+    public let price: Int
+    public let name: M_Description?
+    public let description: M_Description?
+    public let duration: Int
+    public let services: [M_Service]
+    public let serviceId: String?
+    public let valid: M_Valid?
+    public let status: Status?
     
     init?(data: JSON) {
         self.id = data["id"].stringValue
@@ -61,9 +61,9 @@ struct M_SubscriptionInfo {
     }
 }
 
-struct M_Description {
-    let ru: String
-    let en: String
+public struct M_Description {
+    public let ru: String
+    public let en: String
     
     init?(data: JSON) {
         guard let ru = data["ru"].string, let en = data["en"].string else { return nil }
@@ -72,22 +72,24 @@ struct M_Description {
     }
 }
 
-struct M_Service {
-    let serviceId: String
-    let tariffId: String
-    let price: Int
-    let name: M_Description
-    let description: M_Description
-    let duration: Int
-    let trip: M_Trip
-    let access: Bool
-    let valid: M_Valid?
-    let status: String
+public struct M_Service {
+    public let serviceId: String
+    public let tariffId: String
+    public let imageURL: String
+    public let price: Int
+    public let name: M_Description
+    public let description: M_Description
+    public let duration: Int
+    public let trip: M_Trip
+    public let access: Bool
+    public let valid: M_Valid?
+    public let status: String
     
     init?(data: JSON) {
         guard
             let serviceId = data["serviceId"].string,
             let tariffId = data["tariffId"].string,
+            let imgUrl = data["imageURL"].string,
             let price = data["price"].int,
             let name = M_Description(data: data["name"]),
             let descr = M_Description(data: data["description"]),
@@ -98,6 +100,7 @@ struct M_Service {
         
         self.serviceId = serviceId
         self.tariffId = tariffId
+        self.imageURL = imgUrl
         self.price = price
         self.name = name
         self.description = descr
@@ -109,11 +112,11 @@ struct M_Service {
     }
 }
 
-struct M_Trip {
-    let count: Int
-    let type: String
-    let single: Int
-    let total: Int
+public struct M_Trip {
+    public let count: Int
+    public let type: String
+    public let single: Int
+    public let total: Int
     
     init?(data: JSON) {
         guard
@@ -137,9 +140,9 @@ struct M_Trip {
     }
 }
 
-struct M_Valid {
-    let from: String
-    let to: String
+public struct M_Valid {
+    public let from: String
+    public let to: String
     
     init?(data: JSON) {
         guard let from = data["from"].string, let to = data["to"].string else { return nil }
@@ -149,7 +152,7 @@ struct M_Valid {
 }
 
 extension M_SubscriptionInfo: Equatable {
-    static func == (lhs: M_SubscriptionInfo, rhs: M_SubscriptionInfo) -> Bool {
+    public static func == (lhs: M_SubscriptionInfo, rhs: M_SubscriptionInfo) -> Bool {
         return lhs.name?.ru == rhs.name?.ru
     }
 }

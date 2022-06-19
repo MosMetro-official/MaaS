@@ -34,6 +34,7 @@ class M_TripsHistoryController: UIViewController {
     }
     
     private func fetchUserHistoryTrips() {
+        self.showLoading()
         M_HistoryTrips.getHistoryTrips(by: 15, and: 0, from: "", to: "") { result in
             switch result {
             case .success(let trips):
@@ -51,7 +52,7 @@ class M_TripsHistoryController: UIViewController {
     
     private func showError(with title: String, and descr: String) {
         let onRetry = Command {
-            
+            self.fetchUserHistoryTrips()
         }
         let onClose = Command {
             self.navigationController?.popViewController(animated: true)

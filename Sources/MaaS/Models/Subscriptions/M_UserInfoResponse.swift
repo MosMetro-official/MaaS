@@ -8,15 +8,17 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_UserInfoResponse {
-    let status: String
-    let keyChangeLimit: Int
-    let keyChangeLeft: Int
-    let reason: M_Description?
-    let hashKey: String
-    let type: String
-    let paySystem: String
-    let maskedPan: String
+public struct M_UserInfo {
+    public let status: String
+    public let keyChangeLimit: Int
+    public let keyChangeLeft: Int
+    public let reason: M_Description?
+    public let hashKey: String
+    public let type: String
+    public let paySystem: String
+    public let maskedPan: String
+    public let subscription: M_SubscriptionInfo?
+    public let payment: M_AuthInfo?
     
     init?(data: JSON) {
         guard
@@ -35,15 +37,17 @@ struct M_UserInfoResponse {
         self.type = data["type"].stringValue
         self.paySystem = paySystem
         self.maskedPan = maskedPan
+        self.subscription = M_SubscriptionInfo(data: data["subscription"])
+        self.payment = M_AuthInfo(data: data["payment"])
     }
     
-    static func fetchShortUserInfo(completion: @escaping (Result<M_UserInfoResponse, APIError>) -> Void) {
+    public static func fetchShortUserInfo(completion: @escaping (Result<M_UserInfo, APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/user/v1/info")) { result in
             switch result {
             case .success(let resposne):
                 let json = JSON(resposne.data)
-                guard let showUserInfo = M_UserInfoResponse(data: json["data"]) else {
+                guard let showUserInfo = M_UserInfo(data: json["data"]) else {
                     completion(.failure(.badMapping))
                     return
                 }

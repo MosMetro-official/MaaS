@@ -14,7 +14,7 @@ class M_ChangeCardController: UIViewController {
     public var didChangeCard: (() -> Void)?
     
     public var cardInfo: M_CardInfo?
-    public var userInfo: M_UserInfoResponse?
+    public var userInfo: M_UserInfo?
     private var safariController: SFSafariViewController?
         
     private let nestedView = M_ChangeCardView.loadFromNib()

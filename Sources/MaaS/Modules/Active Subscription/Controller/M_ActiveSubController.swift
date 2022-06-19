@@ -27,14 +27,12 @@ class M_ActiveSubController: UIViewController {
         }
     }
     
-    private var userInfo: M_UserInfoResponse? {
+    public var userInfo: M_UserInfo? {
         didSet {
             makeState()
         }
     }
-    
-    var currentSub: M_CurrentSubInfo?
-    
+        
     var handleClose: (() -> Void)?
     
     override func loadView() {
@@ -59,17 +57,6 @@ class M_ActiveSubController: UIViewController {
     private func fetchUserInfo() {
         showLoading()
         let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        M_CurrentSubInfo.getCurrentStatusOfUser { result in
-            switch result {
-            case .success(let currentSub):
-                self.currentSub = currentSub
-                dispatchGroup.leave()
-            case .failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
-                dispatchGroup.leave()
-            }
-        }
 //        dispatchGroup.enter()
 //        M_DebtInfo.getDebtInfo { result in
 //            switch result {
@@ -82,7 +69,7 @@ class M_ActiveSubController: UIViewController {
 //            }
 //        }
         dispatchGroup.enter()
-        M_UserInfoResponse.fetchShortUserInfo { result in
+        M_UserInfo.fetchShortUserInfo { result in
             switch result {
             case .success(let userInfo):
                 self.userInfo = userInfo
@@ -115,10 +102,10 @@ class M_ActiveSubController: UIViewController {
         
     private func makeState() {
         var states: [State] = []
-        guard let currentSub = currentSub else { return }
-        let cardState = makeCardState(from: currentSub)
+        guard let userInfo = userInfo else { return }
+        let cardState = makeCardState(from: userInfo)
         states.append(contentsOf: cardState)
-        let tariffState = makeTariffState(from: currentSub)
+        let tariffState = makeTariffState(from: userInfo)
         states.append(tariffState)
         let onboardingState = makeOnboardingState()
         states.append(onboardingState)
@@ -146,18 +133,18 @@ extension M_ActiveSubController {
         return debtInfoCell
     }
     
-    private func makeCardState(from sub: M_CurrentSubInfo) -> [State] {
+    private func makeCardState(from sub: M_UserInfo) -> [State] {
         var states = [State]()
         let title = "МультиТранспорт"
         let titleHeight = title.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = sub.subscription.valid?.to.height(
+        let activeHeight = sub.subscription?.valid?.to.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
         ) ?? 0
-        guard let timeTo = sub.subscription.valid?.to else { return [] }
+        guard let timeTo = sub.subscription?.valid?.to else { return [] }
         let validDate = getCurrentDate(from: timeTo)
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
@@ -207,7 +194,7 @@ extension M_ActiveSubController {
         return states
     }
     
-    private func makeTariffState(from sub: M_CurrentSubInfo) -> State {
+    private func makeTariffState(from sub: M_UserInfo) -> State {
         var elements: [Element] = []
         let tariffTitle = "Баланс"
         let tariffHeight = tariffTitle.height(
@@ -216,7 +203,7 @@ extension M_ActiveSubController {
         )
         let tariffSection = M_ActiveSubView.ViewState.HeaderCell(height: tariffHeight + 24).toElement()
         elements.append(tariffSection)
-        sub.subscription.services.forEach { service in
+        sub.subscription?.services.forEach { service in
             var currentProgress: CGFloat? = nil
             // расчет количества поездок
             let titleHeight = service.name.ru.height(
@@ -247,7 +234,6 @@ extension M_ActiveSubController {
         }
         
         let onHistorySelect = Command {
-            print("show history controller")
             let historyController = M_TripsHistoryController()
             self.navigationController?.pushViewController(historyController, animated: true)
         }
