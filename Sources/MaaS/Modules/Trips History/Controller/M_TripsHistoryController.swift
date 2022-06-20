@@ -35,7 +35,7 @@ class M_TripsHistoryController: UIViewController {
     
     private func fetchUserHistoryTrips() {
         self.showLoading()
-        M_HistoryTrips.getHistoryTrips(by: 15, and: 0, from: "", to: "") { result in
+        M_HistoryTrips.fetchHistoryTrips(by: 15, and: 0, from: "", to: "") { result in
             switch result {
             case .success(let trips):
                 self.trips = trips
@@ -68,11 +68,11 @@ class M_TripsHistoryController: UIViewController {
             trips.forEach { trip in
                 var dateTitle = ""
                 switch trip.trip.status {
-                case "STARTED":
+                case .started:
                     dateTitle = trip.trip.time.start
-                case "DONE":
+                case .done:
                     dateTitle = trip.trip.time.end
-                case "CANCELED":
+                case .canceled:
                     dateTitle = "Поездка отменена"
                 default:
                     dateTitle = "Ошибка"

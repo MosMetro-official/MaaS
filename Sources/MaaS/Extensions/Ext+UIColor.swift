@@ -31,19 +31,17 @@ extension UIColor {
         return UIColor(named: name, in: MaaS.shared.bundle, compatibleWith: nil) ?? UIColor.red
     }
     
-    static func getCardHolderColor(for card: String) -> UIColor {
+    static func getCardHolderColor(for card: PaySystem) -> UIColor {
         switch card {
-        case "MIR":
+        case .mir:
             return UIColor.getAssetColor(name: "mirC")
-        case "VISA":
+        case .visa:
             return UIColor.getAssetColor(name: "visaC")
-        case "RUBLE":
-            return UIColor.getAssetColor(name: "rubleC")
-        case "MC":
+        case .mc:
             return UIColor.getAssetColor(name: "mastercardC")
-        case "UP":
+        case .cup:
             return UIColor.getAssetColor(name: "unionpayC")
-        default:
+        case .unknown:
             return UIColor.getAssetColor(name: "unknown")
         }
     }

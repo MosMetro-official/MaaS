@@ -1,5 +1,5 @@
 //
-//  M_CurrentSubInfo.swift
+//  M_AuthInfo.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 11.06.2022.
@@ -8,34 +8,21 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-public struct M_CurrentSubInfo {
-    let subscription: M_SubscriptionInfo
-    let payment: M_AuthInfo?
-    
-    init?(data: JSON) {
-        guard let sub = M_SubscriptionInfo(data: data["subscription"]) else { return nil }
-        self.subscription = sub
-        self.payment = M_AuthInfo(data: data["payment"])
-    }
-    
-    static func getCurrentStatusOfUser(completion: @escaping (Result<M_CurrentSubInfo, APIError>) -> Void) {
-        let client = APIClient.authClient
-        client.send(.GET(path: "/api/subscription/v1/info")) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let currentSubInfo = M_CurrentSubInfo(data: json["data"]) else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(currentSubInfo))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
-    }
+public enum PayStatus: String {
+    case unknown = "UNKNOWN"
+    case created = "CREATED"
+    case processing = "PROCESSING"
+    case active = "ACTIVE"
+    case expired = "EXPIRED"
+    case canceled = "CANCELED"
+    case maasError = "MAAS_KEY_ERROR"
+    case undefined = "UNDEFINED"
+    case refused = "REFUSED"
+    case declined = "DECLINED"
+    case error = "ERROR"
+    case preauth = "PREAUTH"
+    case authCanceled = "AUTH_CANCELED"
+    case hold = "HOLD"
 }
 
 public struct M_AuthInfo {
@@ -45,12 +32,12 @@ public struct M_AuthInfo {
     let code: String
     let card: M_CardInfo?
     let receiptUrl: String?
-    
+
     init?(data: JSON) {
         guard
             let rnn = data["rnn"].string,
             let code = data["code"].string else { return nil }
-                
+
         self.status = M_AuthStatus(data: data["status"])
         self.date = data["date"].stringValue
         self.rnn = rnn
@@ -63,36 +50,36 @@ public struct M_AuthInfo {
 struct M_AuthStatus {
     let responseCode: String
     let responseDescr: String
-    let status: String
-    
+    let status: PayStatus?
+
     init?(data: JSON) {
         guard
             let responseCode = data["responseCode"].string,
             let responseDescr = data["responseDescr"].string,
             let status = data["status"].string else { return nil }
-        
+
         self.responseCode = responseCode
         self.responseDescr = responseDescr
-        self.status = status
+        self.status = PayStatus(rawValue: status)
     }
 }
 
-struct M_CardInfo {
-    enum PaySystem: String {
-        case visa = "VISA"
-        case mc = "MC"
-        case mir = "MIR"
-        case cup = "CUP"
-        case unknown = "UNKNOWN_PS"
-    }
-    
+public enum PaySystem: String {
+    case visa = "VISA"
+    case mc = "MC"
+    case mir = "MIR"
+    case cup = "CUP"
+    case unknown = "UNKNOWN_PS"
+}
+
+struct M_CardInfo {    
     let hashKey: String
     let paySystem: PaySystem?
     let type: String
     let maskedPan: String
     let expDate: String
     let cardId: String
-    
+
     init?(data: JSON) {
         guard
             let hash = data["hashKey"].string,
@@ -100,7 +87,7 @@ struct M_CardInfo {
             let maskedPan = data["maskedPan"].string,
             let expDate = data["expDate"].string,
             let cardId = data["cardId"].string else { return nil }
-        
+
         self.hashKey = hash
         self.paySystem = PaySystem(rawValue: data["paySystem"].stringValue)
         self.type = type

@@ -8,17 +8,19 @@
 import UIKit
 import CoreTableView
 
-class M_ChooseSubController: UIViewController {
+public class M_ChooseSubController: UIViewController {
+    
+    public var onDismiss: (() -> Void)?
     
     private let nestedView = M_ChooseSubView.loadFromNib()
     
-    private var subscriptions: [M_SubscriptionInfo] = [] {
+    private var subscriptions: [M_Subscription] = [] {
         didSet {
             makeState()
         }
     }
     
-    private var selectedSub: M_SubscriptionInfo? {
+    private var selectedSub: M_Subscription? {
         didSet {
             makeState()
         }
@@ -29,35 +31,39 @@ class M_ChooseSubController: UIViewController {
         }
     }
 
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         self.view = nestedView
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         loadSubscriptions()
-        showActiveSubTest()
         
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "backButton"), style: .done, target: self, action: #selector(addTapped))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    @objc func addTapped() {
+        onDismiss?()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         selectedSub = nil
         selectMakeMySub = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Подписка"
     }
     
     private func loadSubscriptions() {
         showLoading()
-        M_SubscriptionInfo.getSubscriptions { result in
+        M_Subscription.fetchSubscriptions { result in
             switch result {
             case .success(let subscriptions):
                 self.subscriptions = subscriptions
@@ -115,7 +121,7 @@ class M_ChooseSubController: UIViewController {
             guard let self = self,
                   let navigation = self.navigationController else { return }
             if self.selectMakeMySub {
-                self.showAlert(with: "Еще не готово :(", and: "Данный функционал появится позже.")
+                self.showAlert(with: "Еще не готово 😢", and: "Данный функционал появится немного позже 🙃.")
             } else {
                 if let sub = self.selectedSub {
                     let buySubController = M_BuySubController()

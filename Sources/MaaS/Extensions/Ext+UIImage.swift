@@ -12,19 +12,17 @@ extension UIImage {
         return UIImage(named: name, in: MaaS.shared.bundle, with: nil) ?? UIImage()
     }
     
-    static func getCardHolderImage(for card: String) -> UIImage {
+    static func getCardHolderImage(for card: PaySystem) -> UIImage {
         switch card {
-        case "MIR":
+        case .mir:
             return UIImage.getAssetImage(image: "mir")
-        case "VISA":
+        case .visa:
             return UIImage.getAssetImage(image: "visa")
-        case "RUBLE":
-            return UIImage.getAssetImage(image: "ruble")
-        case "MC":
+        case .mc:
             return UIImage.getAssetImage(image: "mastercard")
-        case "UP":
+        case .cup:
             return UIImage.getAssetImage(image: "unionpay")
-        default:
+        case .unknown:
             return UIImage.getAssetImage(image: "unknown_ps")
         }
     }

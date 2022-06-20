@@ -45,7 +45,7 @@ class M_ActiveSubView: UIView {
         }
         
         struct CardInfo: _CardInfo {
-            let cardImage: String
+            let cardImage: PaySystem
             let cardNumber: String
             let cardDescription: String
             let leftCountChangeCard: String

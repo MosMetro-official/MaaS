@@ -15,6 +15,7 @@ class M_ChangeCardController: UIViewController {
     
     public var cardInfo: M_CardInfo?
     public var userInfo: M_UserInfo?
+    private var keyResponse: M_UserCardResponse?
     private var safariController: SFSafariViewController?
         
     private let nestedView = M_ChangeCardView.loadFromNib()
@@ -51,7 +52,8 @@ class M_ChangeCardController: UIViewController {
         hidePaymentController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 let resultController = M_ResultController()
-                resultController.resultModel = .successCard
+                guard let card = self.keyResponse else { return }
+                resultController.resultModel = .successCard(card)
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
@@ -97,22 +99,23 @@ class M_ChangeCardController: UIViewController {
     
     private func sendRequestKey() {
         showLoading(with: "Загрузка...")
-        let request = M_UserKeyRequest(
+        let request = M_UserCardRequest(
             payData: M_PayData(
                 tranId: String.randomString(of: 5),
                 price: "",
                 redirectUrl: M_RedirectUrl(
-                    succeed: .succeedUrlCard,
-                    declined: .declinedUrlCard,
-                    canceled: .canceledUrlCard
+                    succeed: MaaS.shared.succeedUrlCard,
+                    declined: MaaS.shared.declinedUrlCard,
+                    canceled: MaaS.shared.canceledUrlCard
                 ),
-                paymentMethod: .CARD
+                paymentMethod: .card
             )
         )
         let body = request.createRequestBody()
-        M_UserKeyResponse.changeUserCardKey(body: body) { result in
+        M_UserCardResponse.sendRequsetToChangeUserCard(body: body) { result in
             switch result {
             case .success(let userResponse):
+                self.keyResponse = userResponse
                 if let path = userResponse.payment?.url {
                     self.openSafariController(for: path)
                 }
@@ -127,7 +130,7 @@ class M_ChangeCardController: UIViewController {
             title: title,
             descr: "Осталось совсем немного"
         )
-        nestedView.viewState = .init(dataState: .loading(loadingState), cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        nestedView.viewState = .init(dataState: .loading(loadingState), cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
     }
     
     private func showError(with title: String, and descr: String) {
@@ -143,20 +146,21 @@ class M_ChangeCardController: UIViewController {
             onRetry: onRetry,
             onClose: onClose
         )
-        nestedView.viewState = .init(dataState: .error(errorState), cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        nestedView.viewState = .init(dataState: .error(errorState), cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
     }
     
     private func makeState() {
         guard
-            let userInfo = userInfo else { return }
+            let userInfo = userInfo,
+            let cardInfo = cardInfo else { return }
         let onChangeButton = Command { [weak self] in
             guard let self = self else { return }
             self.sendRequestKey()
         }
         let finalState = M_ChangeCardView.ViewState(
             dataState: .loaded,
-            cardType: userInfo.type,
-            cardNumber: "\(userInfo.maskedPan)",
+            cardType: userInfo.paySystem ?? .unknown,
+            cardNumber: "\(cardInfo.maskedPan)",
             countOfChangeCard: userInfo.keyChangeLeft,
             onChangeButton: userInfo.keyChangeLeft == 0 ? nil : onChangeButton
         )

@@ -9,7 +9,7 @@ import UIKit
 import CoreTableView
 
 protocol _CardInfo: CellData {
-    var cardImage: String { get }
+    var cardImage: PaySystem { get }
     var cardNumber: String { get }
     var cardDescription: String { get }
     var leftCountChangeCard: String { get }
@@ -50,7 +50,7 @@ class M_CardInfoCell: UITableViewCell {
     }
     
     public func configure(with data: _CardInfo) {
-        cardImage.image = UIImage.getAssetImage(image: data.cardImage)
+        cardImage.image = UIImage.getCardHolderImage(for: data.cardImage)
         cardNumberLabel.text = data.cardNumber
         cardDescriptionLabel.text = data.cardDescription
         leftCountLabel.text = data.leftCountChangeCard

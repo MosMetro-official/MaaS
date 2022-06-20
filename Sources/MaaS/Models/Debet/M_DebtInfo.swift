@@ -26,7 +26,7 @@ struct M_DebtInfo {
         self.amount = amount
     }
     
-    static func getDebtInfo(completion: @escaping (Result<[M_DebtInfo], APIError>) -> Void) {
+    static func fetchDebtInfo(completion: @escaping (Result<[M_DebtInfo], APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/user/v1/debt")) { result in
             switch result {

@@ -54,16 +54,13 @@ class ViewController: UIViewController {
     }
     
     private func fetchUserInfo() {
-        M_UserInfo.fetchShortUserInfo { result in
-            switch result {
-            case .success(let userInfo):
-                self.user = userInfo
-            case .failure(let error):
-                self.error = error.errorTitle
+        MaaS.shared.getUserSubStatus { user, error in
+            self.user = user
+            if let errorTitle = error {
+                self.error = errorTitle
             }
         }
     }
-
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,12 +77,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.loadConfigure()
         if let user = user {
             if user.subscription?.id != "" {
-                cell.authConfig(with: user)
+                cell.authConfig(with: user) {
+                    let active = MaaS.shared.showActiveFlow()
+                    let nav = UINavigationController(rootViewController: active)
+                    nav.modalPresentationStyle = .fullScreen
+                    active.onDismiss = { self.dismiss(animated: true) }
+                    self.present(nav, animated: true)
+                }
             } else {
                 cell.nonAuthConfigure {
-                    MaaS.shared.showMaaSFlow { start in
-                        self.navigationController?.pushViewController(start, animated: true)
-                    }
+                    let choose = MaaS.shared.showChooseFlow()
+                    let nav = UINavigationController(rootViewController: choose)
+                    nav.modalPresentationStyle = .fullScreen
+                    choose.onDismiss = { self.dismiss(animated: true) }
+                    self.present(choose, animated: true)
                 }
             }
         }
@@ -105,8 +110,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             if error != "" {
                 break
             }
-            MaaS.shared.showMaaSFlow { start in
-                self.navigationController?.pushViewController(start, animated: true)
+            if MaaS.shared.userHasSub {
+                let active = MaaS.shared.showActiveFlow()
+                let nav = UINavigationController(rootViewController: active)
+                nav.modalPresentationStyle = .fullScreen
+                active.onDismiss = { self.dismiss(animated: true) }
+                self.present(nav, animated: true)
+            } else {
+                let choose = MaaS.shared.showChooseFlow()
+                let nav = UINavigationController(rootViewController: choose)
+                nav.modalPresentationStyle = .fullScreen
+                choose.onDismiss = { self.dismiss(animated: true) }
+                self.present(choose, animated: true)
             }
         default:
             break

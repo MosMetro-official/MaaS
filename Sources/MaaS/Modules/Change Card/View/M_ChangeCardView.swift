@@ -19,7 +19,7 @@ class M_ChangeCardView: UIView {
         }
         
         var dataState: DataState
-        let cardType: String
+        let cardType: PaySystem
         let cardNumber: String
         let countOfChangeCard: Int
         let onChangeButton: Command<Void>?
@@ -36,7 +36,7 @@ class M_ChangeCardView: UIView {
             let onClose: Command<Void>
         }
         
-        static let initial = ViewState(dataState: .loaded, cardType: "", cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        static let initial = ViewState(dataState: .loaded, cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
     }
     
     public var viewState: ViewState = .initial {

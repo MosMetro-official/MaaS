@@ -33,7 +33,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-UG-qrW">
-                    <rect key="frame" x="100" y="544.5" width="214" height="18"/>
+                    <rect key="frame" x="40" y="544.5" width="334" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="secondaryText"/>
                     <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5uL-UG-qrW" secondAttribute="trailing" constant="100" id="5ZQ-7a-gVu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5uL-UG-qrW" secondAttribute="trailing" constant="40" id="5ZQ-7a-gVu"/>
                 <constraint firstItem="NgH-ks-1ZP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="76X-OA-WGs"/>
                 <constraint firstItem="aa9-Om-JXX" firstAttribute="top" secondItem="NgH-ks-1ZP" secondAttribute="bottom" constant="30" id="I4B-fM-atU"/>
                 <constraint firstItem="7nZ-aW-QV4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RlO-YD-5MO"/>
@@ -83,7 +83,7 @@
                 <constraint firstItem="aa9-Om-JXX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="gQn-1e-QpP"/>
                 <constraint firstItem="5uL-UG-qrW" firstAttribute="top" secondItem="aa9-Om-JXX" secondAttribute="bottom" constant="10" id="jtA-kJ-9SM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bh2-Cy-1zV" secondAttribute="trailing" constant="20" id="rUy-cm-39f"/>
-                <constraint firstItem="5uL-UG-qrW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="wQv-wx-woW"/>
+                <constraint firstItem="5uL-UG-qrW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="wQv-wx-woW"/>
                 <constraint firstItem="bh2-Cy-1zV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yjN-CC-QEC"/>
             </constraints>
             <connections>

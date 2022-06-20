@@ -1,28 +1,11 @@
 import UIKit
+import MMCoreNetworkCallbacks
 
 public class MaaS {
     
-    /*
-     init(token: @token, delegate: MaaSNetworkDelegate) {
-        self.token = token
-        self.delegate = delegate
-     }
-     
-     private var currentUser: M_CurrentUser?
-     public func getCurrentSubscriptionOfUser() .. setup current user async {
-        fetch current sub of user
-        if success = func show active flow with current sub
-        else = func show choose flow
-     }
-     */
-    
-    public enum RedirectUrls: String {
-        case succeedUrl = "maasexample://main/maasPaymentSuccess"
-        case declinedUrl = "maasexample://main/maasPaymentDeclined"
-        case canceledUrl = "maasexample://main/maasPaymentCanceled"
-        case succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
-        case declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
-        case canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
+    public enum ErrorDescription: String {
+        case ended = "Срок действия вашей подписки закончился"
+        case cancel = "Ваша подписка была аннулирована"
     }
     
     internal var bundle: Bundle {
@@ -34,26 +17,36 @@ public class MaaS {
     }
     
     public var host: String = "maas.brndev.ru"
+    
     public var applicationName: String = ""
+    
     public var language: String = "ru_RU"
+    
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = "dgnNk2IS0_v8441Nz5Xq4M_vyiZhs9QzhMibweShP7M"
+    
+    public var token: String? = "XvkehxFWLkrf1qzOrXyJxV9K2VIahwlXPRFjxJeg9ws"
+    
     public var userHasSub: Bool = false
-    public var currentUser: M_UserInfo?
+    public var apiError: APIError?
+    public var errorMessage: String?
+    
+    public var succeedUrl = "maasexample://main/maasPaymentSuccess"
+    public var declinedUrl = "maasexample://main/maasPaymentDeclined"
+    public var canceledUrl = "maasexample://main/maasPaymentCanceled"
+    public var succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
+    public var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
+    public var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
     
     public static let shared = MaaS()
     
-    public func showMaaSFlow(completion: @escaping (UIViewController) -> Void) {
-        var flow: UIViewController = UIViewController()
-        let chooseSubFlow = M_ChooseSubController()
-        let activeSubFlow = M_ActiveSubController()
-        getUserSubStatus {
-            DispatchQueue.main.async {
-                activeSubFlow.userInfo = self.currentUser
-                flow = self.userHasSub ? activeSubFlow : chooseSubFlow
-                completion(flow)
-            }
-        }
+    public func showActiveFlow() -> M_ActiveSubController {
+        let active = M_ActiveSubController()
+        return active
+    }
+    
+    public func showChooseFlow() -> M_ChooseSubController {
+        let choose = M_ChooseSubController()
+        return choose
     }
     
     public static func registerFonts() {
@@ -63,16 +56,26 @@ public class MaaS {
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "Comfortaa", fontExtension: "ttf")
     }
     
-    public func getUserSubStatus(completion: @escaping () -> Void) {
-        M_UserInfo.fetchShortUserInfo { result in
+    public func getUserSubStatus(completion: @escaping (M_UserInfo?, String?) -> Void) {
+        M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let currentUser):
-                self.userHasSub = currentUser.subscription?.id != ""
-                self.currentUser = currentUser
-                completion()
+                switch currentUser.status {
+                case .active:
+                    self.userHasSub = true
+                    completion(currentUser, nil)
+                case .expired:
+                    self.userHasSub = false
+                    completion(currentUser, ErrorDescription.ended.rawValue)
+                case .canceled:
+                    self.userHasSub = false
+                    completion(currentUser, ErrorDescription.cancel.rawValue)
+                default:
+                    completion(currentUser, nil)
+                }
             case .failure(let error):
-                print(error)
-                completion()
+                self.apiError = error
+                completion(nil, error.failureReason)
             }
         }
     }

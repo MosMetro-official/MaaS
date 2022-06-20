@@ -21,7 +21,7 @@ class TariffCell: UICollectionViewCell {
         self.roundView.layer.cornerRadius = 10
     }
 
-    public func configure(with tariff: M_Service) {
+    public func configure(with tariff: M_Tariff) {
         if tariff.name.ru.contains("Общественный") {
             self.titleLabel.text = "Общ. транспорт"
         } else {

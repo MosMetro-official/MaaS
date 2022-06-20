@@ -8,22 +8,24 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
+
 public enum Status: String {
-    case unknown = "UNKNOWN"
-    case created = "CREATED"
-    case processing = "PROCESSING"
-    case active = "ACTIVE"
-    case expired = "EXPIRED"
-    case canceled = "CANCELED"
+    case unknow = "UNKNOWN" // процесс оформления подписки
+    case created = "CREATED" // процесс оплаты подписки
+    case processing = "PROCESSING" // процесс оплаты подписки
+    case active = "ACTIVE" // действующая
+    case expired = "EXPIRED" // срок действия истек
+    case canceled = "CANCELED" // аннулирована
+    case blocked = "BLOCKED" // заблокирован
 }
 
-public struct M_SubscriptionInfo {
+public struct M_Subscription {
     public let id: String
     public let price: Int
     public let name: M_Description?
     public let description: M_Description?
     public let duration: Int
-    public let services: [M_Service]
+    public let services: [M_Tariff]
     public let serviceId: String?
     public let valid: M_Valid?
     public let status: Status?
@@ -34,13 +36,13 @@ public struct M_SubscriptionInfo {
         self.name = M_Description(data: data["name"])
         self.description = M_Description(data: data["description"])
         self.duration = data["duration"].intValue
-        self.services = data["services"].arrayValue.compactMap { M_Service(data: $0) }
+        self.services = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
         self.serviceId = data["serviceId"].stringValue
         self.valid = M_Valid(data: data["valid"])
         self.status = Status(rawValue: data["status"].stringValue)
     }
     
-    static func getSubscriptions(completion: @escaping (Result<[M_SubscriptionInfo], APIError>) -> Void) {
+    static func fetchSubscriptions(completion: @escaping (Result<[M_Subscription], APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.GET(path: "/api/subscription/v1/list")) { result in
             switch result {
@@ -50,7 +52,7 @@ public struct M_SubscriptionInfo {
                     completion(.failure(.badMapping))
                     return
                 }
-                let subscriptions = array.compactMap { M_SubscriptionInfo(data: $0) }
+                let subscriptions = array.compactMap { M_Subscription(data: $0) }
                 completion(.success(subscriptions))
                 return
             case .failure(let error):
@@ -72,7 +74,7 @@ public struct M_Description {
     }
 }
 
-public struct M_Service {
+public struct M_Tariff {
     public let serviceId: String
     public let tariffId: String
     public let imageURL: String
@@ -83,7 +85,7 @@ public struct M_Service {
     public let trip: M_Trip
     public let access: Bool
     public let valid: M_Valid?
-    public let status: String
+    public let status: Status?
     
     init?(data: JSON) {
         guard
@@ -108,7 +110,7 @@ public struct M_Service {
         self.trip = trip
         self.access = access
         self.valid = M_Valid(data: data["valid"])
-        self.status = status
+        self.status = Status(rawValue: status)
     }
 }
 
@@ -151,8 +153,8 @@ public struct M_Valid {
     }
 }
 
-extension M_SubscriptionInfo: Equatable {
-    public static func == (lhs: M_SubscriptionInfo, rhs: M_SubscriptionInfo) -> Bool {
+extension M_Subscription: Equatable {
+    public static func == (lhs: M_Subscription, rhs: M_Subscription) -> Bool {
         return lhs.name?.ru == rhs.name?.ru
     }
 }

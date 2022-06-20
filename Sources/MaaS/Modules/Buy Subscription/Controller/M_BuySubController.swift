@@ -14,8 +14,9 @@ class M_BuySubController: UIViewController {
     private let nestedView = M_BuySubView.loadFromNib()
     
     private var safariController: SFSafariViewController?
+    private var count: Int = 0
     
-    var selectedSub: M_SubscriptionInfo? {
+    var selectedSub: M_Subscription? {
         didSet {
             makeState()
         }
@@ -142,36 +143,53 @@ class M_BuySubController: UIViewController {
         M_PayStatusResponse.statusOfPayment(for: response.paymentId) { result in
             switch result {
             case .success(let payResponse):
-                var count = 0
-                if payResponse.payment.url == "" && count < 5 {
-                    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                        count += 1
-                        self.handle(response: response)
+                print("😢😢😢 COUNT - \(self.count)")
+                switch payResponse.subscription.status {
+                case .created, .canceled:
+                    if self.count < 5 {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            self.count += 1
+                            self.handle(response: response)
+                        }
+                    } else {
+                        self.showNavBar()
+                        self.showError(
+                            with: "Что-то пошло не так",
+                            and: "Мы уже разбираемся в причине, попробуйте еще раз позже.",
+                            onRetry: Command {
+                                self.hideNavBar()
+                                self.count = 0
+                                self.showLoading(with: "Загрузка...")
+                                self.handle(response: response)
+                            })
                     }
-                } else {
+                case .processing:
+                    self.showNavBar()
                     self.handlePaymentUrl(url: payResponse.payment.url)
-                    self.selectedSub = payResponse.subscription
+                default:
+                    break
                 }
             case .failure(let error):
+                self.showNavBar()
                 let onRetry = Command {
                     //
                 }
                 self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
             }
         }
-        
     }
     
     private func startPayRequest(with id: String) {
         self.showLoading(with: "Загрузка...")
+        self.hideNavBar()
         let req = M_SubPayStartRequest(
             maaSTariffId: id,
             payment: .init(
-                paymentMethod: .CARD,
+                paymentMethod: .card,
                 redirectUrl: .init(
-                    succeed: .succeedUrl,
-                    declined: .declinedUrl,
-                    canceled: .canceledUrl
+                    succeed: MaaS.shared.succeedUrl,
+                    declined: MaaS.shared.declinedUrl,
+                    canceled: MaaS.shared.canceledUrl
                 ),
                 paymentToken: nil,
                 id: nil
@@ -180,15 +198,15 @@ class M_BuySubController: UIViewController {
         )
         let body = req.createRequestBody()
         print("REQUSET BODY 🔥🔥🔥 \(body)")
-        M_SubPayStartRequest.purchaseRequestSub(with: body) { result in
+        M_SubPayStartRequest.sendRequestSub(with: body) { result in
             switch result {
             case .success(let response):
                 self.handle(response: response)
             case .failure(let error):
                 let onRetry = Command { [weak self] in
-                    self?.showLoading(with: "Загрузка...")
                     self?.startPayRequest(with: id)
                 }
+                self.showNavBar()
                 self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
             }
         }

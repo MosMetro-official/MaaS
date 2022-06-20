@@ -21,7 +21,7 @@ struct M_SubPayStartRequest {
         return result
     }
     
-    static func purchaseRequestSub(with body: [String: Any], completion: @escaping (Result<M_SubPayStartResponse, APIError>) -> Void) {
+    static func sendRequestSub(with body: [String: Any], completion: @escaping (Result<M_SubPayStartResponse, APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.POST(path: "/api/subscription/v1/pay/start", body: body, contentType: .json)) { result in
             switch result {
@@ -41,11 +41,14 @@ struct M_SubPayStartRequest {
     }
 }
 
-enum M_PaymentMethod: String {
-    case CARD = "CARD"
-    case APAY = "APAY"
-    case GPAY = "GPAY"
-    case SPAY = "SPAY"
+public enum M_PaymentMethod: String {
+    case card = "CARD"
+    case apay = "APAY"
+    case gpay = "GPAY"
+    case spay = "SPAY"
+    case mpay = "MPAY"
+    case unknown = "UNKNOWN_METHOD"
+    case `default` = "DEFAULT"
 }
 
 struct M_PayDataSub {
@@ -56,7 +59,7 @@ struct M_PayDataSub {
     
     func createRequestBody() -> [String: Any] {
         var result = [String: Any]()
-        result.updateValue(M_PaymentMethod.CARD.rawValue, forKey: "paymentMethod")
+        result.updateValue(M_PaymentMethod.card.rawValue, forKey: "paymentMethod")
         let redirectBody = redirectUrl.createRequsetBody()
         result.updateValue(redirectBody, forKey: "redirectUrl")
         return result
@@ -64,15 +67,15 @@ struct M_PayDataSub {
 }
 
 struct M_RedirectUrl {
-    let succeed: MaaS.RedirectUrls
-    let declined: MaaS.RedirectUrls
-    let canceled: MaaS.RedirectUrls
+    let succeed: String
+    let declined: String
+    let canceled: String
     
     func createRequsetBody() -> [String: Any] {
         var result = [String: Any]()
-        result.updateValue(succeed.rawValue, forKey: "succeed")
-        result.updateValue(declined.rawValue, forKey: "declined")
-        result.updateValue(canceled.rawValue, forKey: "canceled")
+        result.updateValue(succeed, forKey: "succeed")
+        result.updateValue(declined, forKey: "declined")
+        result.updateValue(canceled, forKey: "canceled")
         return result
     }
 }
@@ -81,12 +84,4 @@ struct M_AppData {
     let serviceId: String
     let key: String
     let value: String
-    
-    func createRequsertBody() -> [String: Any] {
-        return [
-            "serviceId": "",
-            "key": "",
-            "value": ""
-        ]
-    }
 }

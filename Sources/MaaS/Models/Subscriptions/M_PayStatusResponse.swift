@@ -9,12 +9,12 @@ import Foundation
 import MMCoreNetworkCallbacks
 
 struct M_PayStatusResponse {
-    let subscription: M_SubscriptionInfo
+    let subscription: M_Subscription
     let payment: M_PaymentInfo
     
     init?(data: JSON) {
         guard
-            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let sub = M_Subscription(data: data["subscription"]),
             let payment = M_PaymentInfo(data: data["payment"]) else { return nil }
         self.subscription = sub
         self.payment = payment

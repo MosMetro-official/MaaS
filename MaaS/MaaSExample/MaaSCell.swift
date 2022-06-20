@@ -17,7 +17,7 @@ class MaaSCell: UITableViewCell {
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var button: UIButton!
     
-    var service: [M_Service]? {
+    var service: [M_Tariff]? {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -95,14 +95,16 @@ class MaaSCell: UITableViewCell {
     }
     
     
-    public func authConfig(with user: M_UserInfo) {
+    public func authConfig(with user: M_UserInfo, action: @escaping () -> Void) {
         guard let to = user.subscription?.valid?.to else { return }
         setVisionAlpha()
         showLabels()
         logoImage.isHidden = false
         button.isHidden = true
         collectionView.isHidden = false
-        titleLabel.text = "\(user.paySystem) •••• \(user.maskedPan) до \(getCurrentDate(from: to))"
+        self.action = action
+        guard let paySystem = user.paySystem?.rawValue else { return }
+        titleLabel.text = "\(paySystem) •••• \(user.maskedPan) до \(getCurrentDate(from: to))"
         service = user.subscription?.services
         activity.stopAnimating()
     }
@@ -116,7 +118,7 @@ class MaaSCell: UITableViewCell {
         titleLabel.text = "Весь транспорт в одной подписке"
         self.action = action
         activity.stopAnimating()
-        button.setTitle("Загрузить еще раз", for: .normal)
+        button.setTitle("Попробовать", for: .normal)
     }
 }
 
@@ -139,7 +141,7 @@ extension MaaSCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as? TariffCell else { return .zero }
-        let width = UIScreen.main.bounds.width / 3 + 20
+        let width = UIScreen.main.bounds.width / 3 + 30
         guard
             let titleHeight = cell.titleLabel.text?.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 11)),
             let tariffHeight = cell.tariffLabel.text?.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 13)) else { return .zero }

@@ -9,18 +9,18 @@ import Foundation
 import MMCoreNetworkCallbacks
 
 struct M_HistoryTrips {
-    let subscription: M_SubscriptionInfo
+    let subscription: M_Subscription
     let trip: M_TripDetails
     
     init?(data: JSON) {
         guard
-            let sub = M_SubscriptionInfo(data: data["subscription"]),
+            let sub = M_Subscription(data: data["subscription"]),
             let trip = M_TripDetails(data: data["trip"]) else { return nil }
         self.subscription = sub
         self.trip = trip
     }
     
-    static func getHistoryTrips(by limit: Int, and offset: Int, from: String, to: String, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
+    static func fetchHistoryTrips(by limit: Int, and offset: Int, from: String, to: String, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
         let client = APIClient.authClient
         let query = [
             "limit": "\(limit)",
@@ -47,12 +47,18 @@ struct M_HistoryTrips {
     }
 }
 
+public enum TripStatus: String {
+    case started = "STARTED"
+    case done = "DONE"
+    case canceled = "CANCELED"
+}
+
 struct M_TripDetails {
     let serviceTripId: String
     let terminalId: String
     let count: Int
     let time: M_TravelTime
-    let status: String
+    let status: TripStatus?
     let serviceId: String
     let route: M_Description
     
@@ -70,7 +76,7 @@ struct M_TripDetails {
         self.terminalId = terminalId
         self.count = count
         self.time = time
-        self.status = status
+        self.status = TripStatus(rawValue: status)
         self.serviceId = serviceId
         self.route = route
     }

@@ -12,9 +12,9 @@ import CoreTableView
 class M_ResultController: UIViewController {
     
     enum ResultModel {
-        case successSub(M_SubscriptionInfo)
+        case successSub(M_Subscription)
         case failureSub
-        case successCard
+        case successCard(M_UserCardResponse)
         case failureCard
         case none
     }
@@ -31,7 +31,7 @@ class M_ResultController: UIViewController {
         super.loadView()
         self.view = nestedView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +41,7 @@ class M_ResultController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -90,11 +90,15 @@ class M_ResultController: UIViewController {
                 onAction: onAction,
                 onClose: onClose
             )
-        case .successCard:
+        case .successCard(let keyCard):
             let onAction = Command {
                 // send form
             }
-            let onClose = Command {
+            let onClose = Command { [weak self] in
+                guard
+                    let self = self,
+                    let firstVC = self.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
+                firstVC.keyCard = keyCard
                 self.navigationController?.popToRootViewController(animated: true)
             }
             let success = M_ResultView.ViewState.Action(

@@ -70,7 +70,7 @@
 		9533A605285C90B300D77375 /* MaaSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A603285C90B300D77375 /* MaaSCell.swift */; };
 		9533A608285C91A700D77375 /* TariffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A606285C91A700D77375 /* TariffCell.swift */; };
 		9533A609285C91A700D77375 /* TariffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A607285C91A700D77375 /* TariffCell.xib */; };
-		953822F8285B2C2E00F0915C /* M_UserKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953822F7285B2C2E00F0915C /* M_UserKey.swift */; };
+		953822F8285B2C2E00F0915C /* M_UserCardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953822F7285B2C2E00F0915C /* M_UserCardRequest.swift */; };
 		953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AB282ED95E00374DF2 /* AppDelegate.swift */; };
 		953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AD282ED95E00374DF2 /* SceneDelegate.swift */; };
 		953E96B0282ED95E00374DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E96AF282ED95E00374DF2 /* ViewController.swift */; };
@@ -84,7 +84,7 @@
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
-		95795B7228531F9100634754 /* M_SubscriptionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B7128531F9100634754 /* M_SubscriptionInfo.swift */; };
+		95795B7228531F9100634754 /* M_Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B7128531F9100634754 /* M_Subscription.swift */; };
 		95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B732853368800634754 /* MaaSNetworkDelegate.swift */; };
 		9585BF2D285746A500FF77FD /* M_ChangeCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF2C285746A500FF77FD /* M_ChangeCardController.swift */; };
 		9585BF2F285746BC00FF77FD /* M_ChangeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585BF2E285746BC00FF77FD /* M_ChangeCardView.swift */; };
@@ -106,7 +106,8 @@
 		95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */; };
 		95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D028550D9700CEDBE3 /* SupportCell.swift */; };
 		95C057D328550D9700CEDBE3 /* SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057D128550D9700CEDBE3 /* SupportCell.xib */; };
-		95C057D52855151300CEDBE3 /* M_CurrentSubInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */; };
+		95C057D52855151300CEDBE3 /* M_AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D42855151300CEDBE3 /* M_AuthInfo.swift */; };
+		95C5FDED2860C9B000984F2F /* M_UserCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,7 +215,7 @@
 		9533A603285C90B300D77375 /* MaaSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaaSCell.swift; sourceTree = "<group>"; };
 		9533A606285C91A700D77375 /* TariffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffCell.swift; sourceTree = "<group>"; };
 		9533A607285C91A700D77375 /* TariffCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TariffCell.xib; sourceTree = "<group>"; };
-		953822F7285B2C2E00F0915C /* M_UserKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserKey.swift; sourceTree = "<group>"; };
+		953822F7285B2C2E00F0915C /* M_UserCardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserCardRequest.swift; sourceTree = "<group>"; };
 		953E96A9282ED95E00374DF2 /* MaaSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaaSExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953E96AB282ED95E00374DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		953E96AD282ED95E00374DF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,7 +229,7 @@
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		95795B6C28531BF100634754 /* Ext+URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+URLRequest.swift"; sourceTree = "<group>"; };
 		95795B6E28531C8300634754 /* Ext+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIDevice.swift"; sourceTree = "<group>"; };
-		95795B7128531F9100634754 /* M_SubscriptionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubscriptionInfo.swift; sourceTree = "<group>"; };
+		95795B7128531F9100634754 /* M_Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Subscription.swift; sourceTree = "<group>"; };
 		95795B732853368800634754 /* MaaSNetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSNetworkDelegate.swift; sourceTree = "<group>"; };
 		9585BF2C285746A500FF77FD /* M_ChangeCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ChangeCardController.swift; sourceTree = "<group>"; };
 		9585BF2E285746BC00FF77FD /* M_ChangeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ChangeCardView.swift; sourceTree = "<group>"; };
@@ -247,7 +248,8 @@
 		95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtInfoCell.xib; sourceTree = "<group>"; };
 		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		95C057D128550D9700CEDBE3 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
-		95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_CurrentSubInfo.swift; sourceTree = "<group>"; };
+		95C057D42855151300CEDBE3 /* M_AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_AuthInfo.swift; sourceTree = "<group>"; };
+		95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserCardResponse.swift; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,7 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				9533A5EA285B6CC700D77375 /* Trips History */,
-				9585BF3228576DDC00FF77FD /* Linking Subscription */,
+				9585BF3228576DDC00FF77FD /* Result Screen */,
 				9585BF292857467D00FF77FD /* Change Card */,
 				95092094282E55DC00C4E573 /* Choose Subscription */,
 				950920A0282E55DC00C4E573 /* Active Subscription */,
@@ -608,6 +610,9 @@
 		95795B6828531AFE00634754 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				95C5FDF02860C9DF00984F2F /* History Trips */,
+				95C5FDEF2860C9DA00984F2F /* Debet */,
+				95C5FDEE2860C9BE00984F2F /* User */,
 				95795B7028531F7700634754 /* Subscriptions */,
 				95795B6928531B0B00634754 /* Api Client */,
 			);
@@ -625,15 +630,11 @@
 		95795B7028531F7700634754 /* Subscriptions */ = {
 			isa = PBXGroup;
 			children = (
-				95795B7128531F9100634754 /* M_SubscriptionInfo.swift */,
-				95A41D082854B4E300637FA6 /* M_DebtInfo.swift */,
-				95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */,
+				95795B7128531F9100634754 /* M_Subscription.swift */,
 				95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */,
 				95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */,
-				95C057D42855151300CEDBE3 /* M_CurrentSubInfo.swift */,
+				95C057D42855151300CEDBE3 /* M_AuthInfo.swift */,
 				95574F592856398200CA934F /* M_PayStatusResponse.swift */,
-				959DAD40285A45AB005D3344 /* M_UserInfoResponse.swift */,
-				953822F7285B2C2E00F0915C /* M_UserKey.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -664,13 +665,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9585BF3228576DDC00FF77FD /* Linking Subscription */ = {
+		9585BF3228576DDC00FF77FD /* Result Screen */ = {
 			isa = PBXGroup;
 			children = (
 				9585BF3428576DFE00FF77FD /* View */,
 				9585BF3328576DF800FF77FD /* Controller */,
 			);
-			path = "Linking Subscription";
+			path = "Result Screen";
 			sourceTree = "<group>";
 		};
 		9585BF3328576DF800FF77FD /* Controller */ = {
@@ -751,6 +752,32 @@
 				95C057D128550D9700CEDBE3 /* SupportCell.xib */,
 			);
 			path = SupportCell;
+			sourceTree = "<group>";
+		};
+		95C5FDEE2860C9BE00984F2F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				953822F7285B2C2E00F0915C /* M_UserCardRequest.swift */,
+				95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */,
+				959DAD40285A45AB005D3344 /* M_UserInfoResponse.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		95C5FDEF2860C9DA00984F2F /* Debet */ = {
+			isa = PBXGroup;
+			children = (
+				95A41D082854B4E300637FA6 /* M_DebtInfo.swift */,
+			);
+			path = Debet;
+			sourceTree = "<group>";
+		};
+		95C5FDF02860C9DF00984F2F /* History Trips */ = {
+			isa = PBXGroup;
+			children = (
+				95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */,
+			);
+			path = "History Trips";
 			sourceTree = "<group>";
 		};
 		AEF68435CC216EBF4EA7DF96 /* Pods */ = {
@@ -984,12 +1011,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				950920D2282E55DC00C4E573 /* M_MakeMySubRow.swift in Sources */,
-				953822F8285B2C2E00F0915C /* M_UserKey.swift in Sources */,
+				953822F8285B2C2E00F0915C /* M_UserCardRequest.swift in Sources */,
 				950920CA282E55DC00C4E573 /* Ext+UIView.swift in Sources */,
 				950920C6282E55DC00C4E573 /* Ext+UIFont.swift in Sources */,
 				950920D5282E55DC00C4E573 /* M_SubSectionRow.swift in Sources */,
 				950920CB282E55DC00C4E573 /* Ext+UILabel.swift in Sources */,
 				950920D9282E55DC00C4E573 /* M_ActiveSubView.swift in Sources */,
+				95C5FDED2860C9B000984F2F /* M_UserCardResponse.swift in Sources */,
 				951C42D72858A32800DA975A /* DescriptionCell.swift in Sources */,
 				950920D0282E55DC00C4E573 /* M_ChooseSubController.swift in Sources */,
 				950920D6282E55DC00C4E573 /* M_ChooseSubView.swift in Sources */,
@@ -1025,9 +1053,9 @@
 				9533A5FC285B731B00D77375 /* M_EmptyCell.swift in Sources */,
 				950920CC282E55DC00C4E573 /* Ext+UIImage.swift in Sources */,
 				950920C9282E55DC00C4E573 /* Ext+UIViewController.swift in Sources */,
-				95795B7228531F9100634754 /* M_SubscriptionInfo.swift in Sources */,
+				95795B7228531F9100634754 /* M_Subscription.swift in Sources */,
 				950920C7282E55DC00C4E573 /* Ext+UIStackView.swift in Sources */,
-				95C057D52855151300CEDBE3 /* M_CurrentSubInfo.swift in Sources */,
+				95C057D52855151300CEDBE3 /* M_AuthInfo.swift in Sources */,
 				950920E4282E55DC00C4E573 /* M_TitleHeader.swift in Sources */,
 				950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */,
 				95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */,

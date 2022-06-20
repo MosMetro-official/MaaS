@@ -8,7 +8,7 @@
 import UIKit
 import CoreTableView
 
-class M_ActiveSubController: UIViewController {
+public class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
     
@@ -21,7 +21,10 @@ class M_ActiveSubController: UIViewController {
         }
     }
     
-    private var needReload: Bool = false {
+    public var onDismiss: (() -> Void)?
+    public var keyCard: M_UserCardResponse?
+    
+    var needReload: Bool = false {
         didSet {
             fetchUserInfo()
         }
@@ -35,18 +38,22 @@ class M_ActiveSubController: UIViewController {
         
     var handleClose: (() -> Void)?
     
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         self.view = nestedView
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserInfo()
-        setupBackButton()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "backButton"), style: .plain, target: self, action: #selector(addTapped))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    @objc func addTapped() {
+        onDismiss?()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
@@ -69,9 +76,17 @@ class M_ActiveSubController: UIViewController {
 //            }
 //        }
         dispatchGroup.enter()
-        M_UserInfo.fetchShortUserInfo { result in
+        M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
+                switch userInfo.payment?.status?.status {
+                case .active, .expired:
+                    self.fetchUserInfo()
+                case .processing, .created:
+                    self.fetchUserInfo()
+                default:
+                    self.showError(with: "Error", and: "Canceled")
+                }
                 self.userInfo = userInfo
                 dispatchGroup.leave()
             case .failure(let error):
@@ -182,7 +197,7 @@ extension M_ActiveSubController {
         }
         guard let limit = userInfo?.keyChangeLeft, let maskedPan = userInfo?.maskedPan else { return [] }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
-            cardImage: sub.payment?.card?.paySystem?.rawValue.lowercased() ?? "visa",
+            cardImage: sub.paySystem ?? .unknown,
             cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",

@@ -105,8 +105,10 @@ class M_BuySubView: UIView {
             self.tableView.viewStateInput = viewState.state
         case .loading(let loading):
             self.showLoading(on: self, data: loading)
+            self.removeError(from: self)
         case .error(let error):
             self.showError(on: self, data: error)
+            self.removeLoading(from: self)
         }
         self.tableView.viewStateInput = viewState.state
     }
