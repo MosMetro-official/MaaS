@@ -42,9 +42,9 @@ extension _TariffInfo {
 
 class M_TariffInfoCell: UITableViewCell {
 
-    @IBOutlet weak var transportTitleLabel: UILabel!
-    @IBOutlet weak var tariffLabel: UILabel!
-    @IBOutlet weak var gradientProgress: GradientProgressView!
+    @IBOutlet private weak var transportTitleLabel: UILabel!
+    @IBOutlet private weak var tariffLabel: UILabel!
+    @IBOutlet private weak var gradientProgress: GradientProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,14 +20,9 @@ struct M_HistoryTrips {
         self.trip = trip
     }
     
-    static func fetchHistoryTrips(by limit: Int, and offset: Int, from: String, to: String, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
+    static func fetchHistoryTrips(by limit: Int, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
         let client = APIClient.authClient
-        let query = [
-            "limit": "\(limit)",
-            "offset": "\(offset)",
-            "from": "\(from)",
-            "to": "\(to)"
-        ]
+        let query = ["limit": "\(limit)"]
         client.send(.GET(path: "/api/user/v1/trips", query: query)) { result in
             switch result {
             case .success(let response):

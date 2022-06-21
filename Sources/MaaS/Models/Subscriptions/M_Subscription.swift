@@ -25,7 +25,7 @@ public struct M_Subscription {
     public let name: M_Description?
     public let description: M_Description?
     public let duration: Int
-    public let services: [M_Tariff]
+    public let tariffs: [M_Tariff]
     public let serviceId: String?
     public let valid: M_Valid?
     public let status: Status?
@@ -36,7 +36,7 @@ public struct M_Subscription {
         self.name = M_Description(data: data["name"])
         self.description = M_Description(data: data["description"])
         self.duration = data["duration"].intValue
-        self.services = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
+        self.tariffs = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
         self.serviceId = data["serviceId"].stringValue
         self.valid = M_Valid(data: data["valid"])
         self.status = Status(rawValue: data["status"].stringValue)
@@ -112,11 +112,29 @@ public struct M_Tariff {
         self.valid = M_Valid(data: data["valid"])
         self.status = Status(rawValue: status)
     }
+    
+    public func validImageUrl() -> URL? {
+        var valid = imageURL.replacingOccurrences(of: "\\", with: "")
+        if let p = valid.firstIndex(of: "p") {
+            let index = valid.index(after: p)
+            valid.insert("s", at: index)
+        }
+        guard let url = URL(string: valid) else { return nil }
+        return url
+    }
 }
 
 public struct M_Trip {
+    
+    public enum TripType: String {
+        case amount = "AMOUNT"
+        case time = "TIME"
+        case distance = "DISTANCE"
+        case count = "COUNT"
+    }
+    
     public let count: Int
-    public let type: String
+    public let type: TripType?
     public let single: Int
     public let total: Int
     
@@ -127,7 +145,7 @@ public struct M_Trip {
             let single = data["single"].int,
             let total = data["total"].int else { return nil }
         self.count = count
-        self.type = type
+        self.type = TripType(rawValue: type)
         self.single = single
         self.total = total
     }

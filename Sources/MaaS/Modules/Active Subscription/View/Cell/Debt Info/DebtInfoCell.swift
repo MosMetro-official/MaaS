@@ -34,13 +34,12 @@ class DebtInfoCell: UITableViewCell {
     
     var onButtonTapped: Command<Void>?
 
-    @IBOutlet weak var moreButton: UIButton!
-    @IBOutlet weak var debtLabel: UILabel!
+    @IBOutlet private weak var moreButton: UIButton!
+    @IBOutlet private weak var debtLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         moreButton.titleLabel?.font = Appearance.getFont(.more)
-        moreButton.layer.cornerRadius = 15
     }
 
     @IBAction func moreButtonPressed() {
@@ -51,5 +50,4 @@ class DebtInfoCell: UITableViewCell {
         debtLabel.text = data.totalDebt
         onButtonTapped = data.onButton
     }
-    
 }

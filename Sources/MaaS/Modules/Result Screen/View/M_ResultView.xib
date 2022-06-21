@@ -69,6 +69,11 @@
                             <state key="normal" title="Еще раз о том, как пользоваться">
                                 <color key="titleColor" name="primaryText"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="actionButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="5E2-e6-fLh"/>
                             </connections>
@@ -84,6 +89,11 @@
                             <state key="normal" title="Закрыть">
                                 <color key="titleColor" name="background"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="closeButtonPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="6e3-OB-oXk"/>
                             </connections>

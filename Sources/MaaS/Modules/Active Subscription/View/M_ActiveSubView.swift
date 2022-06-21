@@ -86,29 +86,26 @@ class M_ActiveSubView: UIView {
         }
     }
     
-    @IBOutlet weak var tableView: BaseTableView!
+    @IBOutlet private weak var tableView: BaseTableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
     }
     
     private func render() {
         switch viewState.dataState {
         case .loading(let loading):
-            self.removeError(from: self)
-            self.showLoading(on: self, data: loading)
+            removeError(from: self)
+            showLoading(on: self, data: loading)
         case .loaded:
-            self.removeError(from: self)
-            self.removeLoading(from: self)
+            removeError(from: self)
+            removeLoading(from: self)
             tableView.viewStateInput = viewState.state
         case .error(let error):
-            self.removeLoading(from: self)
-            self.showError(on: self, data: error)
+            removeLoading(from: self)
+            showError(on: self, data: error)
         }
     }
-    
 }

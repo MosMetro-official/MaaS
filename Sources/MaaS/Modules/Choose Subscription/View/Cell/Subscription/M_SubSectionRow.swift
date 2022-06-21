@@ -40,19 +40,20 @@ extension _SubSectionRow {
 
 class M_SubSectionRow: UITableViewCell {
     
-    var gradient: CAGradientLayer?
-    var gradientHeight: CGFloat?
-    var tariffs: [M_Tariff]? {
+    private var gradient: CAGradientLayer?
+    private var gradientHeight: CGFloat?
+    
+    private var tariffs: [M_Tariff]? {
         didSet {
             setupStackView(with: tariffs ?? [])
         }
     }
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var selectImage: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var selectImage: UIImageView!
+    @IBOutlet private weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

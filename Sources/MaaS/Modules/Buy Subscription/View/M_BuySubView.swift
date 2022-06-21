@@ -12,15 +12,15 @@ class M_BuySubView: UIView {
 
     struct ViewState {
         
+        let state: [State]
+        let dataState: DataState
+        let linkCardCommand: Command<Void>?
+        
         enum DataState {
             case loaded
             case loading(_Loading)
             case error(_Error)
         }
-        
-        let state: [State]
-        let dataState: DataState
-        let linkCardCommand: Command<Void>?
         
         struct Loading: _Loading {
             let title: String
@@ -58,9 +58,9 @@ class M_BuySubView: UIView {
         }
     }
     
-    @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var tableView: BaseTableView!
-    @IBOutlet weak var payButton: UIButton!
+    @IBOutlet private weak var titleLabel: GradientLabel!
+    @IBOutlet private weak var tableView: BaseTableView!
+    @IBOutlet private weak var payButton: UIButton!
     
     private var buttonGradient: CAGradientLayer?
     
@@ -68,9 +68,6 @@ class M_BuySubView: UIView {
         super.awakeFromNib()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
         payButton.titleLabel?.font = Appearance.getFont(.button)
         addHorizontalGradientLayer()
@@ -100,16 +97,15 @@ class M_BuySubView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            self.removeError(from: self)
-            self.removeLoading(from: self)
-            self.tableView.viewStateInput = viewState.state
+            removeError(from: self)
+            removeLoading(from: self)
+            tableView.viewStateInput = viewState.state
         case .loading(let loading):
-            self.showLoading(on: self, data: loading)
-            self.removeError(from: self)
+            showLoading(on: self, data: loading)
+            removeError(from: self)
         case .error(let error):
-            self.showError(on: self, data: error)
-            self.removeLoading(from: self)
+            showError(on: self, data: error)
+            removeLoading(from: self)
         }
-        self.tableView.viewStateInput = viewState.state
     }
 }

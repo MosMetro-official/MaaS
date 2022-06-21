@@ -33,7 +33,7 @@
                         <color key="textColor" name="debt"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="debtText"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="debt"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRe-vw-ijP">
@@ -46,6 +46,11 @@
                         <color key="tintColor" name="content"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="ПОДРОБНЕЕ"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="moreButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tmb-m7-sXv"/>
                         </connections>

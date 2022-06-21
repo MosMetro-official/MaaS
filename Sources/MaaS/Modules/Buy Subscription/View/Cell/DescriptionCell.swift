@@ -16,7 +16,7 @@ protocol _DescriptionCell: CellData {
 
 extension _DescriptionCell {
     func hashValues() -> [Int] {
-        return [title.hashValue, descr.hashValue]
+        return [title.hashValue, descr.hashValue, image.hashValue]
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
@@ -33,10 +33,9 @@ extension _DescriptionCell {
 
 class DescriptionCell: UITableViewCell {
     
-    
-    @IBOutlet weak var imageLogo: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descrLabel: UILabel!
+    @IBOutlet private weak var imageLogo: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descrLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,6 +12,8 @@ class M_TripsHistoryController: UIViewController {
     
     private let nestedView = M_TripsHistoryView.loadFromNib()
     
+    private var limit = 15
+    
     private var trips: [M_HistoryTrips] = [] {
         didSet {
             makeState()
@@ -30,15 +32,16 @@ class M_TripsHistoryController: UIViewController {
         ]
         title = "История поездок"
         setupBackButton()
-        fetchUserHistoryTrips()
+        fetchUserHistoryTrips(by: limit)
     }
     
-    private func fetchUserHistoryTrips() {
+    private func fetchUserHistoryTrips(by limit: Int) {
         self.showLoading()
-        M_HistoryTrips.fetchHistoryTrips(by: 15, and: 0, from: "", to: "") { result in
+        M_HistoryTrips.fetchHistoryTrips(by: limit) { result in
             switch result {
             case .success(let trips):
                 self.trips = trips
+                self.limit *= 2 // for load more button
             case.failure(let error):
                 self.showError(with: error.errorTitle, and: error.errorDescription)
             }
@@ -52,7 +55,7 @@ class M_TripsHistoryController: UIViewController {
     
     private func showError(with title: String, and descr: String) {
         let onRetry = Command {
-            self.fetchUserHistoryTrips()
+            self.fetchUserHistoryTrips(by: self.limit)
         }
         let onClose = Command {
             self.navigationController?.popViewController(animated: true)

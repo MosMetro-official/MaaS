@@ -11,6 +11,7 @@ import CoreTableView
 class M_ChooseSubView: UIView {
 
     struct ViewState {
+        
         let state: [State]
         let dataState: DataState
         let payButtonEnable: Bool
@@ -64,32 +65,29 @@ class M_ChooseSubView: UIView {
         }
     }
     
-    @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var changeLabel: UILabel!
-    @IBOutlet weak var tableView: BaseTableView!
-    @IBOutlet weak var payButton: UIButton!
+    @IBOutlet private weak var titleLabel: GradientLabel!
+    @IBOutlet private weak var changeLabel: UILabel!
+    @IBOutlet private weak var tableView: BaseTableView!
+    @IBOutlet private weak var payButton: UIButton!
     
     private func hide() {
-        self.titleLabel.isHidden = true
-        self.changeLabel.isHidden = true
-        self.payButton.isHidden = true
+        titleLabel.isHidden = true
+        changeLabel.isHidden = true
+        payButton.isHidden = true
     }
     
     private func show() {
-        self.titleLabel.isHidden = false
-        self.changeLabel.isHidden = false
+        titleLabel.isHidden = false
+        changeLabel.isHidden = false
     }
     
     private var buttonGradient: CAGradientLayer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.hide()
+        hide()
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
         addHorizontalGradientLayer()
     }
@@ -116,20 +114,20 @@ class M_ChooseSubView: UIView {
     }
     
     private func render() {
-        self.payButton.isHidden = !viewState.payButtonEnable
-        self.payButton.titleLabel?.font = Appearance.customFonts[.button]
-        self.payButton.setTitle(viewState.payButtonTitle, for: .normal)
-        self.tableView.viewStateInput = viewState.state
+        payButton.isHidden = !viewState.payButtonEnable
+        payButton.titleLabel?.font = Appearance.customFonts[.button]
+        payButton.setTitle(viewState.payButtonTitle, for: .normal)
         switch viewState.dataState {
         case .loaded:
-            self.removeLoading(from: self)
-            self.removeError(from: self)
-            self.show()
+            removeLoading(from: self)
+            removeError(from: self)
+            show()
+            tableView.viewStateInput = viewState.state
         case .loading(let data):
-            self.removeError(from: self)
+            removeError(from: self)
             showLoading(on: self, data: data)
         case .error(let data):
-            self.removeLoading(from: self)
+            removeLoading(from: self)
             showError(on: self, data: data)
         }
     }

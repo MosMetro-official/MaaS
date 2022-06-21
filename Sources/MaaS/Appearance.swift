@@ -50,6 +50,8 @@ public enum FontTextStyle: String {
 }
 
 public final class Appearance: _Appearance {
+    
+    //TODO: - struct MaaSSettings
 
     static var customFonts: [FontTextStyle: UIFont] = [
         .navTitle: UIFont(name: "MoscowSans-Medium", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .medium),

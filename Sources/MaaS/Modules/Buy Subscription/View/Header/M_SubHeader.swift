@@ -28,8 +28,8 @@ extension _SubHeader {
 
 class M_SubHeader: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
     
     public func configure(with data: _SubHeader) {
         titleLabel.text = data.title

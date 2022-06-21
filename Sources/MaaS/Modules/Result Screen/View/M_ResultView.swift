@@ -9,16 +9,6 @@ import UIKit
 import CoreTableView
 
 class M_ResultView: UIView {
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var loadingTitleLabel: UILabel!
-    @IBOutlet weak var loadingDescrLabel: UILabel!
-    
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var resultTitleLabel: UILabel!
-    @IBOutlet weak var resultDescrLabel: UILabel!
-    
-    @IBOutlet weak var actionButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     
     struct ViewState {
                 
@@ -47,17 +37,26 @@ class M_ResultView: UIView {
             render()
         }
     }
+    
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var loadingTitleLabel: UILabel!
+    @IBOutlet private weak var loadingDescrLabel: UILabel!
+    
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var resultTitleLabel: UILabel!
+    @IBOutlet private weak var resultDescrLabel: UILabel!
+    
+    @IBOutlet private weak var actionButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         actionButton.titleLabel?.font = Appearance.getFont(.button)
         closeButton.titleLabel?.font = Appearance.getFont(.button)
-        actionButton.layer.cornerRadius = 10
-        closeButton.layer.cornerRadius = 10
     }
     
     @IBAction func actionButtonPressed() {
-        
+        viewState.onAction?.perform(with: ())
     }
     
     @IBAction func closeButtonPressed() {
@@ -107,5 +106,4 @@ class M_ResultView: UIView {
             prepareResultState()
         }
     }
-    
 }

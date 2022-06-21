@@ -11,6 +11,7 @@ import MaaS
 class MaaSCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cellTitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
@@ -54,19 +55,22 @@ class MaaSCell: UITableViewCell {
     }
     
     private func setVisionAlpha() {
-        self.titleLabel.alpha = 1
-        self.cellTitleLabel.alpha = 1
-        self.logoImage.alpha = 1
+        titleLabel.alpha = 1
+        dateLabel.alpha = 1
+        cellTitleLabel.alpha = 1
+        logoImage.alpha = 1
     }
     
     private func setHalvVisionAlpha() {
         titleLabel.alpha = 0.5
+        dateLabel.alpha = 0.5
         cellTitleLabel.alpha = 0.5
         logoImage.alpha = 0.5
     }
     
     private func showLabels() {
         titleLabel.isHidden = false
+        dateLabel.isHidden = false
         cellTitleLabel.isHidden = false
     }
     
@@ -77,6 +81,7 @@ class MaaSCell: UITableViewCell {
     public func loadConfigure() {
         setHalvVisionAlpha()
         button.isHidden = true
+        dateLabel.isHidden = true
         collectionView.isHidden = true
         logoImage.isHidden = true
         activity.startAnimating()
@@ -90,6 +95,7 @@ class MaaSCell: UITableViewCell {
         collectionView.isHidden = true
         self.action = action
         titleLabel.text = title
+        dateLabel.text = nil
         activity.stopAnimating()
         button.setTitle("Загрузить еще раз", for: .normal)
     }
@@ -104,8 +110,9 @@ class MaaSCell: UITableViewCell {
         collectionView.isHidden = false
         self.action = action
         guard let paySystem = user.paySystem?.rawValue else { return }
-        titleLabel.text = "\(paySystem) •••• \(user.maskedPan) до \(getCurrentDate(from: to))"
-        service = user.subscription?.services
+        titleLabel.text = "\(paySystem) •••• \(user.maskedPan)"
+        dateLabel.text = "До \(Utils.getCurrentDate(from: to))"
+        service = user.subscription?.tariffs
         activity.stopAnimating()
     }
     
@@ -116,6 +123,7 @@ class MaaSCell: UITableViewCell {
         button.isHidden = false
         collectionView.isHidden = true
         titleLabel.text = "Весь транспорт в одной подписке"
+        dateLabel.text = nil
         self.action = action
         activity.stopAnimating()
         button.setTitle("Попробовать", for: .normal)

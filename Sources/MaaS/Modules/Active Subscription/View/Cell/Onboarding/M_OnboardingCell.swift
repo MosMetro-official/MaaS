@@ -32,14 +32,16 @@ extension _Onboarding {
 
 class M_OnboardingCell: UITableViewCell {
     
-    @IBOutlet weak var onboardingLabel: UILabel!
-    @IBOutlet weak var historyLabel: UILabel!
+    @IBOutlet private weak var onboardingLabel: UILabel!
+    @IBOutlet private weak var historyLabel: UILabel!
     
-    var onboardTapped: Command<Void>?
-    var onHistoryTapped: Command<Void>?
+    private var onboardTapped: Command<Void>?
+    private var onHistoryTapped: Command<Void>?
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        onboardingLabel.setLineSpacing(lineSpacing: 5, lineHeightMultiple: 1)
+        historyLabel.setLineSpacing(lineSpacing: 5, lineHeightMultiple: 1)
         onboardingLabel.text = "Как это \nработает?"
         historyLabel.text = "История \nпоездок"
     }
@@ -56,5 +58,4 @@ class M_OnboardingCell: UITableViewCell {
         onboardTapped = data.onOnboardingSelect
         onHistoryTapped = data.onHistorySelect
     }
-    
 }

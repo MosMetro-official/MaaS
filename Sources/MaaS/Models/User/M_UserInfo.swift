@@ -1,5 +1,5 @@
 //
-//  M_UserInfoResponse.swift
+//  M_UserInfo.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 15.06.2022.
@@ -47,11 +47,11 @@ public struct M_UserInfo {
             switch result {
             case .success(let resposne):
                 let json = JSON(resposne.data)
-                guard let showUserInfo = M_UserInfo(data: json["data"]) else {
+                guard let userInfo = M_UserInfo(data: json["data"]) else {
                     completion(.failure(.badMapping))
                     return
                 }
-                completion(.success(showUserInfo))
+                completion(.success(userInfo))
                 return
             case .failure(let error):
                 completion(.failure(error))

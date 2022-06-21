@@ -47,21 +47,20 @@ class M_ChangeCardView: UIView {
         }
     }
 
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var cardNumberLabel: UILabel!
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var cardImageView: UIImageView!
+    @IBOutlet private weak var cardNumberLabel: UILabel!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descrLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descrLabel: UILabel!
     
-    @IBOutlet weak var changeCardButton: UIButton!
-    @IBOutlet weak var changeCardCountLabel: UILabel!
-    @IBOutlet weak var countLabelBottomConstarint: NSLayoutConstraint!
+    @IBOutlet private weak var changeCardButton: UIButton!
+    @IBOutlet private weak var changeCardCountLabel: UILabel!
+    @IBOutlet private weak var countLabelBottomConstarint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupLabels()
-        setupLayers()
     }
     
     @IBAction func onChangeButtonTapped() {
@@ -76,16 +75,11 @@ class M_ChangeCardView: UIView {
         changeCardButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
-    private func setupLayers() {
-        cardView.layer.cornerRadius = 10
-        changeCardButton.layer.cornerRadius = 10
-    }
-    
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            self.removeError(from: self)
-            self.removeLoading(from: self)
+            removeError(from: self)
+            removeLoading(from: self)
             cardView.backgroundColor = UIColor.getCardHolderColor(for: viewState.cardType)
             cardImageView.image = UIImage.getCardHolderImage(for: viewState.cardType)
             cardNumberLabel.text = "•••• \(viewState.cardNumber)"
@@ -95,11 +89,11 @@ class M_ChangeCardView: UIView {
                 countLabelBottomConstarint.constant = -changeCardButton.frame.height
             }
         case .loading(let loading):
-            self.removeError(from: self)
-            self.showLoading(on: self, data: loading)
+            removeError(from: self)
+            showLoading(on: self, data: loading)
         case .error(let error):
-            self.removeLoading(from: self)
-            self.showError(on: self, data: error)
+            removeLoading(from: self)
+            showError(on: self, data: error)
         }
     }
 }

@@ -9,9 +9,7 @@ import UIKit
 import CoreTableView
 
 class M_TripsHistoryView: UIView {
-    
-    @IBOutlet weak var tableView: BaseTableView!
-    
+        
     struct ViewState {
         
         enum DataState {
@@ -57,6 +55,8 @@ class M_TripsHistoryView: UIView {
         }
     }
     
+    @IBOutlet private weak var tableView: BaseTableView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -65,15 +65,15 @@ class M_TripsHistoryView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            self.removeError(from: self)
-            self.removeLoading(from: self)
-            self.tableView.viewStateInput = viewState.state
+            removeError(from: self)
+            removeLoading(from: self)
+            tableView.viewStateInput = viewState.state
         case .loading(let loading):
-            self.removeError(from: self)
-            self.showLoading(on: self, data: loading)
+            removeError(from: self)
+            showLoading(on: self, data: loading)
         case .error(let error):
-            self.removeLoading(from: self)
-            self.showError(on: self, data: error)
+            removeLoading(from: self)
+            showError(on: self, data: error)
         }
     }
     

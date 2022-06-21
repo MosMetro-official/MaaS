@@ -40,6 +40,11 @@
                         <constraint firstItem="L0M-tG-HDf" firstAttribute="leading" secondItem="evG-m5-Db1" secondAttribute="leading" constant="24" id="sbB-wd-t4y"/>
                         <constraint firstAttribute="bottom" secondItem="L0M-tG-HDf" secondAttribute="bottom" constant="16" id="ui6-gv-Vhf"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Эта карта сейчас привязана к вашей подписке “Мультитранспорт” " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBc-b3-Wuz">
                     <rect key="frame" x="20" y="265" width="374" height="41"/>
@@ -70,6 +75,11 @@
                     <state key="normal" title="Сменить карту">
                         <color key="titleColor" name="background"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="onChangeButtonTapped" destination="iN0-l3-epB" eventType="touchUpInside" id="Fkv-zT-jH5"/>
                     </connections>

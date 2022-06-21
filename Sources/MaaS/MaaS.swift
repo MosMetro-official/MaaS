@@ -4,8 +4,9 @@ import MMCoreNetworkCallbacks
 public class MaaS {
     
     public enum ErrorDescription: String {
-        case ended = "Срок действия вашей подписки закончился"
-        case cancel = "Ваша подписка была аннулирована"
+        case ended = "Срок действия вашей подписки закончился 🤔"
+        case cancel = "Ваша подписка была аннулирована 🥸"
+        case error = "Ошибочка 😢. Не удалось обновить токен"
     }
     
     internal var bundle: Bundle {
@@ -24,7 +25,7 @@ public class MaaS {
     
     public weak var networkDelegate: MaaSNetworkDelegate?
     
-    public var token: String? = "XvkehxFWLkrf1qzOrXyJxV9K2VIahwlXPRFjxJeg9ws"
+    public var token: String? = "YH7AJcZ2NGr4Mi7hL2C5MTldxvqgXoqE8klS4maW7RM"
     
     public var userHasSub: Bool = false
     public var apiError: APIError?
@@ -75,7 +76,7 @@ public class MaaS {
                 }
             case .failure(let error):
                 self.apiError = error
-                completion(nil, error.failureReason)
+                completion(nil, ErrorDescription.error.rawValue)
             }
         }
     }

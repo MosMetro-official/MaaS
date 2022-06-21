@@ -14,7 +14,7 @@ class M_ResultController: UIViewController {
     enum ResultModel {
         case successSub(M_Subscription)
         case failureSub
-        case successCard(M_UserCardResponse)
+        case successCard(M_UserInfo)
         case failureCard
         case none
     }
@@ -52,11 +52,11 @@ class M_ResultController: UIViewController {
         case .none:
             break
         case .failureSub:
-            let onAction = Command {
+            let onAction = Command { [weak self] in
                 // send form
             }
-            let onClose = Command {
-                self.navigationController?.popViewController(animated: true)
+            let onClose = Command { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
             }
             let error = M_ResultView.ViewState.Action(
                 title: "Что-то пошло не так",
@@ -71,11 +71,13 @@ class M_ResultController: UIViewController {
             )
         case .successSub(let sub):
             guard let subName = sub.name?.ru else { return }
-            let onAction = Command {
+            let onAction = Command { [weak self] in
                 // open onboarding
             }
-            let onClose = Command {
+            let onClose = Command { [weak self] in
+                guard let self = self else { return }
                 let activeSubController = M_ActiveSubController()
+                activeSubController.needReload = true
                 self.navigationController?.viewControllers[0] = activeSubController
                 self.navigationController?.popToRootViewController(animated: true)
             }
@@ -90,15 +92,16 @@ class M_ResultController: UIViewController {
                 onAction: onAction,
                 onClose: onClose
             )
-        case .successCard(let keyCard):
-            let onAction = Command {
-                // send form
+        case .successCard(let userInfo):
+            let onAction = Command { [weak self] in
+                // show onboarding
             }
             let onClose = Command { [weak self] in
                 guard
                     let self = self,
                     let firstVC = self.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
-                firstVC.keyCard = keyCard
+                firstVC.userInfo = userInfo
+                firstVC.needReload = true
                 self.navigationController?.popToRootViewController(animated: true)
             }
             let success = M_ResultView.ViewState.Action(
@@ -116,8 +119,8 @@ class M_ResultController: UIViewController {
             let onAction = Command {
                 // send form
             }
-            let onClose = Command {
-                self.navigationController?.popViewController(animated: true)
+            let onClose = Command { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
             }
             let error = M_ResultView.ViewState.Action(
                 title: "Что-то пошло не так",

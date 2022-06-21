@@ -21,7 +21,7 @@ extension _HeaderTableCell {
 
 class M_HeaderTableCell: UITableViewCell {
     //TODO: header
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

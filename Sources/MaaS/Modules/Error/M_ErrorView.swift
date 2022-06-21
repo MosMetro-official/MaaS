@@ -17,13 +17,13 @@ protocol _Error {
 
 class M_ErrorView: UIView {
     
-    var onRetry: Command<Void>?
-    var onClose: Command<Void>?
+    private var onRetry: Command<Void>?
+    private var onClose: Command<Void>?
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descrLabel: UILabel!
-    @IBOutlet weak var retryButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descrLabel: UILabel!
+    @IBOutlet private weak var retryButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

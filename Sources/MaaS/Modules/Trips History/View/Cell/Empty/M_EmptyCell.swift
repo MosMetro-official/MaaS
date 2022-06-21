@@ -22,7 +22,7 @@ class M_EmptyCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
 }

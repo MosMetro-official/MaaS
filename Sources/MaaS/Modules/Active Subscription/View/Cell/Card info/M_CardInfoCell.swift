@@ -39,10 +39,10 @@ extension _CardInfo {
 
 class M_CardInfoCell: UITableViewCell {
     
-    @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var cardNumberLabel: UILabel!
-    @IBOutlet weak var cardDescriptionLabel: UILabel!
-    @IBOutlet weak var leftCountLabel: UILabel!
+    @IBOutlet private weak var cardImage: UIImageView!
+    @IBOutlet private weak var cardNumberLabel: UILabel!
+    @IBOutlet private weak var cardDescriptionLabel: UILabel!
+    @IBOutlet private weak var leftCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,5 +55,4 @@ class M_CardInfoCell: UITableViewCell {
         cardDescriptionLabel.text = data.cardDescription
         leftCountLabel.text = data.leftCountChangeCard
     }
-    
 }

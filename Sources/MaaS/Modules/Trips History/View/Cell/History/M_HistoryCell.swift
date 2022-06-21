@@ -37,9 +37,9 @@ extension _History {
 
 class M_HistoryCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var logoImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,5 +51,4 @@ class M_HistoryCell: UITableViewCell {
         dateLabel.text = data.date
         logoImage.image = data.image
     }
-    
 }

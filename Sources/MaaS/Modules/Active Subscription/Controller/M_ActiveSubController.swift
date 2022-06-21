@@ -22,11 +22,13 @@ public class M_ActiveSubController: UIViewController {
     }
     
     public var onDismiss: (() -> Void)?
-    public var keyCard: M_UserCardResponse?
     
-    var needReload: Bool = false {
+    var needReload: Bool? {
         didSet {
-            fetchUserInfo()
+            guard let reload = needReload else { return }
+            if reload {
+                fetchUserInfo()
+            }
         }
     }
     
@@ -35,9 +37,7 @@ public class M_ActiveSubController: UIViewController {
             makeState()
         }
     }
-        
-    var handleClose: (() -> Void)?
-    
+            
     public override func loadView() {
         super.loadView()
         self.view = nestedView
@@ -46,11 +46,7 @@ public class M_ActiveSubController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserInfo()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "backButton"), style: .plain, target: self, action: #selector(addTapped))
-    }
-    
-    @objc func addTapped() {
-        onDismiss?()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(addTapped))
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -61,11 +57,15 @@ public class M_ActiveSubController: UIViewController {
         title = "Подписка"
     }
     
+    @objc private func addTapped() {
+        onDismiss?()
+    }
+    
     private func fetchUserInfo() {
         showLoading()
         let dispatchGroup = DispatchGroup()
 //        dispatchGroup.enter()
-//        M_DebtInfo.getDebtInfo { result in
+//        M_DebtInfo.fetchDebtInfo { result in
 //            switch result {
 //            case .success(let debit):
 //                self.debit = debit
@@ -79,14 +79,6 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
-                switch userInfo.payment?.status?.status {
-                case .active, .expired:
-                    self.fetchUserInfo()
-                case .processing, .created:
-                    self.fetchUserInfo()
-                default:
-                    self.showError(with: "Error", and: "Canceled")
-                }
                 self.userInfo = userInfo
                 dispatchGroup.leave()
             case .failure(let error):
@@ -109,7 +101,7 @@ public class M_ActiveSubController: UIViewController {
             self?.fetchUserInfo()
         }
         let onClose = Command { [weak self] in
-            self?.handleClose?()
+            self?.onDismiss?()
         }
         let errorState = M_ActiveSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(errorState))
@@ -160,7 +152,7 @@ extension M_ActiveSubController {
             font: Appearance.getFont(.body)
         ) ?? 0
         guard let timeTo = sub.subscription?.valid?.to else { return [] }
-        let validDate = getCurrentDate(from: timeTo)
+        let validDate = Utils.getCurrentDate(from: timeTo)
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
             timeLeft: "Активна до \(validDate)",
@@ -188,11 +180,7 @@ extension M_ActiveSubController {
                 let self = self,
                 let navigation = self.navigationController else { return }
             let changeCardController = M_ChangeCardController()
-            changeCardController.cardInfo = sub.payment?.card
             changeCardController.userInfo = self.userInfo
-            changeCardController.didChangeCard = {
-                self.fetchUserInfo()
-            }
             navigation.pushViewController(changeCardController, animated: true)
         }
         guard let limit = userInfo?.keyChangeLeft, let maskedPan = userInfo?.maskedPan else { return [] }
@@ -218,21 +206,22 @@ extension M_ActiveSubController {
         )
         let tariffSection = M_ActiveSubView.ViewState.HeaderCell(height: tariffHeight + 24).toElement()
         elements.append(tariffSection)
-        sub.subscription?.services.forEach { service in
+        sub.subscription?.tariffs.forEach { tariff in
             var currentProgress: CGFloat? = nil
+            
             // расчет количества поездок
-            let titleHeight = service.name.ru.height(
+            let titleHeight = tariff.name.ru.height(
                 withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
             ) + 10
-            let typeHeight = service.description.ru.height(
+            let typeHeight = tariff.description.ru.height(
                 withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
             ) + 10
             let progressHeight: CGFloat = currentProgress == nil ? 0 : 23
             let tariffRow = M_ActiveSubView.ViewState.TariffInfo(
-                transportTitle: service.name.ru,
-                tariffType: service.description.ru,
+                transportTitle: tariff.name.ru,
+                tariffType: tariff.trip.countDescr,
                 showProgress: currentProgress != nil,
                 currentProgress: currentProgress,
                 height: titleHeight + typeHeight + progressHeight + 26
@@ -275,8 +264,10 @@ extension M_ActiveSubController {
         hasDebit.1 = total
         hasDebit.0 = total != 0
     }
-    
-    private func getCurrentDate(from string: String) -> String {
+}
+
+public struct Utils {
+    public static func getCurrentDate(from string: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         if let date = dateFormatter.date(from: string) {

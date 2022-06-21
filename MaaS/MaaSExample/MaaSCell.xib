@@ -27,19 +27,30 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подписка на транспорт" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suy-3E-FHc">
-                        <rect key="frame" x="46" y="15.5" width="201" height="21"/>
+                        <rect key="frame" x="46" y="16" width="201" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Весь транспорт в одной подписке" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssv-iz-dXO">
-                        <rect key="frame" x="16" y="53.5" width="337" height="40.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ET5-pm-ugH">
+                        <rect key="frame" x="16" y="53.5" width="337" height="49.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Весь транспорт в одной подписке" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssv-iz-dXO">
+                                <rect key="frame" x="0.0" y="0.0" width="273" height="49.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Весь транспорт в одной подписке" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giq-nI-nad">
+                                <rect key="frame" x="281" y="0.0" width="56" height="49.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsO-Mr-xxl">
-                        <rect key="frame" x="16" y="116" width="337" height="44"/>
+                        <rect key="frame" x="16" y="125" width="337" height="44"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="vrO-d5-j7o"/>
@@ -60,11 +71,8 @@
                         <rect key="frame" x="166" y="74" width="37" height="37"/>
                     </activityIndicatorView>
                     <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3U4-A5-mPD">
-                        <rect key="frame" x="0.0" y="112" width="369" height="63"/>
+                        <rect key="frame" x="0.0" y="120" width="369" height="55"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="63" id="s0D-z2-r73"/>
-                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p7I-MK-7rR">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -74,22 +82,22 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ssv-iz-dXO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2Y0-bl-ogo"/>
                     <constraint firstItem="LaT-Wr-Te2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="5bC-6d-rW4"/>
                     <constraint firstAttribute="bottom" secondItem="wsO-Mr-xxl" secondAttribute="bottom" constant="16" id="6Zc-UK-nzx"/>
                     <constraint firstAttribute="trailing" secondItem="3U4-A5-mPD" secondAttribute="trailing" id="8EQ-4E-dgB"/>
-                    <constraint firstAttribute="trailing" secondItem="Ssv-iz-dXO" secondAttribute="trailing" constant="16" id="9we-sy-fUM"/>
                     <constraint firstItem="8J2-AD-VMD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Eg5-0F-RTO"/>
                     <constraint firstAttribute="bottom" secondItem="3U4-A5-mPD" secondAttribute="bottom" constant="10" id="GAq-Vk-0ME"/>
                     <constraint firstAttribute="trailing" secondItem="wsO-Mr-xxl" secondAttribute="trailing" constant="16" id="HKX-be-9cX"/>
-                    <constraint firstItem="Ssv-iz-dXO" firstAttribute="top" secondItem="Suy-3E-FHc" secondAttribute="bottom" constant="17" id="RIj-tY-gda"/>
                     <constraint firstItem="wsO-Mr-xxl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Wo1-2A-Jll"/>
-                    <constraint firstItem="3U4-A5-mPD" firstAttribute="top" secondItem="Ssv-iz-dXO" secondAttribute="bottom" constant="18" id="a1S-K4-cxl"/>
                     <constraint firstItem="LaT-Wr-Te2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="a2v-Cm-BaW"/>
+                    <constraint firstItem="ET5-pm-ugH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="aeo-i4-HFQ"/>
+                    <constraint firstItem="wsO-Mr-xxl" firstAttribute="top" secondItem="ET5-pm-ugH" secondAttribute="bottom" constant="22" id="ejn-Ep-GP0"/>
                     <constraint firstItem="8J2-AD-VMD" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hPb-vp-RmQ"/>
                     <constraint firstItem="Suy-3E-FHc" firstAttribute="leading" secondItem="LaT-Wr-Te2" secondAttribute="trailing" constant="8" id="ig5-bg-XkN"/>
-                    <constraint firstItem="wsO-Mr-xxl" firstAttribute="top" secondItem="Ssv-iz-dXO" secondAttribute="bottom" constant="22" id="nVC-gK-cpW"/>
+                    <constraint firstItem="ET5-pm-ugH" firstAttribute="top" secondItem="Suy-3E-FHc" secondAttribute="bottom" constant="17" id="kNY-SH-4J3"/>
+                    <constraint firstItem="3U4-A5-mPD" firstAttribute="top" secondItem="ET5-pm-ugH" secondAttribute="bottom" constant="17" id="uAf-a6-5cY"/>
                     <constraint firstItem="3U4-A5-mPD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="w5F-ci-qk7"/>
+                    <constraint firstAttribute="trailing" secondItem="ET5-pm-ugH" secondAttribute="trailing" constant="16" id="wU3-wf-pDT"/>
                     <constraint firstItem="Suy-3E-FHc" firstAttribute="centerY" secondItem="LaT-Wr-Te2" secondAttribute="centerY" id="xNc-dG-a4b"/>
                 </constraints>
             </tableViewCellContentView>
@@ -100,6 +108,7 @@
                 <outlet property="button" destination="wsO-Mr-xxl" id="Wno-37-Ch4"/>
                 <outlet property="cellTitleLabel" destination="Suy-3E-FHc" id="Mrg-XN-PAW"/>
                 <outlet property="collectionView" destination="3U4-A5-mPD" id="hF3-ld-2Vh"/>
+                <outlet property="dateLabel" destination="giq-nI-nad" id="dpl-Yx-wgV"/>
                 <outlet property="logoImage" destination="LaT-Wr-Te2" id="QFi-QW-x24"/>
                 <outlet property="titleLabel" destination="Ssv-iz-dXO" id="cos-ea-VTh"/>
             </connections>
@@ -110,6 +119,9 @@
         <image name="infinity.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
