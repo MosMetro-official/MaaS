@@ -9,9 +9,7 @@ import UIKit
 import CoreTableView
 
 public class M_ChooseSubController: UIViewController {
-    
-    public var onDismiss: (() -> Void)?
-    
+        
     private let nestedView = M_ChooseSubView.loadFromNib()
     
     private var subscriptions: [M_Subscription] = [] {
@@ -39,7 +37,7 @@ public class M_ChooseSubController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         loadSubscriptions()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(close))
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -56,8 +54,8 @@ public class M_ChooseSubController: UIViewController {
         ]
     }
     
-    @objc private func addTapped() {
-        onDismiss?()
+    @objc private func close() {
+        self.dismiss(animated: true)
     }
     
     private func loadSubscriptions() {
@@ -77,7 +75,7 @@ public class M_ChooseSubController: UIViewController {
             self?.loadSubscriptions()
         }
         let onClose = Command { [weak self] in
-            self?.onDismiss?()
+            self?.dismiss(animated: true)
         }
         let error = M_ChooseSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)

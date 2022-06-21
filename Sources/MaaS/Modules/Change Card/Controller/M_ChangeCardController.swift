@@ -10,7 +10,7 @@ import CoreTableView
 import SafariServices
 
 class M_ChangeCardController: UIViewController {
-    
+        
     public var userInfo: M_UserInfo?
     private var keyResponse: M_UserCardResponse?
     private var safariController: SFSafariViewController?
@@ -46,7 +46,12 @@ class M_ChangeCardController: UIViewController {
     @objc private func handleSuccessChange() {
         self.showLoading(with: "Меняем номер вашей карты...")
         hidePaymentController {
-            self.checkStatusOfUser()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let resultController = M_ResultController()
+                guard let userInfo = self.userInfo else { return }
+                resultController.resultModel = .successCard(userInfo)
+                self.navigationController?.pushViewController(resultController, animated: true)
+            }
         }
     }
     
@@ -58,42 +63,13 @@ class M_ChangeCardController: UIViewController {
     }
     
     @objc private func handleCanceledChange() {
+        self.showLoading(with: "Меняем номер вашей карты...")
         hidePaymentController {
-            self.showLoading(with: "Меняем номер вашей карты...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 let resultController = M_ResultController()
                 resultController.resultModel = .failureCard
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
-        }
-    }
-    
-    private func checkStatusOfUser() {
-        M_UserInfo.fetchUserInfo { result in
-            switch result {
-            case .success(let userInfo):
-                switch userInfo.payment?.status?.status {
-                case .processing, .created, .preauth:
-                    self.checkStatusOfUser()
-                case .active:
-                    self.showSuccessResult()
-                case .expired, .canceled, .undefined, .declined, .authCanceled, .hold:
-                    self.showError(with: "Что-то пошло не так", and: "Мы откланили ваш платеж.")
-                default:
-                    break
-                }
-            case .failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
-            }
-        }
-    }
-    
-    private func showSuccessResult() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let resultController = M_ResultController()
-            guard let userInfo = self.userInfo else { return }
-            resultController.resultModel = .successCard(userInfo)
-            self.navigationController?.pushViewController(resultController, animated: true)
         }
     }
     

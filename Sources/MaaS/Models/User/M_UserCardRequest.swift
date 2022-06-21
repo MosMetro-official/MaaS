@@ -9,7 +9,7 @@ import Foundation
 import MMCoreNetworkCallbacks
 
 
-struct M_UserCardRequest {
+public struct M_UserCardRequest {
     let payData: M_PayData
     
     func createRequestBody() -> [String: Any] {
@@ -20,7 +20,7 @@ struct M_UserCardRequest {
     }
 }
 
-struct M_PayData {
+public struct M_PayData {
     let tranId: String
     let price: String
     let redirectUrl: M_RedirectUrl

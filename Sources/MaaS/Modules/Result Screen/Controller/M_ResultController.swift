@@ -92,7 +92,7 @@ class M_ResultController: UIViewController {
                 onAction: onAction,
                 onClose: onClose
             )
-        case .successCard(let userInfo):
+        case .successCard(_):
             let onAction = Command { [weak self] in
                 // show onboarding
             }
@@ -100,7 +100,6 @@ class M_ResultController: UIViewController {
                 guard
                     let self = self,
                     let firstVC = self.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
-                firstVC.userInfo = userInfo
                 firstVC.needReload = true
                 self.navigationController?.popToRootViewController(animated: true)
             }

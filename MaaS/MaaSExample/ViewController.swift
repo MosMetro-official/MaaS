@@ -81,7 +81,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     let active = MaaS.shared.showActiveFlow()
                     let nav = UINavigationController(rootViewController: active)
                     nav.modalPresentationStyle = .fullScreen
-                    active.onDismiss = { self.dismiss(animated: true) }
                     self.present(nav, animated: true)
                 }
             } else {
@@ -89,8 +88,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     let choose = MaaS.shared.showChooseFlow()
                     let nav = UINavigationController(rootViewController: choose)
                     nav.modalPresentationStyle = .fullScreen
-                    choose.onDismiss = { self.dismiss(animated: true) }
-                    self.present(choose, animated: true)
+                    self.present(nav, animated: true)
                 }
             }
         }
@@ -114,14 +112,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 let active = MaaS.shared.showActiveFlow()
                 let nav = UINavigationController(rootViewController: active)
                 nav.modalPresentationStyle = .fullScreen
-                active.onDismiss = { self.dismiss(animated: true) }
                 self.present(nav, animated: true)
             } else {
                 let choose = MaaS.shared.showChooseFlow()
                 let nav = UINavigationController(rootViewController: choose)
                 nav.modalPresentationStyle = .fullScreen
-                choose.onDismiss = { self.dismiss(animated: true) }
-                self.present(choose, animated: true)
+                self.present(nav, animated: true)
             }
         default:
             break

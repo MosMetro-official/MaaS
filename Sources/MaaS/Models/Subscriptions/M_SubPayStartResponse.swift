@@ -8,9 +8,9 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_SubPayStartResponse {
-    let paymentId: String
-    let subscription: M_Subscription?
+public struct M_SubPayStartResponse {
+    public let paymentId: String
+    public let subscription: M_Subscription?
     
     init?(data: JSON) {
         self.paymentId = data["paymentId"].stringValue
@@ -18,9 +18,9 @@ struct M_SubPayStartResponse {
     }
 }
 
-struct M_SubPayStatusResponse {
-    let subscription: M_Subscription
-    let payment: M_PaymentInfo
+public struct M_SubPayStatusResponse {
+    public let subscription: M_Subscription
+    public let payment: M_PaymentInfo
     
     init?(data: JSON) {
         guard

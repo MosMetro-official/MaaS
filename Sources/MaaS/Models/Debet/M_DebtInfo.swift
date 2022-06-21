@@ -8,7 +8,7 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_DebtInfo {
+public struct M_DebtInfo {
     let date: String
     let service: String
     let trip: String

@@ -9,10 +9,18 @@ import UIKit
 import CoreTableView
 
 public class M_ActiveSubController: UIViewController {
-    
+        
     private let nestedView = M_ActiveSubView.loadFromNib()
     
     private var hasDebit: (Bool, Int) = (true, 100)
+    
+    private var oldMaskedPan: String?
+    
+    public var newMaskedPan: String? {
+        didSet {
+            fetchUserInfo()
+        }
+    }
     
     private var debit: [M_DebtInfo]? {
         didSet {
@@ -20,9 +28,7 @@ public class M_ActiveSubController: UIViewController {
             checkAllPossibleDebets(from: debit)
         }
     }
-    
-    public var onDismiss: (() -> Void)?
-    
+        
     var needReload: Bool? {
         didSet {
             guard let reload = needReload else { return }
@@ -58,7 +64,7 @@ public class M_ActiveSubController: UIViewController {
     }
     
     @objc private func addTapped() {
-        onDismiss?()
+        self.dismiss(animated: true)
     }
     
     private func fetchUserInfo() {
@@ -79,6 +85,12 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
+                self.oldMaskedPan = userInfo.maskedPan
+                if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
+                    if newMask != oldMask {
+                        self.fetchUserInfo()
+                    }
+                }
                 self.userInfo = userInfo
                 dispatchGroup.leave()
             case .failure(let error):
@@ -101,7 +113,7 @@ public class M_ActiveSubController: UIViewController {
             self?.fetchUserInfo()
         }
         let onClose = Command { [weak self] in
-            self?.onDismiss?()
+            self?.dismiss(animated: true)
         }
         let errorState = M_ActiveSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(errorState))
@@ -140,18 +152,18 @@ extension M_ActiveSubController {
         return debtInfoCell
     }
     
-    private func makeCardState(from sub: M_UserInfo) -> [State] {
+    private func makeCardState(from user: M_UserInfo) -> [State] {
         var states = [State]()
         let title = "МультиТранспорт"
         let titleHeight = title.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = sub.subscription?.valid?.to.height(
+        let activeHeight = user.subscription?.valid?.to.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
         ) ?? 0
-        guard let timeTo = sub.subscription?.valid?.to else { return [] }
+        guard let timeTo = user.subscription?.valid?.to else { return [] }
         let validDate = Utils.getCurrentDate(from: timeTo)
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
@@ -163,7 +175,7 @@ extension M_ActiveSubController {
             let debtState = State(model: SectionState(header: titleHeader, footer: nil), elements: [debtElement])
             states.append(debtState)
         }
-        let cardNumberHeight = sub.payment?.card?.maskedPan.height(
+        let cardNumberHeight = user.payment?.card?.maskedPan.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 36 - 29,
             font: Appearance.getFont(.card)
         ) ?? 0
@@ -185,7 +197,7 @@ extension M_ActiveSubController {
         }
         guard let limit = userInfo?.keyChangeLeft, let maskedPan = userInfo?.maskedPan else { return [] }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
-            cardImage: sub.paySystem ?? .unknown,
+            cardImage: user.paySystem ?? .unknown,
             cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",

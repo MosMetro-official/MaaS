@@ -8,10 +8,10 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_SubPayStartRequest {
-    let maaSTariffId: String
-    let payment: M_PayDataSub
-    let additionalData: [M_AppData]?
+public struct M_SubPayStartRequest {
+    public let maaSTariffId: String
+    public let payment: M_PayDataSub
+    public let additionalData: [M_AppData]?
     
     func createRequestBody() -> [String: Any] {
         var result = [String: Any]()
@@ -21,7 +21,7 @@ struct M_SubPayStartRequest {
         return result
     }
     
-    static func sendRequestSub(with body: [String: Any], completion: @escaping (Result<M_SubPayStartResponse, APIError>) -> Void) {
+    public static func sendRequestSub(with body: [String: Any], completion: @escaping (Result<M_SubPayStartResponse, APIError>) -> Void) {
         let client = APIClient.authClient
         client.send(.POST(path: "/api/subscription/v1/pay/start", body: body, contentType: .json)) { result in
             switch result {
@@ -51,11 +51,11 @@ public enum M_PaymentMethod: String {
     case `default` = "DEFAULT"
 }
 
-struct M_PayDataSub {
-    let paymentMethod: M_PaymentMethod?
-    let redirectUrl: M_RedirectUrl
-    let paymentToken: String?
-    let id: String?
+public struct M_PayDataSub {
+    public let paymentMethod: M_PaymentMethod?
+    public let redirectUrl: M_RedirectUrl
+    public let paymentToken: String?
+    public let id: String?
     
     func createRequestBody() -> [String: Any] {
         var result = [String: Any]()
@@ -66,10 +66,10 @@ struct M_PayDataSub {
     }
 }
 
-struct M_RedirectUrl {
-    let succeed: String
-    let declined: String
-    let canceled: String
+public struct M_RedirectUrl {
+    public let succeed: String
+    public let declined: String
+    public let canceled: String
     
     func createRequsetBody() -> [String: Any] {
         var result = [String: Any]()
@@ -80,8 +80,8 @@ struct M_RedirectUrl {
     }
 }
 
-struct M_AppData {
-    let serviceId: String
-    let key: String
-    let value: String
+public struct M_AppData {
+    public let serviceId: String
+    public let key: String
+    public let value: String
 }

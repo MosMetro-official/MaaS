@@ -8,9 +8,9 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_PayStatusResponse {
-    let subscription: M_Subscription
-    let payment: M_PaymentInfo
+public struct M_PayStatusResponse {
+    public let subscription: M_Subscription
+    public let payment: M_PaymentInfo
     
     init?(data: JSON) {
         guard
@@ -20,7 +20,7 @@ struct M_PayStatusResponse {
         self.payment = payment
     }
     
-    static func statusOfPayment(for paymentId: String, completion: @escaping (Result<M_PayStatusResponse, APIError>) -> Void) {
+    public static func statusOfPayment(for paymentId: String, completion: @escaping (Result<M_PayStatusResponse, APIError>) -> Void) {
         let query: [String: String] = ["paymentId": "\(paymentId)"]
         let client = APIClient.authClient
         client.send(.GET(path: "/api/subscription/v1/pay/status", query: query)) { result in
@@ -41,9 +41,9 @@ struct M_PayStatusResponse {
     }
 }
 
-struct M_PaymentInfo {
-    let url: String
-    let authInfo: M_AuthInfo?
+public struct M_PaymentInfo {
+    public let url: String
+    public let authInfo: M_AuthInfo?
     
     init?(data: JSON) {
         self.url = data["url"].stringValue
@@ -69,12 +69,12 @@ public enum PayStatus: String {
 }
 
 public struct M_AuthInfo {
-    let status: M_AuthStatus?
-    let date: String
-    let rnn: String
-    let code: String
-    let card: M_CardInfo?
-    let receiptUrl: String?
+    public let status: M_AuthStatus?
+    public let date: String
+    public let rnn: String
+    public let code: String
+    public let card: M_CardInfo?
+    public let receiptUrl: String?
 
     init?(data: JSON) {
         guard
@@ -90,10 +90,10 @@ public struct M_AuthInfo {
     }
 }
 
-struct M_AuthStatus {
-    let responseCode: String
-    let responseDescr: String
-    let status: PayStatus?
+public struct M_AuthStatus {
+    public let responseCode: String
+    public let responseDescr: String
+    public let status: PayStatus?
 
     init?(data: JSON) {
         guard
@@ -115,13 +115,13 @@ public enum PaySystem: String {
     case unknown = "UNKNOWN_PS"
 }
 
-struct M_CardInfo {
-    let hashKey: String
-    let paySystem: PaySystem?
-    let type: String
-    let maskedPan: String
-    let expDate: String
-    let cardId: String
+public struct M_CardInfo {
+    public let hashKey: String
+    public let paySystem: PaySystem?
+    public let type: String
+    public let maskedPan: String
+    public let expDate: String
+    public let cardId: String
 
     init?(data: JSON) {
         guard
@@ -129,10 +129,11 @@ struct M_CardInfo {
             let type = data["type"].string,
             let maskedPan = data["maskedPan"].string,
             let expDate = data["expDate"].string,
-            let cardId = data["cardId"].string else { return nil }
+            let cardId = data["cardId"].string,
+            let paySystem = data["paySystem"].string else { return nil }
 
         self.hashKey = hash
-        self.paySystem = PaySystem(rawValue: data["paySystem"].stringValue)
+        self.paySystem = PaySystem(rawValue: paySystem)
         self.type = type
         self.maskedPan = maskedPan
         self.expDate = expDate

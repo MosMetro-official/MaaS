@@ -25,7 +25,7 @@ public class MaaS {
     
     public weak var networkDelegate: MaaSNetworkDelegate?
     
-    public var token: String? = "YH7AJcZ2NGr4Mi7hL2C5MTldxvqgXoqE8klS4maW7RM"
+    public var token: String? = "_-jJlar-dYacWYvHnJYQ0rtOFJs6kjB0NWchXMIsRX0"
     
     public var userHasSub: Bool = false
     public var apiError: APIError?
@@ -61,19 +61,12 @@ public class MaaS {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let currentUser):
-                switch currentUser.status {
-                case .active:
+                if currentUser.subscription?.id == "" {
+                    self.userHasSub = false
+                } else {
                     self.userHasSub = true
-                    completion(currentUser, nil)
-                case .expired:
-                    self.userHasSub = false
-                    completion(currentUser, ErrorDescription.ended.rawValue)
-                case .canceled:
-                    self.userHasSub = false
-                    completion(currentUser, ErrorDescription.cancel.rawValue)
-                default:
-                    completion(currentUser, nil)
                 }
+                completion(currentUser, nil)
             case .failure(let error):
                 self.apiError = error
                 completion(nil, ErrorDescription.error.rawValue)

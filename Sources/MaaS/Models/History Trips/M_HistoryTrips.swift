@@ -8,7 +8,7 @@
 import Foundation
 import MMCoreNetworkCallbacks
 
-struct M_HistoryTrips {
+public struct M_HistoryTrips {
     let subscription: M_Subscription
     let trip: M_TripDetails
     
@@ -48,7 +48,7 @@ public enum TripStatus: String {
     case canceled = "CANCELED"
 }
 
-struct M_TripDetails {
+public struct M_TripDetails {
     let serviceTripId: String
     let terminalId: String
     let count: Int
@@ -77,7 +77,7 @@ struct M_TripDetails {
     }
 }
 
-struct M_TravelTime {
+public struct M_TravelTime {
     let start: String
     let end: String
     
