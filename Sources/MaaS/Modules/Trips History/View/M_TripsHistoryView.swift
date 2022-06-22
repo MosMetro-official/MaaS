@@ -76,6 +76,4 @@ class M_TripsHistoryView: UIView {
             showError(on: self, data: error)
         }
     }
-    
-    
 }

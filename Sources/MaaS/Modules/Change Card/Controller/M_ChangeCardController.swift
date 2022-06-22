@@ -32,7 +32,7 @@ class M_ChangeCardController: UIViewController {
     
     private func setupNavigationTitle() {
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            .font: Appearance.getFont(.navTitle)
         ]
         title = "Карта"
     }
@@ -126,7 +126,13 @@ class M_ChangeCardController: UIViewController {
             title: title,
             descr: "Осталось совсем немного"
         )
-        nestedView.viewState = .init(dataState: .loading(loadingState), cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        nestedView.viewState = .init(
+            dataState: .loading(loadingState),
+            cardType: .unknown,
+            cardNumber: "",
+            countOfChangeCard: 0,
+            onChangeButton: nil
+        )
     }
     
     private func showError(with title: String, and descr: String) {
@@ -142,7 +148,13 @@ class M_ChangeCardController: UIViewController {
             onRetry: onRetry,
             onClose: onClose
         )
-        nestedView.viewState = .init(dataState: .error(errorState), cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
+        nestedView.viewState = .init(
+            dataState: .error(errorState),
+            cardType: .unknown,
+            cardNumber: "",
+            countOfChangeCard: 0,
+            onChangeButton: nil
+        )
     }
     
     private func makeState() {

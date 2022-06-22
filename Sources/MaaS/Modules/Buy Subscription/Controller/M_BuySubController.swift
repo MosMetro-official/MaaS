@@ -36,7 +36,7 @@ public class M_BuySubController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            .font: Appearance.getFont(.navTitle)
         ]
         title = "Подписка"
     }
@@ -48,16 +48,32 @@ public class M_BuySubController: UIViewController {
     }
     
     private func showLoading(with title: String) {
-        let loadingState = M_BuySubView.ViewState.Loading(title: title, descr: "Немного подождите")
-        nestedView.viewState = .init(state: [], dataState: .loading(loadingState), linkCardCommand: nil)
+        let loadingState = M_BuySubView.ViewState.Loading(
+            title: title,
+            descr: "Немного подождите"
+        )
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .loading(loadingState),
+            linkCardCommand: nil
+        )
     }
     
     private func showError(with title: String, and descr: String, onRetry: Command<Void>) {
         let onClose = Command { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        let errorState = M_BuySubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
-        nestedView.viewState = .init(state: [], dataState: .error(errorState), linkCardCommand: nil)
+        let errorState = M_BuySubView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .error(errorState),
+            linkCardCommand: nil
+        )
     }
     
     @objc private func handleSuccess() {
@@ -185,8 +201,14 @@ public class M_BuySubController: UIViewController {
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
         sortedService.forEach { service in
-            let titleHeight = service.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.debt))
-            let descrHeight = service.description.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.body))
+            let titleHeight = service.name.ru.height(
+                withConstrainedWidth: width,
+                font: Appearance.getFont(.debt)
+            )
+            let descrHeight = service.description.ru.height(
+                withConstrainedWidth: width,
+                font: Appearance.getFont(.body)
+            )
             let descr = M_BuySubView.ViewState.DescrRow(
                 title: service.name.ru,
                 descr: service.description.ru,
@@ -196,8 +218,14 @@ public class M_BuySubController: UIViewController {
             let descrState = State(model: SectionState(header: nil, footer: nil), elements: [descr])
             states.append(descrState)
         }
-        let titleHeaderHeight = subName.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header))
-        let priceHeight = "\(sub.price)".height(withConstrainedWidth: width, font: Appearance.getFont(.body))
+        let titleHeaderHeight = subName.ru.height(
+            withConstrainedWidth: width,
+            font: Appearance.getFont(.header)
+        )
+        let priceHeight = "\(sub.price)".height(
+            withConstrainedWidth: width,
+            font: Appearance.getFont(.body)
+        )
         let subHeader = M_BuySubView.ViewState.SubHeader(
             title: subName.ru,
             price: "\(sub.price / 100) ₽",
@@ -208,7 +236,11 @@ public class M_BuySubController: UIViewController {
             guard let self = self else { return }
             self.startPayRequest(with: sub.id)
         }
-        nestedView.viewState = .init(state: states, dataState: .loaded, linkCardCommand: linkCommand)
+        nestedView.viewState = .init(
+            state: states,
+            dataState: .loaded,
+            linkCardCommand: linkCommand
+        )
     }
     
     private func getServiceImage(by serviceId: String) -> String {

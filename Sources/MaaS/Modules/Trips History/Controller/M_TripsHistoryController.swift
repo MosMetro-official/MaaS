@@ -28,7 +28,7 @@ class M_TripsHistoryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            .font: Appearance.getFont(.navTitle)
         ]
         title = "История поездок"
         setupBackButton()
@@ -60,7 +60,12 @@ class M_TripsHistoryController: UIViewController {
         let onClose = Command {
             self.navigationController?.popViewController(animated: true)
         }
-        let errorState = M_TripsHistoryView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
+        let errorState = M_TripsHistoryView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
         nestedView.viewState = .init(state: [], dataState: .error(errorState))
     }
     
