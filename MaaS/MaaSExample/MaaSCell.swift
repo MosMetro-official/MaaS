@@ -150,8 +150,14 @@ extension MaaSCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width / 3 + 30
         let tariff = service?[indexPath.row]
-        let titleHeight = tariff?.name.ru.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 11)) ?? 0
-        let descrHeight = tariff?.trip.countDescr.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 13)) ?? 0
+        let titleHeight = tariff?.name.ru.height(
+            withConstrainedWidth: width,
+            font: UIFont.systemFont(ofSize: 11)
+        ) ?? 0
+        let descrHeight = tariff?.trip.countDescr.height(
+            withConstrainedWidth: width,
+            font: UIFont.systemFont(ofSize: 13)
+        ) ?? 0
         return CGSize(width: width, height: titleHeight + descrHeight + 20)
     }
 }

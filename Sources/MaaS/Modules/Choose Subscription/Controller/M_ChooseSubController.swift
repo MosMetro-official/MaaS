@@ -37,7 +37,12 @@ public class M_ChooseSubController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         loadSubscriptions()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(close))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.getAssetImage(image: "mainBackButton"),
+            style: .plain,
+            target: self,
+            action: #selector(close)
+        )
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -50,7 +55,7 @@ public class M_ChooseSubController: UIViewController {
         super.viewWillAppear(animated)
         title = "Подписка"
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            .font: Appearance.getFont(.navTitle)
         ]
     }
     
@@ -77,13 +82,33 @@ public class M_ChooseSubController: UIViewController {
         let onClose = Command { [weak self] in
             self?.dismiss(animated: true)
         }
-        let error = M_ChooseSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
-        nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        let error = M_ChooseSubView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .error(error),
+            payButtonEnable: false,
+            payButtonTitle: "",
+            payCommand: nil
+        )
     }
     
     private func showLoading() {
-        let loading = M_ChooseSubView.ViewState.Loading(title: "Загрузка", descr: "Подождите еще чуть чуть :)")
-        nestedView.viewState = .init(state: [], dataState: .loading(loading), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        let loading = M_ChooseSubView.ViewState.Loading(
+            title: "Загрузка",
+            descr: "Подождите еще чуть чуть :)"
+        )
+        nestedView.viewState = .init(
+            state: [],
+            dataState: .loading(loading),
+            payButtonEnable: false,
+            payButtonTitle: "",
+            payCommand: nil
+        )
     }
     
     private func makeState() {
@@ -96,7 +121,10 @@ public class M_ChooseSubController: UIViewController {
             guard let nameOfSub = sub.name else { return }
             let width = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 40
+            let titleHeight = nameOfSub.ru.height(
+                withConstrainedWidth: width,
+                font: Appearance.getFont(.header)
+            ) + 40
             let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
             let stackViewHeight = imageHeight * CGFloat(sub.tariffs.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
@@ -129,7 +157,13 @@ public class M_ChooseSubController: UIViewController {
                 }
             }
         }
-        let viewState = M_ChooseSubView.ViewState(state: subStates, dataState: .loaded, payButtonEnable: selectedSub != nil || selectMakeMySub, payButtonTitle: buttonTitle, payCommand: payCommand)
+        let viewState = M_ChooseSubView.ViewState(
+            state: subStates,
+            dataState: .loaded,
+            payButtonEnable: selectedSub != nil || selectMakeMySub,
+            payButtonTitle: buttonTitle,
+            payCommand: payCommand
+        )
         nestedView.viewState = viewState
     }
 }
@@ -143,8 +177,14 @@ extension M_ChooseSubController {
         let title = "Собрать свой тариф"
         let descr = "Выберите столько поездок, сколько нужно именно Вам"
         let width = UIScreen.main.bounds.width - 32
-        let titleHeight = title.height(withConstrainedWidth: width, font: Appearance.getFont(.header))
-        let descrHeight = descr.height(withConstrainedWidth: width, font: Appearance.getFont(.smallBody))
+        let titleHeight = title.height(
+            withConstrainedWidth: width,
+            font: Appearance.getFont(.header)
+        )
+        let descrHeight = descr.height(
+            withConstrainedWidth: width,
+            font: Appearance.getFont(.smallBody)
+        )
         let makeMySubElement = M_ChooseSubView.ViewState.MakeMySubRow(
             title: title,
             descr: descr,

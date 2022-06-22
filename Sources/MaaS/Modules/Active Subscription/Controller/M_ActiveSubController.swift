@@ -56,14 +56,18 @@ public class M_ActiveSubController: UIViewController {
         super.viewDidLoad()
         showLoading()
         fetchUserInfo()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.getAssetImage(image: "mainBackButton"),
+            style: .plain, target: self,
+            action: #selector(addTapped)
+        )
 //        setListeners()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            .font: Appearance.getFont(.navTitle)
         ]
         title = "Подписка"
     }
@@ -143,7 +147,10 @@ public class M_ActiveSubController: UIViewController {
     }
     
     private func showLoading() {
-        let loadingState = M_ActiveSubView.ViewState.Loading(title: "Загрузка...", descr: "Подождите немного")
+        let loadingState = M_ActiveSubView.ViewState.Loading(
+            title: "Загрузка...",
+            descr: "Подождите немного"
+        )
         nestedView.viewState = .init(state: [], dataState: .loading(loadingState))
     }
     
@@ -154,7 +161,12 @@ public class M_ActiveSubController: UIViewController {
         let onClose = Command { [weak self] in
             self?.dismiss(animated: true)
         }
-        let errorState = M_ActiveSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
+        let errorState = M_ActiveSubView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
         nestedView.viewState = .init(state: [], dataState: .error(errorState))
     }
         
@@ -179,8 +191,14 @@ extension M_ActiveSubController {
     private func makeDebtElement() -> Element {
         let debtInfo = "У вас есть долг"
         let debtTotal = "\(hasDebit.1) ₽"
-        let debtInfoHeight = debtInfo.height(withConstrainedWidth: 75, font: Appearance.getFont(.smallBody))
-        let debtTotalHeight = debtTotal.height(withConstrainedWidth: 75, font: Appearance.getFont(.debt))
+        let debtInfoHeight = debtInfo.height(
+            withConstrainedWidth: 75,
+            font: Appearance.getFont(.smallBody)
+        )
+        let debtTotalHeight = debtTotal.height(
+            withConstrainedWidth: 75,
+            font: Appearance.getFont(.debt)
+        )
         let onMoreButton = Command {
             print("open screen about debt")
         }
@@ -294,13 +312,19 @@ extension M_ActiveSubController {
             let historyController = M_TripsHistoryController()
             self.navigationController?.pushViewController(historyController, animated: true)
         }
-        let onboarding = M_ActiveSubView.ViewState.Onboarding(onOnboardingSelect: onOnboardingSelect, onHistorySelect: onHistorySelect).toElement()
+        let onboarding = M_ActiveSubView.ViewState.Onboarding(
+            onOnboardingSelect: onOnboardingSelect,
+            onHistorySelect: onHistorySelect
+        ).toElement()
         let onboardingState = State(model: SectionState(header: nil, footer: nil), elements: [onboarding])
         return onboardingState
     }
     
     private func makeSupportState() -> State {
-        let titleHeight = "Написать в поддержку".height(withConstrainedWidth: UIScreen.main.bounds.width - 40, font: Appearance.getFont(.card))
+        let titleHeight = "Написать в поддержку".height(
+            withConstrainedWidth: UIScreen.main.bounds.width - 40,
+            font: Appearance.getFont(.card)
+        )
         let onSupport = Command {
             print("open support web view")
         }
