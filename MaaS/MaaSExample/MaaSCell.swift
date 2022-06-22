@@ -148,15 +148,10 @@ extension MaaSCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colcell", for: indexPath) as? TariffCell else { return .zero }
         let width = UIScreen.main.bounds.width / 3 + 30
-        guard
-            let titleHeight = cell.titleLabel.text?.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 11)),
-            let tariffHeight = cell.tariffLabel.text?.height(withConstrainedWidth: cell.frame.width, font: UIFont.systemFont(ofSize: 13)) else { return .zero }
-        return CGSize(width: width, height: titleHeight + tariffHeight + 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        let tariff = service?[indexPath.row]
+        let titleHeight = tariff?.name.ru.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 11)) ?? 0
+        let descrHeight = tariff?.trip.countDescr.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 13)) ?? 0
+        return CGSize(width: width, height: titleHeight + descrHeight + 20)
     }
 }

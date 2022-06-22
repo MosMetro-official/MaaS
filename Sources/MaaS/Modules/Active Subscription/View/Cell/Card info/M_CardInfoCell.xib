@@ -57,18 +57,24 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-Hb-GsV">
+                        <rect key="frame" x="129.5" y="43.5" width="37" height="37"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="lzq-Qv-djI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LTc-PA-wfR"/>
+                    <constraint firstItem="1MC-Hb-GsV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NmQ-P0-qRx"/>
                     <constraint firstAttribute="trailing" secondItem="lzq-Qv-djI" secondAttribute="trailing" constant="8" id="ZAc-sa-i8B"/>
                     <constraint firstItem="tK4-EO-cto" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="o4B-eY-6yr"/>
                     <constraint firstItem="lzq-Qv-djI" firstAttribute="leading" secondItem="tK4-EO-cto" secondAttribute="trailing" constant="21" id="rwB-AG-zfj"/>
+                    <constraint firstItem="1MC-Hb-GsV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wmD-Eu-3oN"/>
                     <constraint firstItem="tK4-EO-cto" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zAy-sX-hVh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="content"/>
             <connections>
+                <outlet property="activity" destination="1MC-Hb-GsV" id="e4O-BM-WAT"/>
                 <outlet property="cardDescriptionLabel" destination="6wc-Qq-DAZ" id="Vao-7a-gMQ"/>
                 <outlet property="cardImage" destination="tK4-EO-cto" id="uAb-hV-f8h"/>
                 <outlet property="cardNumberLabel" destination="drj-E8-mEB" id="4JQ-XX-lOE"/>

@@ -12,15 +12,18 @@ public class M_ActiveSubController: UIViewController {
         
     private let nestedView = M_ActiveSubView.loadFromNib()
     
+    private var repeats: Int = 0
+    
     private var hasDebit: (Bool, Int) = (true, 100)
     
-    private var oldMaskedPan: String?
-    
-    public var newMaskedPan: String? {
+    public var oldMaskedPan: String?  {
         didSet {
-            fetchUserInfo()
+            checkCardUpdate()
+            makeState()
         }
     }
+    
+    private var newMaskedPan: String?
     
     private var debit: [M_DebtInfo]? {
         didSet {
@@ -51,8 +54,10 @@ public class M_ActiveSubController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
         fetchUserInfo()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(addTapped))
+//        setListeners()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -63,12 +68,41 @@ public class M_ActiveSubController: UIViewController {
         title = "Подписка"
     }
     
+//    private func setListeners() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .maasUpdateUserInfo, object: nil)
+//    }
+    
+    @objc private func updateUI(from notification: Notification) {
+        fetchUserInfo()
+    }
+    
     @objc private func addTapped() {
         self.dismiss(animated: true)
     }
     
+    private func checkCardUpdate() {
+        M_UserInfo.fetchUserInfo { result in
+            switch result {
+            case .success(let userInfo):
+                self.newMaskedPan = userInfo.maskedPan
+                if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
+                    if newMask == oldMask {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            self.checkCardUpdate()
+                            return
+                        }
+                    }
+                }
+                self.userInfo = userInfo
+            case .failure(let error):
+                self.showError(with: error.errorTitle, and: error.errorDescription)
+            }
+        }
+    }
+        
     private func fetchUserInfo() {
-        showLoading()
+        self.hideNavBar()
+        self.showLoading()
         let dispatchGroup = DispatchGroup()
 //        dispatchGroup.enter()
 //        M_DebtInfo.fetchDebtInfo { result in
@@ -85,11 +119,16 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
-                self.oldMaskedPan = userInfo.maskedPan
-                if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
-                    if newMask != oldMask {
+                self.newMaskedPan = userInfo.maskedPan
+                if userInfo.subscription?.id == "" && self.repeats < 5 {
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                        self.repeats += 1
                         self.fetchUserInfo()
+                        return
                     }
+                } else {
+                    self.repeats = 0
+                    self.showError(with: "Ошибка", and: "Не удалось выполнить запрос")
                 }
                 self.userInfo = userInfo
                 dispatchGroup.leave()
@@ -120,6 +159,7 @@ public class M_ActiveSubController: UIViewController {
     }
         
     private func makeState() {
+        self.showNavBar()
         var states: [State] = []
         guard let userInfo = userInfo else { return }
         let cardState = makeCardState(from: userInfo)
@@ -201,6 +241,7 @@ extension M_ActiveSubController {
             cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",
+            willUpdate: oldMaskedPan == newMaskedPan,
             onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()

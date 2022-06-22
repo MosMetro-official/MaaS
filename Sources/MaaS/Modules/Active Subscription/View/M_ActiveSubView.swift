@@ -49,6 +49,7 @@ class M_ActiveSubView: UIView {
             let cardNumber: String
             let cardDescription: String
             let leftCountChangeCard: String
+            let willUpdate: Bool
             let onItemSelect: Command<Void>
             let height: CGFloat
         }

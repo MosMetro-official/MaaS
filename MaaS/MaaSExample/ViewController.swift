@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
+    
+    private var oldMaskedPan: String?
+    private var newMaskedPan: String?
 
     @objc func refresh() {
        fetchUserInfo()
@@ -44,6 +47,14 @@ class ViewController: UIViewController {
         tableView.addSubview(refreshControl)
         setupTableView()
         fetchUserInfo()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .maasUpdateUserInfo, object: nil)
+    }
+    
+    @objc private func updateUI(from notification: Notification) {
+        if let newMask = notification.userInfo?["card"] as? String {
+            self.newMaskedPan = newMask
+        }
+        fetchUserInfo()
     }
     
     private func setupTableView() {
@@ -54,8 +65,17 @@ class ViewController: UIViewController {
     }
     
     private func fetchUserInfo() {
-        MaaS.shared.getUserSubStatus { user, error in
+        MaaS.shared.getUserSubStatus { [weak self] user, error in
+            guard let self = self else { return }
             self.user = user
+            self.oldMaskedPan = user?.maskedPan
+            if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
+                DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                    if newMask == oldMask {
+                        self.fetchUserInfo()
+                    }
+                }
+            }
             if let errorTitle = error {
                 self.error = errorTitle
             }

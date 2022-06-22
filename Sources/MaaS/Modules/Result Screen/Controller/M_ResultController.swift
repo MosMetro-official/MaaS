@@ -70,6 +70,7 @@ class M_ResultController: UIViewController {
                 onClose: onClose
             )
         case .successSub(let sub):
+            NotificationCenter.default.post(name: .maasUpdateUserInfo, object: nil, userInfo: nil)
             guard let subName = sub.name?.ru else { return }
             let onAction = Command { [weak self] in
                 // open onboarding
@@ -92,7 +93,8 @@ class M_ResultController: UIViewController {
                 onAction: onAction,
                 onClose: onClose
             )
-        case .successCard(_):
+        case .successCard(let userInfo):
+            NotificationCenter.default.post(name: .maasUpdateUserInfo, object: ["card": userInfo.maskedPan])
             let onAction = Command { [weak self] in
                 // show onboarding
             }
@@ -100,7 +102,7 @@ class M_ResultController: UIViewController {
                 guard
                     let self = self,
                     let firstVC = self.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
-                firstVC.needReload = true
+                firstVC.oldMaskedPan = userInfo.maskedPan
                 self.navigationController?.popToRootViewController(animated: true)
             }
             let success = M_ResultView.ViewState.Action(

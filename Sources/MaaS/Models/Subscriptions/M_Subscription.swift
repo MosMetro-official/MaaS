@@ -150,7 +150,7 @@ public struct M_Trip {
         self.total = total
     }
     
-    var countDescr: String {
+    public var countDescr: String {
         switch count {
         case -1:
             return "Безлимит"
