@@ -97,8 +97,6 @@ class M_ChangeCardController: UIViewController {
         showLoading(with: "Загрузка...")
         let request = M_UserCardRequest(
             payData: M_PayData(
-                tranId: String.randomString(of: 5),
-                price: "",
                 redirectUrl: M_RedirectUrl(
                     succeed: MaaS.shared.succeedUrlCard,
                     declined: MaaS.shared.declinedUrlCard,

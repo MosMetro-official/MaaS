@@ -21,15 +21,11 @@ public struct M_UserCardRequest {
 }
 
 public struct M_PayData {
-    let tranId: String
-    let price: String
     let redirectUrl: M_RedirectUrl
     let paymentMethod: M_PaymentMethod
     
     func createRequestBody() -> [String: Any] {
         var result = [String: Any]()
-        result.updateValue(tranId, forKey: "tranId")
-        result.updateValue("", forKey: "price")
         result.updateValue(paymentMethod.rawValue, forKey: "paymentMethod")
         let redirectBody = redirectUrl.createRequsetBody()
         result.updateValue(redirectBody, forKey: "redirectUrl")
