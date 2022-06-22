@@ -8,17 +8,17 @@
 import UIKit
 import CoreTableView
 
-class M_ChooseSubController: UIViewController {
-    
+public class M_ChooseSubController: UIViewController {
+        
     private let nestedView = M_ChooseSubView.loadFromNib()
     
-    private var subscriptions: [M_SubscriptionInfo] = [] {
+    private var subscriptions: [M_Subscription] = [] {
         didSet {
             makeState()
         }
     }
     
-    private var selectedSub: M_SubscriptionInfo? {
+    private var selectedSub: M_Subscription? {
         didSet {
             makeState()
         }
@@ -29,48 +29,55 @@ class M_ChooseSubController: UIViewController {
         }
     }
 
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         self.view = nestedView
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         loadSubscriptions()
-        showActiveSubTest()
-        
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
-        ]
-        title = "Подписка"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.getAssetImage(image: "mainBackButton"), style: .plain, target: self, action: #selector(close))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         selectedSub = nil
         selectMakeMySub = false
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "Подписка"
+        navigationController?.navigationBar.titleTextAttributes = [
+            .font: UIFont(name: "MoscowSans-medium", size: 20) ?? UIFont.systemFont(ofSize: 20)
+        ]
+    }
+    
+    @objc private func close() {
+        self.dismiss(animated: true)
+    }
+    
     private func loadSubscriptions() {
         showLoading()
-        M_SubscriptionInfo.getSubscriptions { resutl in
-            switch resutl {
+        M_Subscription.fetchSubscriptions { result in
+            switch result {
             case .success(let subscriptions):
                 self.subscriptions = subscriptions
-                print(subscriptions)
             case .failure(let error):
-                print(error.localizedDescription)
-                self.showError()
+                self.showError(with: error.errorTitle, and: error.errorSubtitle)
             }
         }
     }
     
-    private func showError() {
+    private func showError(with title: String, and descr: String) {
         let onRetry = Command { [weak self] in
             self?.loadSubscriptions()
         }
-        let onClose = Command { }
-        let error = M_ChooseSubView.ViewState.Error(title: "Ошибка", descr: "Что-то пошло не по плану", onRetry: onRetry, onClose: onClose)
+        let onClose = Command { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        let error = M_ChooseSubView.ViewState.Error(title: title, descr: descr, onRetry: onRetry, onClose: onClose)
         nestedView.viewState = .init(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
     }
     
@@ -86,20 +93,22 @@ class M_ChooseSubController: UIViewController {
                 self.selectedSub = sub
                 self.selectMakeMySub = false
             }
+            guard let nameOfSub = sub.name else { return }
             let width = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = sub.name.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 55
-            let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
-            let stackViewHeight = imageHeight * CGFloat(sub.services.count)
-            let spacingHeight: CGFloat = 8 * CGFloat(sub.services.count)
+            let titleHeight = nameOfSub.ru.height(withConstrainedWidth: width, font: Appearance.getFont(.header)) + 40
+            let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+            let stackViewHeight = imageHeight * CGFloat(sub.tariffs.count)
+            let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(
                 title: title,
                 price: "\(sub.price / 100) ₽",
                 isSelect: sub == selectedSub,
                 showSelectImage: true,
-                tariffs: sub.services,
+                // чтобы такси не прыгало, а то не красиво
+                tariffs: sub.tariffs.sorted(by: { $0.serviceId < $1.serviceId }),
                 onItemSelect: onItemSelect,
-                height: titleHeight + stackViewHeight + spacingHeight
+                height: titleHeight + stackViewHeight + spacingHeight + 22
             ).toElement()
             let subState = State(model: SectionState(header: nil, footer: nil), elements: [subElement])
             subStates.append(subState)
@@ -111,7 +120,7 @@ class M_ChooseSubController: UIViewController {
             guard let self = self,
                   let navigation = self.navigationController else { return }
             if self.selectMakeMySub {
-                // open create sub screen
+                self.showAlert(with: "Еще не готово 😢", and: "Данный функционал появится немного позже 🙃.")
             } else {
                 if let sub = self.selectedSub {
                     let buySubController = M_BuySubController()

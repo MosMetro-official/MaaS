@@ -16,7 +16,7 @@ protocol _MakeMySubRow: CellData {
 
 extension _MakeMySubRow {    
     func hashValues() -> [Int] {
-        return [isSelect.hashValue]
+        return [title.hashValue, descr.hashValue, isSelect.hashValue]
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
@@ -33,13 +33,13 @@ extension _MakeMySubRow {
 
 class M_MakeMySubRow: UITableViewCell {
     
-    var gradientHeight: CGFloat?
-    var gradient: CAGradientLayer?
+    private var gradientHeight: CGFloat?
+    private var gradient: CAGradientLayer?
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var selectImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var selectImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

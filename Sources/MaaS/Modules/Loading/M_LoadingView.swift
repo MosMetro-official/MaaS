@@ -14,9 +14,9 @@ protocol _Loading {
 
 class M_LoadingView: UIView {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descrLabel: UILabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descrLabel: UILabel!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
     public func configure(with data: _Loading) {
         titleLabel.text = data.title

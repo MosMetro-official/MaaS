@@ -13,7 +13,7 @@ protocol _SubSectionRow: CellData {
     var price: String { get }
     var isSelect: Bool { get }
     var showSelectImage: Bool { get }
-    var tariffs: [Service] { get }
+    var tariffs: [M_Tariff] { get }
 }
 
 extension _SubSectionRow {
@@ -40,19 +40,20 @@ extension _SubSectionRow {
 
 class M_SubSectionRow: UITableViewCell {
     
-    var gradient: CAGradientLayer?
-    var gradientHeight: CGFloat?
-    var tariffs: [Service]? {
+    private var gradient: CAGradientLayer?
+    private var gradientHeight: CGFloat?
+    
+    private var tariffs: [M_Tariff]? {
         didSet {
             setupStackView(with: tariffs ?? [])
         }
     }
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var selectImage: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var selectImage: UIImageView!
+    @IBOutlet private weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -112,14 +113,14 @@ class M_SubSectionRow: UITableViewCell {
         return label
     }
     
-    private func setupStackView(with tariffs: [Service]) {
+    private func setupStackView(with tariffs: [M_Tariff]) {
         stackView.removeFullyAllArrangedSubviews()
         tariffs.forEach { tariff in
-            let imageName = getServiceImage(by: tariff.serviceID)
+            let imageName = getServiceImage(by: tariff.serviceId)
             let lineStack = createLineStackView(with: UIImage.getAssetImage(image: imageName))
             let textStackView = createTextStackView()
             let tariffTitleLabel = createTextLabel(with: tariff.name.ru, textColor: "secondaryText")
-            let tariffDescrLabel = createTextLabel(with: tariff.description.ru, textColor: "primaryText")
+            let tariffDescrLabel = createTextLabel(with: tariff.trip.countDescr, textColor: "primaryText")
             textStackView.addArrangedSubview(tariffTitleLabel)
             textStackView.addArrangedSubview(tariffDescrLabel)
             lineStack.addArrangedSubview(textStackView)

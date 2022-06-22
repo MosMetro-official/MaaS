@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colcell" id="gTV-IL-0wX" customClass="TariffCell" customModule="MaaSExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="93"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="93"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlT-K1-Qnp">
+                        <rect key="frame" x="0.0" y="0.0" width="173" height="93"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-WZ-z5D">
+                                <rect key="frame" x="10" y="31.5" width="153" height="30"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9eU-5d-3g4">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taO-N3-LYH">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="hOn-Qq-VWj"/>
+                                                    <constraint firstAttribute="width" constant="30" id="iS8-hF-D60"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="3Sb-Ju-aJ4">
+                                        <rect key="frame" x="43" y="0.5" width="110" height="29.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Такси" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSq-Xo-Yil">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="13.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 поездок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH0-EA-hLd">
+                                                <rect key="frame" x="0.0" y="13.5" width="110" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="4lg-WZ-z5D" firstAttribute="centerY" secondItem="SlT-K1-Qnp" secondAttribute="centerY" id="4CO-pB-cGP"/>
+                            <constraint firstAttribute="trailing" secondItem="4lg-WZ-z5D" secondAttribute="trailing" constant="10" id="dY3-Hb-297"/>
+                            <constraint firstItem="4lg-WZ-z5D" firstAttribute="leading" secondItem="SlT-K1-Qnp" secondAttribute="leading" constant="10" id="mkQ-GT-Nyq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="SlT-K1-Qnp" secondAttribute="bottom" id="35I-03-zef"/>
+                <constraint firstItem="SlT-K1-Qnp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ABU-S6-m35"/>
+                <constraint firstItem="SlT-K1-Qnp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k6r-yR-t2s"/>
+                <constraint firstAttribute="trailing" secondItem="SlT-K1-Qnp" secondAttribute="trailing" id="qKO-we-PTe"/>
+            </constraints>
+            <size key="customSize" width="173" height="93"/>
+            <connections>
+                <outlet property="logoImage" destination="taO-N3-LYH" id="VF6-et-e7Z"/>
+                <outlet property="roundView" destination="SlT-K1-Qnp" id="Hlk-lT-KWK"/>
+                <outlet property="tariffLabel" destination="oH0-EA-hLd" id="rta-4t-0Bo"/>
+                <outlet property="titleLabel" destination="gSq-Xo-Yil" id="6CN-r0-709"/>
+            </connections>
+            <point key="canvasLocation" x="213.768115942029" y="161.04910714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

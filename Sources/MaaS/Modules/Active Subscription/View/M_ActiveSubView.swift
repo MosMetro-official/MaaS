@@ -11,14 +11,31 @@ import CoreTableView
 class M_ActiveSubView: UIView {
 
     struct ViewState {
-        let timeLeft: String
         let state: [State]
         let dataState: DataState
         
         enum DataState {
-            case loading
+            case loading(_Loading)
             case loaded
-            case error
+            case error(_Error)
+        }
+        
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
+        struct Error: _Error {
+            let title: String
+            let descr: String
+            let onRetry: Command<Void>
+            let onClose: Command<Void>
+        }
+        
+        struct DebtInfo: _DebtInfoCell {
+            let totalDebt: String
+            let onButton: Command<Void>
+            let height: CGFloat
         }
         
         struct TitleHeader: _TitleHeader {
@@ -28,9 +45,11 @@ class M_ActiveSubView: UIView {
         }
         
         struct CardInfo: _CardInfo {
-            let cardImage: UIImage
+            let cardImage: PaySystem
             let cardNumber: String
             let cardDescription: String
+            let leftCountChangeCard: String
+            let onItemSelect: Command<Void>
             let height: CGFloat
         }
         
@@ -51,7 +70,12 @@ class M_ActiveSubView: UIView {
             let onHistorySelect: Command<Void>
         }
         
-        static let initial = ViewState(timeLeft: "", state: [], dataState: .loading)
+        struct Support: _SupportCell {
+            let onItemSelect: Command<Void>
+            let height: CGFloat
+        }
+        
+        static let initial = ViewState(state: [], dataState: .loaded)
     }
     
     public var viewState: ViewState = .initial {
@@ -62,25 +86,26 @@ class M_ActiveSubView: UIView {
         }
     }
     
-    @IBOutlet weak var tableView: BaseTableView!
+    @IBOutlet private weak var tableView: BaseTableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
     }
     
     private func render() {
         switch viewState.dataState {
-        case .loading:
-            print("loading")
+        case .loading(let loading):
+            removeError(from: self)
+            showLoading(on: self, data: loading)
         case .loaded:
+            removeError(from: self)
+            removeLoading(from: self)
             tableView.viewStateInput = viewState.state
-        case .error:
-            print("error")
+        case .error(let error):
+            removeLoading(from: self)
+            showError(on: self, data: error)
         }
     }
-    
 }

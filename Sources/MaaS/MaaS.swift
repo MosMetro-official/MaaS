@@ -1,8 +1,15 @@
 import UIKit
+import MMCoreNetworkCallbacks
 
 public class MaaS {
     
-    var bundle: Bundle {
+    public enum ErrorDescription: String {
+        case ended = "Срок действия вашей подписки закончился 🤔"
+        case cancel = "Ваша подписка была аннулирована 🥸"
+        case error = "Ошибочка 😢. Не удалось обновить токен"
+    }
+    
+    internal var bundle: Bundle {
         let podBundle = Bundle(for: type(of: self))
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
             return podBundle
@@ -11,15 +18,36 @@ public class MaaS {
     }
     
     public var host: String = "maas.brndev.ru"
+    
     public var applicationName: String = ""
+    
     public var language: String = "ru_RU"
+    
     public weak var networkDelegate: MaaSNetworkDelegate?
-    public var token: String? = ""
+    
+    public var token: String? = "_-jJlar-dYacWYvHnJYQ0rtOFJs6kjB0NWchXMIsRX0"
+    
+    public var userHasSub: Bool = false
+    public var apiError: APIError?
+    public var errorMessage: String?
+    
+    public var succeedUrl = "maasexample://main/maasPaymentSuccess"
+    public var declinedUrl = "maasexample://main/maasPaymentDeclined"
+    public var canceledUrl = "maasexample://main/maasPaymentCanceled"
+    public var succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
+    public var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
+    public var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
     
     public static let shared = MaaS()
     
-    public func showMaaSFlow() -> UINavigationController {
-        return UINavigationController(rootViewController: M_ChooseSubController())
+    public func showActiveFlow() -> M_ActiveSubController {
+        let active = M_ActiveSubController()
+        return active
+    }
+    
+    public func showChooseFlow() -> M_ChooseSubController {
+        let choose = M_ChooseSubController()
+        return choose
     }
     
     public static func registerFonts() {
@@ -27,6 +55,23 @@ public class MaaS {
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Regular", fontExtension: "otf")
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Medium", fontExtension: "otf")
         _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "Comfortaa", fontExtension: "ttf")
+    }
+    
+    public func getUserSubStatus(completion: @escaping (M_UserInfo?, String?) -> Void) {
+        M_UserInfo.fetchUserInfo { result in
+            switch result {
+            case .success(let currentUser):
+                if currentUser.subscription?.id == "" {
+                    self.userHasSub = false
+                } else {
+                    self.userHasSub = true
+                }
+                completion(currentUser, nil)
+            case .failure(let error):
+                self.apiError = error
+                completion(nil, ErrorDescription.error.rawValue)
+            }
+        }
     }
     
     internal var deviceOS : String {

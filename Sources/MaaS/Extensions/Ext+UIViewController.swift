@@ -13,21 +13,22 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.getAssetColor(name: "backButton")
     }
     
-    // for check screen
-    internal func showActiveSubTest() {
-        let activeButton = UIBarButtonItem(
-            image: UIImage.getAssetImage(image: "mir"),
-            style: .plain,
-            target: self,
-            action: #selector(showActiveSub)
-        )
-        navigationItem.rightBarButtonItem = activeButton
+    internal func hideNavBar() {
+        DispatchQueue.main.async {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
-    @objc
-    private func showActiveSub() {
-        guard let navigation = self.navigationController else { return }
-        let activeSubController = M_ActiveSubController()
-        navigation.pushViewController(activeSubController, animated: true)
+    internal func showNavBar() {
+        DispatchQueue.main.async {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+    }
+    
+    internal func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
     }
 }

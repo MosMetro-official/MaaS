@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" estimatedSectionHeaderHeight="-1" sectionFooterHeight="10" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XzY-2n-61o" customClass="BaseTableView" customModule="CoreTableView">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" estimatedSectionHeaderHeight="-1" sectionFooterHeight="10" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XzY-2n-61o" customClass="BaseTableView" customModule="CoreTableView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" name="background"/>
                 </tableView>
             </subviews>
@@ -24,7 +24,7 @@
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="XzY-2n-61o" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="44p-me-7BB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XzY-2n-61o" secondAttribute="bottom" id="KpJ-Tf-Rec"/>
+                <constraint firstAttribute="bottom" secondItem="XzY-2n-61o" secondAttribute="bottom" id="KpJ-Tf-Rec"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XzY-2n-61o" secondAttribute="trailing" id="jCY-Pq-RCW"/>
                 <constraint firstItem="XzY-2n-61o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zTW-gu-Btc"/>
             </constraints>

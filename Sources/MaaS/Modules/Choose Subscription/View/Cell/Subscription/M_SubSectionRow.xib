@@ -46,7 +46,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="price"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="weC-jS-F9I">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="weC-jS-F9I">
                                 <rect key="frame" x="23" y="58.5" width="274" height="122.5"/>
                             </stackView>
                         </subviews>

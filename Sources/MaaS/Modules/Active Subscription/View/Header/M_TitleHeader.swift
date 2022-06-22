@@ -28,8 +28,8 @@ extension _TitleHeader {
 
 class M_TitleHeader: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var timeLeftLabel: UILabel!
+    @IBOutlet private weak var titleLabel: GradientLabel!
+    @IBOutlet private weak var timeLeftLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

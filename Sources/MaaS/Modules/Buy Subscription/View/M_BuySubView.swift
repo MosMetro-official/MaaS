@@ -13,18 +13,41 @@ class M_BuySubView: UIView {
     struct ViewState {
         
         let state: [State]
-        let linkCardCommand: Command<Void>
+        let dataState: DataState
+        let linkCardCommand: Command<Void>?
         
-        struct SubSectionRow: _SubSectionRow {
+        enum DataState {
+            case loaded
+            case loading(_Loading)
+            case error(_Error)
+        }
+        
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
+        struct Error: _Error {
+            let title: String
+            let descr: String
+            let onRetry: Command<Void>
+            let onClose: Command<Void>
+        }
+        
+        struct SubHeader: _SubHeader {
             let title: String
             let price: String
-            let isSelect: Bool
-            let showSelectImage: Bool
-            var tariffs: [Service]
             let height: CGFloat
         }
         
-        static let initial = ViewState(state: [], linkCardCommand: Command(action: {}))
+        struct DescrRow: _DescriptionCell {
+            let title: String
+            let descr: String
+            let image: String
+            let height: CGFloat
+        }
+        
+        static let initial = ViewState(state: [], dataState: .loaded, linkCardCommand: Command(action: {}))
     }
     
     public var viewState: ViewState = .initial {
@@ -35,9 +58,9 @@ class M_BuySubView: UIView {
         }
     }
     
-    @IBOutlet weak var titleLabel: GradientLabel!
-    @IBOutlet weak var tableView: BaseTableView!
-    @IBOutlet weak var payButton: UIButton!
+    @IBOutlet private weak var titleLabel: GradientLabel!
+    @IBOutlet private weak var tableView: BaseTableView!
+    @IBOutlet private weak var payButton: UIButton!
     
     private var buttonGradient: CAGradientLayer?
     
@@ -45,9 +68,6 @@ class M_BuySubView: UIView {
         super.awakeFromNib()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
-        tableView.showsVerticalScrollIndicator = false
-        tableView.showsHorizontalScrollIndicator = false
-        payButton.layer.cornerRadius = 10
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
         payButton.titleLabel?.font = Appearance.getFont(.button)
         addHorizontalGradientLayer()
@@ -60,7 +80,7 @@ class M_BuySubView: UIView {
     }
     
     @IBAction func linkCardButtonTapped() {
-        viewState.linkCardCommand.perform(with: ())
+        viewState.linkCardCommand?.perform(with: ())
     }
     
     private func addHorizontalGradientLayer() {
@@ -75,6 +95,17 @@ class M_BuySubView: UIView {
     }
     
     private func render() {
-        self.tableView.viewStateInput = viewState.state
+        switch viewState.dataState {
+        case .loaded:
+            removeError(from: self)
+            removeLoading(from: self)
+            tableView.viewStateInput = viewState.state
+        case .loading(let loading):
+            showLoading(on: self, data: loading)
+            removeError(from: self)
+        case .error(let error):
+            showError(on: self, data: error)
+            removeLoading(from: self)
+        }
     }
 }
