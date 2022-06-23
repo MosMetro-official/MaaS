@@ -78,6 +78,7 @@ class M_ChangeCardView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loaded:
+            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardCountLabel].forEach { $0?.isHidden = false }
             removeError(from: self)
             removeLoading(from: self)
             cardView.backgroundColor = UIColor.getCardHolderColor(for: viewState.cardType)
@@ -89,9 +90,12 @@ class M_ChangeCardView: UIView {
                 countLabelBottomConstarint.constant = -changeCardButton.frame.height
             }
         case .loading(let loading):
+            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardButton, changeCardCountLabel].forEach { $0?.isHidden = true }
             removeError(from: self)
             showLoading(on: self, data: loading)
         case .error(let error):
+            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardButton, changeCardCountLabel].forEach { $0?.isHidden = true }
+
             removeLoading(from: self)
             showError(on: self, data: error)
         }

@@ -119,14 +119,17 @@ class M_ChooseSubView: UIView {
         payButton.setTitle(viewState.payButtonTitle, for: .normal)
         switch viewState.dataState {
         case .loaded:
+            tableView.isHidden = false
             removeLoading(from: self)
             removeError(from: self)
             show()
             tableView.viewStateInput = viewState.state
         case .loading(let data):
+            tableView.isHidden = true
             removeError(from: self)
             showLoading(on: self, data: data)
         case .error(let data):
+            tableView.isHidden = true
             removeLoading(from: self)
             showError(on: self, data: data)
         }

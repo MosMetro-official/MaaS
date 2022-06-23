@@ -13,7 +13,7 @@ class M_ResultView: UIView {
     struct ViewState {
                 
         enum DataState {
-            case loading
+            case none
             case success(Action)
             case failure(Action)
         }
@@ -29,7 +29,7 @@ class M_ResultView: UIView {
         let onAction: Command<Void>?
         let onClose: Command<Void>?
         
-        static let initial = ViewState(hideAction: nil, dataState: .loading, logo: nil, onAction: nil, onClose: nil)
+        static let initial = ViewState(hideAction: nil, dataState: .none, logo: nil, onAction: nil, onClose: nil)
     }
     
     public var viewState: ViewState = .initial {
@@ -89,8 +89,8 @@ class M_ResultView: UIView {
     
     private func render() {
         switch viewState.dataState {
-        case .loading:
-            prepareLoadingState()
+        case .none:
+            break
         case .success(let success):
             resultTitleLabel.text = success.title
             resultDescrLabel.text = success.descr

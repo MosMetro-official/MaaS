@@ -28,10 +28,12 @@ extension UIView {
     func showLoading(on view: UIView, data: _Loading) {
         let loadingView = M_LoadingView.loadFromNib()
         loadingView.frame = view.frame
+        loadingView.alpha = 0
         loadingView.tag = 111
         loadingView.configure(with: data)
         let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
             view.addSubview(loadingView)
+            loadingView.alpha = 1
         }
         animator.startAnimation()
     }
@@ -39,10 +41,13 @@ extension UIView {
     func removeLoading(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 111 {
-                let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
-                    _view.removeFromSuperview()
+                UIView.animate(withDuration: 0.35) {
+                    _view.alpha = 0
+                } completion: { success in
+                    if success {
+                        _view.removeFromSuperview()
+                    }
                 }
-                animator.startAnimation()
             }
         }
     }

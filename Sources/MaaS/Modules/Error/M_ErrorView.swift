@@ -53,10 +53,12 @@ extension UIView {
     func showError(on view: UIView, data: _Error) {
         let errorView = M_ErrorView.loadFromNib()
         errorView.frame = view.frame
+        errorView.alpha = 0
         errorView.tag = 222
         errorView.configure(with: data)
         let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
             view.addSubview(errorView)
+            errorView.alpha = 1
         }
         animator.startAnimation()
     }
@@ -64,10 +66,13 @@ extension UIView {
     func removeError(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 222 {
-                let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
-                    _view.removeFromSuperview()
+                UIView.animate(withDuration: 0.35) {
+                    _view.alpha = 0
+                } completion: { success in
+                    if success {
+                        _view.removeFromSuperview()
+                    }
                 }
-                animator.startAnimation()
             }
         }
     }

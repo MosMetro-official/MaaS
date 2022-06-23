@@ -97,15 +97,18 @@ class M_BuySubView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loaded:
+            tableView.isHidden = false
             removeError(from: self)
             removeLoading(from: self)
             tableView.viewStateInput = viewState.state
         case .loading(let loading):
-            showLoading(on: self, data: loading)
+            tableView.isHidden = true
             removeError(from: self)
+            showLoading(on: self, data: loading)
         case .error(let error):
-            showError(on: self, data: error)
+            tableView.isHidden = true
             removeLoading(from: self)
+            showError(on: self, data: error)
         }
     }
 }

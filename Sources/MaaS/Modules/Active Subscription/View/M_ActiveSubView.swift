@@ -98,13 +98,16 @@ class M_ActiveSubView: UIView {
     private func render() {
         switch viewState.dataState {
         case .loading(let loading):
+            tableView.isHidden = true
             removeError(from: self)
             showLoading(on: self, data: loading)
         case .loaded:
+            tableView.isHidden = false
             removeError(from: self)
             removeLoading(from: self)
             tableView.viewStateInput = viewState.state
         case .error(let error):
+            tableView.isHidden = false
             removeLoading(from: self)
             showError(on: self, data: error)
         }
