@@ -62,10 +62,12 @@ class M_CardInfoCell: UITableViewCell {
     
     public func configure(with data: _CardInfo) {
         if data.willUpdate {
+            self.isUserInteractionEnabled = false
             setHalfAlpha()
             activity.startAnimating()
             return
         } else {
+            self.isUserInteractionEnabled = true
             setNonAlpha()
             activity.stopAnimating()
         }
