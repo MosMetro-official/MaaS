@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "MaaS"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "The MaaS module developed by the Moscow Metro."
 
   spec.description  = "A ready-made MaaS module for integrating the service into any project. You need to configure deep links and the authorization process (token)"
