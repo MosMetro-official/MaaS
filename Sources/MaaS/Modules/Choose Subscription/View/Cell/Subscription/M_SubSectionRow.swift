@@ -43,6 +43,8 @@ class M_SubSectionRow: UITableViewCell {
     private var gradient: CAGradientLayer?
     private var gradientHeight: CGFloat?
     
+    
+    // TODO: Это необходимо делать в методе configure
     private var tariffs: [M_Tariff]? {
         didSet {
             setupStackView(with: tariffs ?? [])

@@ -8,6 +8,8 @@
 import UIKit
 import CoreTableView
 
+
+// TODO: Учитывая что у тебя тут появился стейт загрузки внутри – может лучше тогда внутри энам сделать? Будет красивее
 protocol _CardInfo: CellData {
     var cardImage: PaySystem { get }
     var cardNumber: String { get }
@@ -52,6 +54,7 @@ class M_CardInfoCell: UITableViewCell {
         
     }
     
+    // TODO: Объедини в одну функцию с булем и проверяй буль. isAlpha ? 1 : 0.5 + добавь анимаций
     private func setHalfAlpha() {
         [cardImage, cardNumberLabel, cardDescriptionLabel, leftCountLabel].forEach { $0?.alpha = 0.5 }
     }

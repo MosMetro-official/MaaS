@@ -79,6 +79,7 @@ public struct M_Tariff {
     public let tariffId: String
     public let imageURL: String
     public let price: Int
+    // TODO: не тудушка, а напутствие: не кажется, что в таком кейсе лучше использовать тюпл? А то лишние структуры
     public let name: M_Description
     public let description: M_Description
     public let duration: Int
@@ -172,6 +173,7 @@ public struct M_Valid {
 }
 
 extension M_Subscription: Equatable {
+    // TODO: может быть лучше сравнивать по id? Наименование иногда может быть одинаковым (вдруг)
     public static func == (lhs: M_Subscription, rhs: M_Subscription) -> Bool {
         return lhs.name?.ru == rhs.name?.ru
     }

@@ -8,6 +8,8 @@
 import UIKit
 import CoreTableView
 
+
+// TODO: Как-то не нравится реализация моделей данных внутри контроллера. Может попробовать сделать отдельную структуру для этого экрана aka ViewModel и в ней хранить модели и при ее изменении менять стейт?
 public class M_ActiveSubController: UIViewController {
         
     private let nestedView = M_ActiveSubView.loadFromNib()
@@ -119,6 +121,7 @@ public class M_ActiveSubController: UIViewController {
 //                dispatchGroup.leave()
 //            }
 //        }
+        
         dispatchGroup.enter()
         M_UserInfo.fetchUserInfo { result in
             switch result {
