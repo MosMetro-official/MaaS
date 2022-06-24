@@ -196,7 +196,7 @@ public class M_BuySubController: UIViewController {
     }
     
     private func makeState() {
-        guard let sub = selectedSub, let subName = sub.name else { return }
+        guard let sub = selectedSub else { return }
         let sortedService = sub.tariffs.sorted(by: { $0.serviceId < $1.serviceId })
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
@@ -218,7 +218,7 @@ public class M_BuySubController: UIViewController {
             let descrState = State(model: SectionState(header: nil, footer: nil), elements: [descr])
             states.append(descrState)
         }
-        let titleHeaderHeight = subName.ru.height(
+        let titleHeaderHeight = sub.name.ru.height(
             withConstrainedWidth: width,
             font: Appearance.getFont(.header)
         )
@@ -227,7 +227,7 @@ public class M_BuySubController: UIViewController {
             font: Appearance.getFont(.body)
         )
         let subHeader = M_BuySubView.ViewState.SubHeader(
-            title: subName.ru,
+            title: sub.name.ru,
             price: "\(sub.price / 100) ₽",
             height: titleHeaderHeight + priceHeight + 30
         )

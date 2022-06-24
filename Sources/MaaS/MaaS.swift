@@ -25,7 +25,7 @@ public class MaaS {
     
     public weak var networkDelegate: MaaSNetworkDelegate?
     
-    public var token: String? = "71azVAgF5W9_bLFDzKqQ8BBxaTGs3dgM_cuiRCPInCA"
+    public var token: String? = "TgpQ3-3GFNu1aNK8HTSUj9qingvUQc6a72L12URJXEQ"
     
     public var userHasSub: Bool = false
     public var apiError: APIError?
@@ -37,6 +37,7 @@ public class MaaS {
     public var succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
     public var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
     public var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
+    public var supportForm = "maasexample://main/maasSupportForm"
     
     public static let shared = MaaS()
     

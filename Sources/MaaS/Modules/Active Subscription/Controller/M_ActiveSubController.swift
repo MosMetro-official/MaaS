@@ -7,45 +7,35 @@
 
 import UIKit
 import CoreTableView
+import SafariServices
 
 
-// TODO: Как-то не нравится реализация моделей данных внутри контроллера. Может попробовать сделать отдельную структуру для этого экрана aka ViewModel и в ней хранить модели и при ее изменении менять стейт?
 public class M_ActiveSubController: UIViewController {
-        
-    private let nestedView = M_ActiveSubView.loadFromNib()
     
-    private var repeats: Int = 0
-    
-    private var hasDebit: (Bool, Int) = (true, 100)
-    
-    public var oldMaskedPan: String?  {
+    public var model = M_ActiveSubModel() {
         didSet {
-            checkCardUpdate()
+            guard let _ = model.userInfo else { return }
             makeState()
         }
     }
     
-    private var newMaskedPan: String?
+    public var oldMaskedPan: String?
     
-    private var debit: [M_DebtInfo]? {
+    private var newMaskedPan: String? {
         didSet {
-            guard let debit = debit else { return }
-            checkAllPossibleDebets(from: debit)
+            checkCardUpdate()
         }
     }
+            
+    private let nestedView = M_ActiveSubView.loadFromNib()
+    private var safariController: SFSafariViewController?
         
-    var needReload: Bool? {
+    public var needReload: Bool? {
         didSet {
             guard let reload = needReload else { return }
             if reload {
                 fetchUserInfo()
             }
-        }
-    }
-    
-    public var userInfo: M_UserInfo? {
-        didSet {
-            makeState()
         }
     }
             
@@ -61,9 +51,9 @@ public class M_ActiveSubController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage.getAssetImage(image: "mainBackButton"),
             style: .plain, target: self,
-            action: #selector(addTapped)
+            action: #selector(closeTapped)
         )
-//        setListeners()
+        setListeners()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -74,17 +64,15 @@ public class M_ActiveSubController: UIViewController {
         title = "Подписка"
     }
     
-//    private func setListeners() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .maasUpdateUserInfo, object: nil)
-//    }
-    
-    @objc private func updateUI(from notification: Notification) {
-        fetchUserInfo()
-    }
-    
-    @objc private func addTapped() {
+    @objc private func closeTapped() {
         self.dismiss(animated: true)
     }
+    
+    private func setListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSupportForm), name: .maasSupportForm, object: nil)
+    }
+    
+// MARK: Requests
     
     private func checkCardUpdate() {
         M_UserInfo.fetchUserInfo { result in
@@ -99,7 +87,7 @@ public class M_ActiveSubController: UIViewController {
                         }
                     }
                 }
-                self.userInfo = userInfo
+                self.model.userInfo = userInfo
             case .failure(let error):
                 self.showError(with: error.errorTitle, and: error.errorDescription)
             }
@@ -114,30 +102,30 @@ public class M_ActiveSubController: UIViewController {
 //        M_DebtInfo.fetchDebtInfo { result in
 //            switch result {
 //            case .success(let debit):
-//                self.debit = debit
+//                model?.debits = debit
 //                dispatchGroup.leave()
 //            case .failure(let error):
 //                self.showError(with: error.errorTitle, and: error.errorDescription)
 //                dispatchGroup.leave()
 //            }
 //        }
-        
         dispatchGroup.enter()
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
                 self.newMaskedPan = userInfo.maskedPan
-                if userInfo.subscription?.id == "" && self.repeats < 5 {
+                if self.model.userInfo?.subscription?.id == "" && self.model.repeats <= 5 {
                     DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                        self.repeats += 1
+                        self.model.repeats += 1
                         self.fetchUserInfo()
                         return
                     }
-                } else {
-                    self.repeats = 0
+                } else if self.model.userInfo?.subscription?.id == "" && self.model.repeats == 5 {
+                    self.model.repeats = 0
                     self.showError(with: "Ошибка", and: "Не удалось выполнить запрос")
+                    return
                 }
-                self.userInfo = userInfo
+                self.model.userInfo = userInfo
                 dispatchGroup.leave()
             case .failure(let error):
                 self.showError(with: error.errorTitle, and: error.errorDescription)
@@ -148,35 +136,11 @@ public class M_ActiveSubController: UIViewController {
             print("All done")
         }
     }
-    
-    private func showLoading() {
-        let loadingState = M_ActiveSubView.ViewState.Loading(
-            title: "Загрузка...",
-            descr: "Подождите немного"
-        )
-        nestedView.viewState = .init(state: [], dataState: .loading(loadingState))
-    }
-    
-    private func showError(with title: String, and descr: String) {
-        let onRetry = Command { [weak self] in
-            self?.fetchUserInfo()
-        }
-        let onClose = Command { [weak self] in
-            self?.dismiss(animated: true)
-        }
-        let errorState = M_ActiveSubView.ViewState.Error(
-            title: title,
-            descr: descr,
-            onRetry: onRetry,
-            onClose: onClose
-        )
-        nestedView.viewState = .init(state: [], dataState: .error(errorState))
-    }
         
     private func makeState() {
         self.showNavBar()
         var states: [State] = []
-        guard let userInfo = userInfo else { return }
+        guard let userInfo = model.userInfo else { return }
         let cardState = makeCardState(from: userInfo)
         states.append(contentsOf: cardState)
         let tariffState = makeTariffState(from: userInfo)
@@ -190,10 +154,12 @@ public class M_ActiveSubController: UIViewController {
     }
 }
 
+// MARK: Make state elements
+
 extension M_ActiveSubController {
-    private func makeDebtElement() -> Element {
+    private func makeDebtElement() -> Element? {
         let debtInfo = "У вас есть долг"
-        let debtTotal = "\(hasDebit.1) ₽"
+        let debtTotal = "\(model.debetInfo.totalDebet) ₽"
         let debtInfoHeight = debtInfo.height(
             withConstrainedWidth: 75,
             font: Appearance.getFont(.smallBody)
@@ -225,14 +191,14 @@ extension M_ActiveSubController {
             font: Appearance.getFont(.body)
         ) ?? 0
         guard let timeTo = user.subscription?.valid?.to else { return [] }
-        let validDate = Utils.getCurrentDate(from: timeTo)
+        let validDate = M_Utils.getCurrentDate(from: timeTo)
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
             timeLeft: "Активна до \(validDate)",
             height: titleHeight + activeHeight + 83
         )
-        if hasDebit.0 {
-            let debtElement = makeDebtElement()
+        if let _ = model.debits {
+            guard let debtElement = makeDebtElement() else { return [] }
             let debtState = State(model: SectionState(header: titleHeader, footer: nil), elements: [debtElement])
             states.append(debtState)
         }
@@ -253,20 +219,20 @@ extension M_ActiveSubController {
                 let self = self,
                 let navigation = self.navigationController else { return }
             let changeCardController = M_ChangeCardController()
-            changeCardController.userInfo = self.userInfo
+            changeCardController.userInfo = self.model.userInfo
             navigation.pushViewController(changeCardController, animated: true)
         }
-        guard let limit = userInfo?.keyChangeLeft, let maskedPan = userInfo?.maskedPan else { return [] }
+        guard let limit = model.userInfo?.keyChangeLeft, let maskedPan = model.userInfo?.maskedPan else { return [] }
         let cardInfo = M_ActiveSubView.ViewState.CardInfo(
             cardImage: user.paySystem ?? .unknown,
             cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",
-            willUpdate: oldMaskedPan == newMaskedPan,
+            isUpdate: newMaskedPan == oldMaskedPan,
             onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()
-        let cardState = State(model: SectionState(header: hasDebit.0 ? nil : titleHeader, footer: nil), elements: [cardInfo])
+        let cardState = State(model: SectionState(header: model.debetInfo.hasDebet ? nil : titleHeader, footer: nil), elements: [cardInfo])
         states.append(cardState)
         return states
     }
@@ -328,8 +294,8 @@ extension M_ActiveSubController {
             withConstrainedWidth: UIScreen.main.bounds.width - 40,
             font: Appearance.getFont(.card)
         )
-        let onSupport = Command {
-            print("open support web view")
+        let onSupport = Command { [weak self] in
+            self?.fetchSupportUrl()
         }
         let supportElement = M_ActiveSubView.ViewState.Support(
             onItemSelect: onSupport,
@@ -338,23 +304,82 @@ extension M_ActiveSubController {
         let supportState = State(model: SectionState(header: nil, footer: nil), elements: [supportElement])
         return supportState
     }
+}
+
+// MARK: Support form
+
+extension M_ActiveSubController: SFSafariViewControllerDelegate {
     
-    private func checkAllPossibleDebets(from debits: [M_DebtInfo]) {
-        let total = debits.reduce(0) { $0 + $1.amount }
-        hasDebit.1 = total
-        hasDebit.0 = total != 0
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        self.makeState()
+    }
+    
+    private func fetchSupportUrl() {
+        self.showLoading()
+        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.shared.supportForm) { result in
+            switch result {
+            case .success(let supportForm):
+                self.handleSupportUrl(path: supportForm.url)
+            case .failure(let error):
+                self.showError(with: error.errorTitle, and: error.errorDescription)
+            }
+        }
+    }
+    
+    private func handleSupportUrl(path: String) {
+        guard let url = URL(string: path) else { return }
+        safariController = SFSafariViewController(url: url)
+        safariController?.delegate = self
+        DispatchQueue.main.async {
+            self.present(self.safariController!, animated: true)
+        }
+    }
+    
+    private func hideSafatiController(onDismiss: @escaping () -> Void) {
+        guard let safariController = safariController else {
+            return
+        }
+        safariController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.safariController = nil
+            onDismiss()
+        }
+    }
+    
+    @objc private func handleSupportForm() {
+        hideSafatiController {
+            DispatchQueue.main.async {
+                self.makeState()
+            }
+        }
     }
 }
 
-public struct Utils {
-    public static func getCurrentDate(from string: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        if let date = dateFormatter.date(from: string) {
-            dateFormatter.dateFormat = "dd MMMM yyyy"
-            dateFormatter.locale = .current
-            return dateFormatter.string(from: date)
+// MARK: Errors, loading
+
+extension M_ActiveSubController {
+    
+    private func showLoading() {
+        let loadingState = M_ActiveSubView.ViewState.Loading(
+            title: "Загрузка...",
+            descr: "Подождите немного"
+        )
+        nestedView.viewState = .init(state: [], dataState: .loading(loadingState))
+    }
+    
+    private func showError(with title: String, and descr: String) {
+        let onRetry = Command { [weak self] in
+            self?.fetchUserInfo()
         }
-        return "неизвестно"
+        let onClose = Command { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        let errorState = M_ActiveSubView.ViewState.Error(
+            title: title,
+            descr: descr,
+            onRetry: onRetry,
+            onClose: onClose
+        )
+        nestedView.viewState = .init(state: [], dataState: .error(errorState))
     }
 }

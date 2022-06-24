@@ -111,7 +111,7 @@ class MaaSCell: UITableViewCell {
         self.action = action
         guard let paySystem = user.paySystem?.rawValue else { return }
         titleLabel.text = "\(paySystem) •••• \(user.maskedPan)"
-        dateLabel.text = "До \(Utils.getCurrentDate(from: to))"
+        dateLabel.text = "До \(M_Utils.getCurrentDate(from: to))"
         service = user.subscription?.tariffs
         activity.stopAnimating()
     }

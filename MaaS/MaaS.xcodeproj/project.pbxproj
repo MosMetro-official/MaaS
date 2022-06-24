@@ -102,6 +102,9 @@
 		95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */; };
 		95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */; };
 		95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */; };
+		95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE8C2865FDDB00C3A967 /* M_Support.swift */; };
+		95A4FE922866040300C3A967 /* M_Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE912866040300C3A967 /* M_Utils.swift */; };
+		95A4FE95286609F200C3A967 /* M_ActiveSubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE94286609F200C3A967 /* M_ActiveSubModel.swift */; };
 		95C057CD2855025900CEDBE3 /* DebtInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */; };
 		95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */; };
 		95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057D028550D9700CEDBE3 /* SupportCell.swift */; };
@@ -243,6 +246,9 @@
 		95A41D0C2854BB5800637FA6 /* M_HistoryTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_HistoryTrips.swift; sourceTree = "<group>"; };
 		95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartRequest.swift; sourceTree = "<group>"; };
 		95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartResponse.swift; sourceTree = "<group>"; };
+		95A4FE8C2865FDDB00C3A967 /* M_Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Support.swift; sourceTree = "<group>"; };
+		95A4FE912866040300C3A967 /* M_Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Utils.swift; sourceTree = "<group>"; };
+		95A4FE94286609F200C3A967 /* M_ActiveSubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModel.swift; sourceTree = "<group>"; };
 		95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtInfoCell.swift; sourceTree = "<group>"; };
 		95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtInfoCell.xib; sourceTree = "<group>"; };
 		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
@@ -314,6 +320,7 @@
 		95092080282E55DC00C4E573 /* MaaS */ = {
 			isa = PBXGroup;
 			children = (
+				952DAB812866120A0081A842 /* Services */,
 				95795B6828531AFE00634754 /* Models */,
 				95092082282E55DC00C4E573 /* Custom Elements */,
 				95092085282E55DC00C4E573 /* Extensions */,
@@ -420,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				950920A1282E55DC00C4E573 /* Controller */,
+				95A4FE93286609E000C3A967 /* Model */,
 				950920A3282E55DC00C4E573 /* View */,
 			);
 			path = "Active Subscription";
@@ -533,6 +541,14 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		952DAB812866120A0081A842 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				95A4FE912866040300C3A967 /* M_Utils.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9533A5EA285B6CC700D77375 /* Trips History */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +624,7 @@
 		95795B6828531AFE00634754 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				95A4FE892865FDC200C3A967 /* Support */,
 				95C5FDF02860C9DF00984F2F /* History Trips */,
 				95C5FDEF2860C9DA00984F2F /* Debet */,
 				95C5FDEE2860C9BE00984F2F /* User */,
@@ -686,6 +703,22 @@
 				9585BF3928576E3D00FF77FD /* M_ResultView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		95A4FE892865FDC200C3A967 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				95A4FE8C2865FDDB00C3A967 /* M_Support.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		95A4FE93286609E000C3A967 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95A4FE94286609F200C3A967 /* M_ActiveSubModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		95B9D8EE283D34E400CC7433 /* Onboarding */ = {
@@ -1024,6 +1057,7 @@
 				9533A5F1285B6D6900D77375 /* M_TripsHistoryView.swift in Sources */,
 				950920E2282E55DC00C4E573 /* M_CardInfoCell.swift in Sources */,
 				951C42DB2858AA9100DA975A /* M_SubHeader.swift in Sources */,
+				95A4FE922866040300C3A967 /* M_Utils.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
 				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
 				9585BF2F285746BC00FF77FD /* M_ChangeCardView.swift in Sources */,
@@ -1032,6 +1066,7 @@
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				9585BF2D285746A500FF77FD /* M_ChangeCardController.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
+				95A4FE95286609F200C3A967 /* M_ActiveSubModel.swift in Sources */,
 				95C057CD2855025900CEDBE3 /* DebtInfoCell.swift in Sources */,
 				95C057D228550D9700CEDBE3 /* SupportCell.swift in Sources */,
 				95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */,
@@ -1058,6 +1093,7 @@
 				9585BF3828576E2E00FF77FD /* M_ResultView.swift in Sources */,
 				950920DF282E55DC00C4E573 /* M_HeaderTableCell.swift in Sources */,
 				956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */,
+				95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */,
 				950920E0282E55DC00C4E573 /* M_TariffInfoCell.swift in Sources */,
 				9533A5EF285B6D5700D77375 /* M_TripsHistoryController.swift in Sources */,
 				95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */,

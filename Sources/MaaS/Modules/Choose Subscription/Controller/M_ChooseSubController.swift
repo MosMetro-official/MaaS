@@ -118,14 +118,13 @@ public class M_ChooseSubController: UIViewController {
                 self.selectedSub = sub
                 self.selectMakeMySub = false
             }
-            guard let nameOfSub = sub.name else { return }
             let width = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = nameOfSub.ru.height(
+            let titleHeight = sub.name.ru.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.header)
             ) + 40
-            let title = nameOfSub.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+            let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
             let stackViewHeight = imageHeight * CGFloat(sub.tariffs.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
             let subElement = M_ChooseSubView.ViewState.SubSectionRow(

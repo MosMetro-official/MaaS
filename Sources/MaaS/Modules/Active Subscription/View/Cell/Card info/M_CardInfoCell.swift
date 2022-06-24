@@ -9,13 +9,12 @@ import UIKit
 import CoreTableView
 
 
-// TODO: Учитывая что у тебя тут появился стейт загрузки внутри – может лучше тогда внутри энам сделать? Будет красивее
 protocol _CardInfo: CellData {
     var cardImage: PaySystem { get }
     var cardNumber: String { get }
     var cardDescription: String { get }
     var leftCountChangeCard: String { get }
-    var willUpdate: Bool { get }
+    var isUpdate: Bool { get }
 }
 
 extension _CardInfo {
@@ -25,7 +24,7 @@ extension _CardInfo {
             cardNumber.hashValue,
             cardDescription.hashValue,
             leftCountChangeCard.hashValue,
-            willUpdate.hashValue
+            isUpdate.hashValue
         ]
     }
     
@@ -54,26 +53,17 @@ class M_CardInfoCell: UITableViewCell {
         
     }
     
-    // TODO: Объедини в одну функцию с булем и проверяй буль. isAlpha ? 1 : 0.5 + добавь анимаций
-    private func setHalfAlpha() {
-        [cardImage, cardNumberLabel, cardDescriptionLabel, leftCountLabel].forEach { $0?.alpha = 0.5 }
-    }
-    
-    private func setNonAlpha() {
-        [cardImage, cardNumberLabel, cardDescriptionLabel, leftCountLabel].forEach { $0?.alpha = 1 }
+    private func setLoadingState(isUpdate: Bool) {
+        self.isUserInteractionEnabled = !isUpdate
+        let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) { [weak self] in
+            [self?.cardImage, self?.cardNumberLabel, self?.cardDescriptionLabel, self?.leftCountLabel].forEach { $0?.alpha = isUpdate ? 0.5 : 1 }
+            isUpdate ? self?.activity.startAnimating() : self?.activity.stopAnimating()
+        }
+        animator.startAnimation()
     }
     
     public func configure(with data: _CardInfo) {
-        if data.willUpdate {
-            self.isUserInteractionEnabled = false
-            setHalfAlpha()
-            activity.startAnimating()
-            return
-        } else {
-            self.isUserInteractionEnabled = true
-            setNonAlpha()
-            activity.stopAnimating()
-        }
+        setLoadingState(isUpdate: data.isUpdate)
         cardImage.image = UIImage.getCardHolderImage(for: data.cardImage)
         cardNumberLabel.text = data.cardNumber
         cardDescriptionLabel.text = data.cardDescription

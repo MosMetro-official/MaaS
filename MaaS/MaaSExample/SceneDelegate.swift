@@ -63,6 +63,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                 object: nil,
                                                 userInfo: nil)
             }
+            
+            if first.absoluteString.contains(MaaS.shared.supportForm) {
+                NotificationCenter.default.post(name: .maasSupportForm,
+                                                object: nil,
+                                                userInfo: nil)
+            }
         }
     }
 }

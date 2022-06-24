@@ -71,7 +71,6 @@ class M_ResultController: UIViewController {
             )
         case .successSub(let sub):
             NotificationCenter.default.post(name: .maasUpdateUserInfo, object: nil, userInfo: nil)
-            guard let subName = sub.name?.ru else { return }
             let onAction = Command { [weak self] in
                 // open onboarding
             }
@@ -84,7 +83,7 @@ class M_ResultController: UIViewController {
             }
             let success = M_ResultView.ViewState.Action(
                 title: "Успешно",
-                descr: "Мы привязали подписку \(subName) к вашей карте"
+                descr: "Мы привязали подписку \(sub.name.ru) к вашей карте"
             )
             nestedView.viewState = .init(
                 hideAction: nil,
