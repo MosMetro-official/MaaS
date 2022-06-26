@@ -12,18 +12,16 @@ import SafariServices
 
 public class M_ActiveSubController: UIViewController {
     
-    public var model = M_ActiveSubModel() {
+    private var model = M_ActiveSubModel() {
         didSet {
             guard let _ = model.userInfo else { return }
             makeState()
         }
     }
     
-    public var oldMaskedPan: String?
-    
-    private var newMaskedPan: String? {
+    public var oldMaskedPan: String? {
         didSet {
-            checkCardUpdate()
+            model.oldMaskedPan = oldMaskedPan
         }
     }
             
@@ -78,18 +76,19 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
-                self.newMaskedPan = userInfo.maskedPan
-                if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
-                    if newMask == oldMask {
-                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                            self.checkCardUpdate()
-                            return
-                        }
+                self.model.newMaskedPan = userInfo.maskedPan
+                if self.model.needReloadCard {
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                        self.checkCardUpdate()
+                        return
                     }
                 }
                 self.model.userInfo = userInfo
             case .failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
+                let onRetry = Command { [weak self] in
+                    self?.fetchUserInfo()
+                }
+                self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
             }
         }
     }
@@ -113,22 +112,37 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
-                self.newMaskedPan = userInfo.maskedPan
-                if self.model.userInfo?.subscription?.id == "" && self.model.repeats <= 5 {
-                    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                        self.model.repeats += 1
-                        self.fetchUserInfo()
-                        return
+//                self.newMaskedPan = userInfo.maskedPan
+                switch userInfo.subscription?.status {
+                case .active:
+                    self.model.userInfo = userInfo
+                case .expired:
+                    let onAction = Command { [weak self] in
+                        let choose = MaaS.shared.showChooseFlow()
+                        self?.navigationController?.pushViewController(choose, animated: true)
                     }
-                } else if self.model.userInfo?.subscription?.id == "" && self.model.repeats == 5 {
-                    self.model.repeats = 0
-                    self.showError(with: "Ошибка", and: "Не удалось выполнить запрос")
-                    return
+                    self.makeStatusInfoState(with: "Подписка закончилась", descr: "Оформите пожалуйста новую", imageStr: "checkmark", onAction: onAction, actionTitle: "Выбрать новую")
+                case .blocked:
+                    self.makeStatusInfoState(with: "Ваша подписка была заблокирована", descr: "Свяжитесь с нами", imageStr: "checkmark", onAction: nil)
+                case .processing, .created:
+                    self.makeStatusInfoState(with: "Мы обрабатываем вашу оплату", descr: "Попробуйте позже", imageStr: "checkmark", onAction: nil)
+                case .unknow:
+                    let onAction = Command { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+                    self.makeStatusInfoState(with: "Мы оформляем вашу подписку", descr: "Попробуйте позже", imageStr: "checkmark", onAction: onAction, actionTitle: "Закрыть")
+                case .canceled:
+                    self.makeStatusInfoState(with: "Что-то пошло не так", descr: "Свяжитесь с нами", imageStr: "checkmark", onAction: nil)
+                default:
+                    break
                 }
-                self.model.userInfo = userInfo
+                self.model.newMaskedPan = userInfo.maskedPan
                 dispatchGroup.leave()
             case .failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
+                let onRetry = Command { [weak self] in
+                    self?.fetchUserInfo()
+                }
+                self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
                 dispatchGroup.leave()
             }
         }
@@ -151,6 +165,20 @@ public class M_ActiveSubController: UIViewController {
         states.append(supportState)
         let viewState = M_ActiveSubView.ViewState(state: states, dataState: .loaded)
         nestedView.viewState = viewState
+    }
+    
+    private func makeStatusInfoState(with title: String, descr: String, imageStr: String, onAction: Command<Void>?, actionTitle: String = "") {
+        let image = UIImage.getAssetImage(image: imageStr)
+        let statusInfo = M_ActiveSubView.ViewState.StatusInfo(
+            title: title,
+            descr: descr,
+            imageStatus: image,
+            onAction: onAction,
+            actionTitle: actionTitle,
+            height: UIScreen.main.bounds.height / 2
+        ).toElement()
+        let state = State(model: SectionState(header: nil, footer: nil), elements: [statusInfo])
+        nestedView.viewState = .init(state: [state], dataState: .loaded)
     }
 }
 
@@ -228,7 +256,7 @@ extension M_ActiveSubController {
             cardNumber: "•••• \(maskedPan)",
             cardDescription: "Для прохода в транспорте",
             leftCountChangeCard: "Осталось смен карты - \(limit)",
-            isUpdate: newMaskedPan == oldMaskedPan,
+            isUpdate: model.needReloadCard,
             onItemSelect: onCardSelect,
             height: cardNumberHeight + cardDescriptionHeight + leftCountChageCardHeight + 48
         ).toElement()
@@ -321,7 +349,10 @@ extension M_ActiveSubController: SFSafariViewControllerDelegate {
             case .success(let supportForm):
                 self.handleSupportUrl(path: supportForm.url)
             case .failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
+                let onRetry = Command { [weak self] in
+                    self?.fetchSupportUrl()
+                }
+                self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
             }
         }
     }
@@ -367,10 +398,7 @@ extension M_ActiveSubController {
         nestedView.viewState = .init(state: [], dataState: .loading(loadingState))
     }
     
-    private func showError(with title: String, and descr: String) {
-        let onRetry = Command { [weak self] in
-            self?.fetchUserInfo()
-        }
+    private func showError(with title: String, and descr: String, onRetry: Command<Void>) {
         let onClose = Command { [weak self] in
             self?.dismiss(animated: true)
         }

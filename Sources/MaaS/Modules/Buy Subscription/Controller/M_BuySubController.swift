@@ -15,6 +15,7 @@ public class M_BuySubController: UIViewController {
     
     private var safariController: SFSafariViewController?
     private var repeats: Int = 0
+    private var payId: String?
     
     var selectedSub: M_Subscription? {
         didSet {
@@ -80,9 +81,8 @@ public class M_BuySubController: UIViewController {
         self.showLoading(with: "Привязываем подписку...")
         hidePaymentController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                guard let sub = self.selectedSub else { return }
                 let resultController = M_ResultController()
-                resultController.resultModel = .successSub(sub)
+                resultController.needToCheckUserInfo = true
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
@@ -98,9 +98,10 @@ public class M_BuySubController: UIViewController {
     @objc private func handleCanceled() {
         hidePaymentController {
             self.showLoading(with: "Привязываем подписку...")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                guard let payId = self.payId else { return }
                 let resultController = M_ResultController()
-                resultController.resultModel = .failureCard
+                resultController.resultModel = .failureSub(id: payId)
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
@@ -141,7 +142,7 @@ public class M_BuySubController: UIViewController {
             switch result {
             case .success(let payResponse):
                 print("😢😢😢 COUNT - \(self.repeats)")
-                if payResponse.payment.url == "" {
+                if payResponse.payment.url.isEmpty {
                     if self.repeats < 5 {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
                             self.repeats += 1
@@ -149,11 +150,12 @@ public class M_BuySubController: UIViewController {
                         }
                     } else {
                         self.showNavBar()
-                        self.showError(with: "", and: "", onRetry: onRetry)
+                        self.showError(with: "Что-то пошло не так", and: "Мы уже разбираемся в причине, попробуйте еще раз позже.", onRetry: onRetry)
                     }
                 } else {
                     self.showNavBar()
                     self.handlePaymentUrl(url: payResponse.payment.url)
+                    self.payId = response.paymentId
                 }
             case .failure(let error):
                 self.showNavBar()

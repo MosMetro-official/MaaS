@@ -32,6 +32,15 @@ class M_ActiveSubView: UIView {
             let onClose: Command<Void>
         }
         
+        struct StatusInfo: _StatusInfoCell {
+            let title: String
+            let descr: String
+            let imageStatus: UIImage
+            let onAction: Command<Void>?
+            let actionTitle: String
+            let height: CGFloat
+        }
+        
         struct DebtInfo: _DebtInfoCell {
             let totalDebt: String
             let onButton: Command<Void>

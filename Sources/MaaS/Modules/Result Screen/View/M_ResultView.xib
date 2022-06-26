@@ -15,21 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="HTt-vx-IeR">
-                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                </activityIndicatorView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привязываем подписку" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWA-ve-2aX">
-                    <rect key="frame" x="60" y="516.5" width="294" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Немного подождите" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4o-du-1l8">
-                    <rect key="frame" x="50" y="547" width="314" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="qrn-GC-iLS">
                     <rect key="frame" x="159" y="400" width="96" height="96"/>
                     <constraints>
@@ -105,31 +90,20 @@
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="hj8-ti-FU1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="1nj-gY-vQP"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TWA-ve-2aX" secondAttribute="trailing" constant="60" id="6fM-qc-u7i"/>
-                <constraint firstItem="TWA-ve-2aX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="ERV-UK-2y4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="M7z-fu-Zl3" secondAttribute="trailing" constant="55" id="GA9-dE-H71"/>
                 <constraint firstAttribute="bottom" secondItem="skv-hG-hwL" secondAttribute="bottom" constant="58" id="GXZ-hX-vTe"/>
-                <constraint firstItem="HTt-vx-IeR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PmT-6u-0uq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hj8-ti-FU1" secondAttribute="trailing" constant="50" id="X2u-p5-bXd"/>
-                <constraint firstItem="TWA-ve-2aX" firstAttribute="top" secondItem="HTt-vx-IeR" secondAttribute="bottom" constant="50" id="Zmm-wb-eJj"/>
-                <constraint firstItem="w4o-du-1l8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="cRH-OE-kXQ"/>
                 <constraint firstItem="skv-hG-hwL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="d7Y-ZO-ElO"/>
                 <constraint firstItem="hj8-ti-FU1" firstAttribute="top" secondItem="M7z-fu-Zl3" secondAttribute="bottom" constant="10" id="jjQ-cn-6yB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="w4o-du-1l8" secondAttribute="trailing" constant="50" id="o1Q-Po-mSg"/>
                 <constraint firstItem="M7z-fu-Zl3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="55" id="p6c-Gu-YpC"/>
-                <constraint firstItem="w4o-du-1l8" firstAttribute="top" secondItem="TWA-ve-2aX" secondAttribute="bottom" constant="10" id="pwL-cf-Ltt"/>
                 <constraint firstItem="qrn-GC-iLS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qNu-uO-oXg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="skv-hG-hwL" secondAttribute="trailing" constant="20" id="swk-Ts-2v9"/>
-                <constraint firstItem="HTt-vx-IeR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vQm-Rp-jfy"/>
                 <constraint firstItem="M7z-fu-Zl3" firstAttribute="top" secondItem="qrn-GC-iLS" secondAttribute="bottom" constant="37" id="wsu-Wk-Fgq"/>
                 <constraint firstItem="qrn-GC-iLS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xCF-EE-Igu"/>
             </constraints>
             <connections>
                 <outlet property="actionButton" destination="ovo-Oi-9tu" id="g6c-U6-2HT"/>
-                <outlet property="activityIndicator" destination="HTt-vx-IeR" id="IsR-1c-T4R"/>
                 <outlet property="closeButton" destination="grs-Um-FSD" id="f7A-UN-BgE"/>
-                <outlet property="loadingDescrLabel" destination="w4o-du-1l8" id="Xof-oR-mje"/>
-                <outlet property="loadingTitleLabel" destination="TWA-ve-2aX" id="MjZ-Mz-jVV"/>
                 <outlet property="logoImageView" destination="qrn-GC-iLS" id="Bqz-bz-bBl"/>
                 <outlet property="resultDescrLabel" destination="hj8-ti-FU1" id="qLg-5I-Yqs"/>
                 <outlet property="resultTitleLabel" destination="M7z-fu-Zl3" id="rRN-ZJ-o8w"/>

@@ -13,10 +13,16 @@ public struct M_ActiveSubModel {
     
     var userInfo: M_UserInfo?
     var debits: [M_DebtInfo]?
+    var newMaskedPan: String?
+    var oldMaskedPan: String?
     var repeats: Int = 0
     
     var debetInfo: Debet {
         checkAllPossibleDebets()
+    }
+    
+    var needReloadCard: Bool {
+        newMaskedPan == oldMaskedPan
     }
     
     init(userInfo: M_UserInfo? = nil, debits: [M_DebtInfo]? = nil) {

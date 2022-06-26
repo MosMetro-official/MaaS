@@ -53,6 +53,9 @@
 		950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */; };
 		950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */; };
 		950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
+		9516A5BB2868B3EE00E6F7CB /* M_ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516A5BA2868B3EE00E6F7CB /* M_ResultModel.swift */; };
+		9516A5C02868C3DF00E6F7CB /* M_StatusInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516A5BE2868C3DF00E6F7CB /* M_StatusInfoCell.swift */; };
+		9516A5C12868C3DF00E6F7CB /* M_StatusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9516A5BF2868C3DF00E6F7CB /* M_StatusInfoCell.xib */; };
 		951C42D72858A32800DA975A /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951C42D52858A32800DA975A /* DescriptionCell.swift */; };
 		951C42D82858A32800DA975A /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951C42D62858A32800DA975A /* DescriptionCell.xib */; };
 		951C42DB2858AA9100DA975A /* M_SubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951C42DA2858AA9100DA975A /* M_SubHeader.swift */; };
@@ -201,6 +204,9 @@
 		950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Regular.otf"; sourceTree = "<group>"; };
 		950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Medium.otf"; sourceTree = "<group>"; };
 		950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Bold.otf"; sourceTree = "<group>"; };
+		9516A5BA2868B3EE00E6F7CB /* M_ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ResultModel.swift; sourceTree = "<group>"; };
+		9516A5BE2868C3DF00E6F7CB /* M_StatusInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_StatusInfoCell.swift; sourceTree = "<group>"; };
+		9516A5BF2868C3DF00E6F7CB /* M_StatusInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = M_StatusInfoCell.xib; sourceTree = "<group>"; };
 		951C42D52858A32800DA975A /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		951C42D62858A32800DA975A /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
 		951C42DA2858AA9100DA975A /* M_SubHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubHeader.swift; sourceTree = "<group>"; };
@@ -455,6 +461,7 @@
 		950920A6282E55DC00C4E573 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9516A5BD2868C3B700E6F7CB /* Status Info Cell */,
 				95C057CF28550D8200CEDBE3 /* SupportCell */,
 				95C057CA2855023500CEDBE3 /* Debt Info */,
 				95B9D8EE283D34E400CC7433 /* Onboarding */,
@@ -521,6 +528,23 @@
 				950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9516A5BC2868BD5400E6F7CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9516A5BA2868B3EE00E6F7CB /* M_ResultModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9516A5BD2868C3B700E6F7CB /* Status Info Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9516A5BE2868C3DF00E6F7CB /* M_StatusInfoCell.swift */,
+				9516A5BF2868C3DF00E6F7CB /* M_StatusInfoCell.xib */,
+			);
+			path = "Status Info Cell";
 			sourceTree = "<group>";
 		};
 		951C42D42858A30200DA975A /* Cell */ = {
@@ -682,6 +706,7 @@
 		9585BF3228576DDC00FF77FD /* Result Screen */ = {
 			isa = PBXGroup;
 			children = (
+				9516A5BC2868BD5400E6F7CB /* Model */,
 				9585BF3428576DFE00FF77FD /* View */,
 				9585BF3328576DF800FF77FD /* Controller */,
 			);
@@ -950,6 +975,7 @@
 				950920DD282E55DC00C4E573 /* M_OnboardingCell.xib in Resources */,
 				950920D3282E55DC00C4E573 /* M_MakeMySubRow.xib in Resources */,
 				950920CE282E55DC00C4E573 /* M_LoadingView.xib in Resources */,
+				9516A5C12868C3DF00E6F7CB /* M_StatusInfoCell.xib in Resources */,
 				951C42D82858A32800DA975A /* DescriptionCell.xib in Resources */,
 				950920E8282E55DC00C4E573 /* M_ErrorView.xib in Resources */,
 				950920D1282E55DC00C4E573 /* M_ChooseSubView.xib in Resources */,
@@ -1073,6 +1099,7 @@
 				950920E9282E55DC00C4E573 /* M_ErrorView.swift in Sources */,
 				950920E6282E55DC00C4E573 /* M_BuySubView.swift in Sources */,
 				95A41D092854B4E300637FA6 /* M_DebtInfo.swift in Sources */,
+				9516A5BB2868B3EE00E6F7CB /* M_ResultModel.swift in Sources */,
 				9533A5F6285B71B900D77375 /* M_HistoryCell.swift in Sources */,
 				95795B6B28531B2700634754 /* AuthClient.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
@@ -1092,6 +1119,7 @@
 				95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */,
 				9585BF3828576E2E00FF77FD /* M_ResultView.swift in Sources */,
 				950920DF282E55DC00C4E573 /* M_HeaderTableCell.swift in Sources */,
+				9516A5C02868C3DF00E6F7CB /* M_StatusInfoCell.swift in Sources */,
 				956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */,
 				95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */,
 				950920E0282E55DC00C4E573 /* M_TariffInfoCell.swift in Sources */,

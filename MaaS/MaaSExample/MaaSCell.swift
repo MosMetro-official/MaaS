@@ -35,7 +35,7 @@ class MaaSCell: UITableViewCell {
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         collectionView.register(UINib(nibName: "TariffCell", bundle: nil), forCellWithReuseIdentifier: "colcell")
-        [titleLabel, collectionView, button, cellTitleLabel].forEach { $0?.isHidden = true }
+        [titleLabel, collectionView, button, cellTitleLabel, logoImage ].forEach { $0?.isHidden = true }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,29 +43,24 @@ class MaaSCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    private func getCurrentDate(from string: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        if let date = dateFormatter.date(from: string) {
-            dateFormatter.dateFormat = "dd MMMM yyyy"
-            dateFormatter.locale = .current
-            return dateFormatter.string(from: date)
-        }
-        return "неизвестно"
-    }
-    
     private func setVisionAlpha() {
-        titleLabel.alpha = 1
-        dateLabel.alpha = 1
-        cellTitleLabel.alpha = 1
-        logoImage.alpha = 1
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+            self.titleLabel.alpha = 1
+            self.dateLabel.alpha = 1
+            self.cellTitleLabel.alpha = 1
+            self.logoImage.alpha = 1
+        }
+        animator.startAnimation()
     }
     
     private func setHalvVisionAlpha() {
-        titleLabel.alpha = 0.5
-        dateLabel.alpha = 0.5
-        cellTitleLabel.alpha = 0.5
-        logoImage.alpha = 0.5
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+            self.titleLabel.alpha = 0.5
+            self.dateLabel.alpha = 0.5
+            self.cellTitleLabel.alpha = 0.5
+            self.logoImage.alpha = 0.5
+        }
+        animator.startAnimation()
     }
     
     private func showLabels() {
@@ -83,7 +78,6 @@ class MaaSCell: UITableViewCell {
         button.isHidden = true
         dateLabel.isHidden = true
         collectionView.isHidden = true
-        logoImage.isHidden = true
         activity.startAnimating()
     }
     
@@ -98,6 +92,19 @@ class MaaSCell: UITableViewCell {
         dateLabel.text = nil
         activity.stopAnimating()
         button.setTitle("Загрузить еще раз", for: .normal)
+    }
+    
+    public func authProccessingConfig(message: String, action: @escaping () -> Void) {
+        titleLabel.text = message
+        dateLabel.text = ""
+        showLabels()
+        setVisionAlpha()
+        button.isHidden = false
+        logoImage.isHidden = false
+        button.setTitle("Проверить статус", for: .normal)
+        collectionView.isHidden = true
+        self.action = action
+        activity.stopAnimating()
     }
     
     
@@ -116,13 +123,13 @@ class MaaSCell: UITableViewCell {
         activity.stopAnimating()
     }
     
-    public func nonAuthConfigure(with action: @escaping () -> Void) {
+    public func nonAuthConfigure(message: String, and action: @escaping () -> Void) {
         setVisionAlpha()
         showLabels()
         logoImage.isHidden = false
         button.isHidden = false
         collectionView.isHidden = true
-        titleLabel.text = "Весь транспорт в одной подписке"
+        titleLabel.text = message
         dateLabel.text = nil
         self.action = action
         activity.stopAnimating()
