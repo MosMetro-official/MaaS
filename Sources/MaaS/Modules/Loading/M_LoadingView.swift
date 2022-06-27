@@ -31,7 +31,7 @@ extension UIView {
         loadingView.alpha = 0
         loadingView.tag = 111
         loadingView.configure(with: data)
-        let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
             view.addSubview(loadingView)
             loadingView.alpha = 1
         }
@@ -41,7 +41,7 @@ extension UIView {
     func removeLoading(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 111 {
-                UIView.animate(withDuration: 0.25) {
+                UIView.animate(withDuration: 0.5) {
                     _view.alpha = 0
                 } completion: { success in
                     if success {

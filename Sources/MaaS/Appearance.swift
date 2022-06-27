@@ -31,13 +31,13 @@ protocol _Appearance: AnyObject {
 }
 
 public enum FontTextStyle: String {
+    case more = "more"
     case body = "body"
     case card = "card"
     case debt = "debt"
     case price = "price"
     case header = "header"
     case button = "button"
-    case more = "moreText"
     case loading = "loading"
     case navTitle = "navTitle"
     case smallBody = "smallBody"
@@ -53,7 +53,7 @@ public final class Appearance: _Appearance {
     
     //TODO: - struct MaaSSettings
 
-    static var customFonts: [FontTextStyle: UIFont] = [
+    public static var customFonts: [FontTextStyle: UIFont] = [
         .navTitle: UIFont(name: "MoscowSans-Medium", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .medium),
         .largeTitle: UIFont(name: "Comfortaa", size: 30) ?? UIFont.systemFont(ofSize: 30, weight: .bold),
         .header: UIFont(name: "MoscowSans-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular),
@@ -72,7 +72,7 @@ public final class Appearance: _Appearance {
         .retryButton: UIFont(name: "MoscowSans-Regular", size: 21) ?? UIFont.systemFont(ofSize: 21, weight: .regular)
     ]
     
-    static func getFont(_ fontStyle: FontTextStyle) -> UIFont {
+    public static func getFont(_ fontStyle: FontTextStyle) -> UIFont {
         return Appearance.customFonts[fontStyle] ?? UIFont.systemFont(ofSize: 15)
     }
 }

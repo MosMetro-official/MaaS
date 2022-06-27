@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-extension UILabel {
+public extension UILabel {
     
     //MARK: - SetLineSpacing for UILabel
     /**
@@ -35,7 +35,7 @@ extension UILabel {
     }
     
     @IBInspectable
-    public var userFontName : String {
+    var userFontName : String {
         set (userFont) {
             self.font = Appearance.customFonts[.init(rawValue: userFont) ?? .body]
         }
