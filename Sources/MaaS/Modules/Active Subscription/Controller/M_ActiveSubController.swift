@@ -96,6 +96,7 @@ public class M_ActiveSubController: UIViewController {
     private func fetchUserInfo() {
         self.hideNavBar()
         self.showLoading()
+        var user: M_UserInfo?
         let dispatchGroup = DispatchGroup()
 //        dispatchGroup.enter()
 //        M_DebtInfo.fetchDebtInfo { result in
@@ -115,7 +116,8 @@ public class M_ActiveSubController: UIViewController {
 //                self.newMaskedPan = userInfo.maskedPan
                 switch userInfo.subscription?.status {
                 case .active:
-                    self.model.userInfo = userInfo
+//                    self.model.userInfo = userInfo
+                    user = userInfo
                 case .expired:
                     let onAction = Command { [weak self] in
                         let choose = MaaS.shared.showChooseFlow()
@@ -148,6 +150,7 @@ public class M_ActiveSubController: UIViewController {
         }
         dispatchGroup.notify(queue: .main) {
             print("All done")
+            self.model.userInfo = user
         }
     }
         

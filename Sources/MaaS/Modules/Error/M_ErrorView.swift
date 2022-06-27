@@ -56,7 +56,7 @@ extension UIView {
         errorView.alpha = 0
         errorView.tag = 222
         errorView.configure(with: data)
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+        let animator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut) {
             view.addSubview(errorView)
             errorView.alpha = 1
         }
@@ -66,7 +66,7 @@ extension UIView {
     func removeError(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 222 {
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 0.4) {
                     _view.alpha = 0
                 } completion: { success in
                     if success {
