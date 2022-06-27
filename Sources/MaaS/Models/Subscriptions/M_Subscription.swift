@@ -19,11 +19,13 @@ public enum Status: String {
     case blocked = "BLOCKED" // заблокирован
 }
 
+public typealias M_Description = (ru: String, en: String)
+
 public struct M_Subscription {
     public let id: String
     public let price: Int
-    public let name: M_Description?
-    public let description: M_Description?
+    public let name: M_Description
+    public let description: M_Description
     public let duration: Int
     public let tariffs: [M_Tariff]
     public let serviceId: String?
@@ -33,8 +35,8 @@ public struct M_Subscription {
     init?(data: JSON) {
         self.id = data["id"].stringValue
         self.price = data["price"].intValue
-        self.name = M_Description(data: data["name"])
-        self.description = M_Description(data: data["description"])
+        self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
+        self.description = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
         self.duration = data["duration"].intValue
         self.tariffs = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
         self.serviceId = data["serviceId"].stringValue
@@ -63,14 +65,9 @@ public struct M_Subscription {
     }
 }
 
-public struct M_Description {
-    public let ru: String
-    public let en: String
-    
-    init?(data: JSON) {
-        guard let ru = data["ru"].string, let en = data["en"].string else { return nil }
-        self.ru = ru
-        self.en = en
+extension M_Subscription: Equatable {
+    public static func == (lhs: M_Subscription, rhs: M_Subscription) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 
@@ -93,8 +90,6 @@ public struct M_Tariff {
             let tariffId = data["tariffId"].string,
             let imgUrl = data["imageURL"].string,
             let price = data["price"].int,
-            let name = M_Description(data: data["name"]),
-            let descr = M_Description(data: data["description"]),
             let duration = data["duration"].int,
             let trip = M_Trip(data: data["trip"]),
             let access = data["access"].bool,
@@ -104,8 +99,8 @@ public struct M_Tariff {
         self.tariffId = tariffId
         self.imageURL = imgUrl
         self.price = price
-        self.name = name
-        self.description = descr
+        self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
+        self.description = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
         self.duration = duration
         self.trip = trip
         self.access = access
@@ -168,11 +163,5 @@ public struct M_Valid {
         guard let from = data["from"].string, let to = data["to"].string else { return nil }
         self.from = from
         self.to = to
-    }
-}
-
-extension M_Subscription: Equatable {
-    public static func == (lhs: M_Subscription, rhs: M_Subscription) -> Bool {
-        return lhs.name?.ru == rhs.name?.ru
     }
 }

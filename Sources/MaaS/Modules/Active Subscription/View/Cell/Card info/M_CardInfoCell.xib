@@ -26,10 +26,10 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lzq-Qv-djI">
-                        <rect key="frame" x="79" y="31" width="208.5" height="62.5"/>
+                        <rect key="frame" x="79" y="31" width="206.5" height="62.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Осталось смен карты – 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Ih-wQZ">
-                                <rect key="frame" x="0.0" y="0.0" width="208.5" height="16"/>
+                                <rect key="frame" x="0.0" y="0.0" width="206.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="secondaryText"/>
                                 <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МИР •••• 2267" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drj-E8-mEB">
-                                <rect key="frame" x="0.0" y="21" width="208.5" height="20.5"/>
+                                <rect key="frame" x="0.0" y="21" width="206.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="primaryText"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для прохода в транспорте" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wc-Qq-DAZ">
-                                <rect key="frame" x="0.0" y="46.5" width="208.5" height="16"/>
+                                <rect key="frame" x="0.0" y="46.5" width="206.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="secondaryText"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                         </subviews>
                     </stackView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-Hb-GsV">
-                        <rect key="frame" x="148" y="52" width="20" height="20"/>
+                        <rect key="frame" x="147" y="52" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>

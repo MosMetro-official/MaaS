@@ -41,7 +41,7 @@ extension UIView {
     func removeLoading(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 111 {
-                UIView.animate(withDuration: 0.35) {
+                UIView.animate(withDuration: 0.25) {
                     _view.alpha = 0
                 } completion: { success in
                     if success {

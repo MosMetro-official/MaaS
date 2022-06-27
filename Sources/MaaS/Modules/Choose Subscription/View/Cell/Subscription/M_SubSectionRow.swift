@@ -42,12 +42,6 @@ class M_SubSectionRow: UITableViewCell {
     
     private var gradient: CAGradientLayer?
     private var gradientHeight: CGFloat?
-    
-    private var tariffs: [M_Tariff]? {
-        didSet {
-            setupStackView(with: tariffs ?? [])
-        }
-    }
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
@@ -144,7 +138,7 @@ class M_SubSectionRow: UITableViewCell {
     public func configure(with data: _SubSectionRow) {
         titleLabel.text = data.title
         priceLabel.text = data.price
-        tariffs = data.tariffs
+        setupStackView(with: data.tariffs)
         gradientHeight = data.height
         selectImage.isHidden = !data.showSelectImage
         selectImage.image = data.isSelect ? UIImage.getAssetImage(image: "select") : UIImage.getAssetImage(image: "unselect")

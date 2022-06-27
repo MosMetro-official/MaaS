@@ -90,6 +90,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wdX-3V-0fD" secondAttribute="bottom" id="rEk-Wu-Y9n"/>
             </constraints>
             <connections>
+                <outlet property="descrLabel" destination="v5u-Mf-oag" id="Dj3-wv-S7E"/>
+                <outlet property="infoLabel" destination="yPd-oM-2Wg" id="iJD-7K-eZJ"/>
                 <outlet property="payButton" destination="24Y-yp-QL2" id="V1e-WA-dGc"/>
                 <outlet property="tableView" destination="wdX-3V-0fD" id="SMj-T8-lcN"/>
                 <outlet property="titleLabel" destination="UyE-8h-mFz" id="9kt-Sy-0yZ"/>

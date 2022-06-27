@@ -59,6 +59,8 @@ class M_BuySubView: UIView {
     }
     
     @IBOutlet private weak var titleLabel: GradientLabel!
+    @IBOutlet weak var descrLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet private weak var tableView: BaseTableView!
     @IBOutlet private weak var payButton: UIButton!
     
@@ -94,19 +96,27 @@ class M_BuySubView: UIView {
         self.payButton.layer.insertSublayer(self.buttonGradient!, at: 0)
     }
     
+    private func hide() {
+        [tableView, titleLabel, descrLabel, infoLabel, payButton].forEach { $0?.isHidden = true }
+    }
+    
+    private func show() {
+        [tableView, titleLabel, descrLabel, infoLabel, payButton].forEach { $0?.isHidden = false }
+    }
+    
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            tableView.isHidden = false
+            show()
             removeError(from: self)
             removeLoading(from: self)
             tableView.viewStateInput = viewState.state
         case .loading(let loading):
-            tableView.isHidden = true
+            hide()
             removeError(from: self)
             showLoading(on: self, data: loading)
         case .error(let error):
-            tableView.isHidden = true
+            hide()
             removeLoading(from: self)
             showError(on: self, data: error)
         }

@@ -32,6 +32,15 @@ class M_ActiveSubView: UIView {
             let onClose: Command<Void>
         }
         
+        struct StatusInfo: _StatusInfoCell {
+            let title: String
+            let descr: String
+            let imageStatus: UIImage
+            let onAction: Command<Void>?
+            let actionTitle: String
+            let height: CGFloat
+        }
+        
         struct DebtInfo: _DebtInfoCell {
             let totalDebt: String
             let onButton: Command<Void>
@@ -49,7 +58,7 @@ class M_ActiveSubView: UIView {
             let cardNumber: String
             let cardDescription: String
             let leftCountChangeCard: String
-            let willUpdate: Bool
+            let isUpdate: Bool
             let onItemSelect: Command<Void>
             let height: CGFloat
         }

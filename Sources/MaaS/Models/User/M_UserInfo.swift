@@ -12,7 +12,7 @@ public struct M_UserInfo {
     public let status: Status?
     public let keyChangeLimit: Int
     public let keyChangeLeft: Int
-    public let reason: M_Description?
+    public let reason: M_Description
     public let hashKey: String
     public let type: String
     public let paySystem: PaySystem?
@@ -32,7 +32,7 @@ public struct M_UserInfo {
         self.status = Status(rawValue: status)
         self.keyChangeLimit = keyChangeLimit
         self.keyChangeLeft = keyChangeLeft
-        self.reason = M_Description(data: data["reason"])
+        self.reason = (data["reason"]["ru"].stringValue, data["reason"]["en"].stringValue)
         self.hashKey = haskKey
         self.type = data["type"].stringValue
         self.paySystem = PaySystem(rawValue: paySystem)

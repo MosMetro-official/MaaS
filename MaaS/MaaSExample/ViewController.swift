@@ -81,6 +81,20 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    private func showActiveFlow() {
+        let active = MaaS.shared.showActiveFlow()
+        let nav = UINavigationController(rootViewController: active)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
+    
+    private func showChooseFlow() {
+        let choose = MaaS.shared.showChooseFlow()
+        let nav = UINavigationController(rootViewController: choose)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -96,23 +110,37 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MaaSCell else { return .init() }
         cell.loadConfigure()
         if let user = user {
-            if user.subscription?.id != "" {
-                cell.authConfig(with: user) {
-                    let active = MaaS.shared.showActiveFlow()
-                    let nav = UINavigationController(rootViewController: active)
-                    nav.modalPresentationStyle = .fullScreen
-                    self.present(nav, animated: true)
+            switch user.subscription?.status {
+            case .active:
+                cell.authConfig(with: user) { [weak self] in
+                    self?.showActiveFlow()
                 }
-            } else {
-                cell.nonAuthConfigure {
-                    let choose = MaaS.shared.showChooseFlow()
-                    let nav = UINavigationController(rootViewController: choose)
-                    nav.modalPresentationStyle = .fullScreen
-                    self.present(nav, animated: true)
+            case .unknow:
+                cell.authProccessingConfig(message: "Ваша подписка оформляется") { [weak self] in
+                    cell.loadConfigure()
+                    self?.fetchUserInfo()
                 }
+            case .created, .processing:
+                cell.authProccessingConfig(message: "Ваша подписка оплачивается") { [weak self] in
+                    cell.loadConfigure()
+                    self?.fetchUserInfo()
+                }
+            case .expired:
+                cell.nonAuthConfigure(message: "Ваша подписка закончилась") { [weak self] in
+                    self?.showChooseFlow()
+                }
+            case .canceled:
+                cell.nonAuthConfigure(message: "Ваша подписка была аннулиорована") { [weak self] in
+                    self?.showChooseFlow()
+                }
+            case .blocked:
+                cell.nonAuthConfigure(message: "Ваша подписка была заблокирована") { [weak self] in
+                    self?.showChooseFlow()
+                }
+            default:
+                break
             }
         }
-        
         if error != "" {
             cell.errorConfigure(title: "Ошибочка 😢") {
                 cell.loadConfigure()
@@ -128,16 +156,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             if error != "" {
                 break
             }
-            if MaaS.shared.userHasSub {
-                let active = MaaS.shared.showActiveFlow()
-                let nav = UINavigationController(rootViewController: active)
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true)
-            } else {
-                let choose = MaaS.shared.showChooseFlow()
-                let nav = UINavigationController(rootViewController: choose)
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true)
+            switch user?.subscription?.status {
+            case .active:
+                self.showActiveFlow()
+            case .created, .processing, .blocked:
+                break
+            case .expired, .canceled:
+                self.showChooseFlow()
+            case .unknow:
+                self.showActiveFlow()
+            default:
+                break
             }
         default:
             break

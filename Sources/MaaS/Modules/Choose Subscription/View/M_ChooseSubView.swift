@@ -74,11 +74,13 @@ class M_ChooseSubView: UIView {
         titleLabel.isHidden = true
         changeLabel.isHidden = true
         payButton.isHidden = true
+        tableView.isHidden = true
     }
     
     private func show() {
         titleLabel.isHidden = false
         changeLabel.isHidden = false
+        tableView.isHidden = false
     }
     
     private var buttonGradient: CAGradientLayer?
@@ -119,16 +121,17 @@ class M_ChooseSubView: UIView {
         payButton.setTitle(viewState.payButtonTitle, for: .normal)
         switch viewState.dataState {
         case .loaded:
-            tableView.isHidden = false
+            show()
             removeLoading(from: self)
             removeError(from: self)
-            show()
             tableView.viewStateInput = viewState.state
         case .loading(let data):
+            hide()
             tableView.isHidden = true
             removeError(from: self)
             showLoading(on: self, data: data)
         case .error(let data):
+            hide()
             tableView.isHidden = true
             removeLoading(from: self)
             showError(on: self, data: data)

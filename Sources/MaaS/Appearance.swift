@@ -33,10 +33,10 @@ protocol _Appearance: AnyObject {
 public enum FontTextStyle: String {
     case body = "body"
     case card = "card"
+    case debt = "debt"
     case price = "price"
     case header = "header"
     case button = "button"
-    case debt = "debt"
     case more = "moreText"
     case loading = "loading"
     case navTitle = "navTitle"

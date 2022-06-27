@@ -15,6 +15,7 @@ public class M_BuySubController: UIViewController {
     
     private var safariController: SFSafariViewController?
     private var repeats: Int = 0
+    private var payId: String?
     
     var selectedSub: M_Subscription? {
         didSet {
@@ -80,9 +81,8 @@ public class M_BuySubController: UIViewController {
         self.showLoading(with: "Привязываем подписку...")
         hidePaymentController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                guard let sub = self.selectedSub else { return }
                 let resultController = M_ResultController()
-                resultController.resultModel = .successSub(sub)
+                resultController.needToCheckUserInfo = true
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
@@ -98,9 +98,10 @@ public class M_BuySubController: UIViewController {
     @objc private func handleCanceled() {
         hidePaymentController {
             self.showLoading(with: "Привязываем подписку...")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                guard let payId = self.payId else { return }
                 let resultController = M_ResultController()
-                resultController.resultModel = .failureCard
+                resultController.resultModel = .failureSub(id: payId)
                 self.navigationController?.pushViewController(resultController, animated: true)
             }
         }
@@ -141,7 +142,7 @@ public class M_BuySubController: UIViewController {
             switch result {
             case .success(let payResponse):
                 print("😢😢😢 COUNT - \(self.repeats)")
-                if payResponse.payment.url == "" {
+                if payResponse.payment.url.isEmpty {
                     if self.repeats < 5 {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
                             self.repeats += 1
@@ -149,11 +150,12 @@ public class M_BuySubController: UIViewController {
                         }
                     } else {
                         self.showNavBar()
-                        self.showError(with: "", and: "", onRetry: onRetry)
+                        self.showError(with: "Что-то пошло не так", and: "Мы уже разбираемся в причине, попробуйте еще раз позже.", onRetry: onRetry)
                     }
                 } else {
                     self.showNavBar()
                     self.handlePaymentUrl(url: payResponse.payment.url)
+                    self.payId = response.paymentId
                 }
             case .failure(let error):
                 self.showNavBar()
@@ -196,7 +198,7 @@ public class M_BuySubController: UIViewController {
     }
     
     private func makeState() {
-        guard let sub = selectedSub, let subName = sub.name else { return }
+        guard let sub = selectedSub else { return }
         let sortedService = sub.tariffs.sorted(by: { $0.serviceId < $1.serviceId })
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
@@ -218,7 +220,7 @@ public class M_BuySubController: UIViewController {
             let descrState = State(model: SectionState(header: nil, footer: nil), elements: [descr])
             states.append(descrState)
         }
-        let titleHeaderHeight = subName.ru.height(
+        let titleHeaderHeight = sub.name.ru.height(
             withConstrainedWidth: width,
             font: Appearance.getFont(.header)
         )
@@ -227,7 +229,7 @@ public class M_BuySubController: UIViewController {
             font: Appearance.getFont(.body)
         )
         let subHeader = M_BuySubView.ViewState.SubHeader(
-            title: subName.ru,
+            title: sub.name.ru,
             price: "\(sub.price / 100) ₽",
             height: titleHeaderHeight + priceHeight + 30
         )

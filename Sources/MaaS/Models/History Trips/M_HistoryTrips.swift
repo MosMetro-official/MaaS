@@ -64,8 +64,7 @@ public struct M_TripDetails {
             let count = data["count"].int,
             let time = M_TravelTime(data: data["time"]),
             let status = data["status"].string,
-            let serviceId = data["serviceId"].string,
-            let route = M_Description(data: data["route"]) else { return nil }
+            let serviceId = data["serviceId"].string else { return nil }
                 
         self.serviceTripId = serviceTripId
         self.terminalId = terminalId
@@ -73,7 +72,7 @@ public struct M_TripDetails {
         self.time = time
         self.status = TripStatus(rawValue: status)
         self.serviceId = serviceId
-        self.route = route
+        self.route = (data["route"]["ru"].stringValue, data["route"]["en"].stringValue)
     }
 }
 

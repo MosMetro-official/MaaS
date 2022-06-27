@@ -15,4 +15,5 @@ public extension Notification.Name {
     static let maasChangeCardDeclined = Notification.Name("maasChangeCardDeclined")
     static let maasChangeCardCanceled = Notification.Name("maasChangeCardCanceled")
     static let maasUpdateUserInfo = Notification.Name("maasUpdateUserInfo")
+    static let maasSupportForm = Notification.Name("maasSupportForm")
 }
