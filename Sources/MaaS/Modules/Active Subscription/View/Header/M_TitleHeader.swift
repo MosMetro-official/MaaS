@@ -34,6 +34,7 @@ class M_TitleHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
+        titleLabel.font = UIFont.customFont(forTextStyle: .largeTitle)
     }
 
     public func configure(with data: _TitleHeader) {

@@ -25,7 +25,7 @@ public class MaaS {
     
     public weak var networkDelegate: MaaSNetworkDelegate?
     
-    public var token: String? = "PcZtr-DoszlAOqscVH0Z_QRxnY-zy331u55l87MSXyc"
+    public var token: String? = "9mWv8_AUwC4uEVie7KORDJrB2e0efoiyRhLQ3cALAaU"
     
     public var userHasSub: Bool = false
     public var apiError: APIError?
