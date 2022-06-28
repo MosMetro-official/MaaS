@@ -84,8 +84,6 @@
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
-		9576C4B3286A363C00170349 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
-		9576C4B4286A364000170349 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BD282E55DC00C4E573 /* Comfortaa.ttf */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
@@ -990,12 +988,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */,
-				9576C4B3286A363C00170349 /* MoscowSans-Bold.otf in Resources */,
 				9533A609285C91A700D77375 /* TariffCell.xib in Resources */,
 				953E96B5282ED96100374DF2 /* Assets.xcassets in Resources */,
 				953E96B3282ED95E00374DF2 /* Main.storyboard in Resources */,
 				9533A604285C90B300D77375 /* MaaSCell.xib in Resources */,
-				9576C4B4286A364000170349 /* Comfortaa.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
