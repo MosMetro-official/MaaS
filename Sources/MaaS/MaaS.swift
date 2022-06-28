@@ -3,12 +3,6 @@ import MMCoreNetworkCallbacks
 
 public class MaaS {
     
-    public enum ErrorDescription: String {
-        case ended = "Срок действия вашей подписки закончился 🤔"
-        case cancel = "Ваша подписка была аннулирована 🥸"
-        case error = "Ошибочка 😢. Не удалось обновить токен"
-    }
-    
     static var bundle: Bundle {
         let podBundle = Bundle(for: self)
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
@@ -27,7 +21,6 @@ public class MaaS {
     
     static var token: String? = "1MLR6LtBXXNl2cx4swh1E3CMVv4RgcYJCEMdFFYXSQk"
     
-    public var userHasSub: Bool = false
     public var apiError: APIError?
     public var errorMessage: String?
     
@@ -59,19 +52,14 @@ public class MaaS {
         _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "Comfortaa", fontExtension: "ttf")
     }
     
-    public func getUserSubStatus(completion: @escaping (M_UserInfo?, String?) -> Void) {
+    public func getUserInfo(completion: @escaping (M_UserInfo?, APIError?) -> Void) {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let currentUser):
-                if currentUser.subscription?.id == "" {
-                    self.userHasSub = false
-                } else {
-                    self.userHasSub = true
-                }
                 completion(currentUser, nil)
             case .failure(let error):
                 self.apiError = error
-                completion(nil, ErrorDescription.error.rawValue)
+                completion(nil, error)
             }
         }
     }

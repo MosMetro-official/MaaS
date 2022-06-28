@@ -66,19 +66,16 @@ class ViewController: UIViewController {
     }
     
     private func fetchUserInfo() {
-        maas.getUserSubStatus { [weak self] user, error in
+        maas.getUserInfo { [weak self] user, error in
             guard let self = self else { return }
-            self.user = user
-            self.oldMaskedPan = user?.maskedPan
-            if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
-                DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                    if newMask == oldMask {
-                        self.fetchUserInfo()
-                    }
-                }
+            switch user?.subscription?.status {
+            case .active:
+                self.user = user
+            default:
+                break
             }
-            if let errorTitle = error {
-                self.error = errorTitle
+            if let error = error {
+                self.error = error.errorTitle
             }
         }
     }

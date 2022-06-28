@@ -262,7 +262,6 @@
 		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		95C057D128550D9700CEDBE3 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
 		95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserCardResponse.swift; sourceTree = "<group>"; };
-		95F36B87286A397E0091F8CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,7 +311,6 @@
 		9509205D282E535B00C4E573 /* MaaS */ = {
 			isa = PBXGroup;
 			children = (
-				95F36B87286A397E0091F8CE /* Info.plist */,
 				9509205E282E535B00C4E573 /* MaaS.h */,
 			);
 			path = MaaS;
