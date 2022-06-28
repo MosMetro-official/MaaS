@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
 
   spec.platform     = :ios
   spec.platform     = :ios, "13.0"
-  #spec.static_framework = true
+  spec.static_framework = false
   spec.ios.deployment_target = "13.0"
   spec.swift_version = '5.0'
 
