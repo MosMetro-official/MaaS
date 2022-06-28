@@ -84,6 +84,8 @@
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
+		9576C4B3286A363C00170349 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
+		9576C4B4286A364000170349 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BD282E55DC00C4E573 /* Comfortaa.ttf */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
@@ -260,6 +262,7 @@
 		95C057D028550D9700CEDBE3 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		95C057D128550D9700CEDBE3 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
 		95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserCardResponse.swift; sourceTree = "<group>"; };
+		95F36B87286A397E0091F8CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AD3D9B6FD4621B5E6D925B9E /* Pods-MaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaS.debug.xcconfig"; path = "Target Support Files/Pods-MaaS/Pods-MaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		DCEB33DD0EED7758CD7FD744 /* Pods-MaaSExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaaSExample.debug.xcconfig"; path = "Target Support Files/Pods-MaaSExample/Pods-MaaSExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +312,7 @@
 		9509205D282E535B00C4E573 /* MaaS */ = {
 			isa = PBXGroup;
 			children = (
+				95F36B87286A397E0091F8CE /* Info.plist */,
 				9509205E282E535B00C4E573 /* MaaS.h */,
 			);
 			path = MaaS;
@@ -988,10 +992,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */,
+				9576C4B3286A363C00170349 /* MoscowSans-Bold.otf in Resources */,
 				9533A609285C91A700D77375 /* TariffCell.xib in Resources */,
 				953E96B5282ED96100374DF2 /* Assets.xcassets in Resources */,
 				953E96B3282ED95E00374DF2 /* Main.storyboard in Resources */,
 				9533A604285C90B300D77375 /* MaaSCell.xib in Resources */,
+				9576C4B4286A364000170349 /* Comfortaa.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,6 +1309,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaaS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1334,6 +1341,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaaS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -172,9 +172,9 @@ public class M_BuySubController: UIViewController {
             payment: .init(
                 paymentMethod: .card,
                 redirectUrl: .init(
-                    succeed: MaaS.shared.succeedUrl,
-                    declined: MaaS.shared.declinedUrl,
-                    canceled: MaaS.shared.canceledUrl
+                    succeed: MaaS.succeedUrl,
+                    declined: MaaS.declinedUrl,
+                    canceled: MaaS.canceledUrl
                 ),
                 paymentToken: nil,
                 id: nil

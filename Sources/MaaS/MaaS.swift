@@ -9,37 +9,38 @@ public class MaaS {
         case error = "Ошибочка 😢. Не удалось обновить токен"
     }
     
-    internal var bundle: Bundle {
-        let podBundle = Bundle(for: type(of: self))
+    static var bundle: Bundle {
+        let podBundle = Bundle(for: self)
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
             return podBundle
         }
         return Bundle(url: url) ?? podBundle
     }
     
-    public var host: String = "maas.brndev.ru"
+    static var host: String = "maas.brndev.ru"
     
-    public var applicationName: String = ""
+    static var applicationName: String = ""
     
-    public var language: String = "ru_RU"
+    static var language: String = "ru_RU"
     
-    public weak var networkDelegate: MaaSNetworkDelegate?
+    public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public var token: String? = "hE2Wvn4PUYxBZsbHcy2T203P_KdbUanSUz56xfg2kuU"
+    static var token: String? = "1MLR6LtBXXNl2cx4swh1E3CMVv4RgcYJCEMdFFYXSQk"
     
     public var userHasSub: Bool = false
     public var apiError: APIError?
     public var errorMessage: String?
     
-    public var succeedUrl = "maasexample://main/maasPaymentSuccess"
-    public var declinedUrl = "maasexample://main/maasPaymentDeclined"
-    public var canceledUrl = "maasexample://main/maasPaymentCanceled"
-    public var succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
-    public var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
-    public var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
-    public var supportForm = "maasexample://main/maasSupportForm"
+    public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
+    public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
+    public static var canceledUrl = "maasexample://main/maasPaymentCanceled"
+    public static var succeedUrlCard = "maasexample://main/maasChangeCardSuccess"
+    public static var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
+    public static var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
+    public static var supportForm = "maasexample://main/maasSupportForm"
     
-    public static let shared = MaaS()
+    public init() { }
+        
     
     public func showActiveFlow() -> M_ActiveSubController {
         let active = M_ActiveSubController()
@@ -52,10 +53,10 @@ public class MaaS {
     }
     
     public static func registerFonts() {
-        _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Bold", fontExtension: "otf")
-        _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Regular", fontExtension: "otf")
-        _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "MoscowSans-Medium", fontExtension: "otf")
-        _ = UIFont.registerFont(bundle: MaaS.shared.bundle, fontName: "Comfortaa", fontExtension: "ttf")
+        _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "MoscowSans-Bold", fontExtension: "otf")
+        _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "MoscowSans-Regular", fontExtension: "otf")
+        _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "MoscowSans-Medium", fontExtension: "otf")
+        _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "Comfortaa", fontExtension: "ttf")
     }
     
     public func getUserSubStatus(completion: @escaping (M_UserInfo?, String?) -> Void) {
@@ -75,15 +76,15 @@ public class MaaS {
         }
     }
     
-    internal var deviceOS : String {
+    static var deviceOS : String {
         return UIDevice.current.systemVersion
     }
     
-    internal var deviceUUID : String {
+    static var deviceUUID : String {
         return UIDevice.current.identifierForVendor?.uuidString ?? ""
     }
     
-    internal var deviceAppVersion : String? {
+    static var deviceAppVersion : String? {
         guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
               let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String else {
             return nil
@@ -91,11 +92,11 @@ public class MaaS {
         return "\(version) (\(build))"
     }
     
-    internal var deviceModel: String {
+    static var deviceModel: String {
         return UIDevice.modelName
     }
     
-    internal var deviceBundleSignature : String? {
+    static var deviceBundleSignature : String? {
         guard let infoPlistUrl = Bundle.main.url(forResource: "Info", withExtension: "plist") else {
             return nil
         }
@@ -130,8 +131,8 @@ public class MaaS {
         return signature
     }
     
-    internal var deviceUserAgent: String {
-        let defaultUserAgent = String(format: "Mozilla/5.0 (iPhone; CPU iPhone OS %@ like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1", self.deviceOS)
+    static var deviceUserAgent: String {
+        let defaultUserAgent = String(format: "Mozilla/5.0 (iPhone; CPU iPhone OS %@ like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1", deviceOS)
         
         if #available(iOS 13, *) {
             guard let appVersion = self.deviceAppVersion,

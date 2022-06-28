@@ -16,16 +16,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МультиТранспорт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="WWc-mG-psN" customClass="GradientLabel" customModule="MaaS">
-                    <rect key="frame" x="57" y="74" width="300" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <rect key="frame" x="57" y="74" width="300" height="35"/>
+                    <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="largeTitle"/>
-                    </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Активна до 22 марта 2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxD-rj-Urq">
-                    <rect key="frame" x="10" y="134" width="394" height="18"/>
+                    <rect key="frame" x="10" y="133" width="394" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -56,7 +53,7 @@
     </objects>
     <designables>
         <designable name="WWc-mG-psN">
-            <size key="intrinsicContentSize" width="245.5" height="36"/>
+            <size key="intrinsicContentSize" width="254.5" height="35"/>
         </designable>
     </designables>
     <resources>

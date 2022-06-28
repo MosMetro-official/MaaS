@@ -120,7 +120,7 @@ public class M_ActiveSubController: UIViewController {
                     user = userInfo
                 case .expired:
                     let onAction = Command { [weak self] in
-                        let choose = MaaS.shared.showChooseFlow()
+                        let choose = M_ChooseSubController()
                         self?.navigationController?.pushViewController(choose, animated: true)
                     }
                     self.makeStatusInfoState(with: "Подписка закончилась", descr: "Оформите пожалуйста новую", imageStr: "checkmark", onAction: onAction, actionTitle: "Выбрать новую")
@@ -347,7 +347,7 @@ extension M_ActiveSubController: SFSafariViewControllerDelegate {
     
     private func fetchSupportUrl() {
         self.showLoading()
-        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.shared.supportForm) { result in
+        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.supportForm) { result in
             switch result {
             case .success(let supportForm):
                 self.handleSupportUrl(path: supportForm.url)

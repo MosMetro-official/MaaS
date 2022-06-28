@@ -37,7 +37,7 @@ extension UILabel {
     @IBInspectable
     public var userFontName : String {
         set (userFont) {
-            self.font = UIFont.customFont(forTextStyle: .init(rawValue: userFont) ?? .body)
+            self.font = Appearance.getFont(.init(rawValue: userFont) ?? .body)
         }
         get {
             return self.userFontName

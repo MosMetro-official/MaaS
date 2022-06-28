@@ -28,7 +28,7 @@ extension UIColor {
     }
     
     static func getAssetColor(name: String) -> UIColor {
-        return UIColor(named: name, in: MaaS.shared.bundle, compatibleWith: nil) ?? UIColor.red
+        return UIColor(named: name, in: MaaS.bundle, compatibleWith: nil) ?? UIColor.red
     }
     
     static func getCardHolderColor(for card: PaySystem) -> UIColor {
