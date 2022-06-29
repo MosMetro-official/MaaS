@@ -91,6 +91,7 @@ class M_ChooseSubView: UIView {
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
+        titleLabel.font = Appearance.getFont(.largeTitle)
         addHorizontalGradientLayer()
     }
     
@@ -117,7 +118,6 @@ class M_ChooseSubView: UIView {
     
     private func render() {
         payButton.isHidden = !viewState.payButtonEnable
-        payButton.titleLabel?.font = Appearance.customFonts[.button]
         payButton.setTitle(viewState.payButtonTitle, for: .normal)
         switch viewState.dataState {
         case .loaded:

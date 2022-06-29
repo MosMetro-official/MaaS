@@ -28,9 +28,7 @@ class M_ErrorView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         retryButton.layer.cornerRadius = 10
-        retryButton.titleLabel?.font = Appearance.getFont(.button)
         closeButton.layer.cornerRadius = 10
-        closeButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
     @IBAction func onRetryTapped() {

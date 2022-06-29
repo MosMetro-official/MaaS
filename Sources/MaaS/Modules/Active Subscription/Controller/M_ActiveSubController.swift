@@ -217,15 +217,15 @@ extension M_ActiveSubController {
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = user.subscription?.valid?.to.height(
+        guard let timeTo = user.subscription?.valid?.to else { return [] }
+        let timeToString = M_DateConverter.validateStringFrom(date: timeTo)
+        let activeHeight = timeToString.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
-        ) ?? 0
-        guard let timeTo = user.subscription?.valid?.to else { return [] }
-        let validDate = M_Utils.getCurrentDate(from: timeTo)
+        )
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
-            timeLeft: "Активна до \(validDate)",
+            timeLeft: "Активна до \(timeToString)",
             height: titleHeight + activeHeight + 83
         )
         if let _ = model.debits {
