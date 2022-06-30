@@ -39,7 +39,6 @@ class DebtInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        moreButton.titleLabel?.font = Appearance.getFont(.more)
     }
 
     @IBAction func moreButtonPressed() {

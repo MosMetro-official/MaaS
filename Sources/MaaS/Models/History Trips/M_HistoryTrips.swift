@@ -77,12 +77,15 @@ public struct M_TripDetails {
 }
 
 public struct M_TravelTime {
-    let start: String
-    let end: String
+    let start: Date?
+    let end: Date?
+    private let dateFormatter = DateFormatter()
     
     init?(data: JSON) {
-        guard let start = data["start"].string, let end = data["end"].string else { return nil }
-        self.start = start
-        self.end = end
+        guard
+            let start = data["start"].string,
+            let end = data["end"].string else { return nil }
+        self.start = start.converToDate()
+        self.end = end.converToDate()
     }
 }

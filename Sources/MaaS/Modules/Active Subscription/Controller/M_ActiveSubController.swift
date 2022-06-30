@@ -96,6 +96,7 @@ public class M_ActiveSubController: UIViewController {
     private func fetchUserInfo() {
         self.hideNavBar()
         self.showLoading()
+        var user: M_UserInfo?
         let dispatchGroup = DispatchGroup()
 //        dispatchGroup.enter()
 //        M_DebtInfo.fetchDebtInfo { result in
@@ -115,10 +116,11 @@ public class M_ActiveSubController: UIViewController {
 //                self.newMaskedPan = userInfo.maskedPan
                 switch userInfo.subscription?.status {
                 case .active:
-                    self.model.userInfo = userInfo
+//                    self.model.userInfo = userInfo
+                    user = userInfo
                 case .expired:
                     let onAction = Command { [weak self] in
-                        let choose = MaaS.shared.showChooseFlow()
+                        let choose = M_ChooseSubController()
                         self?.navigationController?.pushViewController(choose, animated: true)
                     }
                     self.makeStatusInfoState(with: "Подписка закончилась", descr: "Оформите пожалуйста новую", imageStr: "checkmark", onAction: onAction, actionTitle: "Выбрать новую")
@@ -148,6 +150,7 @@ public class M_ActiveSubController: UIViewController {
         }
         dispatchGroup.notify(queue: .main) {
             print("All done")
+            self.model.userInfo = user
         }
     }
         
@@ -214,15 +217,15 @@ extension M_ActiveSubController {
             withConstrainedWidth: UIScreen.main.bounds.width - 57,
             font: Appearance.getFont(.largeTitle)
         )
-        let activeHeight = user.subscription?.valid?.to.height(
+        guard let timeTo = user.subscription?.valid?.to else { return [] }
+        let timeToString = M_DateConverter.validateStringFrom(date: timeTo)
+        let activeHeight = timeToString.height(
             withConstrainedWidth: UIScreen.main.bounds.width - 20,
             font: Appearance.getFont(.body)
-        ) ?? 0
-        guard let timeTo = user.subscription?.valid?.to else { return [] }
-        let validDate = M_Utils.getCurrentDate(from: timeTo)
+        )
         let titleHeader = M_ActiveSubView.ViewState.TitleHeader(
             title: title,
-            timeLeft: "Активна до \(validDate)",
+            timeLeft: "Активна до \(timeToString)",
             height: titleHeight + activeHeight + 83
         )
         if let _ = model.debits {
@@ -344,7 +347,7 @@ extension M_ActiveSubController: SFSafariViewControllerDelegate {
     
     private func fetchSupportUrl() {
         self.showLoading()
-        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.shared.supportForm) { result in
+        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.supportForm) { result in
             switch result {
             case .success(let supportForm):
                 self.handleSupportUrl(path: supportForm.url)

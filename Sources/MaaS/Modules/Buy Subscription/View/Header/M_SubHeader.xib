@@ -9,31 +9,33 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MoscowSans-Bold.otf">
+            <string>MoscowSans-Bold</string>
+        </array>
+        <array key="MoscowSans-Regular.otf">
+            <string>MoscowSans-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="M_SubHeader" customModule="MaaS">
-            <rect key="frame" x="0.0" y="0.0" width="317" height="68"/>
+            <rect key="frame" x="0.0" y="0.0" width="337" height="68"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МультиТранспорт Мини" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGG-ga-i6i">
-                    <rect key="frame" x="50" y="10" width="217" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="50" y="10" width="237" height="23.5"/>
+                    <fontDescription key="fontDescription" name="MoscowSans-Bold" family="Moscow Sans" pointSize="20"/>
                     <color key="textColor" name="primaryText"/>
                     <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="header"/>
-                    </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJm-Th-iMI">
-                    <rect key="frame" x="100" y="34" width="117" height="21"/>
+                    <rect key="frame" x="100" y="36.5" width="137" height="23.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="20"/>
                     <color key="textColor" name="secondaryText"/>
                     <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="userFontName" value="price"/>
-                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -51,7 +53,7 @@
                 <outlet property="priceLabel" destination="bJm-Th-iMI" id="fhU-uG-E53"/>
                 <outlet property="titleLabel" destination="lGG-ga-i6i" id="KRf-yS-a5o"/>
             </connections>
-            <point key="canvasLocation" x="67.391304347826093" y="323.4375"/>
+            <point key="canvasLocation" x="81.884057971014499" y="323.4375"/>
         </view>
     </objects>
     <resources>

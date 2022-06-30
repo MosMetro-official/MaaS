@@ -33,15 +33,15 @@ extension URLRequest {
     
     mutating func appendAuthHeaders() {
         appendBasicHeaders()
-        if let authToken = MaaS.shared.token {
+        if let authToken = MaaS.token {
             self.setValue("Bearer \(authToken)", forHTTPHeaderField: Headers.application)
             self.setValue("Bearer \(authToken)", forHTTPHeaderField: Headers.authorization)
         }
     }
     
     mutating func appendBasicHeaders() {
-        self.setValue(MaaS.shared.deviceUUID, forHTTPHeaderField: Headers.device)
-        self.setValue(MaaS.shared.deviceUserAgent, forHTTPHeaderField: Headers.userAgent)
-        self.setValue(MaaS.shared.language, forHTTPHeaderField: Headers.language)
+        self.setValue(MaaS.deviceUUID, forHTTPHeaderField: Headers.device)
+        self.setValue(MaaS.deviceUserAgent, forHTTPHeaderField: Headers.userAgent)
+        self.setValue(MaaS.language, forHTTPHeaderField: Headers.language)
     }
 }

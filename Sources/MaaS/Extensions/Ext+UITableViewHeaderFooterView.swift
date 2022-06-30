@@ -9,7 +9,7 @@ import UIKit
 
 extension UITableViewHeaderFooterView {
     static internal var nib  : UINib {
-        return UINib(nibName: identifire, bundle: MaaS.shared.bundle)
+        return UINib(nibName: identifire, bundle: MaaS.bundle)
     }
     static internal var identifire : String {
         return String(describing: self)

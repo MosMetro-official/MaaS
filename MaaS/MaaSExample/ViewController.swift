@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
+    private let maas = MaaS()
     
     private var oldMaskedPan: String?
     private var newMaskedPan: String?
@@ -65,32 +66,29 @@ class ViewController: UIViewController {
     }
     
     private func fetchUserInfo() {
-        MaaS.shared.getUserSubStatus { [weak self] user, error in
+        maas.getUserInfo { [weak self] user, error in
             guard let self = self else { return }
-            self.user = user
-            self.oldMaskedPan = user?.maskedPan
-            if let newMask = self.newMaskedPan, let oldMask = self.oldMaskedPan {
-                DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                    if newMask == oldMask {
-                        self.fetchUserInfo()
-                    }
-                }
+            switch user?.subscription?.status {
+            case .active:
+                self.user = user
+            default:
+                break
             }
-            if let errorTitle = error {
-                self.error = errorTitle
+            if let error = error {
+                self.error = error.errorTitle
             }
         }
     }
     
     private func showActiveFlow() {
-        let active = MaaS.shared.showActiveFlow()
+        let active = maas.showActiveFlow()
         let nav = UINavigationController(rootViewController: active)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
     }
     
     private func showChooseFlow() {
-        let choose = MaaS.shared.showChooseFlow()
+        let choose = maas.showChooseFlow()
         let nav = UINavigationController(rootViewController: choose)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)

@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImage {
     static func getAssetImage(image name: String) -> UIImage {
-        return UIImage(named: name, in: MaaS.shared.bundle, with: nil) ?? UIImage()
+        return UIImage(named: name, in: MaaS.bundle, with: nil) ?? UIImage()
     }
     
     static func getCardHolderImage(for card: PaySystem) -> UIImage {

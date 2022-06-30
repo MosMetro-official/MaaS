@@ -28,9 +28,7 @@ class M_ErrorView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         retryButton.layer.cornerRadius = 10
-        retryButton.titleLabel?.font = Appearance.getFont(.button)
         closeButton.layer.cornerRadius = 10
-        closeButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
     @IBAction func onRetryTapped() {
@@ -66,7 +64,7 @@ extension UIView {
     func removeError(from view: UIView) {
         view.subviews.forEach { _view in
             if _view.tag == 222 {
-                UIView.animate(withDuration: 0.25) {
+                UIView.animate(withDuration: 0.4) {
                     _view.alpha = 0
                 } completion: { success in
                     if success {

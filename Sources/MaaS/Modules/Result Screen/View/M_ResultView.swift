@@ -50,7 +50,9 @@ class M_ResultView: UIView {
     
     public var viewState: ViewState = .initial {
         didSet {
-            render()
+            DispatchQueue.main.async {
+                self.render()
+            }
         }
     }
     
@@ -63,8 +65,6 @@ class M_ResultView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        actionButton.titleLabel?.font = Appearance.getFont(.button)
-        closeButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
     @IBAction func actionButtonPressed() {

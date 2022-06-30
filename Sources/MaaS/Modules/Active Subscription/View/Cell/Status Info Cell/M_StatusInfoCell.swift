@@ -49,7 +49,6 @@ class M_StatusInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        actionButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
     @IBAction func actionButtonPressed() {
