@@ -40,10 +40,10 @@ class M_TripsHistoryController: UIViewController {
         M_HistoryTrips.fetchHistoryTrips(by: limit) { result in
             switch result {
             case .success(let trips):
-                self.trips = trips
+                self.trips += trips
                 self.limit *= 2 // for load more button
             case.failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
+                self.showError(with: error.errorTitle, and: error.errorSubtitle)
             }
         }
     }

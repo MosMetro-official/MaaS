@@ -19,7 +19,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "kZKxZfnDzWhl8aIRjS0p4SrI2IOsZUdSX4c6UbubNnk"
+    public static var token: String? = "MI-oA70jcUn318YgzMM17JB6PEDTH1lNOt2rdj7O3nM"
     
     public var apiError: APIError?
     public var errorMessage: String?
