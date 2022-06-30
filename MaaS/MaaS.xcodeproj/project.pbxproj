@@ -83,6 +83,7 @@
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
+		955EDA84286B8BDF0018A5D2 /* M_DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955EDA83286B8BDF0018A5D2 /* M_DateConverter.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
 		95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6C28531BF100634754 /* Ext+URLRequest.swift */; };
@@ -106,7 +107,6 @@
 		95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */; };
 		95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */; };
 		95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE8C2865FDDB00C3A967 /* M_Support.swift */; };
-		95A4FE922866040300C3A967 /* M_Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE912866040300C3A967 /* M_Utils.swift */; };
 		95A4FE95286609F200C3A967 /* M_ActiveSubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE94286609F200C3A967 /* M_ActiveSubModel.swift */; };
 		95C057CD2855025900CEDBE3 /* DebtInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */; };
 		95C057CE2855025900CEDBE3 /* DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */; };
@@ -233,6 +233,7 @@
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
+		955EDA83286B8BDF0018A5D2 /* M_DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_DateConverter.swift; sourceTree = "<group>"; };
 		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		95795B6C28531BF100634754 /* Ext+URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+URLRequest.swift"; sourceTree = "<group>"; };
@@ -253,7 +254,6 @@
 		95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartRequest.swift; sourceTree = "<group>"; };
 		95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartResponse.swift; sourceTree = "<group>"; };
 		95A4FE8C2865FDDB00C3A967 /* M_Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Support.swift; sourceTree = "<group>"; };
-		95A4FE912866040300C3A967 /* M_Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Utils.swift; sourceTree = "<group>"; };
 		95A4FE94286609F200C3A967 /* M_ActiveSubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModel.swift; sourceTree = "<group>"; };
 		95C057CB2855025900CEDBE3 /* DebtInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtInfoCell.swift; sourceTree = "<group>"; };
 		95C057CC2855025900CEDBE3 /* DebtInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebtInfoCell.xib; sourceTree = "<group>"; };
@@ -568,7 +568,7 @@
 		952DAB812866120A0081A842 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				95A4FE912866040300C3A967 /* M_Utils.swift */,
+				955EDA83286B8BDF0018A5D2 /* M_DateConverter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1066,6 +1066,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955EDA84286B8BDF0018A5D2 /* M_DateConverter.swift in Sources */,
 				950920D2282E55DC00C4E573 /* M_MakeMySubRow.swift in Sources */,
 				953822F8285B2C2E00F0915C /* M_UserCardRequest.swift in Sources */,
 				950920CA282E55DC00C4E573 /* Ext+UIView.swift in Sources */,
@@ -1083,7 +1084,6 @@
 				9533A5F1285B6D6900D77375 /* M_TripsHistoryView.swift in Sources */,
 				950920E2282E55DC00C4E573 /* M_CardInfoCell.swift in Sources */,
 				951C42DB2858AA9100DA975A /* M_SubHeader.swift in Sources */,
-				95A4FE922866040300C3A967 /* M_Utils.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
 				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
 				9585BF2F285746BC00FF77FD /* M_ChangeCardView.swift in Sources */,
@@ -1303,6 +1303,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaaS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1334,6 +1335,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MaaS/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

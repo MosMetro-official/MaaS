@@ -234,7 +234,7 @@ extension M_ResultController: SFSafariViewControllerDelegate {
     
     private func fetchSupportUrl(with id: String = "") {
         self.showLoading(with: "Загрузка...", descr: "Немного подождите")
-        M_SupportResponse.sendSupportRequest(payId: id, redirectUrl: MaaS.shared.supportForm) { result in
+        M_SupportResponse.sendSupportRequest(payId: id, redirectUrl: MaaS.supportForm) { result in
             switch result {
             case .success(let supportForm):
                 self.handleSupportUrl(path: supportForm.url)

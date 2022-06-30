@@ -112,8 +112,8 @@ class M_ActiveSubView: UIView {
             showLoading(on: self, data: loading)
         case .loaded:
             tableView.isHidden = false
-            removeError(from: self)
             removeLoading(from: self)
+            removeError(from: self)
             tableView.viewStateInput = viewState.state
         case .error(let error):
             tableView.isHidden = false

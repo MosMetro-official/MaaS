@@ -40,10 +40,10 @@ class M_TripsHistoryController: UIViewController {
         M_HistoryTrips.fetchHistoryTrips(by: limit) { result in
             switch result {
             case .success(let trips):
-                self.trips = trips
+                self.trips += trips
                 self.limit *= 2 // for load more button
             case.failure(let error):
-                self.showError(with: error.errorTitle, and: error.errorDescription)
+                self.showError(with: error.errorTitle, and: error.errorSubtitle)
             }
         }
     }
@@ -77,9 +77,13 @@ class M_TripsHistoryController: UIViewController {
                 var dateTitle = ""
                 switch trip.trip.status {
                 case .started:
-                    dateTitle = trip.trip.time.start
+                    if let start = trip.trip.time.start {
+                        dateTitle = M_DateConverter.validateStringFrom(date: start)
+                    }
                 case .done:
-                    dateTitle = trip.trip.time.end
+                    if let end = trip.trip.time.end {
+                        dateTitle = M_DateConverter.validateStringFrom(date: end)
+                    }
                 case .canceled:
                     dateTitle = "Поездка отменена"
                 default:

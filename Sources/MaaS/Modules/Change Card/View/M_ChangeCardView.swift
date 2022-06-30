@@ -72,7 +72,6 @@ class M_ChangeCardView: UIView {
         descrLabel.setLineSpacing(lineSpacing: 4, lineHeightMultiple: 1)
         titleLabel.textAlignment = .center
         descrLabel.textAlignment = .center
-        changeCardButton.titleLabel?.font = Appearance.getFont(.button)
     }
     
     private func render() {

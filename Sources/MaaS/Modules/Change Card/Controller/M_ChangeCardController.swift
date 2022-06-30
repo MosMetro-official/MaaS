@@ -98,9 +98,9 @@ class M_ChangeCardController: UIViewController {
         let request = M_UserCardRequest(
             payData: M_PayData(
                 redirectUrl: M_RedirectUrl(
-                    succeed: MaaS.shared.succeedUrlCard,
-                    declined: MaaS.shared.declinedUrlCard,
-                    canceled: MaaS.shared.canceledUrlCard
+                    succeed: MaaS.succeedUrlCard,
+                    declined: MaaS.declinedUrlCard,
+                    canceled: MaaS.canceledUrlCard
                 ),
                 paymentMethod: .card
             )

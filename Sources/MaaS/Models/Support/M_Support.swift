@@ -20,8 +20,8 @@ struct M_SupportResponse {
         var query: [String: String] = [:]
         if let payId = payId {
             query.updateValue(payId, forKey: "paymentId")
-            query.updateValue(redirectUrl, forKey: "redirectURL")
         }
+        query.updateValue(redirectUrl, forKey: "redirectURI")
         client.send(.GET(path: "/api/issues/v1/form", query: query)) { result in
             switch result {
             case .success(let response):

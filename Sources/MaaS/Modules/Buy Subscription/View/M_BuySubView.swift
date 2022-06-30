@@ -71,7 +71,6 @@ class M_BuySubView: UIView {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         tableView.shouldUseReload = true
         titleLabel.gradientColors = [UIColor.from(hex: "#4AC7FA").cgColor, UIColor.from(hex: "#E649F5").cgColor]
-        payButton.titleLabel?.font = Appearance.getFont(.button)
         addHorizontalGradientLayer()
     }
     

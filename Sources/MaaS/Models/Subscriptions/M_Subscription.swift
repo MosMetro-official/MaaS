@@ -156,12 +156,13 @@ public struct M_Trip {
 }
 
 public struct M_Valid {
-    public let from: String
-    public let to: String
+    public let from: Date?
+    public let to: Date?
+    private let dateFormatter = DateFormatter()
     
     init?(data: JSON) {
         guard let from = data["from"].string, let to = data["to"].string else { return nil }
-        self.from = from
-        self.to = to
+        self.from = from.converToDate()
+        self.to = to.converToDate()
     }
 }

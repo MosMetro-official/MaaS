@@ -70,7 +70,7 @@ public enum PayStatus: String {
 
 public struct M_AuthInfo {
     public let status: M_AuthStatus?
-    public let date: String
+    public let date: Date?
     public let rnn: String
     public let code: String
     public let card: M_CardInfo?
@@ -79,10 +79,11 @@ public struct M_AuthInfo {
     init?(data: JSON) {
         guard
             let rnn = data["rnn"].string,
-            let code = data["code"].string else { return nil }
+            let code = data["code"].string,
+            let date = data["date"].string else { return nil }
 
         self.status = M_AuthStatus(data: data["status"])
-        self.date = data["date"].stringValue
+        self.date = date.converToDate()
         self.rnn = rnn
         self.code = code
         self.card = M_CardInfo(data: data["card"])
@@ -120,7 +121,7 @@ public struct M_CardInfo {
     public let paySystem: PaySystem?
     public let type: String
     public let maskedPan: String
-    public let expDate: String
+    public let expDate: Date?
     public let cardId: String
 
     init?(data: JSON) {
@@ -136,7 +137,7 @@ public struct M_CardInfo {
         self.paySystem = PaySystem(rawValue: paySystem)
         self.type = type
         self.maskedPan = maskedPan
-        self.expDate = expDate
+        self.expDate = expDate.converToDate()
         self.cardId = cardId
     }
 }
