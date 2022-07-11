@@ -7,16 +7,17 @@
 
 import UIKit
 import CoreTableView
+import SDWebImage
 
 protocol _DescriptionCell: CellData {
     var title: String { get }
     var descr: String { get }
-    var image: String { get }
+    var imageUrl: String { get }
 }
 
 extension _DescriptionCell {
     func hashValues() -> [Int] {
-        return [title.hashValue, descr.hashValue, image.hashValue]
+        return [title.hashValue, descr.hashValue, imageUrl.hashValue]
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
@@ -43,7 +44,11 @@ class DescriptionCell: UITableViewCell {
     }
     
     public func configure(with data: _DescriptionCell) {
-        imageLogo.image = UIImage.getAssetImage(image: data.image)
+        if let url = URL(string: data.imageUrl) {
+            imageLogo.sd_setImage(with: url)
+        } else {
+            imageLogo.image = UIImage.getAssetImage(image: "transport")
+        }
         titleLabel.text = data.title
         descrLabel.text = data.descr
     }

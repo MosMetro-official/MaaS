@@ -9,6 +9,7 @@ target 'MaaS' do
 
   pod 'CoreTableView'
   pod 'MMCoreNetworkCallbacks'
+  pod 'SDWebImage', :modular_headers => true
 
 end
 
@@ -18,5 +19,6 @@ target 'MaaSExample' do
 
   pod 'CoreTableView'
   pod 'MMCoreNetworkCallbacks'
+  pod 'SDWebImage', :modular_headers => true
 
 end

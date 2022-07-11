@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreTableView
+import SDWebImage
 
 protocol _SubSectionRow: CellData {
     var title: String { get }
@@ -77,10 +78,14 @@ class M_SubSectionRow: UITableViewCell {
         cardView.layer.addSublayer(gradient)
     }
     
-    private func createLineStackView(with image: UIImage) -> UIStackView {
+    private func createLineStackView(with imageUrl: String) -> UIStackView {
         let lineStack = UIStackView()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        imageView.image = image
+        if let url = URL(string: imageUrl) {
+            imageView.sd_setImage(with: url)
+        } else {
+            imageView.image = UIImage.getAssetImage(image: "transoprt")
+        }
         imageView.contentMode = .center
         lineStack.axis = .horizontal
         lineStack.distribution = .fill
@@ -110,8 +115,7 @@ class M_SubSectionRow: UITableViewCell {
     private func setupStackView(with tariffs: [M_Tariff]) {
         stackView.removeFullyAllArrangedSubviews()
         tariffs.forEach { tariff in
-            let imageName = getServiceImage(by: tariff.serviceId)
-            let lineStack = createLineStackView(with: UIImage.getAssetImage(image: imageName))
+            let lineStack = createLineStackView(with: tariff.imageURL)
             let textStackView = createTextStackView()
             let tariffTitleLabel = createTextLabel(with: tariff.name.ru, textColor: "secondaryText")
             let tariffDescrLabel = createTextLabel(with: tariff.trip.countDescr, textColor: "primaryText")
@@ -119,19 +123,6 @@ class M_SubSectionRow: UITableViewCell {
             textStackView.addArrangedSubview(tariffDescrLabel)
             lineStack.addArrangedSubview(textStackView)
             stackView.addArrangedSubview(lineStack)
-        }
-    }
-    
-    private func getServiceImage(by serviceId: String) -> String {
-        switch serviceId {
-        case "YANDEX_TAXI":
-            return "taxi"
-        case "MOSCOW_SUBWAY":
-            return "transport"
-        case "VELOBIKE":
-            return "transport"
-        default:
-            return ""
         }
     }
         

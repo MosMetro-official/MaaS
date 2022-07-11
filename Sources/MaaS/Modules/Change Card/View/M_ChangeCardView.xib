@@ -54,14 +54,14 @@
                     <color key="textColor" name="primaryText"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Чтобы подписка работала во всех сервисах – совершайте оплату именно этой картой" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-MT-6fT">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Чтобы подписка работала во всех сервисах, совершайте оплату именно этой картой" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-MT-6fT">
                     <rect key="frame" x="24" y="329" width="370" height="40"/>
                     <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="17"/>
                     <color key="textColor" name="primaryText"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fi-qk-IvJ">
-                    <rect key="frame" x="20" y="773" width="374" height="44"/>
+                    <rect key="frame" x="20" y="794" width="374" height="44"/>
                     <color key="backgroundColor" name="backButton"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="IZc-cN-w2t"/>
@@ -81,7 +81,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Осталось смен карты в этом месяце– 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-Tz-IAt">
-                    <rect key="frame" x="20" y="739.5" width="374" height="17.5"/>
+                    <rect key="frame" x="20" y="760.5" width="374" height="17.5"/>
                     <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="15"/>
                     <color key="textColor" name="secondaryText"/>
                     <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                 <constraint firstItem="2FX-Tz-IAt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9cI-CC-Ng0"/>
                 <constraint firstItem="6fi-qk-IvJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="AzA-6S-Lnl"/>
                 <constraint firstItem="6fi-qk-IvJ" firstAttribute="top" secondItem="2FX-Tz-IAt" secondAttribute="bottom" constant="16" id="FAa-W4-Xim"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6fi-qk-IvJ" secondAttribute="bottom" constant="45" id="Qe4-XB-2bg"/>
+                <constraint firstAttribute="bottom" secondItem="6fi-qk-IvJ" secondAttribute="bottom" constant="58" id="Qe4-XB-2bg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="evG-m5-Db1" secondAttribute="trailing" constant="42" id="Tz2-gf-6V0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2FX-Tz-IAt" secondAttribute="trailing" constant="20" id="Vdl-U9-NE9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6fi-qk-IvJ" secondAttribute="trailing" constant="20" id="dMp-Sn-RCp"/>
@@ -128,7 +128,7 @@
             <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mir">
-            <color red="0.86274509803921573" green="0.93725490196078431" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.019607843137254902" green="0.45882352941176469" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryText">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
