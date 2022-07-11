@@ -143,7 +143,7 @@ public class M_ActiveSubController: UIViewController {
                 let onRetry = Command { [weak self] in
                     self?.fetchUserInfo()
                 }
-                self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
+                self.showError(with: "Произошла ошибка 🥲", and: error.errorDescription, onRetry: onRetry)
                 dispatchGroup.leave()
             }
         }
