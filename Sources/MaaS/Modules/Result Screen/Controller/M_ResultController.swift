@@ -182,7 +182,7 @@ class M_ResultController: UIViewController {
                 onClose: onClose
             )
         case .successCard(let userInfo):
-            NotificationCenter.default.post(name: .maasUpdateUserInfo, object: ["card": userInfo.maskedPan])
+            NotificationCenter.default.post(name: .maasUpdateUserInfo, object: nil)
             let onClose = Command { [weak self] in
                 guard
                     let self = self,
@@ -198,7 +198,7 @@ class M_ResultController: UIViewController {
                 dataState: .success(success),
                 logo: UIImage.getAssetImage(image: "checkmark"),
                 onAction: nil,
-                actionTitle: "",
+                actionTitle: "какой то экшон",
                 onClose: onClose,
                 hideAction: true
             )

@@ -1,5 +1,5 @@
 //
-//  DebtInfoCell.swift
+//  M_DebtInfoCell.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 11.06.2022.
@@ -19,18 +19,18 @@ extension _DebtInfoCell {
     }
     
     func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
-        guard let cell = cell as? DebtInfoCell else { return }
+        guard let cell = cell as? M_DebtInfoCell else { return }
         cell.configure(with: self)
     }
     
     func cell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(DebtInfoCell.nib, forCellReuseIdentifier: DebtInfoCell.identifire)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DebtInfoCell.identifire, for: indexPath) as? DebtInfoCell else { return .init() }
+        tableView.register(M_DebtInfoCell.nib, forCellReuseIdentifier: M_DebtInfoCell.identifire)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: M_DebtInfoCell.identifire, for: indexPath) as? M_DebtInfoCell else { return .init() }
         return cell
     }
 }
 
-class DebtInfoCell: UITableViewCell {
+class M_DebtInfoCell: UITableViewCell {
     
     var onButtonTapped: Command<Void>?
 

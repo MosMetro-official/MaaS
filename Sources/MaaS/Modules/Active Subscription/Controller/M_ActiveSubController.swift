@@ -22,6 +22,7 @@ public class M_ActiveSubController: UIViewController {
     public var oldMaskedPan: String? {
         didSet {
             model.oldMaskedPan = oldMaskedPan
+            checkCardUpdate()
         }
     }
             
@@ -113,10 +114,8 @@ public class M_ActiveSubController: UIViewController {
         M_UserInfo.fetchUserInfo { result in
             switch result {
             case .success(let userInfo):
-//                self.newMaskedPan = userInfo.maskedPan
                 switch userInfo.subscription?.status {
                 case .active:
-//                    self.model.userInfo = userInfo
                     user = userInfo
                 case .expired:
                     let onAction = Command { [weak self] in
@@ -144,7 +143,7 @@ public class M_ActiveSubController: UIViewController {
                 let onRetry = Command { [weak self] in
                     self?.fetchUserInfo()
                 }
-                self.showError(with: error.errorTitle, and: error.errorDescription, onRetry: onRetry)
+                self.showError(with: "Произошла ошибка 🥲", and: error.errorDescription, onRetry: onRetry)
                 dispatchGroup.leave()
             }
         }

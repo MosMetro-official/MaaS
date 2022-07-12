@@ -78,13 +78,10 @@ public class M_BuySubController: UIViewController {
     }
     
     @objc private func handleSuccess() {
-        self.showLoading(with: "Привязываем подписку...")
         hidePaymentController {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                let resultController = M_ResultController()
-                resultController.needToCheckUserInfo = true
-                self.navigationController?.pushViewController(resultController, animated: true)
-            }
+            let resultController = M_ResultController()
+            resultController.needToCheckUserInfo = true
+            self.navigationController?.pushViewController(resultController, animated: true)
         }
     }
     
@@ -96,8 +93,8 @@ public class M_BuySubController: UIViewController {
     }
     
     @objc private func handleCanceled() {
+        self.showLoading(with: "Привязываем подписку...")
         hidePaymentController {
-            self.showLoading(with: "Привязываем подписку...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 guard let payId = self.payId else { return }
                 let resultController = M_ResultController()
@@ -199,22 +196,22 @@ public class M_BuySubController: UIViewController {
     
     private func makeState() {
         guard let sub = selectedSub else { return }
-        let sortedService = sub.tariffs.sorted(by: { $0.serviceId < $1.serviceId })
+        let sortedTariffs = sub.tariffs.sorted(by: { $0.serviceId < $1.serviceId })
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
-        sortedService.forEach { service in
-            let titleHeight = service.name.ru.height(
+        sortedTariffs.forEach { tariff in
+            let titleHeight = tariff.name.ru.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.debt)
             )
-            let descrHeight = service.description.ru.height(
+            let descrHeight = tariff.description.ru.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.body)
             )
             let descr = M_BuySubView.ViewState.DescrRow(
-                title: service.name.ru,
-                descr: service.description.ru,
-                image: getServiceImage(by: service.serviceId),
+                title: tariff.name.ru,
+                descr: tariff.description.ru,
+                imageUrl: tariff.imageURL,
                 height: titleHeight + descrHeight + 15 + 30
             ).toElement()
             let descrState = State(model: SectionState(header: nil, footer: nil), elements: [descr])

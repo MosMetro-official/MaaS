@@ -23,14 +23,14 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3Pf-bu-5sc">
                     <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                 </activityIndicatorView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpF-5s-DWT">
-                    <rect key="frame" x="50" y="516.5" width="314" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpF-5s-DWT">
+                    <rect key="frame" x="50" y="511.5" width="314" height="26"/>
                     <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="22"/>
                     <color key="textColor" name="primaryText"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-TV-Dio">
-                    <rect key="frame" x="60" y="562.5" width="294" height="17.5"/>
+                    <rect key="frame" x="60" y="557.5" width="294" height="17.5"/>
                     <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="15"/>
                     <color key="textColor" name="secondaryText"/>
                     <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
-                <constraint firstItem="rpF-5s-DWT" firstAttribute="top" secondItem="3Pf-bu-5sc" secondAttribute="bottom" constant="50" id="0k7-d8-5a2"/>
+                <constraint firstItem="rpF-5s-DWT" firstAttribute="top" secondItem="3Pf-bu-5sc" secondAttribute="bottom" constant="45" id="0k7-d8-5a2"/>
                 <constraint firstItem="gWQ-TV-Dio" firstAttribute="top" secondItem="rpF-5s-DWT" secondAttribute="bottom" constant="20" id="1Kq-ub-daP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gWQ-TV-Dio" secondAttribute="trailing" constant="60" id="2rV-hm-nxk"/>
                 <constraint firstItem="gWQ-TV-Dio" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="ERR-HZ-rWm"/>

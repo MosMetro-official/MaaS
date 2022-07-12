@@ -21,9 +21,6 @@ public class MaaS {
     
     public static var token: String? = "MI-oA70jcUn318YgzMM17JB6PEDTH1lNOt2rdj7O3nM"
     
-    public var apiError: APIError?
-    public var errorMessage: String?
-    
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
     public static var canceledUrl = "maasexample://main/maasPaymentCanceled"
@@ -58,7 +55,6 @@ public class MaaS {
             case .success(let currentUser):
                 completion(currentUser, nil)
             case .failure(let error):
-                self.apiError = error
                 completion(nil, error)
             }
         }

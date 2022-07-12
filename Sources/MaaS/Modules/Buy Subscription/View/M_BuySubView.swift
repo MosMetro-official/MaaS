@@ -43,7 +43,7 @@ class M_BuySubView: UIView {
         struct DescrRow: _DescriptionCell {
             let title: String
             let descr: String
-            let image: String
+            let imageUrl: String
             let height: CGFloat
         }
         
