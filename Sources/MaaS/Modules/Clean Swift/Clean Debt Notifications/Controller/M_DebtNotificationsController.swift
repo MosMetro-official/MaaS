@@ -1,5 +1,5 @@
 //
-//  M_DebtUserNotificationsController.swift
+//  M_DebtNotificationsController.swift
 //  Pods
 //
 //  Created by Слава Платонов on 08.09.2022.
@@ -15,7 +15,7 @@ protocol M_DebtUserNotificationsDisplayLogic: AnyObject {
     func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel.ViewState)
 }
 
-final class M_DebtUserNotificationsController: UIViewController {
+final class M_DebtNotificationsController: UIViewController {
     
     private let nestedView = M_DebtNotificationsView.loadFromNib()
     
@@ -53,7 +53,7 @@ final class M_DebtUserNotificationsController: UIViewController {
     }
 }
 
-extension M_DebtUserNotificationsController: M_DebtUserNotificationsDisplayLogic {
+extension M_DebtNotificationsController: M_DebtUserNotificationsDisplayLogic {
     
     func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel.ViewState) {
         nestedView.viewModel = viewModel
@@ -77,7 +77,7 @@ extension M_DebtUserNotificationsController: M_DebtUserNotificationsDisplayLogic
     }
 }
 
-extension M_DebtUserNotificationsController: SFSafariViewControllerDelegate {
+extension M_DebtNotificationsController: SFSafariViewControllerDelegate {
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         interactor?.requestReloadNotifications()

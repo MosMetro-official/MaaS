@@ -1,5 +1,5 @@
 //
-//  M_HistoryController.swift
+//  M_TripsHistoryController.swift
 //  Pods
 //
 //  Created by Слава Платонов on 08.09.2022.
@@ -14,7 +14,7 @@ protocol M_HistoryDisplayLogic: AnyObject {
     func displayTrips(_ viewModel: M_HistoryModels.ViewModel.ViewState)
 }
 
-final class M_HistoryController: UIViewController {
+final class M_TripsHistoryController: UIViewController {
     
     private let nestedView = M_TripsHistoryView.loadFromNib()
     
@@ -56,7 +56,7 @@ final class M_HistoryController: UIViewController {
     }
 }
 
-extension M_HistoryController: M_HistoryDisplayLogic {
+extension M_TripsHistoryController: M_HistoryDisplayLogic {
     
     func displayTrips(_ viewModel: M_HistoryModels.ViewModel.ViewState) {
         nestedView.viewModel = viewModel

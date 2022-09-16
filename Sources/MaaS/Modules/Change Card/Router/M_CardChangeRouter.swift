@@ -19,10 +19,10 @@ protocol CardChangeDataPassing: AnyObject {
 
 final class M_CardChangeRouter: CardChangeRoutingLogic, CardChangeDataPassing {
     
-    weak var controller: M_CardChangeController?
+    weak var controller: M_ChangeCardController?
     var dataStore: CardChangeDataStore?
     
-    init(controller: M_CardChangeController? = nil, dataStore: CardChangeDataStore? = nil) {
+    init(controller: M_ChangeCardController? = nil, dataStore: CardChangeDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }

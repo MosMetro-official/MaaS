@@ -18,10 +18,10 @@ protocol M_ChooseSubscriptionDataPassing: AnyObject {
 
 final class M_ChooseSubscriptionRouter: M_ChooseSubscriptionRoutingLogic, M_ChooseSubscriptionDataPassing {
     
-    weak var controller: M_ChooseSubscriptionController?
+    weak var controller: M_ChooseSubController?
     var dataStore: M_ChooseSubscriptionDataStore?
     
-    init(controller: M_ChooseSubscriptionController? = nil, dataStore: M_ChooseSubscriptionDataStore? = nil) {
+    init(controller: M_ChooseSubController? = nil, dataStore: M_ChooseSubscriptionDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }

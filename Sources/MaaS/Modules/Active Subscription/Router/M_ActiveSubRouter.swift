@@ -22,16 +22,16 @@ protocol ActiveDataPassing: AnyObject {
 }
 
 final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
-    weak var controller: M_ActiveController?
+    weak var controller: M_ActiveSubController?
     var dataStore: ActiveDataStore?
     
-    init(controller: M_ActiveController? = nil, dataStore: ActiveDataStore? = nil) {
+    init(controller: M_ActiveSubController? = nil, dataStore: ActiveDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }
     
     func routeToChangeCard() {
-        let changeCardController = M_CardChangeController()
+        let changeCardController = M_ChangeCardController()
         guard
             let activeDataStore = dataStore,
             let changeCardDataStore = changeCardController.router?.dataStore else {

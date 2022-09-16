@@ -13,9 +13,9 @@ protocol M_HistoryRoutingLogic: AnyObject {
 
 final class M_HistoryRouter: M_HistoryRoutingLogic {
   
-    weak var controller: M_HistoryController?
+    weak var controller: M_TripsHistoryController?
   
-    init(controller: M_HistoryController? = nil) {
+    init(controller: M_TripsHistoryController? = nil) {
         self.controller = controller
     }
     

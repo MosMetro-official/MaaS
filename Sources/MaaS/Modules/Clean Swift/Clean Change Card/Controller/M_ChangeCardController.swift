@@ -1,5 +1,5 @@
 //
-//  M_CardChangeController.swift
+//  M_ChangeCardController.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 02.08.2022.
@@ -15,7 +15,7 @@ protocol CardChangeDisplayLogic: AnyObject {
     func displayCardState(_ viewModel: M_CardChangeModels.ViewModel.ViewState)
 }
 
-class M_CardChangeController: UIViewController {
+class M_ChangeCardController: UIViewController {
     
     private let nestedView = M_ChangeCardView.loadFromNib()
     var interactor: CardChangeInteractor?
@@ -115,7 +115,7 @@ class M_CardChangeController: UIViewController {
     }
 }
 
-extension M_CardChangeController: CardChangeDisplayLogic {
+extension M_ChangeCardController: CardChangeDisplayLogic {
     
     func displayCardState(_ viewModel: M_CardChangeModels.ViewModel.ViewState) {
         nestedView.viewModel = viewModel
@@ -138,7 +138,7 @@ extension M_CardChangeController: CardChangeDisplayLogic {
     }
 }
 
-extension M_CardChangeController: SFSafariViewControllerDelegate {
+extension M_ChangeCardController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         interactor?.makeRequset()
     }

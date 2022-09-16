@@ -18,10 +18,10 @@ protocol M_DebtUserNotificationsDataPassing: AnyObject {
 
 final class M_DebtUserNotificationsRouter: M_DebtUserNotificationsRoutingLogic, M_DebtUserNotificationsDataPassing {
   
-    weak var controller: M_DebtUserNotificationsController?
+    weak var controller: M_DebtNotificationsController?
     var dataStore: M_DebtUserNotificationDataStore?
   
-    init(controller: M_DebtUserNotificationsController? = nil, dataStore: M_DebtUserNotificationDataStore? = nil) {
+    init(controller: M_DebtNotificationsController? = nil, dataStore: M_DebtUserNotificationDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }

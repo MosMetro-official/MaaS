@@ -1,5 +1,5 @@
 //
-//  M_ActiveController.swift
+//  M_ActiveSubController.swift
 //  MaaS
 //
 //  Created by Слава Платонов on 01.08.2022.
@@ -22,7 +22,7 @@ protocol ActiveDisplayLogic: AnyObject {
     func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState)
 }
 
-public class M_ActiveController: UIViewController {
+public class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
     private var safariController: SFSafariViewController?
@@ -80,7 +80,7 @@ public class M_ActiveController: UIViewController {
     }
 }
 
-extension M_ActiveController: ActiveDisplayLogic {
+extension M_ActiveSubController: ActiveDisplayLogic {
     
     func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState) {
         self.nestedView.viewModel = viewModel
@@ -131,7 +131,7 @@ extension M_ActiveController: ActiveDisplayLogic {
     }
 }
 
-extension M_ActiveController: SFSafariViewControllerDelegate {
+extension M_ActiveSubController: SFSafariViewControllerDelegate {
     public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         interactor?.fetchUserInfo()
     }

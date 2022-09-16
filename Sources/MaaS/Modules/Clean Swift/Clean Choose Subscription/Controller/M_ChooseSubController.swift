@@ -1,5 +1,5 @@
 //
-//  M_ChooseSubscriptionController.swift
+//  M_ChooseSubController.swift
 //  Pods
 //
 //  Created by Слава Платонов on 30.08.2022.
@@ -15,7 +15,7 @@ protocol M_ChooseSubscriptionDisplayLogic: AnyObject {
     func displaySubscriptions(_ viewModel: M_ChooseSubscriptionModels.ViewModel)
 }
 
-final class M_ChooseSubscriptionController: UIViewController {
+final class M_ChooseSubController: UIViewController {
     
     private let nestedView = M_ChooseSubView.loadFromNib()
     var interactor: M_ChooseSubscriptionBusinessLogic?
@@ -68,7 +68,7 @@ final class M_ChooseSubscriptionController: UIViewController {
     }
 }
 
-extension M_ChooseSubscriptionController: M_ChooseSubscriptionDisplayLogic {
+extension M_ChooseSubController: M_ChooseSubscriptionDisplayLogic {
     
     func displaySubscriptions(_ viewModel: M_ChooseSubscriptionModels.ViewModel) {
         nestedView.viewModel = viewModel

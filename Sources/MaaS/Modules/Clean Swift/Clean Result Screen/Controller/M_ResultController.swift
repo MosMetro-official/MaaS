@@ -1,5 +1,5 @@
 //
-//  M_ResScreenController.swift
+//  M_ResultController.swift
 //  Pods
 //
 //  Created by Слава Платонов on 30.08.2022.
@@ -18,7 +18,7 @@ protocol M_ResScreenDisplayLogic: AnyObject {
     func displayResultState(_ viewModel: M_ResScreenModels.ViewModel.ViewState)
 }
 
-final class M_ResScreenController: UIViewController {
+final class M_ResultController: UIViewController {
     
     private let nestedView = M_ResultView.loadFromNib()
     private var safariController: SFSafariViewController?
@@ -87,7 +87,7 @@ final class M_ResScreenController: UIViewController {
     }
 }
 
-extension M_ResScreenController: M_ResScreenDisplayLogic {
+extension M_ResultController: M_ResScreenDisplayLogic {
     
     func displayResultState(_ viewModel: M_ResScreenModels.ViewModel.ViewState) {
         nestedView.viewModel = viewModel
@@ -122,7 +122,7 @@ extension M_ResScreenController: M_ResScreenDisplayLogic {
     }
 }
 
-extension M_ResScreenController: SFSafariViewControllerDelegate {
+extension M_ResultController: SFSafariViewControllerDelegate {
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         interactor?.requestState()

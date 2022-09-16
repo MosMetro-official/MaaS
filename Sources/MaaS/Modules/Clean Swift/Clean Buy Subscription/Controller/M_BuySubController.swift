@@ -1,5 +1,5 @@
 //
-//  M_BuySubscriptionController.swift
+//  M_BuySubController.swift
 //  Pods
 //
 //  Created by Слава Платонов on 30.08.2022.
@@ -15,7 +15,7 @@ protocol M_BuySubscriptionDisplayLogic: AnyObject {
     func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel.ViewState)
 }
 
-final class M_BuySubscriptionController: UIViewController {
+final class M_BuySubController: UIViewController {
     
     private let nestedView = M_BuySubView.loadFromNib()
     var interactor: M_BuySubscriptionBusinessLogic?
@@ -101,7 +101,7 @@ final class M_BuySubscriptionController: UIViewController {
     }
 }
 
-extension M_BuySubscriptionController: M_BuySubscriptionDisplayLogic {
+extension M_BuySubController: M_BuySubscriptionDisplayLogic {
     
     func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel.ViewState) {
         nestedView.viewModel = viewModel
@@ -124,7 +124,7 @@ extension M_BuySubscriptionController: M_BuySubscriptionDisplayLogic {
     }
 }
 
-extension M_BuySubscriptionController: SFSafariViewControllerDelegate {
+extension M_BuySubController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         interactor?.requestState()
     }

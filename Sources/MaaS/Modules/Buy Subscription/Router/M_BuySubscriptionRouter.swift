@@ -19,10 +19,10 @@ protocol M_BuySubscriptionDataPassing: AnyObject {
 
 final class M_BuySubscriptionRouter: M_BuySubscriptionRoutingLogic, M_BuySubscriptionDataPassing {
   
-    weak var controller: M_BuySubscriptionController?
+    weak var controller: M_BuySubController?
     var dataStore: M_BuySubscriptionDataStore?
   
-    init(controller: M_BuySubscriptionController? = nil, dataStore: M_BuySubscriptionDataStore? = nil) {
+    init(controller: M_BuySubController? = nil, dataStore: M_BuySubscriptionDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }
@@ -34,7 +34,7 @@ final class M_BuySubscriptionRouter: M_BuySubscriptionRoutingLogic, M_BuySubscri
     }
     
     func routeToResultScreen(_ model: M_BuySubscriptionModels.Request.ResultModel) {
-        let resultController = M_ResScreenController()
+        let resultController = M_ResultController()
         guard let sub = dataStore?.subscription else { return }
         switch model {
         case .success:

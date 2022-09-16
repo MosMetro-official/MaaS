@@ -22,9 +22,9 @@ protocol M_ResScreenDataPassing: AnyObject {
 final class M_ResScreenRouter: M_ResScreenRoutingLogic, M_ResScreenDataPassing {
   
     var dataStore: M_ResScreenDataStore?
-    weak var controller: M_ResScreenController?
+    weak var controller: M_ResultController?
   
-    init(controller: M_ResScreenController? = nil, dataStore: M_ResScreenDataStore? = nil) {
+    init(controller: M_ResultController? = nil, dataStore: M_ResScreenDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }
@@ -35,11 +35,11 @@ final class M_ResScreenRouter: M_ResScreenRoutingLogic, M_ResScreenDataPassing {
     
     func routeToActive(with maskedPan: String) {
         if maskedPan != "" {
-            guard let activeController = controller?.navigationController?.viewControllers.first as? M_ActiveController else { return }
+            guard let activeController = controller?.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
             activeController.router?.dataStore?.maskedPan = maskedPan
             controller?.navigationController?.popToRootViewController(animated: true)
         } else {
-            let activeController = M_ActiveController()
+            let activeController = M_ActiveSubController()
             controller?.navigationController?.viewControllers[0] = activeController
             controller?.navigationController?.popToRootViewController(animated: true)
         }
