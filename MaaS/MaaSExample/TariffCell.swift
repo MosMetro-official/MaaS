@@ -29,7 +29,7 @@ class TariffCell: UICollectionViewCell {
         } else {
             self.titleLabel.text = tariff.name.ru
         }
-        guard let url = tariff.validImageUrl() else { return }
+        guard let url = URL(string: tariff.imageURL) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data {

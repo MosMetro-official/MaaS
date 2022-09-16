@@ -36,7 +36,7 @@ public struct M_Subscription {
         self.id = data["id"].stringValue
         self.price = data["price"].intValue
         self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
-        self.description = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
+        self.description = (data["description"]["ru"].stringValue, data["description"]["en"].stringValue)
         self.duration = data["duration"].intValue
         self.tariffs = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
         self.serviceId = data["serviceId"].stringValue
@@ -100,22 +100,12 @@ public struct M_Tariff {
         self.imageURL = imgUrl
         self.price = price
         self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
-        self.description = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
+        self.description = (data["description"]["ru"].stringValue, data["description"]["en"].stringValue)
         self.duration = duration
         self.trip = trip
         self.access = access
         self.valid = M_Valid(data: data["valid"])
         self.status = Status(rawValue: status)
-    }
-    
-    public func validImageUrl() -> URL? {
-        var valid = imageURL.replacingOccurrences(of: "\\", with: "")
-        if let p = valid.firstIndex(of: "p") {
-            let index = valid.index(after: p)
-            valid.insert("s", at: index)
-        }
-        guard let url = URL(string: valid) else { return nil }
-        return url
     }
 }
 

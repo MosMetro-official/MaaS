@@ -22,104 +22,115 @@
 		950920CB282E55DC00C4E573 /* Ext+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509208D282E55DC00C4E573 /* Ext+UILabel.swift */; };
 		950920CC282E55DC00C4E573 /* Ext+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509208E282E55DC00C4E573 /* Ext+UIImage.swift */; };
 		950920CD282E55DC00C4E573 /* MaaS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509208F282E55DC00C4E573 /* MaaS.swift */; };
-		950920CE282E55DC00C4E573 /* M_LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95092092282E55DC00C4E573 /* M_LoadingView.xib */; };
-		950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95092093282E55DC00C4E573 /* M_LoadingView.swift */; };
-		950920E8282E55DC00C4E573 /* M_ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950920B9282E55DC00C4E573 /* M_ErrorView.xib */; };
-		950920E9282E55DC00C4E573 /* M_ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950920BA282E55DC00C4E573 /* M_ErrorView.swift */; };
 		950920EA282E55DC00C4E573 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950920BB282E55DC00C4E573 /* Appearance.swift */; };
 		950920EB282E55DC00C4E573 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BD282E55DC00C4E573 /* Comfortaa.ttf */; };
 		950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */; };
 		950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */; };
 		950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */; };
-		9515488828D4A09400B16222 /* M_ActiveSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515486B28D4A09400B16222 /* M_ActiveSubView.swift */; };
-		9515488928D4A09400B16222 /* M_ActiveSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515486C28D4A09400B16222 /* M_ActiveSubView.xib */; };
-		9515488A28D4A09400B16222 /* M_DebtNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515486F28D4A09400B16222 /* M_DebtNotificationCell.xib */; };
-		9515488B28D4A09400B16222 /* M_DebtNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487028D4A09400B16222 /* M_DebtNotificationCell.swift */; };
-		9515488C28D4A09400B16222 /* M_CardInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515487228D4A09400B16222 /* M_CardInfoCell.xib */; };
-		9515488D28D4A09400B16222 /* M_CardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487328D4A09400B16222 /* M_CardInfoCell.swift */; };
-		9515488E28D4A09400B16222 /* M_StatusInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487528D4A09400B16222 /* M_StatusInfoCell.swift */; };
-		9515488F28D4A09400B16222 /* M_StatusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515487628D4A09400B16222 /* M_StatusInfoCell.xib */; };
-		9515489028D4A09400B16222 /* M_HeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487728D4A09400B16222 /* M_HeaderTableCell.swift */; };
-		9515489128D4A09400B16222 /* M_DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515487928D4A09400B16222 /* M_DebtInfoCell.xib */; };
-		9515489228D4A09400B16222 /* M_DebtInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487A28D4A09400B16222 /* M_DebtInfoCell.swift */; };
-		9515489328D4A09400B16222 /* M_HeaderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515487B28D4A09400B16222 /* M_HeaderTableCell.xib */; };
-		9515489428D4A09400B16222 /* M_SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515487D28D4A09400B16222 /* M_SupportCell.xib */; };
-		9515489528D4A09400B16222 /* M_SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515487E28D4A09400B16222 /* M_SupportCell.swift */; };
-		9515489628D4A09400B16222 /* M_TariffInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515488028D4A09400B16222 /* M_TariffInfoCell.xib */; };
-		9515489728D4A09400B16222 /* M_TariffInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515488128D4A09400B16222 /* M_TariffInfoCell.swift */; };
-		9515489828D4A09400B16222 /* M_OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515488328D4A09400B16222 /* M_OnboardingCell.swift */; };
-		9515489928D4A09400B16222 /* M_OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515488428D4A09400B16222 /* M_OnboardingCell.xib */; };
-		9515489A28D4A09400B16222 /* M_TitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515488628D4A09400B16222 /* M_TitleHeader.xib */; };
-		9515489B28D4A09400B16222 /* M_TitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515488728D4A09400B16222 /* M_TitleHeader.swift */; };
-		951548A728D4A0BB00B16222 /* M_ActiveSubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515489D28D4A0BA00B16222 /* M_ActiveSubModels.swift */; };
-		951548A828D4A0BB00B16222 /* M_ActiveSubInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515489F28D4A0BA00B16222 /* M_ActiveSubInteractor.swift */; };
-		951548A928D4A0BB00B16222 /* M_ActiveSubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548A128D4A0BA00B16222 /* M_ActiveSubRouter.swift */; };
-		951548AA28D4A0BB00B16222 /* M_ActiveStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548A328D4A0BB00B16222 /* M_ActiveStateBuilder.swift */; };
-		951548AB28D4A0BB00B16222 /* M_ActiveSubPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548A428D4A0BB00B16222 /* M_ActiveSubPresenter.swift */; };
-		951548AC28D4A0BB00B16222 /* M_ActiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548A628D4A0BB00B16222 /* M_ActiveController.swift */; };
-		951548B628D4A0CC00B16222 /* M_BuySubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548AE28D4A0CC00B16222 /* M_BuySubView.swift */; };
-		951548B728D4A0CC00B16222 /* M_BuySubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548AF28D4A0CC00B16222 /* M_BuySubView.xib */; };
-		951548B828D4A0CC00B16222 /* M_DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548B128D4A0CC00B16222 /* M_DescriptionCell.xib */; };
-		951548B928D4A0CC00B16222 /* M_DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548B228D4A0CC00B16222 /* M_DescriptionCell.swift */; };
-		951548BA28D4A0CC00B16222 /* M_SubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548B428D4A0CC00B16222 /* M_SubHeader.swift */; };
-		951548BB28D4A0CC00B16222 /* M_SubHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548B528D4A0CC00B16222 /* M_SubHeader.xib */; };
-		951548C628D4A0D800B16222 /* M_BuySubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548BD28D4A0D800B16222 /* M_BuySubscriptionController.swift */; };
-		951548C728D4A0D800B16222 /* M_BuySubscriptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548BF28D4A0D800B16222 /* M_BuySubscriptionModels.swift */; };
-		951548C828D4A0D800B16222 /* M_BuySubscriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548C128D4A0D800B16222 /* M_BuySubscriptionRouter.swift */; };
-		951548C928D4A0D800B16222 /* M_BuySubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548C328D4A0D800B16222 /* M_BuySubscriptionPresenter.swift */; };
-		951548CA28D4A0D800B16222 /* M_BuySubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548C528D4A0D800B16222 /* M_BuySubscriptionInteractor.swift */; };
-		951548CE28D4A0E500B16222 /* M_ChangeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548CC28D4A0E400B16222 /* M_ChangeCardView.xib */; };
-		951548CF28D4A0E500B16222 /* M_ChangeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548CD28D4A0E400B16222 /* M_ChangeCardView.swift */; };
-		951548DA28D4A0EE00B16222 /* M_CardChangeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548D128D4A0EE00B16222 /* M_CardChangeRouter.swift */; };
-		951548DB28D4A0EE00B16222 /* M_CardChangeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548D328D4A0EE00B16222 /* M_CardChangeInteractor.swift */; };
-		951548DC28D4A0EE00B16222 /* M_CardChangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548D528D4A0EE00B16222 /* M_CardChangePresenter.swift */; };
-		951548DD28D4A0EE00B16222 /* M_ChangeCardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548D728D4A0EE00B16222 /* M_ChangeCardModels.swift */; };
-		951548DE28D4A0EE00B16222 /* M_CardChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548D928D4A0EE00B16222 /* M_CardChangeController.swift */; };
-		951548E928D4A0FD00B16222 /* M_ChooseSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548E028D4A0FD00B16222 /* M_ChooseSubView.xib */; };
-		951548EA28D4A0FD00B16222 /* M_SubSectionRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548E328D4A0FD00B16222 /* M_SubSectionRow.xib */; };
-		951548EB28D4A0FD00B16222 /* M_SubSectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548E428D4A0FD00B16222 /* M_SubSectionRow.swift */; };
-		951548EC28D4A0FD00B16222 /* M_MakeMySubRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548E628D4A0FD00B16222 /* M_MakeMySubRow.swift */; };
-		951548ED28D4A0FD00B16222 /* M_MakeMySubRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951548E728D4A0FD00B16222 /* M_MakeMySubRow.xib */; };
-		951548EE28D4A0FD00B16222 /* M_ChooseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548E828D4A0FD00B16222 /* M_ChooseSubView.swift */; };
-		951548F928D4A10700B16222 /* M_ChooseSubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548F028D4A10600B16222 /* M_ChooseSubscriptionInteractor.swift */; };
-		951548FA28D4A10700B16222 /* M_ChooseSubscriptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548F228D4A10600B16222 /* M_ChooseSubscriptionModels.swift */; };
-		951548FB28D4A10700B16222 /* M_ChooseSubscriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548F428D4A10600B16222 /* M_ChooseSubscriptionRouter.swift */; };
-		951548FC28D4A10700B16222 /* M_ChooseSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548F628D4A10600B16222 /* M_ChooseSubscriptionController.swift */; };
-		951548FD28D4A10700B16222 /* M_ChooseSubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548F828D4A10700B16222 /* M_ChooseSubscriptionPresenter.swift */; };
-		9515490728D4A11700B16222 /* M_DebtNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951548FF28D4A11700B16222 /* M_DebtNotificationsView.swift */; };
-		9515490828D4A11700B16222 /* M_NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515490128D4A11700B16222 /* M_NotificationCell.swift */; };
-		9515490928D4A11700B16222 /* M_NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515490228D4A11700B16222 /* M_NotificationCell.xib */; };
-		9515490A28D4A11700B16222 /* M_DebtNotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515490328D4A11700B16222 /* M_DebtNotificationsView.xib */; };
-		9515490B28D4A11700B16222 /* M_DebtHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515490528D4A11700B16222 /* M_DebtHeader.xib */; };
-		9515490C28D4A11700B16222 /* M_DebtHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515490628D4A11700B16222 /* M_DebtHeader.swift */; };
-		9515491728D4A12200B16222 /* M_DebtUserNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515490E28D4A12100B16222 /* M_DebtUserNotificationsController.swift */; };
-		9515491828D4A12200B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515491028D4A12100B16222 /* M_DebtUserNotificationsInteractor.swift */; };
-		9515491928D4A12200B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515491228D4A12100B16222 /* M_DebtUserNotificationsPresenter.swift */; };
-		9515491A28D4A12200B16222 /* M_DebtUserNotificationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515491428D4A12200B16222 /* M_DebtUserNotificationsRouter.swift */; };
-		9515491B28D4A12200B16222 /* M_DebtUserNotificationsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515491628D4A12200B16222 /* M_DebtUserNotificationsModels.swift */; };
-		9515491F28D4A13200B16222 /* M_ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515491D28D4A13200B16222 /* M_ResultView.xib */; };
-		9515492028D4A13200B16222 /* M_ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515491E28D4A13200B16222 /* M_ResultView.swift */; };
-		9515492328D4A14E00B16222 /* M_ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492228D4A14E00B16222 /* M_ResultModel.swift */; };
-		9515492E28D4A15900B16222 /* M_ResScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492528D4A15900B16222 /* M_ResScreenPresenter.swift */; };
-		9515492F28D4A15900B16222 /* M_ResScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492728D4A15900B16222 /* M_ResScreenModels.swift */; };
-		9515493028D4A15900B16222 /* M_ResScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492928D4A15900B16222 /* M_ResScreenController.swift */; };
-		9515493128D4A15900B16222 /* M_ResScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492B28D4A15900B16222 /* M_ResScreenInteractor.swift */; };
-		9515493228D4A15900B16222 /* M_ResScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515492D28D4A15900B16222 /* M_ResScreenRouter.swift */; };
-		9515494028D4A16A00B16222 /* M_TripsHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515493428D4A16A00B16222 /* M_TripsHistoryView.xib */; };
-		9515494128D4A16A00B16222 /* M_EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515493728D4A16A00B16222 /* M_EmptyCell.swift */; };
-		9515494228D4A16A00B16222 /* M_EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515493828D4A16A00B16222 /* M_EmptyCell.xib */; };
-		9515494328D4A16A00B16222 /* M_HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515493A28D4A16A00B16222 /* M_HistoryCell.xib */; };
-		9515494428D4A16A00B16222 /* M_HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515493B28D4A16A00B16222 /* M_HistoryCell.swift */; };
-		9515494528D4A16A00B16222 /* M_LoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515493D28D4A16A00B16222 /* M_LoadMoreTableViewCell.xib */; };
-		9515494628D4A16A00B16222 /* M_LoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515493E28D4A16A00B16222 /* M_LoadMoreTableViewCell.swift */; };
-		9515494728D4A16A00B16222 /* M_TripsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515493F28D4A16A00B16222 /* M_TripsHistoryView.swift */; };
-		9515495228D4A17600B16222 /* M_HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515494928D4A17500B16222 /* M_HistoryRouter.swift */; };
-		9515495328D4A17600B16222 /* M_HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515494B28D4A17500B16222 /* M_HistoryController.swift */; };
-		9515495428D4A17600B16222 /* M_HistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515494D28D4A17600B16222 /* M_HistoryModels.swift */; };
-		9515495528D4A17600B16222 /* M_HistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515494F28D4A17600B16222 /* M_HistoryInteractor.swift */; };
-		9515495628D4A17600B16222 /* M_HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515495128D4A17600B16222 /* M_HistoryPresenter.swift */; };
 		9515495A28D4A29300B16222 /* M_DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515495828D4A29300B16222 /* M_DateConverter.swift */; };
 		9515495B28D4A29300B16222 /* M_Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515495928D4A29300B16222 /* M_Utils.swift */; };
+		951549E828D4ED6C00B16222 /* M_LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515496228D4ED6C00B16222 /* M_LoadingView.xib */; };
+		951549E928D4ED6C00B16222 /* M_LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496328D4ED6C00B16222 /* M_LoadingView.swift */; };
+		951549EA28D4ED6C00B16222 /* M_ChooseSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */; };
+		951549EB28D4ED6C00B16222 /* M_ChangeCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */; };
+		951549EC28D4ED6C00B16222 /* M_ModalDebetNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497128D4ED6C00B16222 /* M_ModalDebetNotificationController.swift */; };
+		951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497328D4ED6C00B16222 /* M_ModalDebtNotificationView.swift */; };
+		951549EE28D4ED6C00B16222 /* M_ModalDebtNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515497428D4ED6C00B16222 /* M_ModalDebtNotificationView.xib */; };
+		951549EF28D4ED6C00B16222 /* M_ActiveSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */; };
+		951549F028D4ED6C00B16222 /* M_ActiveSubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */; };
+		951549F128D4ED6C00B16222 /* M_ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498628D4ED6C00B16222 /* M_ResultController.swift */; };
+		951549F228D4ED6C00B16222 /* M_CardChangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498C28D4ED6C00B16222 /* M_CardChangePresenter.swift */; };
+		951549F328D4ED6C00B16222 /* M_ChangeCardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498E28D4ED6C00B16222 /* M_ChangeCardModels.swift */; };
+		951549F428D4ED6C00B16222 /* M_CardChangeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499128D4ED6C00B16222 /* M_CardChangeInteractor.swift */; };
+		951549F528D4ED6C00B16222 /* M_CardChangeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499328D4ED6C00B16222 /* M_CardChangeRouter.swift */; };
+		951549F628D4ED6C00B16222 /* M_ResScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499628D4ED6C00B16222 /* M_ResScreenPresenter.swift */; };
+		951549F728D4ED6C00B16222 /* M_ResScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499828D4ED6C00B16222 /* M_ResScreenModels.swift */; };
+		951549F828D4ED6C00B16222 /* M_ResScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499B28D4ED6C00B16222 /* M_ResScreenInteractor.swift */; };
+		951549F928D4ED6C00B16222 /* M_ResScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499D28D4ED6C00B16222 /* M_ResScreenRouter.swift */; };
+		951549FA28D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549A028D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift */; };
+		951549FB28D4ED6C00B16222 /* M_BuySubscriptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549A228D4ED6C00B16222 /* M_BuySubscriptionModels.swift */; };
+		951549FC28D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549A528D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift */; };
+		951549FD28D4ED6C00B16222 /* M_BuySubscriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549A728D4ED6C00B16222 /* M_BuySubscriptionRouter.swift */; };
+		951549FE28D4ED6C00B16222 /* M_ActiveStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549AA28D4ED6C00B16222 /* M_ActiveStateBuilder.swift */; };
+		951549FF28D4ED6C00B16222 /* M_ActiveSubPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549AB28D4ED6C00B16222 /* M_ActiveSubPresenter.swift */; };
+		95154A0028D4ED6C00B16222 /* M_ActiveSubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549AD28D4ED6C00B16222 /* M_ActiveSubModels.swift */; };
+		95154A0128D4ED6C00B16222 /* M_ActiveSubInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549B028D4ED6C00B16222 /* M_ActiveSubInteractor.swift */; };
+		95154A0228D4ED6C00B16222 /* M_ActiveSubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549B228D4ED6C00B16222 /* M_ActiveSubRouter.swift */; };
+		95154A0328D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549B528D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift */; };
+		95154A0428D4ED6C00B16222 /* M_ChooseSubscriptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549B728D4ED6C00B16222 /* M_ChooseSubscriptionModels.swift */; };
+		95154A0528D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549BA28D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift */; };
+		95154A0628D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549BC28D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift */; };
+		95154A0728D4ED6C00B16222 /* M_HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549BF28D4ED6C00B16222 /* M_HistoryPresenter.swift */; };
+		95154A0828D4ED6C00B16222 /* M_HistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549C128D4ED6C00B16222 /* M_HistoryModels.swift */; };
+		95154A0928D4ED6C00B16222 /* M_HistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549C428D4ED6C00B16222 /* M_HistoryInteractor.swift */; };
+		95154A0A28D4ED6C00B16222 /* M_HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549C628D4ED6C00B16222 /* M_HistoryRouter.swift */; };
+		95154A0B28D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549C928D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift */; };
+		95154A0C28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549CB28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift */; };
+		95154A0D28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549CE28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift */; };
+		95154A0E28D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D028D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift */; };
+		95154A0F28D4ED6C00B16222 /* M_DebtNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */; };
+		95154A1028D4ED6C00B16222 /* M_BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D928D4ED6C00B16222 /* M_BuySubController.swift */; };
+		95154A1128D4ED6C00B16222 /* M_ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951549DE28D4ED6C00B16222 /* M_ErrorView.xib */; };
+		95154A1228D4ED6C00B16222 /* M_ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549DF28D4ED6C00B16222 /* M_ErrorView.swift */; };
+		95154A1328D4ED6C00B16222 /* M_TripsHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */; };
+		95154A3128D4EEE400B16222 /* M_ActiveSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1428D4EEE400B16222 /* M_ActiveSubView.xib */; };
+		95154A3228D4EEE400B16222 /* M_TitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1628D4EEE400B16222 /* M_TitleHeader.xib */; };
+		95154A3328D4EEE400B16222 /* M_TitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A1728D4EEE400B16222 /* M_TitleHeader.swift */; };
+		95154A3428D4EEE400B16222 /* M_ActiveSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A1828D4EEE400B16222 /* M_ActiveSubView.swift */; };
+		95154A3528D4EEE400B16222 /* M_DebtNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1B28D4EEE400B16222 /* M_DebtNotificationCell.xib */; };
+		95154A3628D4EEE400B16222 /* M_DebtNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A1C28D4EEE400B16222 /* M_DebtNotificationCell.swift */; };
+		95154A3728D4EEE400B16222 /* M_CardInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1E28D4EEE400B16222 /* M_CardInfoCell.xib */; };
+		95154A3828D4EEE400B16222 /* M_CardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A1F28D4EEE400B16222 /* M_CardInfoCell.swift */; };
+		95154A3928D4EEE400B16222 /* M_StatusInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2128D4EEE400B16222 /* M_StatusInfoCell.swift */; };
+		95154A3A28D4EEE400B16222 /* M_StatusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A2228D4EEE400B16222 /* M_StatusInfoCell.xib */; };
+		95154A3B28D4EEE400B16222 /* M_HeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2328D4EEE400B16222 /* M_HeaderTableCell.swift */; };
+		95154A3C28D4EEE400B16222 /* M_DebtInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A2528D4EEE400B16222 /* M_DebtInfoCell.xib */; };
+		95154A3D28D4EEE400B16222 /* M_DebtInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2628D4EEE400B16222 /* M_DebtInfoCell.swift */; };
+		95154A3E28D4EEE400B16222 /* M_HeaderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A2728D4EEE400B16222 /* M_HeaderTableCell.xib */; };
+		95154A3F28D4EEE400B16222 /* M_SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A2928D4EEE400B16222 /* M_SupportCell.xib */; };
+		95154A4028D4EEE400B16222 /* M_SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2A28D4EEE400B16222 /* M_SupportCell.swift */; };
+		95154A4128D4EEE400B16222 /* M_TariffInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A2C28D4EEE400B16222 /* M_TariffInfoCell.xib */; };
+		95154A4228D4EEE400B16222 /* M_TariffInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2D28D4EEE400B16222 /* M_TariffInfoCell.swift */; };
+		95154A4328D4EEE400B16222 /* M_OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A2F28D4EEE400B16222 /* M_OnboardingCell.swift */; };
+		95154A4428D4EEE400B16222 /* M_OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A3028D4EEE400B16222 /* M_OnboardingCell.xib */; };
+		95154A4E28D4EF0D00B16222 /* M_SubSectionRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A4728D4EF0D00B16222 /* M_SubSectionRow.xib */; };
+		95154A4F28D4EF0D00B16222 /* M_SubSectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A4828D4EF0D00B16222 /* M_SubSectionRow.swift */; };
+		95154A5028D4EF0D00B16222 /* M_MakeMySubRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A4A28D4EF0D00B16222 /* M_MakeMySubRow.swift */; };
+		95154A5128D4EF0D00B16222 /* M_MakeMySubRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A4B28D4EF0D00B16222 /* M_MakeMySubRow.xib */; };
+		95154A5228D4EF0D00B16222 /* M_ChooseSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A4C28D4EF0D00B16222 /* M_ChooseSubView.swift */; };
+		95154A5328D4EF0D00B16222 /* M_ChooseSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A4D28D4EF0D00B16222 /* M_ChooseSubView.xib */; };
+		95154A5628D4EF1E00B16222 /* M_ChangeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A5428D4EF1E00B16222 /* M_ChangeCardView.swift */; };
+		95154A5728D4EF1E00B16222 /* M_ChangeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A5528D4EF1E00B16222 /* M_ChangeCardView.xib */; };
+		95154A5A28D4EF3D00B16222 /* M_ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A5828D4EF3D00B16222 /* M_ResultView.swift */; };
+		95154A5B28D4EF3D00B16222 /* M_ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A5928D4EF3D00B16222 /* M_ResultView.xib */; };
+		95154A5D28D4EF4900B16222 /* M_ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A5C28D4EF4900B16222 /* M_ResultModel.swift */; };
+		95154A6628D4EF6100B16222 /* M_DebtNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A5E28D4EF6100B16222 /* M_DebtNotificationsView.swift */; };
+		95154A6728D4EF6100B16222 /* M_NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A6028D4EF6100B16222 /* M_NotificationCell.swift */; };
+		95154A6828D4EF6100B16222 /* M_NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A6128D4EF6100B16222 /* M_NotificationCell.xib */; };
+		95154A6928D4EF6100B16222 /* M_DebtNotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A6228D4EF6100B16222 /* M_DebtNotificationsView.xib */; };
+		95154A6A28D4EF6100B16222 /* M_DebtHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A6428D4EF6100B16222 /* M_DebtHeader.xib */; };
+		95154A6B28D4EF6100B16222 /* M_DebtHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A6528D4EF6100B16222 /* M_DebtHeader.swift */; };
+		95154A7528D4EF7B00B16222 /* M_BuySubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A6D28D4EF7B00B16222 /* M_BuySubView.swift */; };
+		95154A7628D4EF7B00B16222 /* M_BuySubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A6E28D4EF7B00B16222 /* M_BuySubView.xib */; };
+		95154A7728D4EF7B00B16222 /* M_DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A7028D4EF7B00B16222 /* M_DescriptionCell.xib */; };
+		95154A7828D4EF7B00B16222 /* M_DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7128D4EF7B00B16222 /* M_DescriptionCell.swift */; };
+		95154A7928D4EF7B00B16222 /* M_SubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7328D4EF7B00B16222 /* M_SubHeader.swift */; };
+		95154A7A28D4EF7B00B16222 /* M_SubHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A7428D4EF7B00B16222 /* M_SubHeader.xib */; };
+		95154A7C28D4EFAD00B16222 /* M_CardChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */; };
+		95154A7E28D4EFBF00B16222 /* M_ResScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */; };
+		95154A8028D4EFD000B16222 /* M_BuySubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */; };
+		95154A8228D4EFDE00B16222 /* M_ActiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8128D4EFDE00B16222 /* M_ActiveController.swift */; };
+		95154A8428D4EFED00B16222 /* M_ChooseSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */; };
+		95154A8628D4EFFD00B16222 /* M_HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8528D4EFFD00B16222 /* M_HistoryController.swift */; };
+		95154A8828D4F00A00B16222 /* M_DebtUserNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */; };
+		95154A9528D4F06600B16222 /* M_TripsHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A8928D4F06600B16222 /* M_TripsHistoryView.xib */; };
+		95154A9628D4F06600B16222 /* M_EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8C28D4F06600B16222 /* M_EmptyCell.swift */; };
+		95154A9728D4F06600B16222 /* M_EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A8D28D4F06600B16222 /* M_EmptyCell.xib */; };
+		95154A9828D4F06600B16222 /* M_HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A8F28D4F06600B16222 /* M_HistoryCell.xib */; };
+		95154A9928D4F06600B16222 /* M_HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A9028D4F06600B16222 /* M_HistoryCell.swift */; };
+		95154A9A28D4F06600B16222 /* M_LoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A9228D4F06600B16222 /* M_LoadMoreTableViewCell.xib */; };
+		95154A9B28D4F06600B16222 /* M_LoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A9328D4F06600B16222 /* M_LoadMoreTableViewCell.swift */; };
+		95154A9C28D4F06600B16222 /* M_TripsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A9428D4F06600B16222 /* M_TripsHistoryView.swift */; };
 		951D036528323F7F005647F5 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9533A604285C90B300D77375 /* MaaSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9533A602285C90B300D77375 /* MaaSCell.xib */; };
 		9533A605285C90B300D77375 /* MaaSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A603285C90B300D77375 /* MaaSCell.swift */; };
@@ -133,9 +144,6 @@
 		953E96B5282ED96100374DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B4282ED96100374DF2 /* Assets.xcassets */; };
 		953E96B8282ED96100374DF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953E96B6282ED96100374DF2 /* LaunchScreen.storyboard */; };
 		954276A628D216330049F718 /* M_DebtNotifification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954276A528D216330049F718 /* M_DebtNotifification.swift */; };
-		954276B928D2177E0049F718 /* M_ModalDebetNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954276A928D2177E0049F718 /* M_ModalDebetNotificationController.swift */; };
-		954276BA28D2177E0049F718 /* M_ModalDebtNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954276AB28D2177E0049F718 /* M_ModalDebtNotificationView.swift */; };
-		954276BB28D2177E0049F718 /* M_ModalDebtNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954276AC28D2177E0049F718 /* M_ModalDebtNotificationView.xib */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
@@ -217,104 +225,115 @@
 		9509208D282E55DC00C4E573 /* Ext+UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+UILabel.swift"; sourceTree = "<group>"; };
 		9509208E282E55DC00C4E573 /* Ext+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+UIImage.swift"; sourceTree = "<group>"; };
 		9509208F282E55DC00C4E573 /* MaaS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaaS.swift; sourceTree = "<group>"; };
-		95092092282E55DC00C4E573 /* M_LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_LoadingView.xib; sourceTree = "<group>"; };
-		95092093282E55DC00C4E573 /* M_LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_LoadingView.swift; sourceTree = "<group>"; };
-		950920B9282E55DC00C4E573 /* M_ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ErrorView.xib; sourceTree = "<group>"; };
-		950920BA282E55DC00C4E573 /* M_ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ErrorView.swift; sourceTree = "<group>"; };
 		950920BB282E55DC00C4E573 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		950920BD282E55DC00C4E573 /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
 		950920BE282E55DC00C4E573 /* MoscowSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Regular.otf"; sourceTree = "<group>"; };
 		950920BF282E55DC00C4E573 /* MoscowSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Medium.otf"; sourceTree = "<group>"; };
 		950920C0282E55DC00C4E573 /* MoscowSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MoscowSans-Bold.otf"; sourceTree = "<group>"; };
-		9515486B28D4A09400B16222 /* M_ActiveSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubView.swift; sourceTree = "<group>"; };
-		9515486C28D4A09400B16222 /* M_ActiveSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ActiveSubView.xib; sourceTree = "<group>"; };
-		9515486F28D4A09400B16222 /* M_DebtNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtNotificationCell.xib; sourceTree = "<group>"; };
-		9515487028D4A09400B16222 /* M_DebtNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationCell.swift; sourceTree = "<group>"; };
-		9515487228D4A09400B16222 /* M_CardInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_CardInfoCell.xib; sourceTree = "<group>"; };
-		9515487328D4A09400B16222 /* M_CardInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardInfoCell.swift; sourceTree = "<group>"; };
-		9515487528D4A09400B16222 /* M_StatusInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_StatusInfoCell.swift; sourceTree = "<group>"; };
-		9515487628D4A09400B16222 /* M_StatusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_StatusInfoCell.xib; sourceTree = "<group>"; };
-		9515487728D4A09400B16222 /* M_HeaderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HeaderTableCell.swift; sourceTree = "<group>"; };
-		9515487928D4A09400B16222 /* M_DebtInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtInfoCell.xib; sourceTree = "<group>"; };
-		9515487A28D4A09400B16222 /* M_DebtInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtInfoCell.swift; sourceTree = "<group>"; };
-		9515487B28D4A09400B16222 /* M_HeaderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_HeaderTableCell.xib; sourceTree = "<group>"; };
-		9515487D28D4A09400B16222 /* M_SupportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SupportCell.xib; sourceTree = "<group>"; };
-		9515487E28D4A09400B16222 /* M_SupportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SupportCell.swift; sourceTree = "<group>"; };
-		9515488028D4A09400B16222 /* M_TariffInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TariffInfoCell.xib; sourceTree = "<group>"; };
-		9515488128D4A09400B16222 /* M_TariffInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TariffInfoCell.swift; sourceTree = "<group>"; };
-		9515488328D4A09400B16222 /* M_OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_OnboardingCell.swift; sourceTree = "<group>"; };
-		9515488428D4A09400B16222 /* M_OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_OnboardingCell.xib; sourceTree = "<group>"; };
-		9515488628D4A09400B16222 /* M_TitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TitleHeader.xib; sourceTree = "<group>"; };
-		9515488728D4A09400B16222 /* M_TitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TitleHeader.swift; sourceTree = "<group>"; };
-		9515489D28D4A0BA00B16222 /* M_ActiveSubModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModels.swift; sourceTree = "<group>"; };
-		9515489F28D4A0BA00B16222 /* M_ActiveSubInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubInteractor.swift; sourceTree = "<group>"; };
-		951548A128D4A0BA00B16222 /* M_ActiveSubRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubRouter.swift; sourceTree = "<group>"; };
-		951548A328D4A0BB00B16222 /* M_ActiveStateBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveStateBuilder.swift; sourceTree = "<group>"; };
-		951548A428D4A0BB00B16222 /* M_ActiveSubPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubPresenter.swift; sourceTree = "<group>"; };
-		951548A628D4A0BB00B16222 /* M_ActiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveController.swift; sourceTree = "<group>"; };
-		951548AE28D4A0CC00B16222 /* M_BuySubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubView.swift; sourceTree = "<group>"; };
-		951548AF28D4A0CC00B16222 /* M_BuySubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_BuySubView.xib; sourceTree = "<group>"; };
-		951548B128D4A0CC00B16222 /* M_DescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DescriptionCell.xib; sourceTree = "<group>"; };
-		951548B228D4A0CC00B16222 /* M_DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DescriptionCell.swift; sourceTree = "<group>"; };
-		951548B428D4A0CC00B16222 /* M_SubHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SubHeader.swift; sourceTree = "<group>"; };
-		951548B528D4A0CC00B16222 /* M_SubHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SubHeader.xib; sourceTree = "<group>"; };
-		951548BD28D4A0D800B16222 /* M_BuySubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionController.swift; sourceTree = "<group>"; };
-		951548BF28D4A0D800B16222 /* M_BuySubscriptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionModels.swift; sourceTree = "<group>"; };
-		951548C128D4A0D800B16222 /* M_BuySubscriptionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionRouter.swift; sourceTree = "<group>"; };
-		951548C328D4A0D800B16222 /* M_BuySubscriptionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionPresenter.swift; sourceTree = "<group>"; };
-		951548C528D4A0D800B16222 /* M_BuySubscriptionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionInteractor.swift; sourceTree = "<group>"; };
-		951548CC28D4A0E400B16222 /* M_ChangeCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ChangeCardView.xib; sourceTree = "<group>"; };
-		951548CD28D4A0E400B16222 /* M_ChangeCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardView.swift; sourceTree = "<group>"; };
-		951548D128D4A0EE00B16222 /* M_CardChangeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeRouter.swift; sourceTree = "<group>"; };
-		951548D328D4A0EE00B16222 /* M_CardChangeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeInteractor.swift; sourceTree = "<group>"; };
-		951548D528D4A0EE00B16222 /* M_CardChangePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangePresenter.swift; sourceTree = "<group>"; };
-		951548D728D4A0EE00B16222 /* M_ChangeCardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardModels.swift; sourceTree = "<group>"; };
-		951548D928D4A0EE00B16222 /* M_CardChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeController.swift; sourceTree = "<group>"; };
-		951548E028D4A0FD00B16222 /* M_ChooseSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ChooseSubView.xib; sourceTree = "<group>"; };
-		951548E328D4A0FD00B16222 /* M_SubSectionRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SubSectionRow.xib; sourceTree = "<group>"; };
-		951548E428D4A0FD00B16222 /* M_SubSectionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SubSectionRow.swift; sourceTree = "<group>"; };
-		951548E628D4A0FD00B16222 /* M_MakeMySubRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_MakeMySubRow.swift; sourceTree = "<group>"; };
-		951548E728D4A0FD00B16222 /* M_MakeMySubRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_MakeMySubRow.xib; sourceTree = "<group>"; };
-		951548E828D4A0FD00B16222 /* M_ChooseSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubView.swift; sourceTree = "<group>"; };
-		951548F028D4A10600B16222 /* M_ChooseSubscriptionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionInteractor.swift; sourceTree = "<group>"; };
-		951548F228D4A10600B16222 /* M_ChooseSubscriptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionModels.swift; sourceTree = "<group>"; };
-		951548F428D4A10600B16222 /* M_ChooseSubscriptionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionRouter.swift; sourceTree = "<group>"; };
-		951548F628D4A10600B16222 /* M_ChooseSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionController.swift; sourceTree = "<group>"; };
-		951548F828D4A10700B16222 /* M_ChooseSubscriptionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionPresenter.swift; sourceTree = "<group>"; };
-		951548FF28D4A11700B16222 /* M_DebtNotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationsView.swift; sourceTree = "<group>"; };
-		9515490128D4A11700B16222 /* M_NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_NotificationCell.swift; sourceTree = "<group>"; };
-		9515490228D4A11700B16222 /* M_NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_NotificationCell.xib; sourceTree = "<group>"; };
-		9515490328D4A11700B16222 /* M_DebtNotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtNotificationsView.xib; sourceTree = "<group>"; };
-		9515490528D4A11700B16222 /* M_DebtHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtHeader.xib; sourceTree = "<group>"; };
-		9515490628D4A11700B16222 /* M_DebtHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtHeader.swift; sourceTree = "<group>"; };
-		9515490E28D4A12100B16222 /* M_DebtUserNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsController.swift; sourceTree = "<group>"; };
-		9515491028D4A12100B16222 /* M_DebtUserNotificationsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsInteractor.swift; sourceTree = "<group>"; };
-		9515491228D4A12100B16222 /* M_DebtUserNotificationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsPresenter.swift; sourceTree = "<group>"; };
-		9515491428D4A12200B16222 /* M_DebtUserNotificationsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsRouter.swift; sourceTree = "<group>"; };
-		9515491628D4A12200B16222 /* M_DebtUserNotificationsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsModels.swift; sourceTree = "<group>"; };
-		9515491D28D4A13200B16222 /* M_ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ResultView.xib; sourceTree = "<group>"; };
-		9515491E28D4A13200B16222 /* M_ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultView.swift; sourceTree = "<group>"; };
-		9515492228D4A14E00B16222 /* M_ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultModel.swift; sourceTree = "<group>"; };
-		9515492528D4A15900B16222 /* M_ResScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenPresenter.swift; sourceTree = "<group>"; };
-		9515492728D4A15900B16222 /* M_ResScreenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenModels.swift; sourceTree = "<group>"; };
-		9515492928D4A15900B16222 /* M_ResScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenController.swift; sourceTree = "<group>"; };
-		9515492B28D4A15900B16222 /* M_ResScreenInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenInteractor.swift; sourceTree = "<group>"; };
-		9515492D28D4A15900B16222 /* M_ResScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenRouter.swift; sourceTree = "<group>"; };
-		9515493428D4A16A00B16222 /* M_TripsHistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TripsHistoryView.xib; sourceTree = "<group>"; };
-		9515493728D4A16A00B16222 /* M_EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_EmptyCell.swift; sourceTree = "<group>"; };
-		9515493828D4A16A00B16222 /* M_EmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_EmptyCell.xib; sourceTree = "<group>"; };
-		9515493A28D4A16A00B16222 /* M_HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_HistoryCell.xib; sourceTree = "<group>"; };
-		9515493B28D4A16A00B16222 /* M_HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryCell.swift; sourceTree = "<group>"; };
-		9515493D28D4A16A00B16222 /* M_LoadMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_LoadMoreTableViewCell.xib; sourceTree = "<group>"; };
-		9515493E28D4A16A00B16222 /* M_LoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_LoadMoreTableViewCell.swift; sourceTree = "<group>"; };
-		9515493F28D4A16A00B16222 /* M_TripsHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TripsHistoryView.swift; sourceTree = "<group>"; };
-		9515494928D4A17500B16222 /* M_HistoryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryRouter.swift; sourceTree = "<group>"; };
-		9515494B28D4A17500B16222 /* M_HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryController.swift; sourceTree = "<group>"; };
-		9515494D28D4A17600B16222 /* M_HistoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryModels.swift; sourceTree = "<group>"; };
-		9515494F28D4A17600B16222 /* M_HistoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryInteractor.swift; sourceTree = "<group>"; };
-		9515495128D4A17600B16222 /* M_HistoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryPresenter.swift; sourceTree = "<group>"; };
 		9515495828D4A29300B16222 /* M_DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DateConverter.swift; sourceTree = "<group>"; };
 		9515495928D4A29300B16222 /* M_Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_Utils.swift; sourceTree = "<group>"; };
+		9515496228D4ED6C00B16222 /* M_LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_LoadingView.xib; sourceTree = "<group>"; };
+		9515496328D4ED6C00B16222 /* M_LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_LoadingView.swift; sourceTree = "<group>"; };
+		9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubController.swift; sourceTree = "<group>"; };
+		9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardController.swift; sourceTree = "<group>"; };
+		9515497128D4ED6C00B16222 /* M_ModalDebetNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebetNotificationController.swift; sourceTree = "<group>"; };
+		9515497328D4ED6C00B16222 /* M_ModalDebtNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebtNotificationView.swift; sourceTree = "<group>"; };
+		9515497428D4ED6C00B16222 /* M_ModalDebtNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ModalDebtNotificationView.xib; sourceTree = "<group>"; };
+		9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubController.swift; sourceTree = "<group>"; };
+		9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModel.swift; sourceTree = "<group>"; };
+		9515498628D4ED6C00B16222 /* M_ResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultController.swift; sourceTree = "<group>"; };
+		9515498C28D4ED6C00B16222 /* M_CardChangePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangePresenter.swift; sourceTree = "<group>"; };
+		9515498E28D4ED6C00B16222 /* M_ChangeCardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardModels.swift; sourceTree = "<group>"; };
+		9515499128D4ED6C00B16222 /* M_CardChangeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeInteractor.swift; sourceTree = "<group>"; };
+		9515499328D4ED6C00B16222 /* M_CardChangeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeRouter.swift; sourceTree = "<group>"; };
+		9515499628D4ED6C00B16222 /* M_ResScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenPresenter.swift; sourceTree = "<group>"; };
+		9515499828D4ED6C00B16222 /* M_ResScreenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenModels.swift; sourceTree = "<group>"; };
+		9515499B28D4ED6C00B16222 /* M_ResScreenInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenInteractor.swift; sourceTree = "<group>"; };
+		9515499D28D4ED6C00B16222 /* M_ResScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenRouter.swift; sourceTree = "<group>"; };
+		951549A028D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionPresenter.swift; sourceTree = "<group>"; };
+		951549A228D4ED6C00B16222 /* M_BuySubscriptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionModels.swift; sourceTree = "<group>"; };
+		951549A528D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionInteractor.swift; sourceTree = "<group>"; };
+		951549A728D4ED6C00B16222 /* M_BuySubscriptionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionRouter.swift; sourceTree = "<group>"; };
+		951549AA28D4ED6C00B16222 /* M_ActiveStateBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveStateBuilder.swift; sourceTree = "<group>"; };
+		951549AB28D4ED6C00B16222 /* M_ActiveSubPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubPresenter.swift; sourceTree = "<group>"; };
+		951549AD28D4ED6C00B16222 /* M_ActiveSubModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModels.swift; sourceTree = "<group>"; };
+		951549B028D4ED6C00B16222 /* M_ActiveSubInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubInteractor.swift; sourceTree = "<group>"; };
+		951549B228D4ED6C00B16222 /* M_ActiveSubRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubRouter.swift; sourceTree = "<group>"; };
+		951549B528D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionPresenter.swift; sourceTree = "<group>"; };
+		951549B728D4ED6C00B16222 /* M_ChooseSubscriptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionModels.swift; sourceTree = "<group>"; };
+		951549BA28D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionInteractor.swift; sourceTree = "<group>"; };
+		951549BC28D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionRouter.swift; sourceTree = "<group>"; };
+		951549BF28D4ED6C00B16222 /* M_HistoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryPresenter.swift; sourceTree = "<group>"; };
+		951549C128D4ED6C00B16222 /* M_HistoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryModels.swift; sourceTree = "<group>"; };
+		951549C428D4ED6C00B16222 /* M_HistoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryInteractor.swift; sourceTree = "<group>"; };
+		951549C628D4ED6C00B16222 /* M_HistoryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryRouter.swift; sourceTree = "<group>"; };
+		951549C928D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsPresenter.swift; sourceTree = "<group>"; };
+		951549CB28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsModels.swift; sourceTree = "<group>"; };
+		951549CE28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsInteractor.swift; sourceTree = "<group>"; };
+		951549D028D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsRouter.swift; sourceTree = "<group>"; };
+		951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationsController.swift; sourceTree = "<group>"; };
+		951549D928D4ED6C00B16222 /* M_BuySubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubController.swift; sourceTree = "<group>"; };
+		951549DE28D4ED6C00B16222 /* M_ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ErrorView.xib; sourceTree = "<group>"; };
+		951549DF28D4ED6C00B16222 /* M_ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ErrorView.swift; sourceTree = "<group>"; };
+		951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TripsHistoryController.swift; sourceTree = "<group>"; };
+		95154A1428D4EEE400B16222 /* M_ActiveSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ActiveSubView.xib; sourceTree = "<group>"; };
+		95154A1628D4EEE400B16222 /* M_TitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TitleHeader.xib; sourceTree = "<group>"; };
+		95154A1728D4EEE400B16222 /* M_TitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TitleHeader.swift; sourceTree = "<group>"; };
+		95154A1828D4EEE400B16222 /* M_ActiveSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubView.swift; sourceTree = "<group>"; };
+		95154A1B28D4EEE400B16222 /* M_DebtNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtNotificationCell.xib; sourceTree = "<group>"; };
+		95154A1C28D4EEE400B16222 /* M_DebtNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationCell.swift; sourceTree = "<group>"; };
+		95154A1E28D4EEE400B16222 /* M_CardInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_CardInfoCell.xib; sourceTree = "<group>"; };
+		95154A1F28D4EEE400B16222 /* M_CardInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardInfoCell.swift; sourceTree = "<group>"; };
+		95154A2128D4EEE400B16222 /* M_StatusInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_StatusInfoCell.swift; sourceTree = "<group>"; };
+		95154A2228D4EEE400B16222 /* M_StatusInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_StatusInfoCell.xib; sourceTree = "<group>"; };
+		95154A2328D4EEE400B16222 /* M_HeaderTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HeaderTableCell.swift; sourceTree = "<group>"; };
+		95154A2528D4EEE400B16222 /* M_DebtInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtInfoCell.xib; sourceTree = "<group>"; };
+		95154A2628D4EEE400B16222 /* M_DebtInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtInfoCell.swift; sourceTree = "<group>"; };
+		95154A2728D4EEE400B16222 /* M_HeaderTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_HeaderTableCell.xib; sourceTree = "<group>"; };
+		95154A2928D4EEE400B16222 /* M_SupportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SupportCell.xib; sourceTree = "<group>"; };
+		95154A2A28D4EEE400B16222 /* M_SupportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SupportCell.swift; sourceTree = "<group>"; };
+		95154A2C28D4EEE400B16222 /* M_TariffInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TariffInfoCell.xib; sourceTree = "<group>"; };
+		95154A2D28D4EEE400B16222 /* M_TariffInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TariffInfoCell.swift; sourceTree = "<group>"; };
+		95154A2F28D4EEE400B16222 /* M_OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_OnboardingCell.swift; sourceTree = "<group>"; };
+		95154A3028D4EEE400B16222 /* M_OnboardingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_OnboardingCell.xib; sourceTree = "<group>"; };
+		95154A4728D4EF0D00B16222 /* M_SubSectionRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SubSectionRow.xib; sourceTree = "<group>"; };
+		95154A4828D4EF0D00B16222 /* M_SubSectionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SubSectionRow.swift; sourceTree = "<group>"; };
+		95154A4A28D4EF0D00B16222 /* M_MakeMySubRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_MakeMySubRow.swift; sourceTree = "<group>"; };
+		95154A4B28D4EF0D00B16222 /* M_MakeMySubRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_MakeMySubRow.xib; sourceTree = "<group>"; };
+		95154A4C28D4EF0D00B16222 /* M_ChooseSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubView.swift; sourceTree = "<group>"; };
+		95154A4D28D4EF0D00B16222 /* M_ChooseSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ChooseSubView.xib; sourceTree = "<group>"; };
+		95154A5428D4EF1E00B16222 /* M_ChangeCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardView.swift; sourceTree = "<group>"; };
+		95154A5528D4EF1E00B16222 /* M_ChangeCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ChangeCardView.xib; sourceTree = "<group>"; };
+		95154A5828D4EF3D00B16222 /* M_ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultView.swift; sourceTree = "<group>"; };
+		95154A5928D4EF3D00B16222 /* M_ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ResultView.xib; sourceTree = "<group>"; };
+		95154A5C28D4EF4900B16222 /* M_ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultModel.swift; sourceTree = "<group>"; };
+		95154A5E28D4EF6100B16222 /* M_DebtNotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationsView.swift; sourceTree = "<group>"; };
+		95154A6028D4EF6100B16222 /* M_NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_NotificationCell.swift; sourceTree = "<group>"; };
+		95154A6128D4EF6100B16222 /* M_NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_NotificationCell.xib; sourceTree = "<group>"; };
+		95154A6228D4EF6100B16222 /* M_DebtNotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtNotificationsView.xib; sourceTree = "<group>"; };
+		95154A6428D4EF6100B16222 /* M_DebtHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DebtHeader.xib; sourceTree = "<group>"; };
+		95154A6528D4EF6100B16222 /* M_DebtHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtHeader.swift; sourceTree = "<group>"; };
+		95154A6D28D4EF7B00B16222 /* M_BuySubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubView.swift; sourceTree = "<group>"; };
+		95154A6E28D4EF7B00B16222 /* M_BuySubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_BuySubView.xib; sourceTree = "<group>"; };
+		95154A7028D4EF7B00B16222 /* M_DescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_DescriptionCell.xib; sourceTree = "<group>"; };
+		95154A7128D4EF7B00B16222 /* M_DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DescriptionCell.swift; sourceTree = "<group>"; };
+		95154A7328D4EF7B00B16222 /* M_SubHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SubHeader.swift; sourceTree = "<group>"; };
+		95154A7428D4EF7B00B16222 /* M_SubHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SubHeader.xib; sourceTree = "<group>"; };
+		95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeController.swift; sourceTree = "<group>"; };
+		95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenController.swift; sourceTree = "<group>"; };
+		95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionController.swift; sourceTree = "<group>"; };
+		95154A8128D4EFDE00B16222 /* M_ActiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveController.swift; sourceTree = "<group>"; };
+		95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionController.swift; sourceTree = "<group>"; };
+		95154A8528D4EFFD00B16222 /* M_HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryController.swift; sourceTree = "<group>"; };
+		95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsController.swift; sourceTree = "<group>"; };
+		95154A8928D4F06600B16222 /* M_TripsHistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TripsHistoryView.xib; sourceTree = "<group>"; };
+		95154A8C28D4F06600B16222 /* M_EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_EmptyCell.swift; sourceTree = "<group>"; };
+		95154A8D28D4F06600B16222 /* M_EmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_EmptyCell.xib; sourceTree = "<group>"; };
+		95154A8F28D4F06600B16222 /* M_HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_HistoryCell.xib; sourceTree = "<group>"; };
+		95154A9028D4F06600B16222 /* M_HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryCell.swift; sourceTree = "<group>"; };
+		95154A9228D4F06600B16222 /* M_LoadMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_LoadMoreTableViewCell.xib; sourceTree = "<group>"; };
+		95154A9328D4F06600B16222 /* M_LoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_LoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		95154A9428D4F06600B16222 /* M_TripsHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TripsHistoryView.swift; sourceTree = "<group>"; };
 		9533A602285C90B300D77375 /* MaaSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaaSCell.xib; sourceTree = "<group>"; };
 		9533A603285C90B300D77375 /* MaaSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaaSCell.swift; sourceTree = "<group>"; };
 		9533A606285C91A700D77375 /* TariffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffCell.swift; sourceTree = "<group>"; };
@@ -329,9 +348,6 @@
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		954276A528D216330049F718 /* M_DebtNotifification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotifification.swift; sourceTree = "<group>"; };
-		954276A928D2177E0049F718 /* M_ModalDebetNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebetNotificationController.swift; sourceTree = "<group>"; };
-		954276AB28D2177E0049F718 /* M_ModalDebtNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebtNotificationView.swift; sourceTree = "<group>"; };
-		954276AC28D2177E0049F718 /* M_ModalDebtNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ModalDebtNotificationView.xib; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
 		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -418,7 +434,7 @@
 				95092082282E55DC00C4E573 /* Custom Elements */,
 				95092085282E55DC00C4E573 /* Extensions */,
 				950920BC282E55DC00C4E573 /* Fonts */,
-				95092090282E55DC00C4E573 /* Modules */,
+				9515496028D4ED6C00B16222 /* Modules */,
 				95092081282E55DC00C4E573 /* Media.xcassets */,
 				9509208F282E55DC00C4E573 /* MaaS.swift */,
 				95795B732853368800634754 /* MaaSNetworkDelegate.swift */,
@@ -456,41 +472,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		95092090282E55DC00C4E573 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				951547F328D4A04000B16222 /* Active Subscription */,
-				951547DF28D4A04000B16222 /* Buy Subscription */,
-				951547D928D4A04000B16222 /* Change Card */,
-				9515481628D4A04000B16222 /* Choose Subscription */,
-				9515482328D4A04000B16222 /* Debt Notifications */,
-				951547EB28D4A04000B16222 /* Result Screen */,
-				951547C928D4A04000B16222 /* Trips History */,
-				954276A728D2177E0049F718 /* Debt Notification Modal */,
-				950920B8282E55DC00C4E573 /* Error */,
-				95092091282E55DC00C4E573 /* Loading */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		95092091282E55DC00C4E573 /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				95092092282E55DC00C4E573 /* M_LoadingView.xib */,
-				95092093282E55DC00C4E573 /* M_LoadingView.swift */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		950920B8282E55DC00C4E573 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				950920B9282E55DC00C4E573 /* M_ErrorView.xib */,
-				950920BA282E55DC00C4E573 /* M_ErrorView.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
 		950920BC282E55DC00C4E573 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,668 +483,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		951547C928D4A04000B16222 /* Trips History */ = {
-			isa = PBXGroup;
-			children = (
-				9515493328D4A16A00B16222 /* View */,
-				9515494A28D4A17500B16222 /* Controller */,
-				9515494E28D4A17600B16222 /* Interactor */,
-				9515494C28D4A17600B16222 /* Models */,
-				9515495028D4A17600B16222 /* Presenter */,
-				9515494828D4A17500B16222 /* Router */,
-			);
-			name = "Trips History";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Trips History";
-			sourceTree = "<group>";
-		};
-		951547D928D4A04000B16222 /* Change Card */ = {
-			isa = PBXGroup;
-			children = (
-				951548CB28D4A0E400B16222 /* View */,
-				951548D828D4A0EE00B16222 /* Controller */,
-				951548D228D4A0EE00B16222 /* Interactor */,
-				951548D628D4A0EE00B16222 /* Models */,
-				951548D428D4A0EE00B16222 /* Presenter */,
-				951548D028D4A0EE00B16222 /* Router */,
-			);
-			name = "Change Card";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Change Card";
-			sourceTree = "<group>";
-		};
-		951547DF28D4A04000B16222 /* Buy Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				951548AD28D4A0CC00B16222 /* View */,
-				951548BC28D4A0D800B16222 /* Controller */,
-				951548C428D4A0D800B16222 /* Interactor */,
-				951548BE28D4A0D800B16222 /* Models */,
-				951548C228D4A0D800B16222 /* Presenter */,
-				951548C028D4A0D800B16222 /* Router */,
-			);
-			name = "Buy Subscription";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Buy Subscription";
-			sourceTree = "<group>";
-		};
-		951547EB28D4A04000B16222 /* Result Screen */ = {
-			isa = PBXGroup;
-			children = (
-				9515492128D4A14E00B16222 /* Model */,
-				9515491C28D4A13200B16222 /* View */,
-				9515492828D4A15900B16222 /* Controller */,
-				9515492A28D4A15900B16222 /* Interactor */,
-				9515492628D4A15900B16222 /* Models */,
-				9515492428D4A15900B16222 /* Presenter */,
-				9515492C28D4A15900B16222 /* Router */,
-			);
-			name = "Result Screen";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Result Screen";
-			sourceTree = "<group>";
-		};
-		951547F328D4A04000B16222 /* Active Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				9515486A28D4A09400B16222 /* View */,
-				951548A528D4A0BB00B16222 /* Controller */,
-				9515489E28D4A0BA00B16222 /* Interactor */,
-				9515489C28D4A0BA00B16222 /* Models */,
-				951548A228D4A0BB00B16222 /* Presenter */,
-				951548A028D4A0BA00B16222 /* Router */,
-			);
-			name = "Active Subscription";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Active Subscription";
-			sourceTree = "<group>";
-		};
-		9515481628D4A04000B16222 /* Choose Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				951548DF28D4A0FD00B16222 /* View */,
-				951548F528D4A10600B16222 /* Controller */,
-				951548EF28D4A10600B16222 /* Interactor */,
-				951548F128D4A10600B16222 /* Models */,
-				951548F728D4A10700B16222 /* Presenter */,
-				951548F328D4A10600B16222 /* Router */,
-			);
-			name = "Choose Subscription";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Choose Subscription";
-			sourceTree = "<group>";
-		};
-		9515482328D4A04000B16222 /* Debt Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				951548FE28D4A11700B16222 /* View */,
-				9515490D28D4A12100B16222 /* Controller */,
-				9515490F28D4A12100B16222 /* Interactor */,
-				9515491528D4A12200B16222 /* Models */,
-				9515491128D4A12100B16222 /* Presenter */,
-				9515491328D4A12200B16222 /* Router */,
-			);
-			name = "Debt Notifications";
-			path = "../../../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Debt Notifications";
-			sourceTree = "<group>";
-		};
-		9515486A28D4A09400B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9515486B28D4A09400B16222 /* M_ActiveSubView.swift */,
-				9515486C28D4A09400B16222 /* M_ActiveSubView.xib */,
-				9515486D28D4A09400B16222 /* Cell */,
-				9515488528D4A09400B16222 /* Header */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Active Subscription/View";
-			sourceTree = "<group>";
-		};
-		9515486D28D4A09400B16222 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				9515486E28D4A09400B16222 /* Debt Notification */,
-				9515487128D4A09400B16222 /* Card info */,
-				9515487428D4A09400B16222 /* Status Info Cell */,
-				9515487728D4A09400B16222 /* M_HeaderTableCell.swift */,
-				9515487828D4A09400B16222 /* Debt Info */,
-				9515487B28D4A09400B16222 /* M_HeaderTableCell.xib */,
-				9515487C28D4A09400B16222 /* SupportCell */,
-				9515487F28D4A09400B16222 /* Tariff info */,
-				9515488228D4A09400B16222 /* Onboarding */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		9515486E28D4A09400B16222 /* Debt Notification */ = {
-			isa = PBXGroup;
-			children = (
-				9515486F28D4A09400B16222 /* M_DebtNotificationCell.xib */,
-				9515487028D4A09400B16222 /* M_DebtNotificationCell.swift */,
-			);
-			path = "Debt Notification";
-			sourceTree = "<group>";
-		};
-		9515487128D4A09400B16222 /* Card info */ = {
-			isa = PBXGroup;
-			children = (
-				9515487228D4A09400B16222 /* M_CardInfoCell.xib */,
-				9515487328D4A09400B16222 /* M_CardInfoCell.swift */,
-			);
-			path = "Card info";
-			sourceTree = "<group>";
-		};
-		9515487428D4A09400B16222 /* Status Info Cell */ = {
-			isa = PBXGroup;
-			children = (
-				9515487528D4A09400B16222 /* M_StatusInfoCell.swift */,
-				9515487628D4A09400B16222 /* M_StatusInfoCell.xib */,
-			);
-			path = "Status Info Cell";
-			sourceTree = "<group>";
-		};
-		9515487828D4A09400B16222 /* Debt Info */ = {
-			isa = PBXGroup;
-			children = (
-				9515487928D4A09400B16222 /* M_DebtInfoCell.xib */,
-				9515487A28D4A09400B16222 /* M_DebtInfoCell.swift */,
-			);
-			path = "Debt Info";
-			sourceTree = "<group>";
-		};
-		9515487C28D4A09400B16222 /* SupportCell */ = {
-			isa = PBXGroup;
-			children = (
-				9515487D28D4A09400B16222 /* M_SupportCell.xib */,
-				9515487E28D4A09400B16222 /* M_SupportCell.swift */,
-			);
-			path = SupportCell;
-			sourceTree = "<group>";
-		};
-		9515487F28D4A09400B16222 /* Tariff info */ = {
-			isa = PBXGroup;
-			children = (
-				9515488028D4A09400B16222 /* M_TariffInfoCell.xib */,
-				9515488128D4A09400B16222 /* M_TariffInfoCell.swift */,
-			);
-			path = "Tariff info";
-			sourceTree = "<group>";
-		};
-		9515488228D4A09400B16222 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				9515488328D4A09400B16222 /* M_OnboardingCell.swift */,
-				9515488428D4A09400B16222 /* M_OnboardingCell.xib */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		9515488528D4A09400B16222 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				9515488628D4A09400B16222 /* M_TitleHeader.xib */,
-				9515488728D4A09400B16222 /* M_TitleHeader.swift */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		9515489C28D4A0BA00B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9515489D28D4A0BA00B16222 /* M_ActiveSubModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9515489E28D4A0BA00B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				9515489F28D4A0BA00B16222 /* M_ActiveSubInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		951548A028D4A0BA00B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				951548A128D4A0BA00B16222 /* M_ActiveSubRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		951548A228D4A0BB00B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				951548A328D4A0BB00B16222 /* M_ActiveStateBuilder.swift */,
-				951548A428D4A0BB00B16222 /* M_ActiveSubPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		951548A528D4A0BB00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951548A628D4A0BB00B16222 /* M_ActiveController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Active Subscription/Controller";
-			sourceTree = "<group>";
-		};
-		951548AD28D4A0CC00B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				951548AE28D4A0CC00B16222 /* M_BuySubView.swift */,
-				951548AF28D4A0CC00B16222 /* M_BuySubView.xib */,
-				951548B028D4A0CC00B16222 /* Cell */,
-				951548B328D4A0CC00B16222 /* Header */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Buy Subscription/View";
-			sourceTree = "<group>";
-		};
-		951548B028D4A0CC00B16222 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				951548B128D4A0CC00B16222 /* M_DescriptionCell.xib */,
-				951548B228D4A0CC00B16222 /* M_DescriptionCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		951548B328D4A0CC00B16222 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				951548B428D4A0CC00B16222 /* M_SubHeader.swift */,
-				951548B528D4A0CC00B16222 /* M_SubHeader.xib */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		951548BC28D4A0D800B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951548BD28D4A0D800B16222 /* M_BuySubscriptionController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Buy Subscription/Controller";
-			sourceTree = "<group>";
-		};
-		951548BE28D4A0D800B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				951548BF28D4A0D800B16222 /* M_BuySubscriptionModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		951548C028D4A0D800B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				951548C128D4A0D800B16222 /* M_BuySubscriptionRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		951548C228D4A0D800B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				951548C328D4A0D800B16222 /* M_BuySubscriptionPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		951548C428D4A0D800B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				951548C528D4A0D800B16222 /* M_BuySubscriptionInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		951548CB28D4A0E400B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				951548CC28D4A0E400B16222 /* M_ChangeCardView.xib */,
-				951548CD28D4A0E400B16222 /* M_ChangeCardView.swift */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Change Card/View";
-			sourceTree = "<group>";
-		};
-		951548D028D4A0EE00B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				951548D128D4A0EE00B16222 /* M_CardChangeRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		951548D228D4A0EE00B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				951548D328D4A0EE00B16222 /* M_CardChangeInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		951548D428D4A0EE00B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				951548D528D4A0EE00B16222 /* M_CardChangePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		951548D628D4A0EE00B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				951548D728D4A0EE00B16222 /* M_ChangeCardModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		951548D828D4A0EE00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951548D928D4A0EE00B16222 /* M_CardChangeController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Change Card/Controller";
-			sourceTree = "<group>";
-		};
-		951548DF28D4A0FD00B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				951548E028D4A0FD00B16222 /* M_ChooseSubView.xib */,
-				951548E128D4A0FD00B16222 /* Cell */,
-				951548E828D4A0FD00B16222 /* M_ChooseSubView.swift */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Choose Subscription/View";
-			sourceTree = "<group>";
-		};
-		951548E128D4A0FD00B16222 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				951548E228D4A0FD00B16222 /* Subscription */,
-				951548E528D4A0FD00B16222 /* Make my sub */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		951548E228D4A0FD00B16222 /* Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				951548E328D4A0FD00B16222 /* M_SubSectionRow.xib */,
-				951548E428D4A0FD00B16222 /* M_SubSectionRow.swift */,
-			);
-			path = Subscription;
-			sourceTree = "<group>";
-		};
-		951548E528D4A0FD00B16222 /* Make my sub */ = {
-			isa = PBXGroup;
-			children = (
-				951548E628D4A0FD00B16222 /* M_MakeMySubRow.swift */,
-				951548E728D4A0FD00B16222 /* M_MakeMySubRow.xib */,
-			);
-			path = "Make my sub";
-			sourceTree = "<group>";
-		};
-		951548EF28D4A10600B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				951548F028D4A10600B16222 /* M_ChooseSubscriptionInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		951548F128D4A10600B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				951548F228D4A10600B16222 /* M_ChooseSubscriptionModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		951548F328D4A10600B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				951548F428D4A10600B16222 /* M_ChooseSubscriptionRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		951548F528D4A10600B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951548F628D4A10600B16222 /* M_ChooseSubscriptionController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Choose Subscription/Controller";
-			sourceTree = "<group>";
-		};
-		951548F728D4A10700B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				951548F828D4A10700B16222 /* M_ChooseSubscriptionPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		951548FE28D4A11700B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				951548FF28D4A11700B16222 /* M_DebtNotificationsView.swift */,
-				9515490028D4A11700B16222 /* Cell */,
-				9515490328D4A11700B16222 /* M_DebtNotificationsView.xib */,
-				9515490428D4A11700B16222 /* Header */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Debt Notifications/View";
-			sourceTree = "<group>";
-		};
-		9515490028D4A11700B16222 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				9515490128D4A11700B16222 /* M_NotificationCell.swift */,
-				9515490228D4A11700B16222 /* M_NotificationCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		9515490428D4A11700B16222 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				9515490528D4A11700B16222 /* M_DebtHeader.xib */,
-				9515490628D4A11700B16222 /* M_DebtHeader.swift */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		9515490D28D4A12100B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515490E28D4A12100B16222 /* M_DebtUserNotificationsController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Debt Notifications/Controller";
-			sourceTree = "<group>";
-		};
-		9515490F28D4A12100B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				9515491028D4A12100B16222 /* M_DebtUserNotificationsInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		9515491128D4A12100B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				9515491228D4A12100B16222 /* M_DebtUserNotificationsPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		9515491328D4A12200B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				9515491428D4A12200B16222 /* M_DebtUserNotificationsRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		9515491528D4A12200B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9515491628D4A12200B16222 /* M_DebtUserNotificationsModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9515491C28D4A13200B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9515491D28D4A13200B16222 /* M_ResultView.xib */,
-				9515491E28D4A13200B16222 /* M_ResultView.swift */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Result Screen/View";
-			sourceTree = "<group>";
-		};
-		9515492128D4A14E00B16222 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9515492228D4A14E00B16222 /* M_ResultModel.swift */,
-			);
-			name = Model;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Result Screen/Model";
-			sourceTree = "<group>";
-		};
-		9515492428D4A15900B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				9515492528D4A15900B16222 /* M_ResScreenPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		9515492628D4A15900B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9515492728D4A15900B16222 /* M_ResScreenModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9515492828D4A15900B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515492928D4A15900B16222 /* M_ResScreenController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean Result Screen/Controller";
-			sourceTree = "<group>";
-		};
-		9515492A28D4A15900B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				9515492B28D4A15900B16222 /* M_ResScreenInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		9515492C28D4A15900B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				9515492D28D4A15900B16222 /* M_ResScreenRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		9515493328D4A16A00B16222 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9515493428D4A16A00B16222 /* M_TripsHistoryView.xib */,
-				9515493528D4A16A00B16222 /* Cell */,
-				9515493F28D4A16A00B16222 /* M_TripsHistoryView.swift */,
-			);
-			name = View;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Trips History/View";
-			sourceTree = "<group>";
-		};
-		9515493528D4A16A00B16222 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				9515493628D4A16A00B16222 /* Empty */,
-				9515493928D4A16A00B16222 /* History */,
-				9515493C28D4A16A00B16222 /* Load More */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		9515493628D4A16A00B16222 /* Empty */ = {
-			isa = PBXGroup;
-			children = (
-				9515493728D4A16A00B16222 /* M_EmptyCell.swift */,
-				9515493828D4A16A00B16222 /* M_EmptyCell.xib */,
-			);
-			path = Empty;
-			sourceTree = "<group>";
-		};
-		9515493928D4A16A00B16222 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				9515493A28D4A16A00B16222 /* M_HistoryCell.xib */,
-				9515493B28D4A16A00B16222 /* M_HistoryCell.swift */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
-		9515493C28D4A16A00B16222 /* Load More */ = {
-			isa = PBXGroup;
-			children = (
-				9515493D28D4A16A00B16222 /* M_LoadMoreTableViewCell.xib */,
-				9515493E28D4A16A00B16222 /* M_LoadMoreTableViewCell.swift */,
-			);
-			path = "Load More";
-			sourceTree = "<group>";
-		};
-		9515494828D4A17500B16222 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				9515494928D4A17500B16222 /* M_HistoryRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		9515494A28D4A17500B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515494B28D4A17500B16222 /* M_HistoryController.swift */,
-			);
-			name = Controller;
-			path = "../../../../../../../projects/mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Modules/Clean Swift/Clean History/Controller";
-			sourceTree = "<group>";
-		};
-		9515494C28D4A17600B16222 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9515494D28D4A17600B16222 /* M_HistoryModels.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9515494E28D4A17600B16222 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				9515494F28D4A17600B16222 /* M_HistoryInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		9515495028D4A17600B16222 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				9515495128D4A17600B16222 /* M_HistoryPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		9515495728D4A29300B16222 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,6 +491,850 @@
 			);
 			name = Services;
 			path = "../../../mosmetro-ios/DeveloperPods/MaaS/Sources/MaaS/Services";
+			sourceTree = "<group>";
+		};
+		9515496028D4ED6C00B16222 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				9515496128D4ED6C00B16222 /* Loading */,
+				9515496428D4ED6C00B16222 /* Choose Subscription */,
+				9515496B28D4ED6C00B16222 /* Change Card */,
+				9515496F28D4ED6C00B16222 /* Debt Notification Modal */,
+				9515497528D4ED6C00B16222 /* Active Subscription */,
+				9515498428D4ED6C00B16222 /* Result Screen */,
+				9515498928D4ED6C00B16222 /* Clean Swift */,
+				951549D128D4ED6C00B16222 /* Debt Notifications */,
+				951549D728D4ED6C00B16222 /* Buy Subscription */,
+				951549DD28D4ED6C00B16222 /* Error */,
+				951549E028D4ED6C00B16222 /* Trips History */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		9515496128D4ED6C00B16222 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				9515496228D4ED6C00B16222 /* M_LoadingView.xib */,
+				9515496328D4ED6C00B16222 /* M_LoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		9515496428D4ED6C00B16222 /* Choose Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				9515496528D4ED6C00B16222 /* Controller */,
+				9515496728D4ED6C00B16222 /* View */,
+			);
+			path = "Choose Subscription";
+			sourceTree = "<group>";
+		};
+		9515496528D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515496728D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A4528D4EF0D00B16222 /* Cell */,
+				95154A4C28D4EF0D00B16222 /* M_ChooseSubView.swift */,
+				95154A4D28D4EF0D00B16222 /* M_ChooseSubView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9515496B28D4ED6C00B16222 /* Change Card */ = {
+			isa = PBXGroup;
+			children = (
+				9515496C28D4ED6C00B16222 /* Controller */,
+				9515496E28D4ED6C00B16222 /* View */,
+			);
+			path = "Change Card";
+			sourceTree = "<group>";
+		};
+		9515496C28D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515496E28D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A5428D4EF1E00B16222 /* M_ChangeCardView.swift */,
+				95154A5528D4EF1E00B16222 /* M_ChangeCardView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9515496F28D4ED6C00B16222 /* Debt Notification Modal */ = {
+			isa = PBXGroup;
+			children = (
+				9515497028D4ED6C00B16222 /* Controller */,
+				9515497228D4ED6C00B16222 /* View */,
+			);
+			path = "Debt Notification Modal";
+			sourceTree = "<group>";
+		};
+		9515497028D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515497128D4ED6C00B16222 /* M_ModalDebetNotificationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515497228D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9515497328D4ED6C00B16222 /* M_ModalDebtNotificationView.swift */,
+				9515497428D4ED6C00B16222 /* M_ModalDebtNotificationView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9515497528D4ED6C00B16222 /* Active Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				9515497628D4ED6C00B16222 /* Controller */,
+				9515497828D4ED6C00B16222 /* Model */,
+				9515497A28D4ED6C00B16222 /* View */,
+			);
+			path = "Active Subscription";
+			sourceTree = "<group>";
+		};
+		9515497628D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515497828D4ED6C00B16222 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9515497A28D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A1928D4EEE400B16222 /* Cell */,
+				95154A1528D4EEE400B16222 /* Header */,
+				95154A1828D4EEE400B16222 /* M_ActiveSubView.swift */,
+				95154A1428D4EEE400B16222 /* M_ActiveSubView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9515498428D4ED6C00B16222 /* Result Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9515498528D4ED6C00B16222 /* Controller */,
+				9515498728D4ED6C00B16222 /* Model */,
+				9515498828D4ED6C00B16222 /* View */,
+			);
+			path = "Result Screen";
+			sourceTree = "<group>";
+		};
+		9515498528D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515498628D4ED6C00B16222 /* M_ResultController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515498728D4ED6C00B16222 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95154A5C28D4EF4900B16222 /* M_ResultModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9515498828D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A5828D4EF3D00B16222 /* M_ResultView.swift */,
+				95154A5928D4EF3D00B16222 /* M_ResultView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9515498928D4ED6C00B16222 /* Clean Swift */ = {
+			isa = PBXGroup;
+			children = (
+				9515498A28D4ED6C00B16222 /* Clean Change Card */,
+				9515499428D4ED6C00B16222 /* Clean Result Screen */,
+				9515499E28D4ED6C00B16222 /* Clean Buy Subscription */,
+				951549A828D4ED6C00B16222 /* Clean Active Subscription */,
+				951549B328D4ED6C00B16222 /* Clean Choose Subscription */,
+				951549BD28D4ED6C00B16222 /* Clean History */,
+				951549C728D4ED6C00B16222 /* Clean Debt Notifications */,
+			);
+			path = "Clean Swift";
+			sourceTree = "<group>";
+		};
+		9515498A28D4ED6C00B16222 /* Clean Change Card */ = {
+			isa = PBXGroup;
+			children = (
+				9515498B28D4ED6C00B16222 /* Presenter */,
+				9515498D28D4ED6C00B16222 /* Models */,
+				9515498F28D4ED6C00B16222 /* Controller */,
+				9515499028D4ED6C00B16222 /* Interactor */,
+				9515499228D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Change Card";
+			sourceTree = "<group>";
+		};
+		9515498B28D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9515498C28D4ED6C00B16222 /* M_CardChangePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9515498D28D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9515498E28D4ED6C00B16222 /* M_ChangeCardModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9515498F28D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515499028D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9515499128D4ED6C00B16222 /* M_CardChangeInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9515499228D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9515499328D4ED6C00B16222 /* M_CardChangeRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9515499428D4ED6C00B16222 /* Clean Result Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9515499528D4ED6C00B16222 /* Presenter */,
+				9515499728D4ED6C00B16222 /* Models */,
+				9515499928D4ED6C00B16222 /* Controller */,
+				9515499A28D4ED6C00B16222 /* Interactor */,
+				9515499C28D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Result Screen";
+			sourceTree = "<group>";
+		};
+		9515499528D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9515499628D4ED6C00B16222 /* M_ResScreenPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9515499728D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9515499828D4ED6C00B16222 /* M_ResScreenModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9515499928D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9515499A28D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9515499B28D4ED6C00B16222 /* M_ResScreenInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9515499C28D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9515499D28D4ED6C00B16222 /* M_ResScreenRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9515499E28D4ED6C00B16222 /* Clean Buy Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				9515499F28D4ED6C00B16222 /* Presenter */,
+				951549A128D4ED6C00B16222 /* Models */,
+				951549A328D4ED6C00B16222 /* Controller */,
+				951549A428D4ED6C00B16222 /* Interactor */,
+				951549A628D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Buy Subscription";
+			sourceTree = "<group>";
+		};
+		9515499F28D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				951549A028D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		951549A128D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951549A228D4ED6C00B16222 /* M_BuySubscriptionModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		951549A328D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549A428D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				951549A528D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		951549A628D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				951549A728D4ED6C00B16222 /* M_BuySubscriptionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		951549A828D4ED6C00B16222 /* Clean Active Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				951549A928D4ED6C00B16222 /* Presenter */,
+				951549AC28D4ED6C00B16222 /* Models */,
+				951549AE28D4ED6C00B16222 /* Controller */,
+				951549AF28D4ED6C00B16222 /* Interactor */,
+				951549B128D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Active Subscription";
+			sourceTree = "<group>";
+		};
+		951549A928D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				951549AA28D4ED6C00B16222 /* M_ActiveStateBuilder.swift */,
+				951549AB28D4ED6C00B16222 /* M_ActiveSubPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		951549AC28D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951549AD28D4ED6C00B16222 /* M_ActiveSubModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		951549AE28D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8128D4EFDE00B16222 /* M_ActiveController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549AF28D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				951549B028D4ED6C00B16222 /* M_ActiveSubInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		951549B128D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				951549B228D4ED6C00B16222 /* M_ActiveSubRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		951549B328D4ED6C00B16222 /* Clean Choose Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				951549B428D4ED6C00B16222 /* Presenter */,
+				951549B628D4ED6C00B16222 /* Models */,
+				951549B828D4ED6C00B16222 /* Controller */,
+				951549B928D4ED6C00B16222 /* Interactor */,
+				951549BB28D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Choose Subscription";
+			sourceTree = "<group>";
+		};
+		951549B428D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				951549B528D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		951549B628D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951549B728D4ED6C00B16222 /* M_ChooseSubscriptionModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		951549B828D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549B928D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				951549BA28D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		951549BB28D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				951549BC28D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		951549BD28D4ED6C00B16222 /* Clean History */ = {
+			isa = PBXGroup;
+			children = (
+				951549BE28D4ED6C00B16222 /* Presenter */,
+				951549C028D4ED6C00B16222 /* Models */,
+				951549C228D4ED6C00B16222 /* Controller */,
+				951549C328D4ED6C00B16222 /* Interactor */,
+				951549C528D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean History";
+			sourceTree = "<group>";
+		};
+		951549BE28D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				951549BF28D4ED6C00B16222 /* M_HistoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		951549C028D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951549C128D4ED6C00B16222 /* M_HistoryModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		951549C228D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8528D4EFFD00B16222 /* M_HistoryController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549C328D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				951549C428D4ED6C00B16222 /* M_HistoryInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		951549C528D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				951549C628D4ED6C00B16222 /* M_HistoryRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		951549C728D4ED6C00B16222 /* Clean Debt Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				951549C828D4ED6C00B16222 /* Presenter */,
+				951549CA28D4ED6C00B16222 /* Models */,
+				951549CC28D4ED6C00B16222 /* Controller */,
+				951549CD28D4ED6C00B16222 /* Interactor */,
+				951549CF28D4ED6C00B16222 /* Router */,
+			);
+			path = "Clean Debt Notifications";
+			sourceTree = "<group>";
+		};
+		951549C828D4ED6C00B16222 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				951549C928D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		951549CA28D4ED6C00B16222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				951549CB28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		951549CC28D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549CD28D4ED6C00B16222 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				951549CE28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		951549CF28D4ED6C00B16222 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				951549D028D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		951549D128D4ED6C00B16222 /* Debt Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				951549D228D4ED6C00B16222 /* Controller */,
+				951549D428D4ED6C00B16222 /* View */,
+			);
+			path = "Debt Notifications";
+			sourceTree = "<group>";
+		};
+		951549D228D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549D428D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A5F28D4EF6100B16222 /* Cell */,
+				95154A6328D4EF6100B16222 /* Header */,
+				95154A5E28D4EF6100B16222 /* M_DebtNotificationsView.swift */,
+				95154A6228D4EF6100B16222 /* M_DebtNotificationsView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		951549D728D4ED6C00B16222 /* Buy Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				95154A6C28D4EF7B00B16222 /* View */,
+				951549D828D4ED6C00B16222 /* Controller */,
+			);
+			path = "Buy Subscription";
+			sourceTree = "<group>";
+		};
+		951549D828D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				951549D928D4ED6C00B16222 /* M_BuySubController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549DD28D4ED6C00B16222 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				951549DE28D4ED6C00B16222 /* M_ErrorView.xib */,
+				951549DF28D4ED6C00B16222 /* M_ErrorView.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		951549E028D4ED6C00B16222 /* Trips History */ = {
+			isa = PBXGroup;
+			children = (
+				951549E128D4ED6C00B16222 /* Controller */,
+				951549E328D4ED6C00B16222 /* View */,
+			);
+			path = "Trips History";
+			sourceTree = "<group>";
+		};
+		951549E128D4ED6C00B16222 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951549E328D4ED6C00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8A28D4F06600B16222 /* Cell */,
+				95154A9428D4F06600B16222 /* M_TripsHistoryView.swift */,
+				95154A8928D4F06600B16222 /* M_TripsHistoryView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		95154A1528D4EEE400B16222 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				95154A1628D4EEE400B16222 /* M_TitleHeader.xib */,
+				95154A1728D4EEE400B16222 /* M_TitleHeader.swift */,
+			);
+			name = Header;
+			path = "../../../../../../../Modules/Active Subscription/View/Header";
+			sourceTree = "<group>";
+		};
+		95154A1928D4EEE400B16222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A1A28D4EEE400B16222 /* Debt Notification */,
+				95154A1D28D4EEE400B16222 /* Card info */,
+				95154A2028D4EEE400B16222 /* Status Info Cell */,
+				95154A2328D4EEE400B16222 /* M_HeaderTableCell.swift */,
+				95154A2728D4EEE400B16222 /* M_HeaderTableCell.xib */,
+				95154A2428D4EEE400B16222 /* Debt Info */,
+				95154A2828D4EEE400B16222 /* SupportCell */,
+				95154A2B28D4EEE400B16222 /* Tariff info */,
+				95154A2E28D4EEE400B16222 /* Onboarding */,
+			);
+			name = Cell;
+			path = "../../../../../../../Modules/Active Subscription/View/Cell";
+			sourceTree = "<group>";
+		};
+		95154A1A28D4EEE400B16222 /* Debt Notification */ = {
+			isa = PBXGroup;
+			children = (
+				95154A1B28D4EEE400B16222 /* M_DebtNotificationCell.xib */,
+				95154A1C28D4EEE400B16222 /* M_DebtNotificationCell.swift */,
+			);
+			path = "Debt Notification";
+			sourceTree = "<group>";
+		};
+		95154A1D28D4EEE400B16222 /* Card info */ = {
+			isa = PBXGroup;
+			children = (
+				95154A1E28D4EEE400B16222 /* M_CardInfoCell.xib */,
+				95154A1F28D4EEE400B16222 /* M_CardInfoCell.swift */,
+			);
+			path = "Card info";
+			sourceTree = "<group>";
+		};
+		95154A2028D4EEE400B16222 /* Status Info Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A2128D4EEE400B16222 /* M_StatusInfoCell.swift */,
+				95154A2228D4EEE400B16222 /* M_StatusInfoCell.xib */,
+			);
+			path = "Status Info Cell";
+			sourceTree = "<group>";
+		};
+		95154A2428D4EEE400B16222 /* Debt Info */ = {
+			isa = PBXGroup;
+			children = (
+				95154A2528D4EEE400B16222 /* M_DebtInfoCell.xib */,
+				95154A2628D4EEE400B16222 /* M_DebtInfoCell.swift */,
+			);
+			path = "Debt Info";
+			sourceTree = "<group>";
+		};
+		95154A2828D4EEE400B16222 /* SupportCell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A2928D4EEE400B16222 /* M_SupportCell.xib */,
+				95154A2A28D4EEE400B16222 /* M_SupportCell.swift */,
+			);
+			path = SupportCell;
+			sourceTree = "<group>";
+		};
+		95154A2B28D4EEE400B16222 /* Tariff info */ = {
+			isa = PBXGroup;
+			children = (
+				95154A2C28D4EEE400B16222 /* M_TariffInfoCell.xib */,
+				95154A2D28D4EEE400B16222 /* M_TariffInfoCell.swift */,
+			);
+			path = "Tariff info";
+			sourceTree = "<group>";
+		};
+		95154A2E28D4EEE400B16222 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				95154A2F28D4EEE400B16222 /* M_OnboardingCell.swift */,
+				95154A3028D4EEE400B16222 /* M_OnboardingCell.xib */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		95154A4528D4EF0D00B16222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A4628D4EF0D00B16222 /* Subscription */,
+				95154A4928D4EF0D00B16222 /* Make my sub */,
+			);
+			name = Cell;
+			path = "../../../../../../../Modules/Choose Subscription/View/Cell";
+			sourceTree = "<group>";
+		};
+		95154A4628D4EF0D00B16222 /* Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				95154A4728D4EF0D00B16222 /* M_SubSectionRow.xib */,
+				95154A4828D4EF0D00B16222 /* M_SubSectionRow.swift */,
+			);
+			path = Subscription;
+			sourceTree = "<group>";
+		};
+		95154A4928D4EF0D00B16222 /* Make my sub */ = {
+			isa = PBXGroup;
+			children = (
+				95154A4A28D4EF0D00B16222 /* M_MakeMySubRow.swift */,
+				95154A4B28D4EF0D00B16222 /* M_MakeMySubRow.xib */,
+			);
+			path = "Make my sub";
+			sourceTree = "<group>";
+		};
+		95154A5F28D4EF6100B16222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A6028D4EF6100B16222 /* M_NotificationCell.swift */,
+				95154A6128D4EF6100B16222 /* M_NotificationCell.xib */,
+			);
+			name = Cell;
+			path = "../../../../../../../Modules/Debt Notifications/View/Cell";
+			sourceTree = "<group>";
+		};
+		95154A6328D4EF6100B16222 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				95154A6428D4EF6100B16222 /* M_DebtHeader.xib */,
+				95154A6528D4EF6100B16222 /* M_DebtHeader.swift */,
+			);
+			name = Header;
+			path = "../../../../../../../Modules/Debt Notifications/View/Header";
+			sourceTree = "<group>";
+		};
+		95154A6C28D4EF7B00B16222 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95154A6D28D4EF7B00B16222 /* M_BuySubView.swift */,
+				95154A6E28D4EF7B00B16222 /* M_BuySubView.xib */,
+				95154A6F28D4EF7B00B16222 /* Cell */,
+				95154A7228D4EF7B00B16222 /* Header */,
+			);
+			name = View;
+			path = "../../../../../../Modules/Buy Subscription/View";
+			sourceTree = "<group>";
+		};
+		95154A6F28D4EF7B00B16222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A7028D4EF7B00B16222 /* M_DescriptionCell.xib */,
+				95154A7128D4EF7B00B16222 /* M_DescriptionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		95154A7228D4EF7B00B16222 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				95154A7328D4EF7B00B16222 /* M_SubHeader.swift */,
+				95154A7428D4EF7B00B16222 /* M_SubHeader.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		95154A8A28D4F06600B16222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8B28D4F06600B16222 /* Empty */,
+				95154A8E28D4F06600B16222 /* History */,
+				95154A9128D4F06600B16222 /* Load More */,
+			);
+			name = Cell;
+			path = "../../../../../../../Modules/Trips History/View/Cell";
+			sourceTree = "<group>";
+		};
+		95154A8B28D4F06600B16222 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8C28D4F06600B16222 /* M_EmptyCell.swift */,
+				95154A8D28D4F06600B16222 /* M_EmptyCell.xib */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
+		95154A8E28D4F06600B16222 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				95154A8F28D4F06600B16222 /* M_HistoryCell.xib */,
+				95154A9028D4F06600B16222 /* M_HistoryCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		95154A9128D4F06600B16222 /* Load More */ = {
+			isa = PBXGroup;
+			children = (
+				95154A9228D4F06600B16222 /* M_LoadMoreTableViewCell.xib */,
+				95154A9328D4F06600B16222 /* M_LoadMoreTableViewCell.swift */,
+			);
+			path = "Load More";
 			sourceTree = "<group>";
 		};
 		953E96AA282ED95E00374DF2 /* MaaSExample */ = {
@@ -1190,32 +1353,6 @@
 				953E96B9282ED96100374DF2 /* Info.plist */,
 			);
 			path = MaaSExample;
-			sourceTree = "<group>";
-		};
-		954276A728D2177E0049F718 /* Debt Notification Modal */ = {
-			isa = PBXGroup;
-			children = (
-				954276A828D2177E0049F718 /* Controller */,
-				954276AA28D2177E0049F718 /* View */,
-			);
-			path = "Debt Notification Modal";
-			sourceTree = "<group>";
-		};
-		954276A828D2177E0049F718 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				954276A928D2177E0049F718 /* M_ModalDebetNotificationController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		954276AA28D2177E0049F718 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				954276AB28D2177E0049F718 /* M_ModalDebtNotificationView.swift */,
-				954276AC28D2177E0049F718 /* M_ModalDebtNotificationView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		95795B6828531AFE00634754 /* Models */ = {
@@ -1402,39 +1539,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9515494328D4A16A00B16222 /* M_HistoryCell.xib in Resources */,
-				951548CE28D4A0E500B16222 /* M_ChangeCardView.xib in Resources */,
-				9515494528D4A16A00B16222 /* M_LoadMoreTableViewCell.xib in Resources */,
-				9515490B28D4A11700B16222 /* M_DebtHeader.xib in Resources */,
-				951548B728D4A0CC00B16222 /* M_BuySubView.xib in Resources */,
+				95154A9828D4F06600B16222 /* M_HistoryCell.xib in Resources */,
+				95154A5728D4EF1E00B16222 /* M_ChangeCardView.xib in Resources */,
+				95154A9A28D4F06600B16222 /* M_LoadMoreTableViewCell.xib in Resources */,
+				95154A6A28D4EF6100B16222 /* M_DebtHeader.xib in Resources */,
+				95154A3E28D4EEE400B16222 /* M_HeaderTableCell.xib in Resources */,
 				950920EC282E55DC00C4E573 /* MoscowSans-Regular.otf in Resources */,
-				9515490A28D4A11700B16222 /* M_DebtNotificationsView.xib in Resources */,
-				951548E928D4A0FD00B16222 /* M_ChooseSubView.xib in Resources */,
-				9515488F28D4A09400B16222 /* M_StatusInfoCell.xib in Resources */,
-				9515488928D4A09400B16222 /* M_ActiveSubView.xib in Resources */,
-				9515494228D4A16A00B16222 /* M_EmptyCell.xib in Resources */,
-				9515489328D4A09400B16222 /* M_HeaderTableCell.xib in Resources */,
-				9515489928D4A09400B16222 /* M_OnboardingCell.xib in Resources */,
-				951548B828D4A0CC00B16222 /* M_DescriptionCell.xib in Resources */,
-				9515489A28D4A09400B16222 /* M_TitleHeader.xib in Resources */,
-				9515491F28D4A13200B16222 /* M_ResultView.xib in Resources */,
+				95154A3528D4EEE400B16222 /* M_DebtNotificationCell.xib in Resources */,
+				95154A3C28D4EEE400B16222 /* M_DebtInfoCell.xib in Resources */,
+				95154A3128D4EEE400B16222 /* M_ActiveSubView.xib in Resources */,
+				95154A5128D4EF0D00B16222 /* M_MakeMySubRow.xib in Resources */,
+				95154A9728D4F06600B16222 /* M_EmptyCell.xib in Resources */,
+				95154A7628D4EF7B00B16222 /* M_BuySubView.xib in Resources */,
+				95154A6928D4EF6100B16222 /* M_DebtNotificationsView.xib in Resources */,
+				95154A1128D4ED6C00B16222 /* M_ErrorView.xib in Resources */,
+				95154A4428D4EEE400B16222 /* M_OnboardingCell.xib in Resources */,
+				951549E828D4ED6C00B16222 /* M_LoadingView.xib in Resources */,
 				950920C1282E55DC00C4E573 /* Media.xcassets in Resources */,
-				9515488A28D4A09400B16222 /* M_DebtNotificationCell.xib in Resources */,
-				9515488C28D4A09400B16222 /* M_CardInfoCell.xib in Resources */,
+				95154A3A28D4EEE400B16222 /* M_StatusInfoCell.xib in Resources */,
+				95154A4128D4EEE400B16222 /* M_TariffInfoCell.xib in Resources */,
+				951549EE28D4ED6C00B16222 /* M_ModalDebtNotificationView.xib in Resources */,
 				950920EE282E55DC00C4E573 /* MoscowSans-Bold.otf in Resources */,
-				9515489428D4A09400B16222 /* M_SupportCell.xib in Resources */,
-				9515494028D4A16A00B16222 /* M_TripsHistoryView.xib in Resources */,
-				951548EA28D4A0FD00B16222 /* M_SubSectionRow.xib in Resources */,
-				9515489628D4A09400B16222 /* M_TariffInfoCell.xib in Resources */,
-				954276BB28D2177E0049F718 /* M_ModalDebtNotificationView.xib in Resources */,
+				95154A9528D4F06600B16222 /* M_TripsHistoryView.xib in Resources */,
+				95154A5328D4EF0D00B16222 /* M_ChooseSubView.xib in Resources */,
+				95154A3F28D4EEE400B16222 /* M_SupportCell.xib in Resources */,
+				95154A3228D4EEE400B16222 /* M_TitleHeader.xib in Resources */,
+				95154A6828D4EF6100B16222 /* M_NotificationCell.xib in Resources */,
+				95154A3728D4EEE400B16222 /* M_CardInfoCell.xib in Resources */,
 				950920ED282E55DC00C4E573 /* MoscowSans-Medium.otf in Resources */,
-				950920CE282E55DC00C4E573 /* M_LoadingView.xib in Resources */,
-				951548ED28D4A0FD00B16222 /* M_MakeMySubRow.xib in Resources */,
-				950920E8282E55DC00C4E573 /* M_ErrorView.xib in Resources */,
-				951548BB28D4A0CC00B16222 /* M_SubHeader.xib in Resources */,
+				95154A4E28D4EF0D00B16222 /* M_SubSectionRow.xib in Resources */,
 				950920EB282E55DC00C4E573 /* Comfortaa.ttf in Resources */,
-				9515490928D4A11700B16222 /* M_NotificationCell.xib in Resources */,
-				9515489128D4A09400B16222 /* M_DebtInfoCell.xib in Resources */,
+				95154A7728D4EF7B00B16222 /* M_DescriptionCell.xib in Resources */,
+				95154A5B28D4EF3D00B16222 /* M_ResultView.xib in Resources */,
+				95154A7A28D4EF7B00B16222 /* M_SubHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,102 +1658,110 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951548B928D4A0CC00B16222 /* M_DescriptionCell.swift in Sources */,
-				9515489728D4A09400B16222 /* M_TariffInfoCell.swift in Sources */,
-				951548DD28D4A0EE00B16222 /* M_ChangeCardModels.swift in Sources */,
+				951549EB28D4ED6C00B16222 /* M_ChangeCardController.swift in Sources */,
+				95154A6B28D4EF6100B16222 /* M_DebtHeader.swift in Sources */,
+				951549F428D4ED6C00B16222 /* M_CardChangeInteractor.swift in Sources */,
+				95154A4028D4EEE400B16222 /* M_SupportCell.swift in Sources */,
 				953822F8285B2C2E00F0915C /* M_UserCardRequest.swift in Sources */,
-				9515493128D4A15900B16222 /* M_ResScreenInteractor.swift in Sources */,
-				951548AB28D4A0BB00B16222 /* M_ActiveSubPresenter.swift in Sources */,
-				951548EE28D4A0FD00B16222 /* M_ChooseSubView.swift in Sources */,
-				9515491828D4A12200B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */,
+				95154A6628D4EF6100B16222 /* M_DebtNotificationsView.swift in Sources */,
 				950920CA282E55DC00C4E573 /* Ext+UIView.swift in Sources */,
-				951548CA28D4A0D800B16222 /* M_BuySubscriptionInteractor.swift in Sources */,
+				95154A0528D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift in Sources */,
+				951549FC28D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift in Sources */,
+				95154A3D28D4EEE400B16222 /* M_DebtInfoCell.swift in Sources */,
+				951549E928D4ED6C00B16222 /* M_LoadingView.swift in Sources */,
 				950920C6282E55DC00C4E573 /* Ext+UIFont.swift in Sources */,
-				951548CF28D4A0E500B16222 /* M_ChangeCardView.swift in Sources */,
-				9515495528D4A17600B16222 /* M_HistoryInteractor.swift in Sources */,
+				951549F728D4ED6C00B16222 /* M_ResScreenModels.swift in Sources */,
 				950920CB282E55DC00C4E573 /* Ext+UILabel.swift in Sources */,
-				9515495228D4A17600B16222 /* M_HistoryRouter.swift in Sources */,
-				9515488828D4A09400B16222 /* M_ActiveSubView.swift in Sources */,
-				951548FC28D4A10700B16222 /* M_ChooseSubscriptionController.swift in Sources */,
+				95154A0A28D4ED6C00B16222 /* M_HistoryRouter.swift in Sources */,
 				95C5FDED2860C9B000984F2F /* M_UserCardResponse.swift in Sources */,
-				954276B928D2177E0049F718 /* M_ModalDebetNotificationController.swift in Sources */,
-				9515494628D4A16A00B16222 /* M_LoadMoreTableViewCell.swift in Sources */,
-				951548DE28D4A0EE00B16222 /* M_CardChangeController.swift in Sources */,
+				951549F928D4ED6C00B16222 /* M_ResScreenRouter.swift in Sources */,
+				951549FF28D4ED6C00B16222 /* M_ActiveSubPresenter.swift in Sources */,
 				950920CD282E55DC00C4E573 /* MaaS.swift in Sources */,
-				9515488D28D4A09400B16222 /* M_CardInfoCell.swift in Sources */,
-				951548EB28D4A0FD00B16222 /* M_SubSectionRow.swift in Sources */,
 				9515495A28D4A29300B16222 /* M_DateConverter.swift in Sources */,
+				95154A0C28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift in Sources */,
+				95154A0828D4ED6C00B16222 /* M_HistoryModels.swift in Sources */,
+				951549F328D4ED6C00B16222 /* M_ChangeCardModels.swift in Sources */,
 				950920EA282E55DC00C4E573 /* Appearance.swift in Sources */,
+				95154A0228D4ED6C00B16222 /* M_ActiveSubRouter.swift in Sources */,
+				95154A4228D4EEE400B16222 /* M_TariffInfoCell.swift in Sources */,
+				951549EF28D4ED6C00B16222 /* M_ActiveSubController.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
+				95154A5228D4EF0D00B16222 /* M_ChooseSubView.swift in Sources */,
+				951549EC28D4ED6C00B16222 /* M_ModalDebetNotificationController.swift in Sources */,
 				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
-				9515494728D4A16A00B16222 /* M_TripsHistoryView.swift in Sources */,
 				9515495B28D4A29300B16222 /* M_Utils.swift in Sources */,
+				95154A7E28D4EFBF00B16222 /* M_ResScreenController.swift in Sources */,
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
-				9515490728D4A11700B16222 /* M_DebtNotificationsView.swift in Sources */,
-				951548FD28D4A10700B16222 /* M_ChooseSubscriptionPresenter.swift in Sources */,
-				9515491A28D4A12200B16222 /* M_DebtUserNotificationsRouter.swift in Sources */,
-				951548DA28D4A0EE00B16222 /* M_CardChangeRouter.swift in Sources */,
-				9515488E28D4A09400B16222 /* M_StatusInfoCell.swift in Sources */,
+				95154A3B28D4EEE400B16222 /* M_HeaderTableCell.swift in Sources */,
+				951549F028D4ED6C00B16222 /* M_ActiveSubModel.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
+				95154A1228D4ED6C00B16222 /* M_ErrorView.swift in Sources */,
+				951549FA28D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift in Sources */,
 				95795B6D28531BF100634754 /* Ext+URLRequest.swift in Sources */,
-				9515491928D4A12200B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */,
-				9515491B28D4A12200B16222 /* M_DebtUserNotificationsModels.swift in Sources */,
-				9515489528D4A09400B16222 /* M_SupportCell.swift in Sources */,
-				951548C728D4A0D800B16222 /* M_BuySubscriptionModels.swift in Sources */,
+				95154A5D28D4EF4900B16222 /* M_ResultModel.swift in Sources */,
+				95154A0028D4ED6C00B16222 /* M_ActiveSubModels.swift in Sources */,
+				951549F228D4ED6C00B16222 /* M_CardChangePresenter.swift in Sources */,
+				95154A4328D4EEE400B16222 /* M_OnboardingCell.swift in Sources */,
+				951549FD28D4ED6C00B16222 /* M_BuySubscriptionRouter.swift in Sources */,
 				954276A628D216330049F718 /* M_DebtNotifification.swift in Sources */,
-				950920E9282E55DC00C4E573 /* M_ErrorView.swift in Sources */,
+				951549F628D4ED6C00B16222 /* M_ResScreenPresenter.swift in Sources */,
+				95154A0728D4ED6C00B16222 /* M_HistoryPresenter.swift in Sources */,
+				95154A5628D4EF1E00B16222 /* M_ChangeCardView.swift in Sources */,
+				951549FB28D4ED6C00B16222 /* M_BuySubscriptionModels.swift in Sources */,
+				95154A0628D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift in Sources */,
+				95154A8228D4EFDE00B16222 /* M_ActiveController.swift in Sources */,
+				951549FE28D4ED6C00B16222 /* M_ActiveStateBuilder.swift in Sources */,
 				95A41D092854B4E300637FA6 /* M_DebtInfo.swift in Sources */,
-				951548DB28D4A0EE00B16222 /* M_CardChangeInteractor.swift in Sources */,
+				95154A4F28D4EF0D00B16222 /* M_SubSectionRow.swift in Sources */,
 				95795B6B28531B2700634754 /* AuthClient.swift in Sources */,
-				9515490C28D4A11700B16222 /* M_DebtHeader.swift in Sources */,
-				9515495328D4A17600B16222 /* M_HistoryController.swift in Sources */,
-				951548FB28D4A10700B16222 /* M_ChooseSubscriptionRouter.swift in Sources */,
+				95154A0B28D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */,
+				951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
-				9515492328D4A14E00B16222 /* M_ResultModel.swift in Sources */,
-				9515492F28D4A15900B16222 /* M_ResScreenModels.swift in Sources */,
+				951549EA28D4ED6C00B16222 /* M_ChooseSubController.swift in Sources */,
 				950920C5282E55DC00C4E573 /* Ext+UITableViewCell.swift in Sources */,
-				9515494428D4A16A00B16222 /* M_HistoryCell.swift in Sources */,
-				9515490828D4A11700B16222 /* M_NotificationCell.swift in Sources */,
-				9515489028D4A09400B16222 /* M_HeaderTableCell.swift in Sources */,
-				951548AC28D4A0BB00B16222 /* M_ActiveController.swift in Sources */,
 				950920C3282E55DC00C4E573 /* GradientProgressView.swift in Sources */,
+				95154A3628D4EEE400B16222 /* M_DebtNotificationCell.swift in Sources */,
+				95154A0928D4ED6C00B16222 /* M_HistoryInteractor.swift in Sources */,
 				959DAD41285A45AB005D3344 /* M_UserInfo.swift in Sources */,
-				951548C628D4A0D800B16222 /* M_BuySubscriptionController.swift in Sources */,
-				951548A728D4A0BB00B16222 /* M_ActiveSubModels.swift in Sources */,
-				951548A828D4A0BB00B16222 /* M_ActiveSubInteractor.swift in Sources */,
-				951548F928D4A10700B16222 /* M_ChooseSubscriptionInteractor.swift in Sources */,
+				95154A7928D4EF7B00B16222 /* M_SubHeader.swift in Sources */,
+				951549F828D4ED6C00B16222 /* M_ResScreenInteractor.swift in Sources */,
+				95154A9B28D4F06600B16222 /* M_LoadMoreTableViewCell.swift in Sources */,
+				95154A6728D4EF6100B16222 /* M_NotificationCell.swift in Sources */,
+				95154A3928D4EEE400B16222 /* M_StatusInfoCell.swift in Sources */,
+				95154A0428D4ED6C00B16222 /* M_ChooseSubscriptionModels.swift in Sources */,
 				950920C4282E55DC00C4E573 /* Ext+UIColor.swift in Sources */,
-				951548C828D4A0D800B16222 /* M_BuySubscriptionRouter.swift in Sources */,
+				95154A0128D4ED6C00B16222 /* M_ActiveSubInteractor.swift in Sources */,
 				95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */,
-				951548C928D4A0D800B16222 /* M_BuySubscriptionPresenter.swift in Sources */,
-				9515492E28D4A15900B16222 /* M_ResScreenPresenter.swift in Sources */,
-				9515491728D4A12200B16222 /* M_DebtUserNotificationsController.swift in Sources */,
-				9515492028D4A13200B16222 /* M_ResultView.swift in Sources */,
-				951548FA28D4A10700B16222 /* M_ChooseSubscriptionModels.swift in Sources */,
-				951548DC28D4A0EE00B16222 /* M_CardChangePresenter.swift in Sources */,
-				9515495628D4A17600B16222 /* M_HistoryPresenter.swift in Sources */,
-				954276BA28D2177E0049F718 /* M_ModalDebtNotificationView.swift in Sources */,
-				951548AA28D4A0BB00B16222 /* M_ActiveStateBuilder.swift in Sources */,
+				95154A7C28D4EFAD00B16222 /* M_CardChangeController.swift in Sources */,
 				950920CC282E55DC00C4E573 /* Ext+UIImage.swift in Sources */,
-				951548EC28D4A0FD00B16222 /* M_MakeMySubRow.swift in Sources */,
+				95154A9C28D4F06600B16222 /* M_TripsHistoryView.swift in Sources */,
+				95154A5A28D4EF3D00B16222 /* M_ResultView.swift in Sources */,
+				95154A9928D4F06600B16222 /* M_HistoryCell.swift in Sources */,
+				95154A8028D4EFD000B16222 /* M_BuySubscriptionController.swift in Sources */,
+				95154A8428D4EFED00B16222 /* M_ChooseSubscriptionController.swift in Sources */,
+				95154A3828D4EEE400B16222 /* M_CardInfoCell.swift in Sources */,
 				950920C9282E55DC00C4E573 /* Ext+UIViewController.swift in Sources */,
-				9515495428D4A17600B16222 /* M_HistoryModels.swift in Sources */,
-				951548B628D4A0CC00B16222 /* M_BuySubView.swift in Sources */,
 				95795B7228531F9100634754 /* M_Subscription.swift in Sources */,
-				9515493228D4A15900B16222 /* M_ResScreenRouter.swift in Sources */,
-				9515489228D4A09400B16222 /* M_DebtInfoCell.swift in Sources */,
-				951548A928D4A0BB00B16222 /* M_ActiveSubRouter.swift in Sources */,
-				9515489B28D4A09400B16222 /* M_TitleHeader.swift in Sources */,
 				950920C7282E55DC00C4E573 /* Ext+UIStackView.swift in Sources */,
-				9515488B28D4A09400B16222 /* M_DebtNotificationCell.swift in Sources */,
-				950920CF282E55DC00C4E573 /* M_LoadingView.swift in Sources */,
-				9515494128D4A16A00B16222 /* M_EmptyCell.swift in Sources */,
+				951549F128D4ED6C00B16222 /* M_ResultController.swift in Sources */,
+				95154A1328D4ED6C00B16222 /* M_TripsHistoryController.swift in Sources */,
+				95154A0E28D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift in Sources */,
+				95154A8628D4EFFD00B16222 /* M_HistoryController.swift in Sources */,
+				95154A3328D4EEE400B16222 /* M_TitleHeader.swift in Sources */,
+				95154A7828D4EF7B00B16222 /* M_DescriptionCell.swift in Sources */,
 				95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */,
+				95154A3428D4EEE400B16222 /* M_ActiveSubView.swift in Sources */,
+				95154A8828D4F00A00B16222 /* M_DebtUserNotificationsController.swift in Sources */,
+				95154A5028D4EF0D00B16222 /* M_MakeMySubRow.swift in Sources */,
+				95154A0D28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */,
+				95154A0328D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift in Sources */,
+				95154A7528D4EF7B00B16222 /* M_BuySubView.swift in Sources */,
+				95154A1028D4ED6C00B16222 /* M_BuySubController.swift in Sources */,
 				956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */,
-				951548BA28D4A0CC00B16222 /* M_SubHeader.swift in Sources */,
-				9515489828D4A09400B16222 /* M_OnboardingCell.swift in Sources */,
-				9515493028D4A15900B16222 /* M_ResScreenController.swift in Sources */,
+				951549F528D4ED6C00B16222 /* M_CardChangeRouter.swift in Sources */,
+				95154A9628D4F06600B16222 /* M_EmptyCell.swift in Sources */,
 				95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */,
+				95154A0F28D4ED6C00B16222 /* M_DebtNotificationsController.swift in Sources */,
 				95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */,
 				9595E21B285B4C0900375863 /* Ext+String.swift in Sources */,
 			);
@@ -1796,7 +1941,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MaaS/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1828,7 +1973,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MaaS/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

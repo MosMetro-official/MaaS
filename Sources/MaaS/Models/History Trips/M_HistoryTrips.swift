@@ -11,6 +11,7 @@ import MMCoreNetworkCallbacks
 public struct M_HistoryTrips {
     let subscription: M_Subscription
     let trip: M_TripDetails
+    let imageURL: URL?
     
     init?(data: JSON) {
         guard
@@ -18,11 +19,18 @@ public struct M_HistoryTrips {
             let trip = M_TripDetails(data: data["trip"]) else { return nil }
         self.subscription = sub
         self.trip = trip
+        
+        if let imgURL = sub.tariffs.first(where: { $0.serviceId == trip.serviceId })?.imageURL {
+            self.imageURL = URL(string: imgURL)
+        } else {
+            self.imageURL = nil
+        }
+        
     }
     
-    static func fetchHistoryTrips(by limit: Int, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
+    static func fetchHistoryTrips(by limit: Int, offset: Int, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
         let client = APIClient.authClient
-        let query = ["limit": "\(limit)"]
+        let query = ["limit": "\(limit)", "offset": "\(offset)"]
         client.send(.GET(path: "/api/user/v1/trips", query: query)) { result in
             switch result {
             case .success(let response):
@@ -57,6 +65,7 @@ public struct M_TripDetails {
     let serviceId: String
     let route: M_Description
     
+    
     init?(data: JSON) {
         guard
             let serviceTripId = data["serviceTripId"].string,
@@ -79,7 +88,6 @@ public struct M_TripDetails {
 public struct M_TravelTime {
     let start: Date?
     let end: Date?
-    private let dateFormatter = DateFormatter()
     
     init?(data: JSON) {
         guard

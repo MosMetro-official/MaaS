@@ -9,7 +9,7 @@ import UIKit
 import CoreTableView
 import SafariServices
 
-final class M_ModalDebetNotificationController: UIViewController {
+public class M_ModalDebetNotificationController: UIViewController {
     
     private let nestedView = M_ModalDebtNotificationView.loadFromNib()
     
@@ -19,12 +19,12 @@ final class M_ModalDebetNotificationController: UIViewController {
         }
     }
     
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         self.view = nestedView
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
     }

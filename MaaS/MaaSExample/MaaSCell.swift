@@ -118,7 +118,7 @@ class MaaSCell: UITableViewCell {
         self.action = action
         guard let paySystem = user.paySystem?.rawValue else { return }
         titleLabel.text = "\(paySystem) •••• \(user.maskedPan)"
-        dateLabel.text = "До \(M_DateConverter.validateStringFrom(date: to))"
+        dateLabel.text = "До \(M_DateConverter.validateStringFrom(date: to, format: "HH mmmm dd"))"
         service = user.subscription?.tariffs
         activity.stopAnimating()
     }

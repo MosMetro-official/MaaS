@@ -20,6 +20,10 @@ public struct M_UserInfo {
     public let subscription: M_Subscription?
     public let payment: M_AuthInfo?
     
+    static var hasSeenOnboarding: Bool {
+        return UserDefaults.standard.bool(forKey: "maasOnboarding")
+    }
+    
     init?(data: JSON) {
         guard
             let status = data["status"].string,
