@@ -31,14 +31,9 @@
 		9515495B28D4A29300B16222 /* M_Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515495928D4A29300B16222 /* M_Utils.swift */; };
 		951549E828D4ED6C00B16222 /* M_LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515496228D4ED6C00B16222 /* M_LoadingView.xib */; };
 		951549E928D4ED6C00B16222 /* M_LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496328D4ED6C00B16222 /* M_LoadingView.swift */; };
-		951549EA28D4ED6C00B16222 /* M_ChooseSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */; };
-		951549EB28D4ED6C00B16222 /* M_ChangeCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */; };
 		951549EC28D4ED6C00B16222 /* M_ModalDebetNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497128D4ED6C00B16222 /* M_ModalDebetNotificationController.swift */; };
 		951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497328D4ED6C00B16222 /* M_ModalDebtNotificationView.swift */; };
 		951549EE28D4ED6C00B16222 /* M_ModalDebtNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9515497428D4ED6C00B16222 /* M_ModalDebtNotificationView.xib */; };
-		951549EF28D4ED6C00B16222 /* M_ActiveSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */; };
-		951549F028D4ED6C00B16222 /* M_ActiveSubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */; };
-		951549F128D4ED6C00B16222 /* M_ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498628D4ED6C00B16222 /* M_ResultController.swift */; };
 		951549F228D4ED6C00B16222 /* M_CardChangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498C28D4ED6C00B16222 /* M_CardChangePresenter.swift */; };
 		951549F328D4ED6C00B16222 /* M_ChangeCardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515498E28D4ED6C00B16222 /* M_ChangeCardModels.swift */; };
 		951549F428D4ED6C00B16222 /* M_CardChangeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9515499128D4ED6C00B16222 /* M_CardChangeInteractor.swift */; };
@@ -68,11 +63,8 @@
 		95154A0C28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549CB28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift */; };
 		95154A0D28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549CE28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift */; };
 		95154A0E28D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D028D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift */; };
-		95154A0F28D4ED6C00B16222 /* M_DebtNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */; };
-		95154A1028D4ED6C00B16222 /* M_BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549D928D4ED6C00B16222 /* M_BuySubController.swift */; };
 		95154A1128D4ED6C00B16222 /* M_ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 951549DE28D4ED6C00B16222 /* M_ErrorView.xib */; };
 		95154A1228D4ED6C00B16222 /* M_ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549DF28D4ED6C00B16222 /* M_ErrorView.swift */; };
-		95154A1328D4ED6C00B16222 /* M_TripsHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */; };
 		95154A3128D4EEE400B16222 /* M_ActiveSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1428D4EEE400B16222 /* M_ActiveSubView.xib */; };
 		95154A3228D4EEE400B16222 /* M_TitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A1628D4EEE400B16222 /* M_TitleHeader.xib */; };
 		95154A3328D4EEE400B16222 /* M_TitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A1728D4EEE400B16222 /* M_TitleHeader.swift */; };
@@ -116,13 +108,13 @@
 		95154A7828D4EF7B00B16222 /* M_DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7128D4EF7B00B16222 /* M_DescriptionCell.swift */; };
 		95154A7928D4EF7B00B16222 /* M_SubHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7328D4EF7B00B16222 /* M_SubHeader.swift */; };
 		95154A7A28D4EF7B00B16222 /* M_SubHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A7428D4EF7B00B16222 /* M_SubHeader.xib */; };
-		95154A7C28D4EFAD00B16222 /* M_CardChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */; };
-		95154A7E28D4EFBF00B16222 /* M_ResScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */; };
-		95154A8028D4EFD000B16222 /* M_BuySubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */; };
-		95154A8228D4EFDE00B16222 /* M_ActiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8128D4EFDE00B16222 /* M_ActiveController.swift */; };
-		95154A8428D4EFED00B16222 /* M_ChooseSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */; };
-		95154A8628D4EFFD00B16222 /* M_HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8528D4EFFD00B16222 /* M_HistoryController.swift */; };
-		95154A8828D4F00A00B16222 /* M_DebtUserNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */; };
+		95154A7C28D4EFAD00B16222 /* M_ChangeCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7B28D4EFAD00B16222 /* M_ChangeCardController.swift */; };
+		95154A7E28D4EFBF00B16222 /* M_ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7D28D4EFBF00B16222 /* M_ResultController.swift */; };
+		95154A8028D4EFD000B16222 /* M_BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A7F28D4EFD000B16222 /* M_BuySubController.swift */; };
+		95154A8228D4EFDE00B16222 /* M_ActiveSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8128D4EFDE00B16222 /* M_ActiveSubController.swift */; };
+		95154A8428D4EFED00B16222 /* M_ChooseSubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8328D4EFED00B16222 /* M_ChooseSubController.swift */; };
+		95154A8628D4EFFD00B16222 /* M_TripsHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8528D4EFFD00B16222 /* M_TripsHistoryController.swift */; };
+		95154A8828D4F00A00B16222 /* M_DebtNotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8728D4F00A00B16222 /* M_DebtNotificationsController.swift */; };
 		95154A9528D4F06600B16222 /* M_TripsHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A8928D4F06600B16222 /* M_TripsHistoryView.xib */; };
 		95154A9628D4F06600B16222 /* M_EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95154A8C28D4F06600B16222 /* M_EmptyCell.swift */; };
 		95154A9728D4F06600B16222 /* M_EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95154A8D28D4F06600B16222 /* M_EmptyCell.xib */; };
@@ -234,14 +226,9 @@
 		9515495928D4A29300B16222 /* M_Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_Utils.swift; sourceTree = "<group>"; };
 		9515496228D4ED6C00B16222 /* M_LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_LoadingView.xib; sourceTree = "<group>"; };
 		9515496328D4ED6C00B16222 /* M_LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_LoadingView.swift; sourceTree = "<group>"; };
-		9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubController.swift; sourceTree = "<group>"; };
-		9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardController.swift; sourceTree = "<group>"; };
 		9515497128D4ED6C00B16222 /* M_ModalDebetNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebetNotificationController.swift; sourceTree = "<group>"; };
 		9515497328D4ED6C00B16222 /* M_ModalDebtNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ModalDebtNotificationView.swift; sourceTree = "<group>"; };
 		9515497428D4ED6C00B16222 /* M_ModalDebtNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ModalDebtNotificationView.xib; sourceTree = "<group>"; };
-		9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubController.swift; sourceTree = "<group>"; };
-		9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubModel.swift; sourceTree = "<group>"; };
-		9515498628D4ED6C00B16222 /* M_ResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultController.swift; sourceTree = "<group>"; };
 		9515498C28D4ED6C00B16222 /* M_CardChangePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangePresenter.swift; sourceTree = "<group>"; };
 		9515498E28D4ED6C00B16222 /* M_ChangeCardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardModels.swift; sourceTree = "<group>"; };
 		9515499128D4ED6C00B16222 /* M_CardChangeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeInteractor.swift; sourceTree = "<group>"; };
@@ -271,11 +258,8 @@
 		951549CB28D4ED6C00B16222 /* M_DebtUserNotificationsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsModels.swift; sourceTree = "<group>"; };
 		951549CE28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsInteractor.swift; sourceTree = "<group>"; };
 		951549D028D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsRouter.swift; sourceTree = "<group>"; };
-		951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationsController.swift; sourceTree = "<group>"; };
-		951549D928D4ED6C00B16222 /* M_BuySubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubController.swift; sourceTree = "<group>"; };
 		951549DE28D4ED6C00B16222 /* M_ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ErrorView.xib; sourceTree = "<group>"; };
 		951549DF28D4ED6C00B16222 /* M_ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ErrorView.swift; sourceTree = "<group>"; };
-		951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TripsHistoryController.swift; sourceTree = "<group>"; };
 		95154A1428D4EEE400B16222 /* M_ActiveSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_ActiveSubView.xib; sourceTree = "<group>"; };
 		95154A1628D4EEE400B16222 /* M_TitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TitleHeader.xib; sourceTree = "<group>"; };
 		95154A1728D4EEE400B16222 /* M_TitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TitleHeader.swift; sourceTree = "<group>"; };
@@ -319,13 +303,13 @@
 		95154A7128D4EF7B00B16222 /* M_DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DescriptionCell.swift; sourceTree = "<group>"; };
 		95154A7328D4EF7B00B16222 /* M_SubHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SubHeader.swift; sourceTree = "<group>"; };
 		95154A7428D4EF7B00B16222 /* M_SubHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_SubHeader.xib; sourceTree = "<group>"; };
-		95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_CardChangeController.swift; sourceTree = "<group>"; };
-		95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResScreenController.swift; sourceTree = "<group>"; };
-		95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubscriptionController.swift; sourceTree = "<group>"; };
-		95154A8128D4EFDE00B16222 /* M_ActiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveController.swift; sourceTree = "<group>"; };
-		95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubscriptionController.swift; sourceTree = "<group>"; };
-		95154A8528D4EFFD00B16222 /* M_HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_HistoryController.swift; sourceTree = "<group>"; };
-		95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtUserNotificationsController.swift; sourceTree = "<group>"; };
+		95154A7B28D4EFAD00B16222 /* M_ChangeCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChangeCardController.swift; sourceTree = "<group>"; };
+		95154A7D28D4EFBF00B16222 /* M_ResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ResultController.swift; sourceTree = "<group>"; };
+		95154A7F28D4EFD000B16222 /* M_BuySubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_BuySubController.swift; sourceTree = "<group>"; };
+		95154A8128D4EFDE00B16222 /* M_ActiveSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ActiveSubController.swift; sourceTree = "<group>"; };
+		95154A8328D4EFED00B16222 /* M_ChooseSubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ChooseSubController.swift; sourceTree = "<group>"; };
+		95154A8528D4EFFD00B16222 /* M_TripsHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_TripsHistoryController.swift; sourceTree = "<group>"; };
+		95154A8728D4F00A00B16222 /* M_DebtNotificationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotificationsController.swift; sourceTree = "<group>"; };
 		95154A8928D4F06600B16222 /* M_TripsHistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_TripsHistoryView.xib; sourceTree = "<group>"; };
 		95154A8C28D4F06600B16222 /* M_EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_EmptyCell.swift; sourceTree = "<group>"; };
 		95154A8D28D4F06600B16222 /* M_EmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = M_EmptyCell.xib; sourceTree = "<group>"; };
@@ -502,7 +486,6 @@
 				9515496F28D4ED6C00B16222 /* Debt Notification Modal */,
 				9515497528D4ED6C00B16222 /* Active Subscription */,
 				9515498428D4ED6C00B16222 /* Result Screen */,
-				9515498928D4ED6C00B16222 /* Clean Swift */,
 				951549D128D4ED6C00B16222 /* Debt Notifications */,
 				951549D728D4ED6C00B16222 /* Buy Subscription */,
 				951549DD28D4ED6C00B16222 /* Error */,
@@ -523,18 +506,14 @@
 		9515496428D4ED6C00B16222 /* Choose Subscription */ = {
 			isa = PBXGroup;
 			children = (
-				9515496528D4ED6C00B16222 /* Controller */,
+				951549B428D4ED6C00B16222 /* Presenter */,
+				951549B628D4ED6C00B16222 /* Models */,
+				951549B828D4ED6C00B16222 /* Controller */,
+				951549B928D4ED6C00B16222 /* Interactor */,
+				951549BB28D4ED6C00B16222 /* Router */,
 				9515496728D4ED6C00B16222 /* View */,
 			);
 			path = "Choose Subscription";
-			sourceTree = "<group>";
-		};
-		9515496528D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515496628D4ED6C00B16222 /* M_ChooseSubController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		9515496728D4ED6C00B16222 /* View */ = {
@@ -550,18 +529,14 @@
 		9515496B28D4ED6C00B16222 /* Change Card */ = {
 			isa = PBXGroup;
 			children = (
-				9515496C28D4ED6C00B16222 /* Controller */,
+				9515498B28D4ED6C00B16222 /* Presenter */,
+				9515498D28D4ED6C00B16222 /* Models */,
+				9515498F28D4ED6C00B16222 /* Controller */,
+				9515499028D4ED6C00B16222 /* Interactor */,
+				9515499228D4ED6C00B16222 /* Router */,
 				9515496E28D4ED6C00B16222 /* View */,
 			);
 			path = "Change Card";
-			sourceTree = "<group>";
-		};
-		9515496C28D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515496D28D4ED6C00B16222 /* M_ChangeCardController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		9515496E28D4ED6C00B16222 /* View */ = {
@@ -602,27 +577,14 @@
 		9515497528D4ED6C00B16222 /* Active Subscription */ = {
 			isa = PBXGroup;
 			children = (
-				9515497628D4ED6C00B16222 /* Controller */,
-				9515497828D4ED6C00B16222 /* Model */,
+				951549A928D4ED6C00B16222 /* Presenter */,
+				951549AC28D4ED6C00B16222 /* Models */,
+				951549AE28D4ED6C00B16222 /* Controller */,
+				951549AF28D4ED6C00B16222 /* Interactor */,
+				951549B128D4ED6C00B16222 /* Router */,
 				9515497A28D4ED6C00B16222 /* View */,
 			);
 			path = "Active Subscription";
-			sourceTree = "<group>";
-		};
-		9515497628D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515497728D4ED6C00B16222 /* M_ActiveSubController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9515497828D4ED6C00B16222 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9515497928D4ED6C00B16222 /* M_ActiveSubModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9515497A28D4ED6C00B16222 /* View */ = {
@@ -639,19 +601,15 @@
 		9515498428D4ED6C00B16222 /* Result Screen */ = {
 			isa = PBXGroup;
 			children = (
-				9515498528D4ED6C00B16222 /* Controller */,
+				9515499528D4ED6C00B16222 /* Presenter */,
+				9515499728D4ED6C00B16222 /* Models */,
+				9515499928D4ED6C00B16222 /* Controller */,
+				9515499A28D4ED6C00B16222 /* Interactor */,
+				9515499C28D4ED6C00B16222 /* Router */,
 				9515498728D4ED6C00B16222 /* Model */,
 				9515498828D4ED6C00B16222 /* View */,
 			);
 			path = "Result Screen";
-			sourceTree = "<group>";
-		};
-		9515498528D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9515498628D4ED6C00B16222 /* M_ResultController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		9515498728D4ED6C00B16222 /* Model */ = {
@@ -669,32 +627,6 @@
 				95154A5928D4EF3D00B16222 /* M_ResultView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		9515498928D4ED6C00B16222 /* Clean Swift */ = {
-			isa = PBXGroup;
-			children = (
-				9515498A28D4ED6C00B16222 /* Clean Change Card */,
-				9515499428D4ED6C00B16222 /* Clean Result Screen */,
-				9515499E28D4ED6C00B16222 /* Clean Buy Subscription */,
-				951549A828D4ED6C00B16222 /* Clean Active Subscription */,
-				951549B328D4ED6C00B16222 /* Clean Choose Subscription */,
-				951549BD28D4ED6C00B16222 /* Clean History */,
-				951549C728D4ED6C00B16222 /* Clean Debt Notifications */,
-			);
-			path = "Clean Swift";
-			sourceTree = "<group>";
-		};
-		9515498A28D4ED6C00B16222 /* Clean Change Card */ = {
-			isa = PBXGroup;
-			children = (
-				9515498B28D4ED6C00B16222 /* Presenter */,
-				9515498D28D4ED6C00B16222 /* Models */,
-				9515498F28D4ED6C00B16222 /* Controller */,
-				9515499028D4ED6C00B16222 /* Interactor */,
-				9515499228D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Change Card";
 			sourceTree = "<group>";
 		};
 		9515498B28D4ED6C00B16222 /* Presenter */ = {
@@ -716,9 +648,10 @@
 		9515498F28D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A7B28D4EFAD00B16222 /* M_CardChangeController.swift */,
+				95154A7B28D4EFAD00B16222 /* M_ChangeCardController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Change Card/Controller";
 			sourceTree = "<group>";
 		};
 		9515499028D4ED6C00B16222 /* Interactor */ = {
@@ -735,18 +668,6 @@
 				9515499328D4ED6C00B16222 /* M_CardChangeRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		9515499428D4ED6C00B16222 /* Clean Result Screen */ = {
-			isa = PBXGroup;
-			children = (
-				9515499528D4ED6C00B16222 /* Presenter */,
-				9515499728D4ED6C00B16222 /* Models */,
-				9515499928D4ED6C00B16222 /* Controller */,
-				9515499A28D4ED6C00B16222 /* Interactor */,
-				9515499C28D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Result Screen";
 			sourceTree = "<group>";
 		};
 		9515499528D4ED6C00B16222 /* Presenter */ = {
@@ -768,9 +689,10 @@
 		9515499928D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A7D28D4EFBF00B16222 /* M_ResScreenController.swift */,
+				95154A7D28D4EFBF00B16222 /* M_ResultController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Result Screen/Controller";
 			sourceTree = "<group>";
 		};
 		9515499A28D4ED6C00B16222 /* Interactor */ = {
@@ -787,18 +709,6 @@
 				9515499D28D4ED6C00B16222 /* M_ResScreenRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		9515499E28D4ED6C00B16222 /* Clean Buy Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				9515499F28D4ED6C00B16222 /* Presenter */,
-				951549A128D4ED6C00B16222 /* Models */,
-				951549A328D4ED6C00B16222 /* Controller */,
-				951549A428D4ED6C00B16222 /* Interactor */,
-				951549A628D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Buy Subscription";
 			sourceTree = "<group>";
 		};
 		9515499F28D4ED6C00B16222 /* Presenter */ = {
@@ -820,9 +730,10 @@
 		951549A328D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A7F28D4EFD000B16222 /* M_BuySubscriptionController.swift */,
+				95154A7F28D4EFD000B16222 /* M_BuySubController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Buy Subscription/Controller";
 			sourceTree = "<group>";
 		};
 		951549A428D4ED6C00B16222 /* Interactor */ = {
@@ -839,18 +750,6 @@
 				951549A728D4ED6C00B16222 /* M_BuySubscriptionRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		951549A828D4ED6C00B16222 /* Clean Active Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				951549A928D4ED6C00B16222 /* Presenter */,
-				951549AC28D4ED6C00B16222 /* Models */,
-				951549AE28D4ED6C00B16222 /* Controller */,
-				951549AF28D4ED6C00B16222 /* Interactor */,
-				951549B128D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Active Subscription";
 			sourceTree = "<group>";
 		};
 		951549A928D4ED6C00B16222 /* Presenter */ = {
@@ -873,9 +772,10 @@
 		951549AE28D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A8128D4EFDE00B16222 /* M_ActiveController.swift */,
+				95154A8128D4EFDE00B16222 /* M_ActiveSubController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Active Subscription/Controller";
 			sourceTree = "<group>";
 		};
 		951549AF28D4ED6C00B16222 /* Interactor */ = {
@@ -892,18 +792,6 @@
 				951549B228D4ED6C00B16222 /* M_ActiveSubRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		951549B328D4ED6C00B16222 /* Clean Choose Subscription */ = {
-			isa = PBXGroup;
-			children = (
-				951549B428D4ED6C00B16222 /* Presenter */,
-				951549B628D4ED6C00B16222 /* Models */,
-				951549B828D4ED6C00B16222 /* Controller */,
-				951549B928D4ED6C00B16222 /* Interactor */,
-				951549BB28D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Choose Subscription";
 			sourceTree = "<group>";
 		};
 		951549B428D4ED6C00B16222 /* Presenter */ = {
@@ -925,9 +813,10 @@
 		951549B828D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A8328D4EFED00B16222 /* M_ChooseSubscriptionController.swift */,
+				95154A8328D4EFED00B16222 /* M_ChooseSubController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Choose Subscription/Controller";
 			sourceTree = "<group>";
 		};
 		951549B928D4ED6C00B16222 /* Interactor */ = {
@@ -944,18 +833,6 @@
 				951549BC28D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		951549BD28D4ED6C00B16222 /* Clean History */ = {
-			isa = PBXGroup;
-			children = (
-				951549BE28D4ED6C00B16222 /* Presenter */,
-				951549C028D4ED6C00B16222 /* Models */,
-				951549C228D4ED6C00B16222 /* Controller */,
-				951549C328D4ED6C00B16222 /* Interactor */,
-				951549C528D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean History";
 			sourceTree = "<group>";
 		};
 		951549BE28D4ED6C00B16222 /* Presenter */ = {
@@ -977,9 +854,10 @@
 		951549C228D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A8528D4EFFD00B16222 /* M_HistoryController.swift */,
+				95154A8528D4EFFD00B16222 /* M_TripsHistoryController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean History/Controller";
 			sourceTree = "<group>";
 		};
 		951549C328D4ED6C00B16222 /* Interactor */ = {
@@ -996,18 +874,6 @@
 				951549C628D4ED6C00B16222 /* M_HistoryRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		951549C728D4ED6C00B16222 /* Clean Debt Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				951549C828D4ED6C00B16222 /* Presenter */,
-				951549CA28D4ED6C00B16222 /* Models */,
-				951549CC28D4ED6C00B16222 /* Controller */,
-				951549CD28D4ED6C00B16222 /* Interactor */,
-				951549CF28D4ED6C00B16222 /* Router */,
-			);
-			path = "Clean Debt Notifications";
 			sourceTree = "<group>";
 		};
 		951549C828D4ED6C00B16222 /* Presenter */ = {
@@ -1029,9 +895,10 @@
 		951549CC28D4ED6C00B16222 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95154A8728D4F00A00B16222 /* M_DebtUserNotificationsController.swift */,
+				95154A8728D4F00A00B16222 /* M_DebtNotificationsController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = "../Clean Swift/Clean Debt Notifications/Controller";
 			sourceTree = "<group>";
 		};
 		951549CD28D4ED6C00B16222 /* Interactor */ = {
@@ -1053,18 +920,14 @@
 		951549D128D4ED6C00B16222 /* Debt Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				951549D228D4ED6C00B16222 /* Controller */,
+				951549C828D4ED6C00B16222 /* Presenter */,
+				951549CA28D4ED6C00B16222 /* Models */,
+				951549CC28D4ED6C00B16222 /* Controller */,
+				951549CD28D4ED6C00B16222 /* Interactor */,
+				951549CF28D4ED6C00B16222 /* Router */,
 				951549D428D4ED6C00B16222 /* View */,
 			);
 			path = "Debt Notifications";
-			sourceTree = "<group>";
-		};
-		951549D228D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951549D328D4ED6C00B16222 /* M_DebtNotificationsController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		951549D428D4ED6C00B16222 /* View */ = {
@@ -1081,18 +944,14 @@
 		951549D728D4ED6C00B16222 /* Buy Subscription */ = {
 			isa = PBXGroup;
 			children = (
+				9515499F28D4ED6C00B16222 /* Presenter */,
+				951549A128D4ED6C00B16222 /* Models */,
+				951549A328D4ED6C00B16222 /* Controller */,
+				951549A428D4ED6C00B16222 /* Interactor */,
+				951549A628D4ED6C00B16222 /* Router */,
 				95154A6C28D4EF7B00B16222 /* View */,
-				951549D828D4ED6C00B16222 /* Controller */,
 			);
 			path = "Buy Subscription";
-			sourceTree = "<group>";
-		};
-		951549D828D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951549D928D4ED6C00B16222 /* M_BuySubController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		951549DD28D4ED6C00B16222 /* Error */ = {
@@ -1107,18 +966,14 @@
 		951549E028D4ED6C00B16222 /* Trips History */ = {
 			isa = PBXGroup;
 			children = (
-				951549E128D4ED6C00B16222 /* Controller */,
+				951549BE28D4ED6C00B16222 /* Presenter */,
+				951549C028D4ED6C00B16222 /* Models */,
+				951549C228D4ED6C00B16222 /* Controller */,
+				951549C328D4ED6C00B16222 /* Interactor */,
+				951549C528D4ED6C00B16222 /* Router */,
 				951549E328D4ED6C00B16222 /* View */,
 			);
 			path = "Trips History";
-			sourceTree = "<group>";
-		};
-		951549E128D4ED6C00B16222 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				951549E228D4ED6C00B16222 /* M_TripsHistoryController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		951549E328D4ED6C00B16222 /* View */ = {
@@ -1658,7 +1513,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951549EB28D4ED6C00B16222 /* M_ChangeCardController.swift in Sources */,
 				95154A6B28D4EF6100B16222 /* M_DebtHeader.swift in Sources */,
 				951549F428D4ED6C00B16222 /* M_CardChangeInteractor.swift in Sources */,
 				95154A4028D4EEE400B16222 /* M_SupportCell.swift in Sources */,
@@ -1684,16 +1538,14 @@
 				950920EA282E55DC00C4E573 /* Appearance.swift in Sources */,
 				95154A0228D4ED6C00B16222 /* M_ActiveSubRouter.swift in Sources */,
 				95154A4228D4EEE400B16222 /* M_TariffInfoCell.swift in Sources */,
-				951549EF28D4ED6C00B16222 /* M_ActiveSubController.swift in Sources */,
 				95A41D0D2854BB5800637FA6 /* M_HistoryTrips.swift in Sources */,
 				95154A5228D4EF0D00B16222 /* M_ChooseSubView.swift in Sources */,
 				951549EC28D4ED6C00B16222 /* M_ModalDebetNotificationController.swift in Sources */,
 				95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */,
 				9515495B28D4A29300B16222 /* M_Utils.swift in Sources */,
-				95154A7E28D4EFBF00B16222 /* M_ResScreenController.swift in Sources */,
+				95154A7E28D4EFBF00B16222 /* M_ResultController.swift in Sources */,
 				95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */,
 				95154A3B28D4EEE400B16222 /* M_HeaderTableCell.swift in Sources */,
-				951549F028D4ED6C00B16222 /* M_ActiveSubModel.swift in Sources */,
 				950920C8282E55DC00C4E573 /* Ext+UITableViewHeaderFooterView.swift in Sources */,
 				95154A1228D4ED6C00B16222 /* M_ErrorView.swift in Sources */,
 				951549FA28D4ED6C00B16222 /* M_BuySubscriptionPresenter.swift in Sources */,
@@ -1709,7 +1561,7 @@
 				95154A5628D4EF1E00B16222 /* M_ChangeCardView.swift in Sources */,
 				951549FB28D4ED6C00B16222 /* M_BuySubscriptionModels.swift in Sources */,
 				95154A0628D4ED6C00B16222 /* M_ChooseSubscriptionRouter.swift in Sources */,
-				95154A8228D4EFDE00B16222 /* M_ActiveController.swift in Sources */,
+				95154A8228D4EFDE00B16222 /* M_ActiveSubController.swift in Sources */,
 				951549FE28D4ED6C00B16222 /* M_ActiveStateBuilder.swift in Sources */,
 				95A41D092854B4E300637FA6 /* M_DebtInfo.swift in Sources */,
 				95154A4F28D4EF0D00B16222 /* M_SubSectionRow.swift in Sources */,
@@ -1717,7 +1569,6 @@
 				95154A0B28D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */,
 				951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
-				951549EA28D4ED6C00B16222 /* M_ChooseSubController.swift in Sources */,
 				950920C5282E55DC00C4E573 /* Ext+UITableViewCell.swift in Sources */,
 				950920C3282E55DC00C4E573 /* GradientProgressView.swift in Sources */,
 				95154A3628D4EEE400B16222 /* M_DebtNotificationCell.swift in Sources */,
@@ -1732,36 +1583,32 @@
 				950920C4282E55DC00C4E573 /* Ext+UIColor.swift in Sources */,
 				95154A0128D4ED6C00B16222 /* M_ActiveSubInteractor.swift in Sources */,
 				95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */,
-				95154A7C28D4EFAD00B16222 /* M_CardChangeController.swift in Sources */,
+				95154A7C28D4EFAD00B16222 /* M_ChangeCardController.swift in Sources */,
 				950920CC282E55DC00C4E573 /* Ext+UIImage.swift in Sources */,
 				95154A9C28D4F06600B16222 /* M_TripsHistoryView.swift in Sources */,
 				95154A5A28D4EF3D00B16222 /* M_ResultView.swift in Sources */,
 				95154A9928D4F06600B16222 /* M_HistoryCell.swift in Sources */,
-				95154A8028D4EFD000B16222 /* M_BuySubscriptionController.swift in Sources */,
-				95154A8428D4EFED00B16222 /* M_ChooseSubscriptionController.swift in Sources */,
+				95154A8028D4EFD000B16222 /* M_BuySubController.swift in Sources */,
+				95154A8428D4EFED00B16222 /* M_ChooseSubController.swift in Sources */,
 				95154A3828D4EEE400B16222 /* M_CardInfoCell.swift in Sources */,
 				950920C9282E55DC00C4E573 /* Ext+UIViewController.swift in Sources */,
 				95795B7228531F9100634754 /* M_Subscription.swift in Sources */,
 				950920C7282E55DC00C4E573 /* Ext+UIStackView.swift in Sources */,
-				951549F128D4ED6C00B16222 /* M_ResultController.swift in Sources */,
-				95154A1328D4ED6C00B16222 /* M_TripsHistoryController.swift in Sources */,
 				95154A0E28D4ED6C00B16222 /* M_DebtUserNotificationsRouter.swift in Sources */,
-				95154A8628D4EFFD00B16222 /* M_HistoryController.swift in Sources */,
+				95154A8628D4EFFD00B16222 /* M_TripsHistoryController.swift in Sources */,
 				95154A3328D4EEE400B16222 /* M_TitleHeader.swift in Sources */,
 				95154A7828D4EF7B00B16222 /* M_DescriptionCell.swift in Sources */,
 				95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */,
 				95154A3428D4EEE400B16222 /* M_ActiveSubView.swift in Sources */,
-				95154A8828D4F00A00B16222 /* M_DebtUserNotificationsController.swift in Sources */,
+				95154A8828D4F00A00B16222 /* M_DebtNotificationsController.swift in Sources */,
 				95154A5028D4EF0D00B16222 /* M_MakeMySubRow.swift in Sources */,
 				95154A0D28D4ED6C00B16222 /* M_DebtUserNotificationsInteractor.swift in Sources */,
 				95154A0328D4ED6C00B16222 /* M_ChooseSubscriptionPresenter.swift in Sources */,
 				95154A7528D4EF7B00B16222 /* M_BuySubView.swift in Sources */,
-				95154A1028D4ED6C00B16222 /* M_BuySubController.swift in Sources */,
 				956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */,
 				951549F528D4ED6C00B16222 /* M_CardChangeRouter.swift in Sources */,
 				95154A9628D4F06600B16222 /* M_EmptyCell.swift in Sources */,
 				95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */,
-				95154A0F28D4ED6C00B16222 /* M_DebtNotificationsController.swift in Sources */,
 				95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */,
 				9595E21B285B4C0900375863 /* Ext+String.swift in Sources */,
 			);

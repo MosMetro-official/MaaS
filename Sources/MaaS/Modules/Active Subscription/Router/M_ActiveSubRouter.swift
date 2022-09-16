@@ -42,7 +42,7 @@ final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
     }
     
     func routeToHistoryTrips() {
-        let historyController = M_HistoryController()
+        let historyController = M_TripsHistoryController()
         controller?.navigationController?.pushViewController(historyController, animated: true)
     }
     
@@ -61,7 +61,7 @@ final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
     }
     
     func routeToDebtNotifications() {
-        let debtNotification = M_DebtUserNotificationsController()
+        let debtNotification = M_DebtNotificationsController()
         guard
             let activeDataStore = dataStore,
             let debtDataStore = debtNotification.router?.dataStore else {

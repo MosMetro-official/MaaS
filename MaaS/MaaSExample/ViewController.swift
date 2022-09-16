@@ -68,11 +68,8 @@ class ViewController: UIViewController {
     private func fetchUserInfo() {
         maas.getUserInfo { [weak self] user, error in
             guard let self = self else { return }
-            switch user?.subscription?.status {
-            case .active:
+            if let user = user {
                 self.user = user
-            default:
-                break
             }
             if let error = error {
                 self.error = error.errorTitle
@@ -114,9 +111,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.showActiveFlow()
                 }
             case .unknow:
-                cell.authProccessingConfig(message: "Ваша подписка оформляется") { [weak self] in
-                    cell.loadConfigure()
-                    self?.fetchUserInfo()
+                cell.nonAuthConfigure(message: "Ваша подписка была аннулиорована") { [weak self] in
+                    self?.showChooseFlow()
                 }
             case .created, .processing:
                 cell.authProccessingConfig(message: "Ваша подписка оплачивается") { [weak self] in
@@ -162,7 +158,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             case .expired, .canceled:
                 self.showChooseFlow()
             case .unknow:
-                self.showActiveFlow()
+                self.showChooseFlow()
             default:
                 break
             }

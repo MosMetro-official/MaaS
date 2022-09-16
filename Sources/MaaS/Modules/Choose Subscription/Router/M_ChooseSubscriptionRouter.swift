@@ -27,7 +27,7 @@ final class M_ChooseSubscriptionRouter: M_ChooseSubscriptionRoutingLogic, M_Choo
     }
     
     func routeToBuySubscription() {
-        let buySubscription = M_BuySubscriptionController()
+        let buySubscription = M_BuySubController()
         guard
             let controller = controller,
             let dataStore = dataStore,

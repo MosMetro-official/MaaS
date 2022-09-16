@@ -36,7 +36,7 @@ final class M_CardChangeRouter: CardChangeRoutingLogic, CardChangeDataPassing {
     }
     
     func routeToResultScreen(_ model: M_CardChangeModels.Request.ResultModel) {
-        let resultController = M_ResScreenController()
+        let resultController = M_ResultController()
         guard let userInfo = dataStore?.userInfo else { return }
         switch model {
         case .success:

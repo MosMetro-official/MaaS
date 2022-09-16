@@ -11,7 +11,8 @@ public class MaaS {
         return Bundle(url: url) ?? podBundle
     }
     
-    public static var host: String = "maas.brndev.ru"
+    public static var host: String = "maas.mosmetro.tech"
+//    public static var host: String = "maas.brndev.ru"
     
     static var applicationName: String = ""
     
@@ -19,7 +20,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? 
+    public static var token: String? = "JIc1sBwvI6UtzFLZTYPofeYtsrnqACZJDIxYF5Ahk0I"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
@@ -32,18 +33,13 @@ public class MaaS {
     public init() { }
         
     
-    public func showActiveFlow() -> M_ActiveController {
-        let active = M_ActiveController()
+    public func showActiveFlow() -> UIViewController {
+        let active = M_ActiveSubController()
         return active
     }
     
-//    public func showChooseFlow() -> M_ChooseSubController {
-//        let choose = M_ChooseSubController()
-//        return choose
-//    }
-    
     public func showChooseFlow() -> UIViewController {
-        let choose = M_ChooseSubscriptionController()
+        let choose = M_ChooseSubController()
         return choose
     }
     
