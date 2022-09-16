@@ -37,4 +37,12 @@ Pod::Spec.new do |spec|
 
   spec.resource_bundle = { 'MaaS' => 'Sources/MaaS/**/*.{png,jpeg,jpg,pdf,storyboard,xib,xcassets,otf,ttf}' }
 
+  spec.test_spec 'MaaSTests' do |test_spec|
+    test_spec.source_files = "Tests/MaaSTests**/*.{swift}"
+    test_spec.dependency 'MMCoreNetworkCallbacks'
+    test_spec.dependency 'CoreTableView'
+    test_spec.dependency 'SDWebImage'
+    test_spec.dependency 'OnBoardingModule'
+  end
+
 end

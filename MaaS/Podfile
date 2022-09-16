@@ -26,3 +26,15 @@ target 'MaaSExample' do
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/CoreExtensions'
 
 end
+
+target 'MaaSTests' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'CoreTableView'
+  pod 'MMCoreNetworkCallbacks'
+  pod 'SDWebImage', :modular_headers => true
+  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/OnBoardingModule'
+  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/CoreExtensions'
+
+end
