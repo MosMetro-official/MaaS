@@ -32,13 +32,13 @@ public class MaaS {
     public init() { }
         
     
-    public func showActiveFlow() -> M_ActiveSubController {
-        let active = M_ActiveSubController()
+    public func showActiveFlow() -> M_ActiveController {
+        let active = M_ActiveController()
         return active
     }
     
-    public func showChooseFlow() -> M_ChooseSubController {
-        let choose = M_ChooseSubController()
+    public func showChooseFlow() -> M_ChooseSubscriptionController {
+        let choose = M_ChooseSubscriptionController()
         return choose
     }
     

@@ -1,25 +1,28 @@
 //
-//  M_TripsHistoryView.swift
+//  M_ModalDebtNotificationView.swift
 //  MaaS
 //
-//  Created by Слава Платонов on 16.06.2022.
+//  Created by Слава Платонов on 19.07.2022.
 //
 
 import UIKit
 import CoreTableView
 
-class M_TripsHistoryView: UIView {
-        
+public class M_ModalDebtNotificationView: UIView {
+    
     struct ViewState {
         
         enum DataState {
-            case loaded
             case loading(_Loading)
             case error(_Error)
+            case loaded
         }
         
-        let state: [State]
         let dataState: DataState
+        let onMore: Command<Void>
+        let debtText: String
+        let titleText: String
+        let buttonTitle: String
         
         struct Loading: _Loading {
             let title: String
@@ -33,48 +36,42 @@ class M_TripsHistoryView: UIView {
             let onClose: Command<Void>
         }
         
-        struct History: _History {
-            let title: String
-            let image: UIImage
-            let date: String
-            let height: CGFloat
-        }
-        
-        struct Empty: _Empty {
-            let height: CGFloat
-        }
-        
-        static let initial = ViewState(state: [], dataState: .loaded)
+        static let initial = ViewState(dataState: .loaded, onMore: Command {}, debtText: "", titleText: "", buttonTitle: "")
     }
     
-    public var viewState: ViewState = .initial {
+    var viewState: ViewState = .initial {
         didSet {
             DispatchQueue.main.async {
                 self.render()
             }
         }
     }
+
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var descrLabel: UILabel!
+    @IBOutlet private var moreButton: UIButton!
     
-    @IBOutlet private weak var tableView: BaseTableView!
-    
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+    
+    @IBAction func onMoreTapped() {
+        viewState.onMore.perform(with: ())
     }
     
     private func render() {
         switch viewState.dataState {
         case .loaded:
-            tableView.isHidden = false
+            titleLabel.text = viewState.titleText
+            descrLabel.text = viewState.debtText
+            moreButton.setTitle(viewState.buttonTitle, for: .normal)
             removeError(from: self)
             removeLoading(from: self)
-            tableView.viewStateInput = viewState.state
         case .loading(let loading):
-            tableView.isHidden = true
             removeError(from: self)
             showLoading(on: self, data: loading)
         case .error(let error):
-            tableView.isHidden = true
             removeLoading(from: self)
             showError(on: self, data: error)
         }

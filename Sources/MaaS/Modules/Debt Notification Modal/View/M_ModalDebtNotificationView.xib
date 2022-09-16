@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MoscowSans-Bold.otf">
+            <string>MoscowSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="M_ModalDebtNotificationView" customModule="MaaS">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Накопился долг за поездки в Велобайке" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ky-DL-PPA">
+                    <rect key="frame" x="16" y="167" width="382" height="168"/>
+                    <fontDescription key="fontDescription" name="MoscowSans-Bold" family="Moscow Sans" pointSize="48"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Его надо погасить, чтобы пользоваться подпиской. Задолженность 50 рублей" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR5-ju-pmg">
+                    <rect key="frame" x="16" y="341" width="382" height="40"/>
+                    <fontDescription key="fontDescription" name="MoscowSans-Medium" family="Moscow Sans" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuL-hn-XPJ">
+                    <rect key="frame" x="20" y="794" width="374" height="44"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5hf-SU-0pj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MoscowSans-Medium" family="Moscow Sans" pointSize="15"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Подробнее">
+                        <color key="titleColor" name="debt"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onMoreTapped" destination="iN0-l3-epB" eventType="touchUpInside" id="my0-CP-yXT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="debt"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7ky-DL-PPA" secondAttribute="trailing" constant="16" id="2SQ-NV-WDt"/>
+                <constraint firstItem="7ky-DL-PPA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="8jX-KL-PMM"/>
+                <constraint firstItem="7ky-DL-PPA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="123" id="Kmn-x0-94x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FR5-ju-pmg" secondAttribute="trailing" constant="16" id="RKV-5d-BVa"/>
+                <constraint firstItem="FR5-ju-pmg" firstAttribute="top" secondItem="7ky-DL-PPA" secondAttribute="bottom" constant="6" id="kYA-sK-TPy"/>
+                <constraint firstItem="kuL-hn-XPJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="mjs-5D-1Av"/>
+                <constraint firstAttribute="bottom" secondItem="kuL-hn-XPJ" secondAttribute="bottom" constant="58" id="neE-i9-qmf"/>
+                <constraint firstItem="FR5-ju-pmg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="rLK-iX-EFj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kuL-hn-XPJ" secondAttribute="trailing" constant="20" id="vQT-b3-PLc"/>
+            </constraints>
+            <connections>
+                <outlet property="descrLabel" destination="FR5-ju-pmg" id="tMs-LK-PYx"/>
+                <outlet property="moreButton" destination="kuL-hn-XPJ" id="bc1-wz-rKp"/>
+                <outlet property="titleLabel" destination="7ky-DL-PPA" id="vW9-yL-Grc"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="114"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="debt">
+            <color red="0.96078431372549022" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

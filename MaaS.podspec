@@ -33,6 +33,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'MMCoreNetworkCallbacks'
   spec.dependency 'CoreTableView'
   spec.dependency 'SDWebImage'
+  spec.dependency 'OnBoardingModule'
 
   spec.resource_bundle = { 'MaaS' => 'Sources/MaaS/**/*.{png,jpeg,jpg,pdf,storyboard,xib,xcassets,otf,ttf}' }
 
