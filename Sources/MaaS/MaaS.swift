@@ -12,7 +12,6 @@ public class MaaS {
     }
     
     public static var host: String = "maas.mosmetro.tech"
-//    public static var host: String = "maas.brndev.ru"
     
     static var applicationName: String = ""
     
@@ -20,7 +19,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "JIc1sBwvI6UtzFLZTYPofeYtsrnqACZJDIxYF5Ahk0I"
+    public static var token: String? = "Rpnx6VXYUeMOfFj5VItiAUnMw4DP4-fHCPZIC92GvlU"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"

@@ -111,11 +111,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.showActiveFlow()
                 }
             case .unknow:
-                cell.nonAuthConfigure(message: "Ваша подписка была аннулиорована") { [weak self] in
+                cell.nonAuthConfigure(message: "Нужно оформить подписку") { [weak self] in
                     self?.showChooseFlow()
                 }
             case .created, .processing:
-                cell.authProccessingConfig(message: "Ваша подписка оплачивается") { [weak self] in
+                cell.authProccessingConfig(message: "Ваша подписка оформляется") { [weak self] in
                     cell.loadConfigure()
                     self?.fetchUserInfo()
                 }
