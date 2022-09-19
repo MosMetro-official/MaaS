@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreAnalytics
 
 protocol M_BuySubscriptionRoutingLogic: AnyObject {
     func showPaymentController(_ paymentController: UIViewController)
-    func routeToResultScreen(_ model: M_BuySubscriptionModels.Request.ResultModel)
+    func routeToResultScreen(_ model: M_BuySubscriptionModels.Request.ResultModel, analytics: _AnalyticsManager)
     func popViewController()
 }
 
@@ -33,8 +34,8 @@ final class M_BuySubscriptionRouter: M_BuySubscriptionRoutingLogic, M_BuySubscri
         }
     }
     
-    func routeToResultScreen(_ model: M_BuySubscriptionModels.Request.ResultModel) {
-        let resultController = M_ResultController()
+    func routeToResultScreen(_ model: M_BuySubscriptionModels.Request.ResultModel, analytics: _AnalyticsManager) {
+        let resultController = M_ResultController(analyticsManager: analytics)
         guard let sub = dataStore?.subscription else { return }
         switch model {
         case .success:

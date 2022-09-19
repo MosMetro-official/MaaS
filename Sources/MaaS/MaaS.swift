@@ -10,7 +10,7 @@ public class MaaS {
         self.analyticsManager = analyticsManager
     }
     
-    static var bundle: Bundle {
+    public static var bundle: Bundle {
         let podBundle = Bundle(for: self)
         guard let url = podBundle.url(forResource: "MaaS", withExtension: "bundle") else {
             return podBundle
@@ -26,7 +26,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "Rpnx6VXYUeMOfFj5VItiAUnMw4DP4-fHCPZIC92GvlU"
+    public static var token: String? = "KEjUUaVPhqtPIFUhuavI1PAqd6pWiiQ3C9QYxmH990o"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
@@ -36,13 +36,13 @@ public class MaaS {
     public static var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
     public static var supportForm = "maasexample://main/maasSupportForm"
     
-    public func showActiveFlow() -> UIViewController {
-        let active = M_ActiveSubController()
+    public func showActiveFlow() -> M_ActiveSubController {
+        let active = M_ActiveSubController(analyticsManager: analyticsManager)
         return active
     }
     
-    public func showChooseFlow() -> UIViewController {
-        let choose = M_ChooseSubController()
+    public func showChooseFlow() -> M_ChooseSubController {
+        let choose = M_ChooseSubController(analyticsManager: analyticsManager)
         return choose
     }
     

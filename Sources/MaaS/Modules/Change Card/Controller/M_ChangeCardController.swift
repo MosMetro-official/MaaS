@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreAnalytics
 
 protocol CardChangeDisplayLogic: AnyObject {
     func requestChangeCard()
@@ -18,17 +19,21 @@ protocol CardChangeDisplayLogic: AnyObject {
 class M_ChangeCardController: UIViewController {
     
     private let nestedView = M_ChangeCardView.loadFromNib()
+    private var safariController: SFSafariViewController?
+    private var analyticsEvents = M_AnalyticsEvents()
+    private var analyticsManager : _AnalyticsManager
+    
     var interactor: CardChangeInteractor?
     private(set) var router: (CardChangeRoutingLogic & CardChangeDataPassing)?
-    private var safariController: SFSafariViewController?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -74,7 +79,7 @@ class M_ChangeCardController: UIViewController {
         interactor?.requestLoading(request)
         hideSafariController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.router?.routeToResultScreen(.success)
+                self.router?.routeToResultScreen(.success, analyticsManager: self.analyticsManager)
             }
         }
     }
@@ -94,7 +99,7 @@ class M_ChangeCardController: UIViewController {
         interactor?.requestLoading(request)
         hideSafariController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.router?.routeToResultScreen(.failure)
+                self.router?.routeToResultScreen(.failure, analyticsManager: self.analyticsManager)
             }
         }
     }

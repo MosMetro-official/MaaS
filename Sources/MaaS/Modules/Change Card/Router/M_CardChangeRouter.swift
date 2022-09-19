@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import CoreAnalytics
 
 protocol CardChangeRoutingLogic: AnyObject {
     func popViewController()
     func presentSafariController(_ controller: UIViewController)
-    func routeToResultScreen(_ model: M_CardChangeModels.Request.ResultModel)
+    func routeToResultScreen(_ model: M_CardChangeModels.Request.ResultModel, analyticsManager: _AnalyticsManager)
 }
 
 protocol CardChangeDataPassing: AnyObject {
@@ -35,8 +36,8 @@ final class M_CardChangeRouter: CardChangeRoutingLogic, CardChangeDataPassing {
         controller?.present(safariController, animated: true)
     }
     
-    func routeToResultScreen(_ model: M_CardChangeModels.Request.ResultModel) {
-        let resultController = M_ResultController()
+    func routeToResultScreen(_ model: M_CardChangeModels.Request.ResultModel, analyticsManager: _AnalyticsManager) {
+        let resultController = M_ResultController(analyticsManager: analyticsManager)
         guard let userInfo = dataStore?.userInfo else { return }
         switch model {
         case .success:

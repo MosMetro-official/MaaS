@@ -7,13 +7,15 @@
 
 import UIKit
 import MaaS
+import CoreAnalytics
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
-    private let maas = MaaS()
+    private let analyticsManager = AnalyticsManager(engines: [YandexAnalyticsEngine()])
+    private var maas: MaaS!
     
     private var oldMaskedPan: String?
     private var newMaskedPan: String?
@@ -42,6 +44,7 @@ class ViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        maas = MaaS(analyticsManager: analyticsManager)
         title = "Личный кабинет"
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)

@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreAnalytics
 
 protocol ActiveDisplayLogic: AnyObject {
     func dismiss()
@@ -26,18 +27,20 @@ public class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
     private var safariController: SFSafariViewController?
+    private var analyticsManager : _AnalyticsManager
 
     var interactor: ActiveSubscriptionInteractor?
     var router: (ActiveRoutingLogic & ActiveDataPassing)?
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     public override func loadView() {
@@ -95,7 +98,7 @@ extension M_ActiveSubController: ActiveDisplayLogic {
     }
     
     func pushChangeCardScreen() {
-        router?.routeToChangeCard()
+        router?.routeToChangeCard(analyticsManager: analyticsManager)
     }
     
     func pushDebtScreen() {

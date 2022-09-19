@@ -6,10 +6,11 @@
 //
 
 import OnBoardingModule
+import CoreAnalytics
 
 protocol ActiveRoutingLogic: AnyObject {
     func dismiss()
-    func routeToChangeCard()
+    func routeToChangeCard(analyticsManager: _AnalyticsManager)
     func routeToOnboarding()
     func routeToHistoryTrips()
     func routeToDebtNotifications()
@@ -30,8 +31,8 @@ final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
         self.dataStore = dataStore
     }
     
-    func routeToChangeCard() {
-        let changeCardController = M_ChangeCardController()
+    func routeToChangeCard(analyticsManager: _AnalyticsManager) {
+        let changeCardController = M_ChangeCardController(analyticsManager: analyticsManager)
         guard
             let activeDataStore = dataStore,
             let changeCardDataStore = changeCardController.router?.dataStore else {

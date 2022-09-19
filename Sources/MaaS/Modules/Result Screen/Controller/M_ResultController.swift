@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreAnalytics
 
 protocol M_ResScreenDisplayLogic: AnyObject {
     func showOnboarding()
@@ -22,18 +23,20 @@ final class M_ResultController: UIViewController {
     
     private let nestedView = M_ResultView.loadFromNib()
     private var safariController: SFSafariViewController?
+    private var analyticsManager : _AnalyticsManager
     
     var interactor: M_ResScreenBusinessLogic?
     var router: (M_ResScreenRoutingLogic & M_ResScreenDataPassing)?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -106,7 +109,7 @@ extension M_ResultController: M_ResScreenDisplayLogic {
     }
     
     func popToActiveController() {
-        router?.routeToActive(with: "")
+        router?.popToActiveWithSuccessSub(analyticsManager: analyticsManager)
     }
     
     func popToActiveControllerWith(maskedPan: String) {

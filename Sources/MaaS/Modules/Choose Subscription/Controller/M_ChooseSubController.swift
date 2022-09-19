@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreAnalytics
 
 protocol M_ChooseSubscriptionDisplayLogic: AnyObject {
     func dismiss()
@@ -15,25 +16,29 @@ protocol M_ChooseSubscriptionDisplayLogic: AnyObject {
     func displaySubscriptions(_ viewModel: M_ChooseSubscriptionModels.ViewModel)
 }
 
-final class M_ChooseSubController: UIViewController {
+public final class M_ChooseSubController: UIViewController {
     
     private let nestedView = M_ChooseSubView.loadFromNib()
+    private var analyticsEvents = M_AnalyticsEvents()
+    private var analyticsManager : _AnalyticsManager
+    
     var interactor: M_ChooseSubscriptionBusinessLogic?
     var router: M_ChooseSubscriptionRoutingLogic?
     
-    override func loadView() {
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
+        setup()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func loadView() {
         super.loadView()
         self.view = nestedView
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
     }
     
     private func setup() {
@@ -44,7 +49,7 @@ final class M_ChooseSubController: UIViewController {
         self.router = router
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         interactor?.fetchSubscriptions()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -55,7 +60,7 @@ final class M_ChooseSubController: UIViewController {
         )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Подписка"
         navigationController?.navigationBar.titleTextAttributes = [
@@ -83,7 +88,7 @@ extension M_ChooseSubController: M_ChooseSubscriptionDisplayLogic {
     }
     
     func pushBuySubscription() {
-        router?.routeToBuySubscription()
+        router?.routeToBuySubscription(analytics: analyticsManager)
     }
     
     func dismiss() {

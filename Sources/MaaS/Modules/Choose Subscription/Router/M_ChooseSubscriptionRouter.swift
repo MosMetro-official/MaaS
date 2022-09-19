@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreAnalytics
 
 protocol M_ChooseSubscriptionRoutingLogic: AnyObject {
     func dismiss()
-    func routeToBuySubscription()
+    func routeToBuySubscription(analytics: _AnalyticsManager)
 }
 
 protocol M_ChooseSubscriptionDataPassing: AnyObject {
@@ -26,8 +27,8 @@ final class M_ChooseSubscriptionRouter: M_ChooseSubscriptionRoutingLogic, M_Choo
         self.dataStore = dataStore
     }
     
-    func routeToBuySubscription() {
-        let buySubscription = M_BuySubController()
+    func routeToBuySubscription(analytics: _AnalyticsManager) {
+        let buySubscription = M_BuySubController(analyticsManager: analytics)
         guard
             let controller = controller,
             let dataStore = dataStore,

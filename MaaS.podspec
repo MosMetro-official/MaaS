@@ -35,6 +35,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'SDWebImage'
   spec.dependency 'OnBoardingModule'
   spec.dependency 'CoreAnalytics'
+  spec.dependency 'YandexMobileMetrica'
 
   spec.resource_bundle = { 'MaaS' => 'Sources/MaaS/**/*.{png,jpeg,jpg,pdf,storyboard,xib,xcassets,otf,ttf}' }
 
@@ -45,6 +46,8 @@ Pod::Spec.new do |spec|
     test_spec.dependency 'SDWebImage'
     test_spec.dependency 'OnBoardingModule'
     test_spec.dependency 'CoreAnalytics'
+    test_spec.dependency 'YandexMobileMetrica'
+
   end
 
 end

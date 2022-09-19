@@ -138,6 +138,7 @@
 		954276A628D216330049F718 /* M_DebtNotifification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954276A528D216330049F718 /* M_DebtNotifification.swift */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		954C741028D8AC1900C610C3 /* AnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
@@ -345,6 +346,7 @@
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		954276A528D216330049F718 /* M_DebtNotifification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotifification.swift; sourceTree = "<group>"; };
+		954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEngine.swift; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
 		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -1232,6 +1234,7 @@
 				953E96AB282ED95E00374DF2 /* AppDelegate.swift */,
 				953E96AD282ED95E00374DF2 /* SceneDelegate.swift */,
 				953E96AF282ED95E00374DF2 /* ViewController.swift */,
+				954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */,
 				9533A603285C90B300D77375 /* MaaSCell.swift */,
 				9533A602285C90B300D77375 /* MaaSCell.xib */,
 				9533A606285C91A700D77375 /* TariffCell.swift */,
@@ -1739,6 +1742,7 @@
 				9533A608285C91A700D77375 /* TariffCell.swift in Sources */,
 				953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */,
 				953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */,
+				954C741028D8AC1900C610C3 /* AnalyticsEngine.swift in Sources */,
 				9533A605285C90B300D77375 /* MaaSCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CoreAnalytics
 import OnBoardingModule
 
 protocol M_ResScreenRoutingLogic: AnyObject {
     func routeToOnboarding()
     func popViewController()
     func routeToActive(with maskedPan: String)
+    func popToActiveWithSuccessSub(analyticsManager: _AnalyticsManager)
     func showSupportController(_ supportController: UIViewController)
 }
 
@@ -34,15 +36,15 @@ final class M_ResScreenRouter: M_ResScreenRoutingLogic, M_ResScreenDataPassing {
     }
     
     func routeToActive(with maskedPan: String) {
-        if maskedPan != "" {
-            guard let activeController = controller?.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
-            activeController.router?.dataStore?.maskedPan = maskedPan
-            controller?.navigationController?.popToRootViewController(animated: true)
-        } else {
-            let activeController = M_ActiveSubController()
-            controller?.navigationController?.viewControllers[0] = activeController
-            controller?.navigationController?.popToRootViewController(animated: true)
-        }
+        guard let activeController = controller?.navigationController?.viewControllers.first as? M_ActiveSubController else { return }
+        activeController.router?.dataStore?.maskedPan = maskedPan
+        controller?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func popToActiveWithSuccessSub(analyticsManager: _AnalyticsManager) {
+        let activeController = M_ActiveSubController(analyticsManager: analyticsManager)
+        controller?.navigationController?.viewControllers[0] = activeController
+        controller?.navigationController?.popToRootViewController(animated: true)
     }
     
     func routeToOnboarding() {

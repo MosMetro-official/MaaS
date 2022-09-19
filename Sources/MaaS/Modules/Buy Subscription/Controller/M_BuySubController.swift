@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreAnalytics
 
 protocol M_BuySubscriptionDisplayLogic: AnyObject {
     func popViewController()
@@ -18,18 +19,22 @@ protocol M_BuySubscriptionDisplayLogic: AnyObject {
 final class M_BuySubController: UIViewController {
     
     private let nestedView = M_BuySubView.loadFromNib()
+    private var paymentController: SFSafariViewController?
+    private var analyticsEvents = M_AnalyticsEvents()
+    private var analyticsManager : _AnalyticsManager
+    
     var interactor: M_BuySubscriptionBusinessLogic?
     var router: (M_BuySubscriptionRoutingLogic & M_BuySubscriptionDataPassing)?
-    var paymentController: SFSafariViewController?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setup() {
@@ -67,7 +72,7 @@ final class M_BuySubController: UIViewController {
         interactor?.requestLoading(request)
         hidePaymentController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.router?.routeToResultScreen(.success)
+                self.router?.routeToResultScreen(.success, analytics: self.analyticsManager)
             }
         }
     }
@@ -77,7 +82,7 @@ final class M_BuySubController: UIViewController {
         interactor?.requestLoading(request)
         hidePaymentController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.router?.routeToResultScreen(.failure)
+                self.router?.routeToResultScreen(.failure, analytics: self.analyticsManager)
             }
         }
     }
