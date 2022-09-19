@@ -10,8 +10,8 @@ target 'MaaS' do
   pod 'CoreTableView'
   pod 'MMCoreNetworkCallbacks'
   pod 'SDWebImage', :modular_headers => true
-  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/OnBoardingModule'
-  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/CoreExtensions'
+  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
+  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
 
 end
 
@@ -22,8 +22,8 @@ target 'MaaSExample' do
   pod 'CoreTableView'
   pod 'MMCoreNetworkCallbacks'
   pod 'SDWebImage', :modular_headers => true
-  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/OnBoardingModule'
-  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/CoreExtensions'
+  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
+  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
 
 end
 
@@ -34,7 +34,7 @@ target 'MaaSTests' do
   pod 'CoreTableView'
   pod 'MMCoreNetworkCallbacks'
   pod 'SDWebImage', :modular_headers => true
-  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/OnBoardingModule'
-  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/CoreExtensions'
+  pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
+  pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
 
 end
