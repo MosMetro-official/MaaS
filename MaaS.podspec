@@ -34,6 +34,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'CoreTableView'
   spec.dependency 'SDWebImage'
   spec.dependency 'OnBoardingModule'
+  spec.dependency 'CoreAnalytics'
 
   spec.resource_bundle = { 'MaaS' => 'Sources/MaaS/**/*.{png,jpeg,jpg,pdf,storyboard,xib,xcassets,otf,ttf}' }
 
@@ -43,6 +44,7 @@ Pod::Spec.new do |spec|
     test_spec.dependency 'CoreTableView'
     test_spec.dependency 'SDWebImage'
     test_spec.dependency 'OnBoardingModule'
+    test_spec.dependency 'CoreAnalytics'
   end
 
 end

@@ -145,6 +145,8 @@
 		95795B6F28531C8300634754 /* Ext+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6E28531C8300634754 /* Ext+UIDevice.swift */; };
 		95795B7228531F9100634754 /* M_Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B7128531F9100634754 /* M_Subscription.swift */; };
 		95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B732853368800634754 /* MaaSNetworkDelegate.swift */; };
+		958B7F2128D887F700AA8D76 /* M_Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958B7F1F28D887F700AA8D76 /* M_Analytics.swift */; };
+		958B7F2228D887F700AA8D76 /* M_ECommerceEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */; };
 		9595E21B285B4C0900375863 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595E21A285B4C0900375863 /* Ext+String.swift */; };
 		959DAD41285A45AB005D3344 /* M_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959DAD40285A45AB005D3344 /* M_UserInfo.swift */; };
 		95A41D042854AEDB00637FA6 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; };
@@ -350,6 +352,8 @@
 		95795B6E28531C8300634754 /* Ext+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIDevice.swift"; sourceTree = "<group>"; };
 		95795B7128531F9100634754 /* M_Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Subscription.swift; sourceTree = "<group>"; };
 		95795B732853368800634754 /* MaaSNetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSNetworkDelegate.swift; sourceTree = "<group>"; };
+		958B7F1F28D887F700AA8D76 /* M_Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_Analytics.swift; sourceTree = "<group>"; };
+		958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ECommerceEvents.swift; sourceTree = "<group>"; };
 		9595E21A285B4C0900375863 /* Ext+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
 		959DAD40285A45AB005D3344 /* M_UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserInfo.swift; sourceTree = "<group>"; };
 		95A41D082854B4E300637FA6 /* M_DebtInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_DebtInfo.swift; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 		95092080282E55DC00C4E573 /* MaaS */ = {
 			isa = PBXGroup;
 			children = (
+				958B7F1E28D887F700AA8D76 /* _Analytics */,
 				9515495728D4A29300B16222 /* Services */,
 				95795B6828531AFE00634754 /* Models */,
 				95092082282E55DC00C4E573 /* Custom Elements */,
@@ -1271,6 +1276,15 @@
 			path = Subscriptions;
 			sourceTree = "<group>";
 		};
+		958B7F1E28D887F700AA8D76 /* _Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				958B7F1F28D887F700AA8D76 /* M_Analytics.swift */,
+				958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */,
+			);
+			path = _Analytics;
+			sourceTree = "<group>";
+		};
 		95A4FE892865FDC200C3A967 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,6 +1683,7 @@
 				95795B6B28531B2700634754 /* AuthClient.swift in Sources */,
 				95154A0B28D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */,
 				951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */,
+				958B7F2228D887F700AA8D76 /* M_ECommerceEvents.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
 				950920C5282E55DC00C4E573 /* Ext+UITableViewCell.swift in Sources */,
 				950920C3282E55DC00C4E573 /* GradientProgressView.swift in Sources */,
@@ -1711,6 +1726,7 @@
 				95154A9628D4F06600B16222 /* M_EmptyCell.swift in Sources */,
 				95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */,
 				95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */,
+				958B7F2128D887F700AA8D76 /* M_Analytics.swift in Sources */,
 				9595E21B285B4C0900375863 /* Ext+String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

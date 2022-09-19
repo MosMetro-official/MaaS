@@ -1,7 +1,14 @@
 import UIKit
+import CoreAnalytics
 import MMCoreNetworkCallbacks
 
 public class MaaS {
+    
+    private var analyticsManager : _AnalyticsManager
+    
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+    }
     
     static var bundle: Bundle {
         let podBundle = Bundle(for: self)
@@ -28,9 +35,6 @@ public class MaaS {
     public static var declinedUrlCard = "maasexample://main/maasChangeCardDeclined"
     public static var canceledUrlCard = "maasexample://main/maasChangeCardCanceled"
     public static var supportForm = "maasexample://main/maasSupportForm"
-    
-    public init() { }
-        
     
     public func showActiveFlow() -> UIViewController {
         let active = M_ActiveSubController()
