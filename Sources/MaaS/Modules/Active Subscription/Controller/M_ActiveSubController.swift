@@ -30,7 +30,7 @@ public class M_ActiveSubController: UIViewController {
     private var analyticsEvents = M_AnalyticsEvents()
     private var analyticsManager : _AnalyticsManager
 
-    var interactor: M_ActiveSubscriptionInteractor?
+    var interactor: M_ActiveSubBusinessLogic?
     var router: (M_ActiveRoutingLogic & M_ActiveDataPassing)?
     
     public init(analyticsManager: _AnalyticsManager) {

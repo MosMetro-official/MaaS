@@ -6,15 +6,15 @@ final class MaaSTests: XCTestCase {
     
     var sut: MaaS!
     
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         let manager: _AnalyticsManager = AnalyticsManager(engines: [])
         sut = MaaS(analyticsManager: manager)
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         sut = nil
-        super.tearDown()
+        try super.tearDownWithError()
     }
     
     func testActiveSubFlow() {

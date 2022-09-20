@@ -6,30 +6,37 @@
 //
 
 import XCTest
+import CoreAnalytics
+@testable import MaaS
 
 final class M_ActiveSubControllerTests: XCTestCase {
+    
+    var sut: M_ActiveSubController!
+    var interactor: M_ActiveSubInteractorMock!
+    var window: UIWindow!
+    var analyticsManager: _AnalyticsManager!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        window = UIWindow()
+        interactor = M_ActiveSubInteractorMock()
+        analyticsManager = AnalyticsManager(engines: [])
+        sut = M_ActiveSubController(analyticsManager: analyticsManager)
+        sut.interactor = interactor
+        window.addSubview(sut.view)
+        RunLoop.current.run(until: Date())
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        analyticsManager = nil
+        interactor = nil
+        sut = nil
+        window = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testActiveSubControllerFetchUserInfo() {
+        sut.viewDidLoad()
+        XCTAssertTrue(interactor.isCalledFetchUser, "Not started request user info")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

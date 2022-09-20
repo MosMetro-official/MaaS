@@ -141,8 +141,9 @@
 		954C741528D9D87000C610C3 /* M_ActiveSubControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C741428D9D87000C610C3 /* M_ActiveSubControllerTests.swift */; };
 		954C741728D9D88400C610C3 /* M_ActiveSubInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C741628D9D88400C610C3 /* M_ActiveSubInteractorTests.swift */; };
 		954C741928D9D89500C610C3 /* M_ActiveSubPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C741828D9D89500C610C3 /* M_ActiveSubPresenterTests.swift */; };
-		954C741B28D9D8A400C610C3 /* M_ActiveSubRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C741A28D9D8A400C610C3 /* M_ActiveSubRouterTests.swift */; };
 		954C742028D9DA0200C610C3 /* M_ActiveSubControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C741F28D9DA0200C610C3 /* M_ActiveSubControllerMock.swift */; };
+		954C742228DA483300C610C3 /* M_ActiveSubPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C742128DA483300C610C3 /* M_ActiveSubPresenterMock.swift */; };
+		954C742428DA4D7F00C610C3 /* M_ActiveSubInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C742328DA4D7F00C610C3 /* M_ActiveSubInteractorMock.swift */; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
@@ -352,8 +353,9 @@
 		954C741428D9D87000C610C3 /* M_ActiveSubControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubControllerTests.swift; sourceTree = "<group>"; };
 		954C741628D9D88400C610C3 /* M_ActiveSubInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubInteractorTests.swift; sourceTree = "<group>"; };
 		954C741828D9D89500C610C3 /* M_ActiveSubPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubPresenterTests.swift; sourceTree = "<group>"; };
-		954C741A28D9D8A400C610C3 /* M_ActiveSubRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubRouterTests.swift; sourceTree = "<group>"; };
 		954C741F28D9DA0200C610C3 /* M_ActiveSubControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubControllerMock.swift; sourceTree = "<group>"; };
+		954C742128DA483300C610C3 /* M_ActiveSubPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubPresenterMock.swift; sourceTree = "<group>"; };
+		954C742328DA4D7F00C610C3 /* M_ActiveSubInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_ActiveSubInteractorMock.swift; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
 		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -1267,7 +1269,6 @@
 				954C741428D9D87000C610C3 /* M_ActiveSubControllerTests.swift */,
 				954C741628D9D88400C610C3 /* M_ActiveSubInteractorTests.swift */,
 				954C741828D9D89500C610C3 /* M_ActiveSubPresenterTests.swift */,
-				954C741A28D9D8A400C610C3 /* M_ActiveSubRouterTests.swift */,
 			);
 			path = "Active Subscription";
 			sourceTree = "<group>";
@@ -1276,6 +1277,8 @@
 			isa = PBXGroup;
 			children = (
 				954C741F28D9DA0200C610C3 /* M_ActiveSubControllerMock.swift */,
+				954C742128DA483300C610C3 /* M_ActiveSubPresenterMock.swift */,
+				954C742328DA4D7F00C610C3 /* M_ActiveSubInteractorMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1782,12 +1785,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				954C742228DA483300C610C3 /* M_ActiveSubPresenterMock.swift in Sources */,
+				954C742428DA4D7F00C610C3 /* M_ActiveSubInteractorMock.swift in Sources */,
 				954C742028D9DA0200C610C3 /* M_ActiveSubControllerMock.swift in Sources */,
 				954C741528D9D87000C610C3 /* M_ActiveSubControllerTests.swift in Sources */,
 				954C741728D9D88400C610C3 /* M_ActiveSubInteractorTests.swift in Sources */,
 				95ADB2EF28D500AB00F5BEEE /* MaaSTests.swift in Sources */,
 				954C741928D9D89500C610C3 /* M_ActiveSubPresenterTests.swift in Sources */,
-				954C741B28D9D8A400C610C3 /* M_ActiveSubRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

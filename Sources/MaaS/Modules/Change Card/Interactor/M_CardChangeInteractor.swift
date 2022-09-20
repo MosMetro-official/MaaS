@@ -7,17 +7,17 @@
 
 import CoreTableView
 
-protocol CardChangeInteractor: AnyObject {
+protocol M_CardChangeBusinessLogic: AnyObject {
     func makeRequset()
     func sendRequestCardKey()
     func requestLoading(_ request: M_CardChangeModels.Request.Loading)
 }
 
-protocol CardChangeDataStore: AnyObject {
+protocol M_CardChangeDataStore: AnyObject {
     var userInfo: M_UserInfo? { get set }
 }
 
-final class M_CardChangeInteractor: CardChangeInteractor, CardChangeDataStore {
+final class M_CardChangeInteractor: M_CardChangeBusinessLogic, M_CardChangeDataStore {
     
     var presenter: CardChangePresenter?
     var userInfo: M_UserInfo?

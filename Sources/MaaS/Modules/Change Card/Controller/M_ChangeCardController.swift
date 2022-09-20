@@ -23,7 +23,7 @@ class M_ChangeCardController: UIViewController {
     private var analyticsEvents = M_AnalyticsEvents()
     private var analyticsManager : _AnalyticsManager
     
-    var interactor: CardChangeInteractor?
+    var interactor: M_CardChangeBusinessLogic?
     private(set) var router: (CardChangeRoutingLogic & CardChangeDataPassing)?
     
     public init(analyticsManager: _AnalyticsManager) {

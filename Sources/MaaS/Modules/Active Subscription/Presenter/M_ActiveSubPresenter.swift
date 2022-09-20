@@ -7,7 +7,7 @@
 
 import CoreTableView
 
-protocol M_ActiveSubscriptionPresenter: AnyObject {
+protocol M_ActiveSubPresentationLogic: AnyObject {
     func prepareResultState(_ response: M_ActiveSubModels.Response.UserInfo)
     func prepareError(_ response: M_ActiveSubModels.Response.Error)
     func prepareLoading(_ response: M_ActiveSubModels.Response.Loading)
@@ -15,7 +15,7 @@ protocol M_ActiveSubscriptionPresenter: AnyObject {
     func prepareDebtNotifications(_ response: M_ActiveSubModels.Response.Debt)
 }
 
-final class M_ActiveSubPresenter: M_ActiveSubscriptionPresenter {
+final class M_ActiveSubPresenter: M_ActiveSubPresentationLogic {
     
     weak var controller: M_ActiveDisplayLogic?
     private var builder: ActiveStateBuilder = M_ActiveStateBuilder()

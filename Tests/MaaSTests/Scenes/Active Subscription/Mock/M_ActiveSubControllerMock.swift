@@ -5,7 +5,7 @@
 //  Created by Слава Платонов on 20.09.2022.
 //
 
-import UIKit
+import Foundation
 @testable import MaaS
 
 final class M_ActiveSubControllerMock: M_ActiveDisplayLogic {
@@ -62,7 +62,7 @@ final class M_ActiveSubControllerMock: M_ActiveDisplayLogic {
         isCalledShowDebtNotification = true
     }
     
-    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState) {
+    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState) {
         isCalledDisplayUserInfo = true
     }
 }

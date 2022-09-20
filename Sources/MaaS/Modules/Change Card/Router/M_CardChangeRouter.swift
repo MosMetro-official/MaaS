@@ -15,15 +15,15 @@ protocol CardChangeRoutingLogic: AnyObject {
 }
 
 protocol CardChangeDataPassing: AnyObject {
-    var dataStore: CardChangeDataStore? { get set }
+    var dataStore: M_CardChangeDataStore? { get set }
 }
 
 final class M_CardChangeRouter: CardChangeRoutingLogic, CardChangeDataPassing {
     
     weak var controller: M_ChangeCardController?
-    var dataStore: CardChangeDataStore?
+    var dataStore: M_CardChangeDataStore?
     
-    init(controller: M_ChangeCardController? = nil, dataStore: CardChangeDataStore? = nil) {
+    init(controller: M_ChangeCardController? = nil, dataStore: M_CardChangeDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }

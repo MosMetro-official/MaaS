@@ -10,7 +10,7 @@ import XCTest
 
 final class M_ActiveSubPresenterTests: XCTestCase {
     
-    var sut: M_ActiveSubscriptionPresenter!
+    var sut: M_ActiveSubPresentationLogic!
     var controller: M_ActiveSubControllerMock!
 
     override func setUpWithError() throws {

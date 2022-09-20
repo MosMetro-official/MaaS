@@ -7,7 +7,7 @@
 
 import CoreTableView
 
-protocol M_ActiveSubscriptionInteractor: AnyObject {
+protocol M_ActiveSubBusinessLogic: AnyObject {
     func fetchUserInfo()
     func fetchSupportUrl()
     func checkCardUpdates()
@@ -19,9 +19,9 @@ protocol M_ActiveDataStore: AnyObject {
     var maskedPan: String? { get set }
 }
 
-final class M_ActiveSubInteractor: M_ActiveSubscriptionInteractor, M_ActiveDataStore {
+final class M_ActiveSubInteractor: M_ActiveSubBusinessLogic, M_ActiveDataStore {
     
-    var presenter: M_ActiveSubscriptionPresenter?
+    var presenter: M_ActiveSubPresentationLogic?
     var userInfo: M_UserInfo?
     var notifications: [M_MaasDebtNotifification]?
     var maskedPan: String? {
@@ -32,7 +32,7 @@ final class M_ActiveSubInteractor: M_ActiveSubscriptionInteractor, M_ActiveDataS
     
     private var model = M_ActiveSubModels.Response.UserInfo()
     
-    init(presenter: M_ActiveSubscriptionPresenter? = nil) {
+    init(presenter: M_ActiveSubPresentationLogic? = nil) {
         self.presenter = presenter
     }
     
