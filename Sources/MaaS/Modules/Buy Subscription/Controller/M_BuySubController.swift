@@ -13,7 +13,7 @@ protocol M_BuySubscriptionDisplayLogic: AnyObject {
     func popViewController()
     func startRequestPayment()
     func displayPaymentController(_ url: URL)
-    func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel.ViewState)
+    func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel)
 }
 
 final class M_BuySubController: UIViewController {
@@ -108,8 +108,8 @@ final class M_BuySubController: UIViewController {
 
 extension M_BuySubController: M_BuySubscriptionDisplayLogic {
     
-    func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel.ViewState) {
-        nestedView.viewModel = viewModel
+    func displaySubscription(_ viewModel: M_BuySubscriptionModels.ViewModel) {
+        nestedView.viewState = viewModel.viewState
     }
     
     func displayPaymentController(_ url: URL) {

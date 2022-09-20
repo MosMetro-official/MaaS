@@ -8,18 +8,18 @@
 import UIKit
 import CoreTableView
 
-public class M_DebtNotificationsView: UIView {
+final class M_DebtNotificationsView: UIView {
     
     struct ViewState {
+        
+        let state: [State]
+        let dataState: DataState
         
         enum DataState {
             case loaded
             case loading(_Loading)
             case error(_Error)
         }
-        
-        let state: [State]
-        let dataState: DataState
         
         struct Loading: _Loading {
             let title: String
@@ -34,14 +34,12 @@ public class M_DebtNotificationsView: UIView {
         }
         
         struct Header: _HeaderNotification {
-            var id: String
-            
+            let id: String
             let height: CGFloat
         }
         
         struct Notification: _Notification {
-            var id: String
-            
+            let id: String
             let title: String
             let descr: String
             let onItemSelect: Command<Void>
@@ -54,15 +52,7 @@ public class M_DebtNotificationsView: UIView {
     var viewState: ViewState = .initial {
         didSet {
             DispatchQueue.main.async {
-//                self.render()
-            }
-        }
-    }
-    
-    var viewModel: M_DebtUserNotificationsModels.ViewModel.ViewState = .initial {
-        didSet {
-            DispatchQueue.main.async {
-                self.renderViewModel()
+                self.render()
             }
         }
     }
@@ -72,24 +62,6 @@ public class M_DebtNotificationsView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         tableView.shouldUseReload = true
-    }
-    
-    private func renderViewModel() {
-        switch viewState.dataState {
-        case .loaded:
-            removeError(from: self)
-            removeLoading(from: self)
-            tableView.isHidden = false
-            tableView.viewStateInput = viewState.state
-        case .loading(let loading):
-            tableView.isHidden = true
-            removeError(from: self)
-            showLoading(on: self, data: loading)
-        case .error(let error):
-            tableView.isHidden = true
-            removeLoading(from: self)
-            showError(on: self, data: error)
-        }
     }
     
     private func render() {

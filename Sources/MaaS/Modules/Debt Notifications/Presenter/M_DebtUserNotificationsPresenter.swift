@@ -24,13 +24,15 @@ final class M_DebtUserNotificationsPresenter: M_DebtUserNotificationsPresentatio
     
     func prepareViewModel(_ response: M_DebtUserNotificationsModels.Response.Notifications) {
         let states = makeState(from: response)
-        let viewModel = M_DebtUserNotificationsModels.ViewModel.ViewState(state: states, dataState: .loaded)
+        let viewState = M_DebtNotificationsView.ViewState(state: states, dataState: .loaded)
+        let viewModel = M_DebtUserNotificationsModels.ViewModel(viewState: viewState)
         controller?.displayNotifications(viewModel)
     }
     
     func prepareLoadingState(_ response: M_DebtUserNotificationsModels.Response.Loading) {
-        let loading = M_DebtUserNotificationsModels.ViewModel.ViewState.Loading(title: response.title, descr: response.descr)
-        let viewModel = M_DebtUserNotificationsModels.ViewModel.ViewState(state: [], dataState: .loading(loading))
+        let loading = M_DebtNotificationsView.ViewState.Loading(title: response.title, descr: response.descr)
+        let viewState = M_DebtNotificationsView.ViewState(state: [], dataState: .loading(loading))
+        let viewModel = M_DebtUserNotificationsModels.ViewModel(viewState: viewState)
         controller?.displayNotifications(viewModel)
     }
     
@@ -43,13 +45,14 @@ final class M_DebtUserNotificationsPresenter: M_DebtUserNotificationsPresentatio
         let onClose = Command { [weak self] in
             self?.controller?.popViewController()
         }
-        let error = M_DebtUserNotificationsModels.ViewModel.ViewState.Error(
+        let error = M_DebtNotificationsView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewModel = M_DebtUserNotificationsModels.ViewModel.ViewState(state: [], dataState: .error(error))
+        let viewState = M_DebtNotificationsView.ViewState(state: [], dataState: .error(error))
+        let viewModel = M_DebtUserNotificationsModels.ViewModel(viewState: viewState)
         controller?.displayNotifications(viewModel)
     }
     
@@ -77,12 +80,8 @@ final class M_DebtUserNotificationsPresenter: M_DebtUserNotificationsPresentatio
                     withConstrainedWidth: UIScreen.main.bounds.width - 48,
                     font: Appearance.getFont(.card)
                 )
-                let onNotification = Command { [weak self] in
-                    if let url = URL(string: notification.url) {
-                        // read message and display safari controller
-                    } else {
-                        return
-                    }
+                let onNotification = Command {
+                    self.controller?.handleNotification(notification)
                 }
                 let notification = M_DebtNotificationsView.ViewState.Notification(
                     id: notification.id,

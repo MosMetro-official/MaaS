@@ -8,7 +8,7 @@
 import OnBoardingModule
 import CoreAnalytics
 
-protocol ActiveRoutingLogic: AnyObject {
+protocol M_ActiveRoutingLogic: AnyObject {
     func dismiss()
     func routeToChangeCard(analyticsManager: _AnalyticsManager)
     func routeToOnboarding()
@@ -18,15 +18,16 @@ protocol ActiveRoutingLogic: AnyObject {
     func presentDebtNotification(_ notification: M_MaasDebtNotifification)
 }
 
-protocol ActiveDataPassing: AnyObject {
-    var dataStore: ActiveDataStore? { get }
+protocol M_ActiveDataPassing: AnyObject {
+    var dataStore: M_ActiveDataStore? { get }
 }
 
-final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
-    weak var controller: M_ActiveSubController?
-    var dataStore: ActiveDataStore?
+final class M_ActiveSubRouter: M_ActiveRoutingLogic, M_ActiveDataPassing {
     
-    init(controller: M_ActiveSubController? = nil, dataStore: ActiveDataStore? = nil) {
+    weak var controller: M_ActiveSubController?
+    var dataStore: M_ActiveDataStore?
+    
+    init(controller: M_ActiveSubController? = nil, dataStore: M_ActiveDataStore? = nil) {
         self.controller = controller
         self.dataStore = dataStore
     }
@@ -86,6 +87,8 @@ final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
     }
     
     deinit {
-        print("🥰🥰🥰 ActiveRouter deinited")
+        #if DEBUG
+        print("🥰🥰🥰 Active router deinited")
+        #endif
     }
 }

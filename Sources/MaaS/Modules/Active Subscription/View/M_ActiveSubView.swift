@@ -8,7 +8,7 @@
 import UIKit
 import CoreTableView
 
-class M_ActiveSubView: UIView {
+final class M_ActiveSubView: UIView {
 
     struct ViewState {
         let state: [State]
@@ -111,14 +111,6 @@ class M_ActiveSubView: UIView {
         }
     }
     
-    public var viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState = .loaded([]) {
-        didSet {
-            DispatchQueue.main.async {
-                self.renderViewModel()
-            }
-        }
-    }
-    
     @IBOutlet private weak var tableView: BaseTableView!
     
     override func awakeFromNib() {
@@ -127,34 +119,13 @@ class M_ActiveSubView: UIView {
         tableView.shouldUseReload = true
     }
     
-    private func render() {
+    public func render() {
         switch viewState.dataState {
-        case .loading(let loading):
-            print(loading)
-//            tableView.isHidden = true
-//            removeError(from: self)
-//            showLoading(on: self, data: loading)
         case .loaded:
-            print("loaded")
-//            tableView.isHidden = false
-//            removeLoading(from: self)
-//            removeError(from: self)
-//            tableView.viewStateInput = viewState.state
-        case .error(let error):
-            print(error)
-//            tableView.isHidden = false
-//            removeLoading(from: self)
-//            showError(on: self, data: error)
-        }
-    }
-    
-    public func renderViewModel() {
-        switch viewModel {
-        case .loaded(let state):
             tableView.isHidden = false
             removeLoading(from: self)
             removeError(from: self)
-            tableView.viewStateInput = state
+            tableView.viewStateInput = viewState.state
         case .error(let error):
             tableView.isHidden = false
             removeLoading(from: self)

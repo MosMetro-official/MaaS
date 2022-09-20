@@ -23,22 +23,24 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
     }
     
     func prepareViewModel(_ response: M_ResScreenModels.Response.ResultState) {
-        let viewModel = makeViewModel(from: response)
+        let viewState = makeViewState(from: response)
+        let viewModel = M_ResScreenModels.ViewModel(viewState: viewState)
         controller?.displayResultState(viewModel)
     }
     
     func prepareLoadingState(_ response: M_ResScreenModels.Response.Loading) {
-        let loading = M_ResScreenModels.ViewModel.ViewState.Loading(
+        let loading = M_ResultView.ViewState.Loading(
             title: response.title,
             descr: response.descr
         )
-        let viewModel = M_ResScreenModels.ViewModel.ViewState(
+        let viewState = M_ResultView.ViewState(
             dataState: .loading(loading),
             logo: nil,
             onAction: nil,
             actionTitle: "",
             onClose: nil
         )
+        let viewModel = M_ResScreenModels.ViewModel(viewState: viewState)
         controller?.displayResultState(viewModel)
     }
     
@@ -49,19 +51,20 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
         let onRetry = Command {
             self.controller?.requestSupportUrl(with: response.id)
         }
-        let error = M_ResScreenModels.ViewModel.ViewState.Error(
+        let error = M_ResultView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onClose: onClose,
             onRetry: onRetry
         )
-        let viewModel = M_ResScreenModels.ViewModel.ViewState(
+        let viewState = M_ResultView.ViewState(
             dataState: .error(error),
             logo: nil,
             onAction: nil,
             actionTitle: "",
             onClose: nil
         )
+        let viewModel = M_ResScreenModels.ViewModel(viewState: viewState)
         controller?.displayResultState(viewModel)
     }
     
@@ -70,7 +73,7 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
         controller?.showSupportForm(url)
     }
     
-    private func makeViewModel(from response: M_ResScreenModels.Response.ResultState) -> M_ResScreenModels.ViewModel.ViewState {
+    private func makeViewState(from response: M_ResScreenModels.Response.ResultState) -> M_ResultView.ViewState {
         switch response.res {
         case .sub(let subState):
             switch subState {
@@ -85,18 +88,18 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 let descr = sub.status == .active ?
                 "Мы привязали подписку \(sub.name.ru) к вашей карте" :
                 "Мы привязали подписку \(sub.name.ru) к вашей карте, профиль будет доступен позже"
-                let success = M_ResScreenModels.ViewModel.ViewState.Action(
+                let success = M_ResultView.ViewState.Action(
                     title: "Успешно",
                     descr: descr
                 )
-                let viewModel = M_ResScreenModels.ViewModel.ViewState(
+                let viewState = M_ResultView.ViewState(
                     dataState: .success(success),
                     logo: UIImage.getAssetImage(image: "checkmark"),
                     onAction: onAction,
                     actionTitle: "Как пользоваться",
                     onClose: onClose
                 )
-                return viewModel
+                return viewState
             case .failure(let id):
                 let onAction = Command {
                     self.controller?.requestSupportUrl(with: id)
@@ -104,18 +107,18 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 let onClose = Command {
                     self.controller?.popViewController()
                 }
-                let error = M_ResScreenModels.ViewModel.ViewState.Action(
+                let error = M_ResultView.ViewState.Action(
                     title: "Что-то пошло не так",
                     descr: "Мы уже разбираемся в причине, попробуйте еще раз или напишите нам"
                 )
-                let viewModel = M_ResScreenModels.ViewModel.ViewState(
+                let viewState = M_ResultView.ViewState(
                     dataState: .failure(error),
                     logo: UIImage.getAssetImage(image: "error"),
                     onAction: onAction,
                     actionTitle: "Написать нам",
                     onClose: onClose
                 )
-                return viewModel
+                return viewState
             }
         case .card(let cardState):
             switch cardState {
@@ -124,11 +127,11 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 let onClose = Command {
                     self.controller?.popToActiveControllerWith(maskedPan: card.maskedPan)
                 }
-                let success = M_ResScreenModels.ViewModel.ViewState.Action(
+                let success = M_ResultView.ViewState.Action(
                     title: "Успешно",
                     descr: "Мы поменяли номер вашей карты, а подписку сохранили 😉"
                 )
-                let viewModel = M_ResScreenModels.ViewModel.ViewState(
+                let viewState = M_ResultView.ViewState(
                     dataState: .success(success),
                     logo: UIImage.getAssetImage(image: "checkmark"),
                     onAction: nil,
@@ -136,7 +139,7 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                     onClose: onClose,
                     hideAction: true
                 )
-                return viewModel
+                return viewState
             case .failure:
                 let onAction = Command {
                     self.controller?.requestSupportUrl(with: "")
@@ -144,18 +147,18 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 let onClose = Command {
                     self.controller?.popViewController()
                 }
-                let error = M_ResScreenModels.ViewModel.ViewState.Action(
+                let error = M_ResultView.ViewState.Action(
                     title: "Что-то пошло не так",
                     descr: "Мы уже разбираемся в причине, попробуйте еще раз или напишите нам"
                 )
-                let viewModel = M_ResScreenModels.ViewModel.ViewState(
+                let viewState = M_ResultView.ViewState(
                     dataState: .failure(error),
                     logo: UIImage.getAssetImage(image: "error"),
                     onAction: onAction,
                     actionTitle: "Написать нам",
                     onClose: onClose
                 )
-                return viewModel
+                return viewState
             }
         }
         return .initial

@@ -8,10 +8,10 @@
 import UIKit
 import CoreTableView
 
-class M_ResultView: UIView {
+final class M_ResultView: UIView {
     
     struct ViewState {
-                
+        
         enum DataState {
             case none
             case success(Action)
@@ -50,15 +50,7 @@ class M_ResultView: UIView {
     
     public var viewState: ViewState = .initial {
         didSet {
-            DispatchQueue.main.async {
-//                self.render()
-            }
-        }
-    }
-    
-    public var viewModel: M_ResScreenModels.ViewModel.ViewState = .initial {
-        didSet {
-            renderViewModel()
+            render()
         }
     }
     
@@ -86,40 +78,6 @@ class M_ResultView: UIView {
             [self.logoImageView, self.resultTitleLabel, self.resultDescrLabel, self.actionButton, self.closeButton].forEach { $0?.isHidden = loading }
         }
         animator.startAnimation()
-    }
-    
-    private func renderViewModel() {
-        switch viewModel.dataState {
-        case .none:
-            break
-        case .success(let success):
-            removeError(from: self)
-            removeLoading(from: self)
-            resultTitleLabel.text = success.title
-            resultDescrLabel.text = success.descr
-            actionButton.setTitle(viewState.actionTitle, for: .normal)
-            logoImageView.image = UIImage.getAssetImage(image: "checkmark")
-            setVision(is: viewState.loadState)
-            if let needAction = viewState.hideAction {
-                actionButton.isHidden = needAction
-            }
-        case .failure(let failure):
-            removeError(from: self)
-            removeLoading(from: self)
-            resultTitleLabel.text = failure.title
-            resultDescrLabel.text = failure.descr
-            logoImageView.image = UIImage.getAssetImage(image: "error")
-            actionButton.setTitle(viewState.actionTitle, for: .normal)
-            setVision(is: viewState.loadState)
-        case.loading(let data):
-            setVision(is: viewState.loadState)
-            removeError(from: self)
-            showLoading(on: self, data: data)
-        case .error(let data):
-            setVision(is: viewState.loadState)
-            removeLoading(from: self)
-            showError(on: self, data: data)
-        }
     }
     
     private func render() {

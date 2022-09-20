@@ -8,25 +8,20 @@
 import UIKit
 import CoreTableView
 
-class M_ChangeCardView: UIView {
+final class M_ChangeCardView: UIView {
     
     struct ViewState {
         
-        enum DataState {
-            case loading(_Loading)
-            case loaded
-            case error(_Error)
-        }
-        
-        var dataState: DataState
+        let dataState: DataState
         let cardType: PaySystem
         let cardNumber: String
         let countOfChangeCard: Int
         let onChangeButton: Command<Void>?
         
-        struct Loading: _Loading {
-            let title: String
-            let descr: String
+        enum DataState {
+            case loading(_Loading)
+            case loaded
+            case error(_Error)
         }
         
         struct Error: _Error {
@@ -36,6 +31,11 @@ class M_ChangeCardView: UIView {
             let onClose: Command<Void>
         }
         
+        struct Loading: _Loading {
+            let title: String
+            let descr: String
+        }
+        
         static let initial = ViewState(dataState: .loaded, cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
     }
     
@@ -43,14 +43,6 @@ class M_ChangeCardView: UIView {
         didSet {
             DispatchQueue.main.async {
                 self.render()
-            }
-        }
-    }
-    
-    public var viewModel: M_CardChangeModels.ViewModel.ViewState = .initial {
-        didSet {
-            DispatchQueue.main.async {
-                self.renderViewModel()
             }
         }
     }
@@ -72,7 +64,7 @@ class M_ChangeCardView: UIView {
     }
     
     @IBAction func onChangeButtonTapped() {
-        viewModel.onChangeButton?.perform(with: ())
+        viewState.onChangeButton?.perform(with: ())
     }
     
     private func setupLabels() {
@@ -82,18 +74,18 @@ class M_ChangeCardView: UIView {
         descrLabel.textAlignment = .center
     }
     
-    private func renderViewModel() {
-        switch viewModel.dataState {
+    private func render() {
+        switch viewState.dataState {
         case .loaded:
             [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardCountLabel].forEach { $0?.isHidden = false }
             removeError(from: self)
             removeLoading(from: self)
-            cardView.backgroundColor = UIColor.getCardHolderColor(for: viewModel.cardType)
-            cardImageView.image = UIImage.getCardHolderImage(for: viewModel.cardType)
-            cardNumberLabel.text = "•••• \(viewModel.cardNumber)"
-            changeCardCountLabel.text = viewModel.countOfChangeCard == 0 ? "Смена карты недоступна" : "Осталось смен карты – \(viewModel.countOfChangeCard)"
-            changeCardButton.isHidden = viewModel.countOfChangeCard == 0
-            if viewModel.countOfChangeCard == 0 {
+            cardView.backgroundColor = UIColor.getCardHolderColor(for: viewState.cardType)
+            cardImageView.image = UIImage.getCardHolderImage(for: viewState.cardType)
+            cardNumberLabel.text = "•••• \(viewState.cardNumber)"
+            changeCardCountLabel.text = viewState.countOfChangeCard == 0 ? "Смена карты недоступна" : "Осталось смен карты – \(viewState.countOfChangeCard)"
+            changeCardButton.isHidden = viewState.countOfChangeCard == 0
+            if viewState.countOfChangeCard == 0 {
                 countLabelBottomConstarint.constant = -changeCardButton.frame.height
             }
         case .error(let error):
@@ -105,31 +97,5 @@ class M_ChangeCardView: UIView {
             removeError(from: self)
             showLoading(on: self, data: loading)
         }
-    }
-    
-    private func render() {
-//        switch viewState.dataState {
-//        case .loaded:
-//            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardCountLabel].forEach { $0?.isHidden = false }
-//            removeError(from: self)
-//            removeLoading(from: self)
-//            cardView.backgroundColor = UIColor.getCardHolderColor(for: viewState.cardType)
-//            cardImageView.image = UIImage.getCardHolderImage(for: viewState.cardType)
-//            cardNumberLabel.text = "•••• \(viewState.cardNumber)"
-//            changeCardCountLabel.text = viewState.countOfChangeCard == 0 ? "Смена карты недоступна" : "Осталось смен карты – \(viewState.countOfChangeCard)"
-//            changeCardButton.isHidden = viewState.countOfChangeCard == 0
-//            if viewState.countOfChangeCard == 0 {
-//                countLabelBottomConstarint.constant = -changeCardButton.frame.height
-//            }
-//        case .loading(let loading):
-//            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardButton, changeCardCountLabel].forEach { $0?.isHidden = true }
-//            removeError(from: self)
-//            showLoading(on: self, data: loading)
-//        case .error(let error):
-//            [cardView, cardImageView, cardNumberLabel, titleLabel, descrLabel, changeCardButton, changeCardCountLabel].forEach { $0?.isHidden = true }
-//
-//            removeLoading(from: self)
-//            showError(on: self, data: error)
-//        }
     }
 }

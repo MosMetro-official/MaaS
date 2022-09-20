@@ -6,30 +6,53 @@
 //
 
 import XCTest
+@testable import MaaS
 
 final class M_ActiveSubPresenterTests: XCTestCase {
+    
+    var sut: M_ActiveSubscriptionPresenter!
+    var controller: M_ActiveSubControllerMock!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        controller = M_ActiveSubControllerMock()
+        sut = M_ActiveSubPresenter(controller: controller)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        controller = nil
+        sut = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testActivePresenterPrepareErrorState() {
+        let response = M_ActiveSubModels.Response.Error(title: "Error", descr: "Repeat please", isCardError: true)
+        sut.prepareError(response)
+        XCTAssertTrue(controller.isCalledDisplayUserInfo, "Not started show error state")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testActivePresenterPrepareLoadingState() {
+        let response = M_ActiveSubModels.Response.Loading(title: "Loading", descr: "Wait a little bit")
+        sut.prepareLoading(response)
+        XCTAssertTrue(controller.isCalledDisplayUserInfo, "Not started show loading state")
     }
-
+    
+    func testActivePresenterPrepareResultState() {
+        let response = M_ActiveSubModels.Response.UserInfo()
+        sut.prepareResultState(response)
+        XCTAssertTrue(controller.isCalledDisplayUserInfo, "Not started show result state")
+    }
+    
+    func testActivePresenterPrepareSupportForm() {
+        let response = M_ActiveSubModels.Response.SupportForm(url: "www.test.url.com")
+        sut.prepareSupportForm(response)
+        XCTAssertTrue(controller.isCalledOpenSafari, "Not started show safari controller")
+    }
+    
+    func testActivePresenterPrepare() {
+        let notification = M_MaasDebtNotifification()
+        let response = M_ActiveSubModels.Response.Debt(notification: notification)
+        sut.prepareDebtNotifications(response)
+        XCTAssertTrue(controller.isCalledShowDebtNotification, "Not started show debt notification")
+    }
 }

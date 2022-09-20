@@ -16,7 +16,7 @@ protocol M_ResScreenDisplayLogic: AnyObject {
     func showSupportForm(_ url: URL)
     func requestSupportUrl(with id: String)
     func popToActiveControllerWith(maskedPan: String)
-    func displayResultState(_ viewModel: M_ResScreenModels.ViewModel.ViewState)
+    func displayResultState(_ viewModel: M_ResScreenModels.ViewModel)
 }
 
 final class M_ResultController: UIViewController {
@@ -92,8 +92,8 @@ final class M_ResultController: UIViewController {
 
 extension M_ResultController: M_ResScreenDisplayLogic {
     
-    func displayResultState(_ viewModel: M_ResScreenModels.ViewModel.ViewState) {
-        nestedView.viewModel = viewModel
+    func displayResultState(_ viewModel: M_ResScreenModels.ViewModel) {
+        nestedView.viewState = viewModel.viewState
     }
     
     func showSupportForm(_ url: URL) {

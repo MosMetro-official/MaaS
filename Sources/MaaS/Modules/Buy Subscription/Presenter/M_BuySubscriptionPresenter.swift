@@ -28,7 +28,8 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
             guard let self = self else { return }
             self.controller?.startRequestPayment()
         }
-        let viewModel = M_BuySubscriptionModels.ViewModel.ViewState(state: states, dataState: .loaded, linkCardCommand: linkCommand)
+        let viewState = M_BuySubView.ViewState(state: states, dataState: .loaded, linkCardCommand: linkCommand)
+        let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
     
@@ -38,8 +39,9 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
     }
     
     func prepareLoadingState(_ response: M_BuySubscriptionModels.Response.Loading) {
-        let loading = M_BuySubscriptionModels.ViewModel.ViewState.Loading(title: response.title, descr: response.descr)
-        let viewModel = M_BuySubscriptionModels.ViewModel.ViewState(state: [], dataState: .loading(loading), linkCardCommand: nil)
+        let loading = M_BuySubView.ViewState.Loading(title: response.title, descr: response.descr)
+        let viewState = M_BuySubView.ViewState(state: [], dataState: .loading(loading), linkCardCommand: nil)
+        let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
     
@@ -50,13 +52,14 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
         let onRetry = Command {
             self.controller?.startRequestPayment()
         }
-        let error = M_BuySubscriptionModels.ViewModel.ViewState.Error(
+        let error = M_BuySubView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewModel = M_BuySubscriptionModels.ViewModel.ViewState(state: [], dataState: .error(error), linkCardCommand: nil)
+        let viewState = M_BuySubView.ViewState(state: [], dataState: .error(error), linkCardCommand: nil)
+        let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
     

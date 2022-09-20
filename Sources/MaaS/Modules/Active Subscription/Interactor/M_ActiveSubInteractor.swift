@@ -7,21 +7,21 @@
 
 import CoreTableView
 
-protocol ActiveSubscriptionInteractor: AnyObject {
+protocol M_ActiveSubscriptionInteractor: AnyObject {
     func fetchUserInfo()
     func fetchSupportUrl()
     func checkCardUpdates()
 }
 
-protocol ActiveDataStore: AnyObject {
+protocol M_ActiveDataStore: AnyObject {
     var userInfo: M_UserInfo? { get set }
     var notifications: [M_MaasDebtNotifification]? { get set }
     var maskedPan: String? { get set }
 }
 
-final class M_ActiveSubInteractor: ActiveSubscriptionInteractor, ActiveDataStore {
+final class M_ActiveSubInteractor: M_ActiveSubscriptionInteractor, M_ActiveDataStore {
     
-    var presenter: ActiveSubscriptionPresenter?
+    var presenter: M_ActiveSubscriptionPresenter?
     var userInfo: M_UserInfo?
     var notifications: [M_MaasDebtNotifification]?
     var maskedPan: String? {
@@ -32,7 +32,7 @@ final class M_ActiveSubInteractor: ActiveSubscriptionInteractor, ActiveDataStore
     
     private var model = M_ActiveSubModels.Response.UserInfo()
     
-    init(presenter: ActiveSubscriptionPresenter? = nil) {
+    init(presenter: M_ActiveSubscriptionPresenter? = nil) {
         self.presenter = presenter
     }
     
@@ -135,6 +135,8 @@ final class M_ActiveSubInteractor: ActiveSubscriptionInteractor, ActiveDataStore
     }
     
     deinit {
-        print("🥰🥰🥰 ActiveInteractor deinited")
+        #if DEBUG
+        print("🥰🥰🥰 Active interactor deinited")
+        #endif
     }
 }

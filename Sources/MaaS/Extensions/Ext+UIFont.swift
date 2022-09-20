@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     /// Method for register fonts from package
-    open class func registerFont(bundle: Bundle, fontName: String, fontExtension: String) -> Bool {
+    public class func registerFont(bundle: Bundle, fontName: String, fontExtension: String) -> Bool {
         guard let fontURL = bundle.url(forResource: fontName, withExtension: fontExtension) else {
             fatalError("Couldn't find font \(fontName)")
         }
@@ -28,7 +28,7 @@ extension UIFont {
         return true
     }
     
-    open class func customFont(forTextStyle style: FontTextStyle) -> UIFont {
+    public class func customFont(forTextStyle style: FontTextStyle) -> UIFont {
         return Appearance.customFonts[style] ?? UIFont.systemFont(ofSize: 17, weight: .regular)
     }
 }

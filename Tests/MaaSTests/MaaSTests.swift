@@ -11,8 +11,19 @@ final class MaaSTests: XCTestCase {
         let manager: _AnalyticsManager = AnalyticsManager(engines: [])
         sut = MaaS(analyticsManager: manager)
     }
-    func testExample() throws {
-        let test = "Hello, World!"
-        XCTAssertEqual(test, "Hello, World!")
+    
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+    
+    func testActiveSubFlow() {
+        let active = sut.showActiveFlow()
+        XCTAssertNotNil(active)
+    }
+    
+    func testChooseSubFlow() {
+        let choose = sut.showChooseFlow()
+        XCTAssertNotNil(choose)
     }
 }

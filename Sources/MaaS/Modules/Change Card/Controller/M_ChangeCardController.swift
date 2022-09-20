@@ -13,7 +13,7 @@ protocol CardChangeDisplayLogic: AnyObject {
     func requestChangeCard()
     func popViewController()
     func displaySafariController(with url: URL)
-    func displayCardState(_ viewModel: M_CardChangeModels.ViewModel.ViewState)
+    func displayCardState(_ viewModel: M_CardChangeModels.ViewModel)
 }
 
 class M_ChangeCardController: UIViewController {
@@ -122,8 +122,8 @@ class M_ChangeCardController: UIViewController {
 
 extension M_ChangeCardController: CardChangeDisplayLogic {
     
-    func displayCardState(_ viewModel: M_CardChangeModels.ViewModel.ViewState) {
-        nestedView.viewModel = viewModel
+    func displayCardState(_ viewModel: M_CardChangeModels.ViewModel) {
+        nestedView.viewState = viewModel.viewState
     }
     
     func requestChangeCard() {

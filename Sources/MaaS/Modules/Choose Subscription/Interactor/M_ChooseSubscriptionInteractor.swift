@@ -58,4 +58,10 @@ final class M_ChooseSubscriptionInteractor: M_ChooseSubscriptionBusinessLogic, M
         presenter?.prepareLoading(response)
     }
     
+    deinit {
+        #if DEBUG
+        print("🥰🥰🥰 Choose interactor deinited")
+        #endif
+    }
+    
 }

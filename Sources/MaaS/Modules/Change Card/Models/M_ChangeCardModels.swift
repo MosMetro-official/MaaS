@@ -43,35 +43,7 @@ enum M_CardChangeModels {
         }
     }
     
-    enum ViewModel {
-        
-        struct ViewState {
-            
-            enum DataState {
-                case loading(_Loading)
-                case loaded
-                case error(_Error)
-            }
-            
-            let dataState: DataState
-            let cardType: PaySystem
-            let cardNumber: String
-            let countOfChangeCard: Int
-            let onChangeButton: Command<Void>?
-            
-            static let initial = ViewState(dataState: .loaded, cardType: .unknown, cardNumber: "", countOfChangeCard: 0, onChangeButton: nil)
-            
-            struct Error: _Error {
-                let title: String
-                let descr: String
-                let onRetry: Command<Void>
-                let onClose: Command<Void>
-            }
-            
-            struct Loading: _Loading {
-                let title: String
-                let descr: String
-            }
-        }
+    struct ViewModel {
+        let viewState: M_ChangeCardView.ViewState
     }
 }

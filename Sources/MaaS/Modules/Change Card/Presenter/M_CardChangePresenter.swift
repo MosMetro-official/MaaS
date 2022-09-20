@@ -23,7 +23,8 @@ final class M_CardChangePresenter: CardChangePresenter {
     }
     
     func prepareState(_ response: M_CardChangeModels.Response.UserInfo) {
-        let viewModel = makeViewModel(from: response)
+        let viewState = makeViewState(from: response)
+        let viewModel = M_CardChangeModels.ViewModel(viewState: viewState)
         controller?.displayCardState(viewModel)
     }
     
@@ -33,17 +34,18 @@ final class M_CardChangePresenter: CardChangePresenter {
     }
     
     func prepareLoading(_ response: M_CardChangeModels.Response.Loading) {
-        let loading = M_CardChangeModels.ViewModel.ViewState.Loading(
+        let loading = M_ChangeCardView.ViewState.Loading(
             title: response.title,
             descr: response.descr
         )
-        let viewModel = M_CardChangeModels.ViewModel.ViewState(
+        let viewState = M_ChangeCardView.ViewState(
             dataState: .loading(loading),
             cardType: .unknown,
             cardNumber: "",
             countOfChangeCard: 0,
             onChangeButton: nil
         )
+        let viewModel = M_CardChangeModels.ViewModel(viewState: viewState)
         controller?.displayCardState(viewModel)
     }
     
@@ -54,27 +56,28 @@ final class M_CardChangePresenter: CardChangePresenter {
         let onRetry = Command {
             self.controller?.requestChangeCard()
         }
-        let error = M_CardChangeModels.ViewModel.ViewState.Error(
+        let error = M_ChangeCardView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewModel = M_CardChangeModels.ViewModel.ViewState(
+        let viewState = M_ChangeCardView.ViewState(
             dataState: .error(error),
             cardType: .unknown,
             cardNumber: "",
             countOfChangeCard: 0,
             onChangeButton: nil
         )
+        let viewModel = M_CardChangeModels.ViewModel(viewState: viewState)
         controller?.displayCardState(viewModel)
     }
     
-    private func makeViewModel(from response: M_CardChangeModels.Response.UserInfo) -> M_CardChangeModels.ViewModel.ViewState {
+    private func makeViewState(from response: M_CardChangeModels.Response.UserInfo) -> M_ChangeCardView.ViewState {
         let onChangeCard = Command {
             self.controller?.requestChangeCard()
         }
-        let state = M_CardChangeModels.ViewModel.ViewState(
+        let state = M_ChangeCardView.ViewState(
             dataState: .loaded,
             cardType: response.user.paySystem ?? .unknown,
             cardNumber: "\(response.user.maskedPan)",

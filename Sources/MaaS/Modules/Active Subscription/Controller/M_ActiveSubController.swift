@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 import CoreAnalytics
 
-protocol ActiveDisplayLogic: AnyObject {
+protocol M_ActiveDisplayLogic: AnyObject {
     func dismiss()
     func pushDebtScreen()
     func openOnboarding()
@@ -20,7 +20,7 @@ protocol ActiveDisplayLogic: AnyObject {
     func pushChangeCardScreen()
     func openSafariController(_ url: URL)
     func showDebtNotification(_ notification: M_MaasDebtNotifification)
-    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState)
+    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState)
 }
 
 public class M_ActiveSubController: UIViewController {
@@ -30,8 +30,8 @@ public class M_ActiveSubController: UIViewController {
     private var analyticsEvents = M_AnalyticsEvents()
     private var analyticsManager : _AnalyticsManager
 
-    var interactor: ActiveSubscriptionInteractor?
-    var router: (ActiveRoutingLogic & ActiveDataPassing)?
+    var interactor: M_ActiveSubscriptionInteractor?
+    var router: (M_ActiveRoutingLogic & M_ActiveDataPassing)?
     
     public init(analyticsManager: _AnalyticsManager) {
         self.analyticsManager = analyticsManager
@@ -80,14 +80,16 @@ public class M_ActiveSubController: UIViewController {
     }
         
     deinit {
-        print("🥰🥰🥰 ActiveController deinited")
+        #if DEBUG
+        print("🥰🥰🥰 Active controller deinited")
+        #endif
     }
 }
 
-extension M_ActiveSubController: ActiveDisplayLogic {
+extension M_ActiveSubController: M_ActiveDisplayLogic {
     
-    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState) {
-        self.nestedView.viewModel = viewModel
+    func displayUserInfo(with viewModel: M_ActiveSubModels.ViewModel.ViewState) {
+        self.nestedView.viewState = viewModel.viewState
     }
     
     func requestUserInfo() {

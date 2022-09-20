@@ -8,8 +8,8 @@
 import UIKit
 import CoreTableView
 
-class M_ChooseSubView: UIView {
-
+final class M_ChooseSubView: UIView {
+    
     struct ViewState {
         
         let state: [State]
@@ -37,8 +37,7 @@ class M_ChooseSubView: UIView {
         }
         
         struct SubSectionRow: _SubSectionRow {
-            var id: String
-            
+            let id: String
             let title: String
             let price: String
             let isSelect: Bool
@@ -48,30 +47,13 @@ class M_ChooseSubView: UIView {
             let height: CGFloat
         }
         
-        struct MakeMySubRow: _MakeMySubRow {
-            var id: String
-            let title: String
-            let descr: String
-            let isSelect: Bool
-            let onItemSelect: Command<Void>
-            let height: CGFloat
-        }
-        
         static let initial = ViewState(state: [], dataState: .loaded, payButtonEnable: false, payButtonTitle: "", payCommand: nil)
-    }
-    
-    public var viewModel: M_ChooseSubscriptionModels.ViewModel = .initial {
-        didSet {
-            DispatchQueue.main.async {
-                self.renderViewModel()
-            }
-        }
     }
     
     public var viewState: ViewState = .initial {
         didSet {
             DispatchQueue.main.async {
-//                self.render()
+                self.render()
             }
         }
     }
@@ -113,8 +95,7 @@ class M_ChooseSubView: UIView {
     }
     
     @IBAction func payButtonTapped() {
-//        viewState.payCommand?.perform(with: ())
-        viewModel.payCommand?.perform(with: ())
+        viewState.payCommand?.perform(with: ())
     }
     
     private func addHorizontalGradientLayer() {
@@ -128,26 +109,6 @@ class M_ChooseSubView: UIView {
         self.payButton.layer.insertSublayer(self.buttonGradient!, at: 0)
     }
     
-    private func renderViewModel() {
-        payButton.isHidden = !viewModel.payButtonEnable
-        payButton.setTitle(viewModel.payButtonTitle, for: .normal)
-        switch viewModel.dataState {
-        case .loaded:
-            show()
-            removeLoading(from: self)
-            removeError(from: self)
-            tableView.viewStateInput = viewModel.state
-        case .loading(let data):
-            hide()
-            removeError(from: self)
-            showLoading(on: self, data: data)
-        case .error(let data):
-            hide()
-            removeLoading(from: self)
-            showError(on: self, data: data)
-        }
-    }
-    
     private func render() {
         payButton.isHidden = !viewState.payButtonEnable
         payButton.setTitle(viewState.payButtonTitle, for: .normal)
@@ -159,15 +120,12 @@ class M_ChooseSubView: UIView {
             tableView.viewStateInput = viewState.state
         case .loading(let data):
             hide()
-            tableView.isHidden = true
             removeError(from: self)
             showLoading(on: self, data: data)
         case .error(let data):
             hide()
-            tableView.isHidden = true
             removeLoading(from: self)
             showError(on: self, data: data)
         }
     }
-    
 }

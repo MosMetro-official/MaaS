@@ -7,7 +7,7 @@
 
 import CoreTableView
 
-protocol ActiveSubscriptionPresenter: AnyObject {
+protocol M_ActiveSubscriptionPresenter: AnyObject {
     func prepareResultState(_ response: M_ActiveSubModels.Response.UserInfo)
     func prepareError(_ response: M_ActiveSubModels.Response.Error)
     func prepareLoading(_ response: M_ActiveSubModels.Response.Loading)
@@ -15,12 +15,12 @@ protocol ActiveSubscriptionPresenter: AnyObject {
     func prepareDebtNotifications(_ response: M_ActiveSubModels.Response.Debt)
 }
 
-final class M_ActiveSubPresenter: ActiveSubscriptionPresenter {
+final class M_ActiveSubPresenter: M_ActiveSubscriptionPresenter {
     
-    weak var controller: ActiveDisplayLogic?
+    weak var controller: M_ActiveDisplayLogic?
     private var builder: ActiveStateBuilder = M_ActiveStateBuilder()
         
-    init(controller: ActiveDisplayLogic? = nil) {
+    init(controller: M_ActiveDisplayLogic? = nil) {
         self.controller = controller
     }
     
@@ -54,7 +54,8 @@ final class M_ActiveSubPresenter: ActiveSubscriptionPresenter {
         let supportState = builder.makeSupportState(onSupport: onSupport)
         states.append(supportState)
         builder.needReloadCard = response.needReloadCard
-        let viewModel = M_ActiveSubModels.ViewModel.ViewState.DataState.loaded(states)
+        let viewState = M_ActiveSubView.ViewState(state: states, dataState: .loaded)
+        let viewModel = M_ActiveSubModels.ViewModel.ViewState(viewState: viewState)
         prepareOnboarding()
         controller?.displayUserInfo(with: viewModel)
     }
@@ -69,8 +70,9 @@ final class M_ActiveSubPresenter: ActiveSubscriptionPresenter {
     }
     
     func prepareLoading(_ response: M_ActiveSubModels.Response.Loading) {
-        let loading = M_ActiveSubModels.ViewModel.ViewState.Loading(title: response.title, descr: response.descr)
-        let viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState = .loading(loading)
+        let loading = M_ActiveSubView.ViewState.Loading(title: response.title, descr: response.descr)
+        let viewState = M_ActiveSubView.ViewState(state: [], dataState: .loading(loading))
+        let viewModel = M_ActiveSubModels.ViewModel.ViewState(viewState: viewState)
         controller?.displayUserInfo(with: viewModel)
     }
     
@@ -83,13 +85,14 @@ final class M_ActiveSubPresenter: ActiveSubscriptionPresenter {
             self.controller?.requestCardUpdate() :
             self.controller?.requestUserInfo()
         }
-        let error = M_ActiveSubModels.ViewModel.ViewState.Error(
+        let error = M_ActiveSubView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewModel: M_ActiveSubModels.ViewModel.ViewState.DataState = .error(error)
+        let viewState = M_ActiveSubView.ViewState(state: [], dataState: .error(error))
+        let viewModel = M_ActiveSubModels.ViewModel.ViewState(viewState: viewState)
         controller?.displayUserInfo(with: viewModel)
     }
     
@@ -100,6 +103,8 @@ final class M_ActiveSubPresenter: ActiveSubscriptionPresenter {
     }
     
     deinit {
-        print("🥰🥰🥰 ActivePresenter deinited")
+        #if DEBUG
+        print("🥰🥰🥰 Active presenter deinited")
+        #endif
     }
 }

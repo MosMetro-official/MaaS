@@ -65,24 +65,7 @@ enum M_ActiveSubModels {
         }
         
         struct ViewState {
-            
-            enum DataState {
-                case loaded([State])
-                case loading(Loading)
-                case error(Error)
-            }
-            
-            struct Error: _Error {
-                let title: String
-                let descr: String
-                let onRetry: Command<Void>
-                let onClose: Command<Void>
-            }
-            
-            struct Loading: _Loading {
-                let title: String
-                let descr: String
-            }
+            let viewState: M_ActiveSubView.ViewState
         }
     }
 }

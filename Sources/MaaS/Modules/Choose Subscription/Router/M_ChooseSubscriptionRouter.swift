@@ -40,4 +40,10 @@ final class M_ChooseSubscriptionRouter: M_ChooseSubscriptionRoutingLogic, M_Choo
     func dismiss() {
         controller?.dismiss(animated: true)
     }
+    
+    deinit {
+        #if DEBUG
+        print("🥰🥰🥰 Choose router deinited")
+        #endif
+    }
 }

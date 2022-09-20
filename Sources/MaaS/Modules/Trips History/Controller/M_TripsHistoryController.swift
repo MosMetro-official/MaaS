@@ -11,7 +11,7 @@ protocol M_HistoryDisplayLogic: AnyObject {
     func requestTrips()
     func requestMoreTrips()
     func popViewController()
-    func displayTrips(_ viewModel: M_HistoryModels.ViewModel.ViewState)
+    func displayTrips(_ viewModel: M_HistoryModels.ViewModel)
 }
 
 final class M_TripsHistoryController: UIViewController {
@@ -58,8 +58,8 @@ final class M_TripsHistoryController: UIViewController {
 
 extension M_TripsHistoryController: M_HistoryDisplayLogic {
     
-    func displayTrips(_ viewModel: M_HistoryModels.ViewModel.ViewState) {
-        nestedView.viewModel = viewModel
+    func displayTrips(_ viewModel: M_HistoryModels.ViewModel) {
+        nestedView.viewState = viewModel.viewState
     }
     
     func requestMoreTrips() {

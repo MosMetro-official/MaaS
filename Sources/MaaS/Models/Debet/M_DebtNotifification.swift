@@ -7,7 +7,7 @@
 
 import MMCoreNetworkCallbacks
 
-public struct M_MaasDebtNotifification {
+struct M_MaasDebtNotifification {
     let id : String
     let url : String
     let read : Bool
@@ -20,6 +20,14 @@ public struct M_MaasDebtNotifification {
         self.read = data["read"].boolValue
         self.date = data["date"].stringValue.converToDate()
         self.message = MaasMessage(data: data["message"])
+    }
+    
+    init() {
+        id = "id"
+        url = "url"
+        read = true
+        date = nil
+        message = nil
     }
     
     func markAsRead(completion: @escaping (Result<Bool, APIError>) -> Void) {

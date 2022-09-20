@@ -13,7 +13,7 @@ protocol M_DebtUserNotificationsDisplayLogic: AnyObject {
     func popViewController()
     func displaySafariController(_ url: URL)
     func handleNotification(_ notification: M_MaasDebtNotifification)
-    func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel.ViewState)
+    func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel)
 }
 
 final class M_DebtNotificationsController: UIViewController {
@@ -59,8 +59,8 @@ final class M_DebtNotificationsController: UIViewController {
 
 extension M_DebtNotificationsController: M_DebtUserNotificationsDisplayLogic {
     
-    func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel.ViewState) {
-        nestedView.viewModel = viewModel
+    func displayNotifications(_ viewModel: M_DebtUserNotificationsModels.ViewModel) {
+        nestedView.viewState = viewModel.viewState
     }
     
     func handleNotification(_ notification: M_MaasDebtNotifification) {

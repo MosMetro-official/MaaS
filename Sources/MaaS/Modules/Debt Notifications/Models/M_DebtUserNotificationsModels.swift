@@ -38,47 +38,7 @@ enum M_DebtUserNotificationsModels {
         }
     }
     
-    enum ViewModel {
-        
-        struct ViewState {
-            
-            enum DataState {
-                case loaded
-                case loading(_Loading)
-                case error(_Error)
-            }
-            
-            let state: [State]
-            let dataState: DataState
-            
-            struct Loading: _Loading {
-                let title: String
-                let descr: String
-            }
-            
-            struct Error: _Error {
-                let title: String
-                let descr: String
-                let onRetry: Command<Void>
-                let onClose: Command<Void>
-            }
-            
-            struct Header: _HeaderNotification {
-                var id: String
-                
-                let height: CGFloat
-            }
-            
-            struct Notification: _Notification {
-                var id: String
-                
-                let title: String
-                let descr: String
-                let onItemSelect: Command<Void>
-                let height: CGFloat
-            }
-            
-            static let initial = ViewState(state: [], dataState: .loaded)
-        }
+    struct ViewModel {
+        let viewState: M_DebtNotificationsView.ViewState
     }
 }

@@ -22,8 +22,18 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
     }
     
     func prepareLoading(_ response: M_ChooseSubscriptionModels.Response.Loading) {
-        let loading = M_ChooseSubscriptionModels.ViewModel.Loading(title: response.title, descr: response.descr)
-        let viewModel = M_ChooseSubscriptionModels.ViewModel(state: [], dataState: .loading(loading), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        let loading = M_ChooseSubView.ViewState.Loading(
+            title: response.title,
+            descr: response.descr
+        )
+        let viewState = M_ChooseSubView.ViewState(
+            state: [],
+            dataState: .loading(loading),
+            payButtonEnable: false,
+            payButtonTitle: "",
+            payCommand: nil
+        )
+        let viewModel = M_ChooseSubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscriptions(viewModel)
     }
     
@@ -34,8 +44,9 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
         let onRetry = Command {
             self.controller?.requestSubscriptions()
         }
-        let error = M_ChooseSubscriptionModels.ViewModel.Error(title: response.title, descr: response.descr, onRetry: onRetry, onClose: onClose)
-        let viewModel = M_ChooseSubscriptionModels.ViewModel(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        let error = M_ChooseSubView.ViewState.Error(title: response.title, descr: response.descr, onRetry: onRetry, onClose: onClose)
+        let viewState = M_ChooseSubView.ViewState(state: [], dataState: .error(error), payButtonEnable: false, payButtonTitle: "", payCommand: nil)
+        let viewModel = M_ChooseSubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscriptions(viewModel)
     }
     
@@ -45,7 +56,8 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
         let payCommand = Command {
             self.controller?.pushBuySubscription(response.selectedSub)
         }
-        let viewModel = M_ChooseSubscriptionModels.ViewModel(state: state, dataState: .loaded, payButtonEnable: response.selectedSub != nil, payButtonTitle: buttonTitle, payCommand: payCommand)
+        let viewState = M_ChooseSubView.ViewState(state: state, dataState: .loaded, payButtonEnable: response.selectedSub != nil, payButtonTitle: buttonTitle, payCommand: payCommand)
+        let viewModel = M_ChooseSubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscriptions(viewModel)
     }
     
@@ -63,7 +75,7 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
             let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
             let price = sub.price / 100
             let tariffs = sub.tariffs.sorted { $0.serviceId < $1.serviceId }
-            let subElement = M_ChooseSubscriptionModels.ViewModel.SubSectionRow(
+            let subElement = M_ChooseSubView.ViewState.SubSectionRow(
                 id: sub.id,
                 title: title,
                 price: "\(price) ₽",
@@ -88,5 +100,11 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
             buttonTitle = ""
         }
         return buttonTitle
+    }
+    
+    deinit {
+        #if DEBUG
+        print("🥰🥰🥰 Choose presenter deinited")
+        #endif
     }
 }

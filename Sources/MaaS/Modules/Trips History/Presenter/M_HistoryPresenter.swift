@@ -23,13 +23,21 @@ final class M_HistoryPresenter: M_HistoryPresentationLogic {
     
     func prepareViewModel(_ response: M_HistoryModels.Response.Trips) {
         let states = makeState(from: response)
-        let viewModel = M_HistoryModels.ViewModel.ViewState(state: states, dataState: .loaded)
+        let viewState = M_TripsHistoryView.ViewState(state: states, dataState: .loaded)
+        let viewModel = M_HistoryModels.ViewModel(viewState: viewState)
         controller?.displayTrips(viewModel)
     }
     
     func prepareLoadingState(_ response: M_HistoryModels.Response.Loading) {
-        let loading = M_HistoryModels.ViewModel.ViewState.Loading(title: response.title, descr: response.descr)
-        let viewModel = M_HistoryModels.ViewModel.ViewState(state: [], dataState: .loading(loading))
+        let loading = M_TripsHistoryView.ViewState.Loading(
+            title: response.title,
+            descr: response.descr
+        )
+        let viewState = M_TripsHistoryView.ViewState(
+            state: [],
+            dataState: .loading(loading)
+        )
+        let viewModel = M_HistoryModels.ViewModel(viewState: viewState)
         controller?.displayTrips(viewModel)
     }
     
@@ -40,13 +48,17 @@ final class M_HistoryPresenter: M_HistoryPresentationLogic {
         let onClose = Command {
             self.controller?.popViewController()
         }
-        let error = M_HistoryModels.ViewModel.ViewState.Error(
+        let error = M_TripsHistoryView.ViewState.Error(
             title: response.title,
             descr: response.descr,
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewModel = M_HistoryModels.ViewModel.ViewState(state: [], dataState: .error(error))
+        let viewState = M_TripsHistoryView.ViewState(
+            state: [],
+            dataState: .error(error)
+        )
+        let viewModel = M_HistoryModels.ViewModel(viewState: viewState)
         controller?.displayTrips(viewModel)
     }
     
@@ -69,8 +81,6 @@ final class M_HistoryPresenter: M_HistoryPresentationLogic {
                 default:
                     dateTitle = "Ошибка"
                 }
-                let imageURL = trip.subscription.tariffs.first(where: { $0.serviceId == trip.trip.serviceId })
-                imageURL?.imageURL
                 let serviceName: String = {
                     if let name = trip.subscription.tariffs.first(where: { $0.serviceId == trip.trip.serviceId } )?.name.ru {
                         return name
@@ -108,7 +118,7 @@ final class M_HistoryPresenter: M_HistoryPresentationLogic {
             let loadMore = M_TripsHistoryView.ViewState.LoadMore(state: response.isLoadingMore ? .loading : .normal, onLoad: onLoad).toElement()
             states.append(.init(model: .init(id: "loadmore"), elements: [loadMore]))
         } else {
-            let empty = M_HistoryModels.ViewModel.ViewState.Empty(
+            let empty = M_TripsHistoryView.ViewState.Empty(
                 id: "empty",
                 height: UIScreen.main.bounds.height / 2
             ).toElement()

@@ -71,12 +71,18 @@ public final class M_ChooseSubController: UIViewController {
     @objc private func close() {
         router?.dismiss()
     }
+    
+    deinit {
+        #if DEBUG
+        print("🥰🥰🥰 Choose controller deinited")
+        #endif
+    }
 }
 
 extension M_ChooseSubController: M_ChooseSubscriptionDisplayLogic {
     
     func displaySubscriptions(_ viewModel: M_ChooseSubscriptionModels.ViewModel) {
-        nestedView.viewModel = viewModel
+        nestedView.viewState = viewModel.viewState
     }
     
     func displaySelectedSubscription(_ subscription: M_Subscription) {

@@ -8,18 +8,18 @@
 import UIKit
 import CoreTableView
 
-class M_TripsHistoryView: UIView {
-        
+final class M_TripsHistoryView: UIView {
+    
     struct ViewState {
+        
+        let state: [State]
+        let dataState: DataState
         
         enum DataState {
             case loaded
             case loading(_Loading)
             case error(_Error)
         }
-        
-        let state: [State]
-        let dataState: DataState
         
         struct Loading: _Loading {
             let title: String
@@ -34,7 +34,7 @@ class M_TripsHistoryView: UIView {
         }
         
         struct History: _History {
-            var id: String
+            let id: String
             let title: String
             var imageURL: URL?
             let date: String
@@ -44,31 +44,21 @@ class M_TripsHistoryView: UIView {
         
         struct LoadMore: M_LoadMoreCell {
             var state: M_LoadMoreTableViewCell.State
-            
             var onLoad: Command<Void>
-            
         }
         
         struct Empty: _Empty {
-            var id: String
+            let id: String
             let height: CGFloat
         }
         
         static let initial = ViewState(state: [], dataState: .loaded)
     }
-    
-    public var viewModel: M_HistoryModels.ViewModel.ViewState = .initial {
-        didSet {
-            DispatchQueue.main.async {
-                self.renderViewModel()
-            }
-        }
-    }
-    
+            
     public var viewState: ViewState = .initial {
         didSet {
             DispatchQueue.main.async {
-//                self.render()
+                self.render()
             }
         }
     }
@@ -78,24 +68,6 @@ class M_TripsHistoryView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-    }
-    
-    private func renderViewModel() {
-        switch viewModel.dataState {
-        case .loaded:
-            tableView.isHidden = false
-            removeError(from: self)
-            removeLoading(from: self)
-            tableView.viewStateInput = viewState.state
-        case .loading(let loading):
-            tableView.isHidden = true
-            removeError(from: self)
-            showLoading(on: self, data: loading)
-        case .error(let error):
-            tableView.isHidden = true
-            removeLoading(from: self)
-            showError(on: self, data: error)
-        }
     }
     
     private func render() {

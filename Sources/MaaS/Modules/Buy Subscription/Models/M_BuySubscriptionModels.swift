@@ -42,48 +42,7 @@ enum M_BuySubscriptionModels {
         }
     }
     
-    enum ViewModel {
-        
-        struct ViewState {
-            
-            let state: [State]
-            let dataState: DataState
-            let linkCardCommand: Command<Void>?
-            
-            enum DataState {
-                case loaded
-                case loading(_Loading)
-                case error(_Error)
-            }
-            
-            struct Loading: _Loading {
-                let title: String
-                let descr: String
-            }
-            
-            struct Error: _Error {
-                let title: String
-                let descr: String
-                let onRetry: Command<Void>
-                let onClose: Command<Void>
-            }
-            
-            struct SubHeader: _SubHeader {
-                var id: String
-                let title: String
-                let price: String
-                let height: CGFloat
-            }
-            
-            struct DescrRow: _DescriptionCell {
-                var id: String
-                let title: String
-                let descr: String
-                let imageUrl: String
-                let height: CGFloat
-            }
-            
-            static let initial = ViewState(state: [], dataState: .loaded, linkCardCommand: Command(action: {}))
-        }
+    struct ViewModel {
+        let viewState: M_BuySubView.ViewState
     }
 }
