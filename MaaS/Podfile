@@ -13,7 +13,6 @@ target 'MaaS' do
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
   pod 'CoreAnalytics', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreAnalytics'
-  pod 'YandexMobileMetrica'
 
 end
 
@@ -27,7 +26,6 @@ target 'MaaSExample' do
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
   pod 'CoreAnalytics', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreAnalytics'
-  pod 'YandexMobileMetrica'
 
 end
 
@@ -41,6 +39,5 @@ target 'MaaSTests' do
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
   pod 'CoreAnalytics', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreAnalytics'
-  pod 'YandexMobileMetrica'
 
 end

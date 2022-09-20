@@ -88,7 +88,7 @@ extension M_ChooseSubController: M_ChooseSubscriptionDisplayLogic {
     }
     
     func pushBuySubscription(_ sub: M_Subscription?) {
-        if let sub = sub {
+        if let sub {
             analyticsManager.report(analyticsEvents.makeBuySubcriptionEvent(sub))
             analyticsManager.report(analyticsEvents.makeOldNameBuySubcriptionEvent(sub))
         }

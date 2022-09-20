@@ -138,7 +138,6 @@
 		954276A628D216330049F718 /* M_DebtNotifification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954276A528D216330049F718 /* M_DebtNotifification.swift */; };
 		95427AF72831025A001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95427AFB28310262001FC0FD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		954C741028D8AC1900C610C3 /* AnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */; };
 		95574F5A2856398200CA934F /* M_PayStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95574F592856398200CA934F /* M_PayStatusResponse.swift */; };
 		956F16512858BC0B00F3EB82 /* Ext+NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */; };
 		95795B6B28531B2700634754 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B6A28531B2700634754 /* AuthClient.swift */; };
@@ -147,7 +146,6 @@
 		95795B7228531F9100634754 /* M_Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B7128531F9100634754 /* M_Subscription.swift */; };
 		95795B742853368800634754 /* MaaSNetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95795B732853368800634754 /* MaaSNetworkDelegate.swift */; };
 		958B7F2128D887F700AA8D76 /* M_Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958B7F1F28D887F700AA8D76 /* M_Analytics.swift */; };
-		958B7F2228D887F700AA8D76 /* M_ECommerceEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */; };
 		9595E21B285B4C0900375863 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595E21A285B4C0900375863 /* Ext+String.swift */; };
 		959DAD41285A45AB005D3344 /* M_UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959DAD40285A45AB005D3344 /* M_UserInfo.swift */; };
 		95A41D042854AEDB00637FA6 /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; };
@@ -346,7 +344,6 @@
 		953E96B7282ED96100374DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		953E96B9282ED96100374DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		954276A528D216330049F718 /* M_DebtNotifification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_DebtNotifification.swift; sourceTree = "<group>"; };
-		954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEngine.swift; sourceTree = "<group>"; };
 		95574F592856398200CA934F /* M_PayStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PayStatusResponse.swift; sourceTree = "<group>"; };
 		956F16502858BC0B00F3EB82 /* Ext+NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NotificationName.swift"; sourceTree = "<group>"; };
 		95795B6A28531B2700634754 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -355,7 +352,6 @@
 		95795B7128531F9100634754 /* M_Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Subscription.swift; sourceTree = "<group>"; };
 		95795B732853368800634754 /* MaaSNetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSNetworkDelegate.swift; sourceTree = "<group>"; };
 		958B7F1F28D887F700AA8D76 /* M_Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_Analytics.swift; sourceTree = "<group>"; };
-		958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_ECommerceEvents.swift; sourceTree = "<group>"; };
 		9595E21A285B4C0900375863 /* Ext+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
 		959DAD40285A45AB005D3344 /* M_UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserInfo.swift; sourceTree = "<group>"; };
 		95A41D082854B4E300637FA6 /* M_DebtInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_DebtInfo.swift; sourceTree = "<group>"; };
@@ -1234,7 +1230,6 @@
 				953E96AB282ED95E00374DF2 /* AppDelegate.swift */,
 				953E96AD282ED95E00374DF2 /* SceneDelegate.swift */,
 				953E96AF282ED95E00374DF2 /* ViewController.swift */,
-				954C740F28D8AC1900C610C3 /* AnalyticsEngine.swift */,
 				9533A603285C90B300D77375 /* MaaSCell.swift */,
 				9533A602285C90B300D77375 /* MaaSCell.xib */,
 				9533A606285C91A700D77375 /* TariffCell.swift */,
@@ -1283,7 +1278,6 @@
 			isa = PBXGroup;
 			children = (
 				958B7F1F28D887F700AA8D76 /* M_Analytics.swift */,
-				958B7F2028D887F700AA8D76 /* M_ECommerceEvents.swift */,
 			);
 			path = _Analytics;
 			sourceTree = "<group>";
@@ -1686,7 +1680,6 @@
 				95795B6B28531B2700634754 /* AuthClient.swift in Sources */,
 				95154A0B28D4ED6C00B16222 /* M_DebtUserNotificationsPresenter.swift in Sources */,
 				951549ED28D4ED6C00B16222 /* M_ModalDebtNotificationView.swift in Sources */,
-				958B7F2228D887F700AA8D76 /* M_ECommerceEvents.swift in Sources */,
 				950920C2282E55DC00C4E573 /* GradientLabel.swift in Sources */,
 				950920C5282E55DC00C4E573 /* Ext+UITableViewCell.swift in Sources */,
 				950920C3282E55DC00C4E573 /* GradientProgressView.swift in Sources */,
@@ -1742,7 +1735,6 @@
 				9533A608285C91A700D77375 /* TariffCell.swift in Sources */,
 				953E96AC282ED95E00374DF2 /* AppDelegate.swift in Sources */,
 				953E96AE282ED95E00374DF2 /* SceneDelegate.swift in Sources */,
-				954C741028D8AC1900C610C3 /* AnalyticsEngine.swift in Sources */,
 				9533A605285C90B300D77375 /* MaaSCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
-    private let analyticsManager = AnalyticsManager(engines: [YandexAnalyticsEngine()])
+    private let analyticsManager = AnalyticsManager(engines: [])
     private var maas: MaaS!
     
     private var oldMaskedPan: String?
