@@ -13,7 +13,7 @@ protocol ActiveRoutingLogic: AnyObject {
     func routeToChangeCard(analyticsManager: _AnalyticsManager)
     func routeToOnboarding()
     func routeToHistoryTrips()
-    func routeToDebtNotifications()
+    func routeToDebtNotifications(analyticsManager: _AnalyticsManager)
     func routeToSupport(_ safariController: UIViewController)
     func presentDebtNotification(_ notification: M_MaasDebtNotifification)
 }
@@ -61,8 +61,8 @@ final class M_ActiveSubRouter: ActiveRoutingLogic, ActiveDataPassing {
         controller?.present(onboarding, animated: true)
     }
     
-    func routeToDebtNotifications() {
-        let debtNotification = M_DebtNotificationsController()
+    func routeToDebtNotifications(analyticsManager: _AnalyticsManager) {
+        let debtNotification = M_DebtNotificationsController(analyticsManager: analyticsManager)
         guard
             let activeDataStore = dataStore,
             let debtDataStore = debtNotification.router?.dataStore else {

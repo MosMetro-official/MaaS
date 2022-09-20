@@ -10,7 +10,7 @@ import CoreAnalytics
 
 protocol M_ChooseSubscriptionDisplayLogic: AnyObject {
     func dismiss()
-    func pushBuySubscription()
+    func pushBuySubscription(_ sub: M_Subscription?)
     func requestSubscriptions()
     func displaySelectedSubscription(_ subscription: M_Subscription)
     func displaySubscriptions(_ viewModel: M_ChooseSubscriptionModels.ViewModel)
@@ -87,7 +87,11 @@ extension M_ChooseSubController: M_ChooseSubscriptionDisplayLogic {
         interactor?.fetchSubscriptions()
     }
     
-    func pushBuySubscription() {
+    func pushBuySubscription(_ sub: M_Subscription?) {
+        if let sub = sub {
+            analyticsManager.report(analyticsEvents.makeBuySubcriptionEvent(sub))
+            analyticsManager.report(analyticsEvents.makeOldNameBuySubcriptionEvent(sub))
+        }
         router?.routeToBuySubscription(analytics: analyticsManager)
     }
     

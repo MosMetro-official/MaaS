@@ -127,6 +127,8 @@ extension M_ChangeCardController: CardChangeDisplayLogic {
     }
     
     func requestChangeCard() {
+        analyticsManager.report(analyticsEvents.makeChangeCardTappedEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameChangeCardTappedEvent())
         interactor?.sendRequestCardKey()
     }
     

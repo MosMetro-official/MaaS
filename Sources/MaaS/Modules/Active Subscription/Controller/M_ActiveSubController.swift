@@ -27,6 +27,7 @@ public class M_ActiveSubController: UIViewController {
     
     private let nestedView = M_ActiveSubView.loadFromNib()
     private var safariController: SFSafariViewController?
+    private var analyticsEvents = M_AnalyticsEvents()
     private var analyticsManager : _AnalyticsManager
 
     var interactor: ActiveSubscriptionInteractor?
@@ -98,14 +99,20 @@ extension M_ActiveSubController: ActiveDisplayLogic {
     }
     
     func pushChangeCardScreen() {
+        analyticsManager.report(analyticsEvents.makeChangeCardEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameChangeCardEvent())
         router?.routeToChangeCard(analyticsManager: analyticsManager)
     }
     
     func pushDebtScreen() {
-        router?.routeToDebtNotifications()
+        analyticsManager.report(analyticsEvents.makeNotificationsEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameNotificationsEvent())
+        router?.routeToDebtNotifications(analyticsManager: analyticsManager)
     }
     
     func pushHistoryScreen() {
+        analyticsManager.report(analyticsEvents.makePassHistoryEvent())
+        analyticsManager.report(analyticsEvents.makeOldNamePassHistoryEvent())
         router?.routeToHistoryTrips()
     }
     
@@ -122,6 +129,8 @@ extension M_ActiveSubController: ActiveDisplayLogic {
     }
     
     func openOnboarding() {
+        analyticsManager.report(analyticsEvents.makeOnboardingEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameOnboardingEvent())
         router?.routeToOnboarding()
     }
     

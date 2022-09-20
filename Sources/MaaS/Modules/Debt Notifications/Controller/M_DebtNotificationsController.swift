@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreAnalytics
 
 protocol M_DebtUserNotificationsDisplayLogic: AnyObject {
     func popViewController()
@@ -18,20 +19,23 @@ protocol M_DebtUserNotificationsDisplayLogic: AnyObject {
 final class M_DebtNotificationsController: UIViewController {
     
     private let nestedView = M_DebtNotificationsView.loadFromNib()
+    private var analyticsEvents = M_AnalyticsEvents()
+    private var analyticsManager : _AnalyticsManager
     
     var interactor: M_DebtUserNotificationsBusinessLogic?
     var router: (M_DebtUserNotificationsRoutingLogic & M_DebtUserNotificationsDataPassing)?
     
     private var safariController: SFSafariViewController?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    public init(analyticsManager: _AnalyticsManager) {
+        self.analyticsManager = analyticsManager
+        super.init(nibName: nil, bundle: nil)
         setup()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -61,6 +65,8 @@ extension M_DebtNotificationsController: M_DebtUserNotificationsDisplayLogic {
     
     func handleNotification(_ notification: M_MaasDebtNotifification) {
         let request = M_DebtUserNotificationsModels.Request.Notification(notification: notification)
+        analyticsManager.report(analyticsEvents.makeNotificationsEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameNotificationsEvent())
         interactor?.handleNotification(request)
     }
     

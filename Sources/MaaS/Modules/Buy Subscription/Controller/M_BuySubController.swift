@@ -121,6 +121,8 @@ extension M_BuySubController: M_BuySubscriptionDisplayLogic {
     }
     
     func startRequestPayment() {
+        analyticsManager.report(analyticsEvents.makeLinkCardEvent())
+        analyticsManager.report(analyticsEvents.makeOldNameLinkCardEvent())
         interactor?.requestPayment()
     }
     

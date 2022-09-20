@@ -43,7 +43,7 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
         let state = makeState(from: response)
         let buttonTitle = confirmButton(for: response.selectedSub)
         let payCommand = Command {
-            self.controller?.pushBuySubscription()
+            self.controller?.pushBuySubscription(response.selectedSub)
         }
         let viewModel = M_ChooseSubscriptionModels.ViewModel(state: state, dataState: .loaded, payButtonEnable: response.selectedSub != nil, payButtonTitle: buttonTitle, payCommand: payCommand)
         controller?.displaySubscriptions(viewModel)
