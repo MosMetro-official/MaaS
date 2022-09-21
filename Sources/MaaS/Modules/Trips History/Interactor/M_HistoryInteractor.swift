@@ -29,15 +29,15 @@ final class M_HistoryInteractor: M_HistoryBusinessLogic {
             let response = M_HistoryModels.Response.Trips(trips: self.trips, isLoadingMore: request.isLoadingMore)
             presenter?.prepareViewModel(response)
         }
-        M_HistoryTrips.fetchHistoryTrips(by: limit, offset: offset) { result in
-            switch result {
-            case .success(let trips):
-                self.trips += trips
-                self.offset = self.offset == 0 ? self.trips.count : (self.offset + self.trips.count)
-                let response = M_HistoryModels.Response.Trips(trips: self.trips, isLoadingMore: false)
-                self.presenter?.prepareViewModel(response)
-            case .failure(let error):
-                self.requestError(title: error.errorTitle, descr: error.localizedDescription)
+        Task {
+            do {
+                let newTrips = try await M_HistoryTrips.fetchHistoryTrips(by: limit, offset: offset)
+                trips += newTrips
+                offset = offset == 0 ? trips.count : (offset + trips.count)
+                let response = M_HistoryModels.Response.Trips(trips: trips, isLoadingMore: false)
+                presenter?.prepareViewModel(response)
+            } catch {
+                requestError(title: "Произошла ошибка 🥲", descr: error.localizedDescription)
             }
         }
     }

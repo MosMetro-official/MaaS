@@ -69,8 +69,9 @@ final class M_ChooseSubscriptionPresenter: M_ChooseSubscriptionPresentationLogic
             }
             let witdh = UIScreen.main.bounds.width - 72
             let imageHeight: CGFloat = 30
-            let titleHeight = sub.name.ru.height(withConstrainedWidth: witdh, font: Appearance.getFont(.header)) + 40
-            let title = sub.name.ru.components(separatedBy: " ").dropFirst().joined(separator: " ")
+            let name = sub.name?.ru ?? "unknown"
+            let titleHeight = name.height(withConstrainedWidth: witdh, font: Appearance.getFont(.header)) + 40
+            let title = name.components(separatedBy: " ").dropFirst().joined(separator: " ")
             let stackViewHeight = imageHeight * CGFloat(sub.tariffs.count)
             let spacingHeight: CGFloat = 8 * CGFloat(sub.tariffs.count)
             let price = sub.price / 100

@@ -8,7 +8,7 @@ target 'MaaS' do
   use_frameworks!
 
   pod 'CoreTableView'
-  pod 'MMCoreNetworkCallbacks'
+  pod 'MMCoreNetworkAsync'
   pod 'SDWebImage', :modular_headers => true
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
@@ -21,7 +21,7 @@ target 'MaaSExample' do
   use_frameworks!
 
   pod 'CoreTableView'
-  pod 'MMCoreNetworkCallbacks'
+  pod 'MMCoreNetworkAsync'
   pod 'SDWebImage', :modular_headers => true
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'
@@ -34,7 +34,7 @@ target 'MaaSTests' do
   use_frameworks!
 
   pod 'CoreTableView'
-  pod 'MMCoreNetworkCallbacks'
+  pod 'MMCoreNetworkAsync'
   pod 'SDWebImage', :modular_headers => true
   pod 'OnBoardingModule', :path => '/Users/slavaplatonov/Desktop/DevPods/OnBoardingModule'
   pod 'CoreExtensions', :path => '/Users/slavaplatonov/Desktop/DevPods/CoreExtensions'

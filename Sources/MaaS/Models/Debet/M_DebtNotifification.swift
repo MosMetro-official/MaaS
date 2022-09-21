@@ -5,22 +5,15 @@
 //  Created by polykuzin on 19/07/2022.
 //
 
-import MMCoreNetworkCallbacks
+import Foundation
+import MMCoreNetworkAsync
 
-struct M_MaasDebtNotifification {
+struct M_MaasDebtNotifification: Codable {
     let id : String
     let url : String
     let read : Bool
     let date : Date?
     let message : MaasMessage?
-    
-    init?(data: JSON) {
-        self.id = data["id"].stringValue
-        self.url = data["url"].stringValue
-        self.read = data["read"].boolValue
-        self.date = data["date"].stringValue.converToDate()
-        self.message = MaasMessage(data: data["message"])
-    }
     
     init() {
         id = "id"
@@ -30,56 +23,22 @@ struct M_MaasDebtNotifification {
         message = nil
     }
     
-    func markAsRead(completion: @escaping (Result<Bool, APIError>) -> Void) {
+    func markAsRead() async throws -> Bool {
         let client = APIClient.authClient
-        client.send(.PUT(path: "/api/user/v1/messages/\(self.id)")) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard
-                    let array = json["data"].array
-                else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(true))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.PUT(path: "/api/user/v1/messages/\(self.id)"))
+        let result = try JSONDecoder().decode(Bool.self, from: response.data)
+        return result
     }
     
-    public static func fetchDebts(completion: @escaping (Result<[M_MaasDebtNotifification], APIError>) -> Void) {
+    public static func fetchDebts() async throws -> [M_MaasDebtNotifification] {
         let client = APIClient.authClient
-        client.send(.GET(path: "/api/user/v1/messages")) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard
-                    let array = json["data"].array
-                else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                let notifications = array.compactMap { M_MaasDebtNotifification(data: $0) }
-                completion(.success(notifications))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.GET(path: "/api/user/v1/messages"))
+        let notifications = try JSONDecoder().decode([M_MaasDebtNotifification].self, from: response.data)
+        return notifications
     }
 }
 
-public struct MaasMessage {
+public struct MaasMessage: Codable {
     let title : String
     let subtitle : String
-    
-    init?(data: JSON) {
-        self.title = data["title"].stringValue
-        self.subtitle = data["subtitle"].stringValue
-    }
 }

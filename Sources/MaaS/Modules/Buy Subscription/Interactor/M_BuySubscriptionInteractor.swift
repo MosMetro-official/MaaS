@@ -37,7 +37,7 @@ final class M_BuySubscriptionInteractor: M_BuySubscriptionBusinessLogic, M_BuySu
     func requestPayment() {
         guard let sub = subscription else { return }
         requestLoading()
-        let payRequest = M_SubPayStartRequest(
+        let payRequestBody = M_SubPayStartRequest(
             maaSTariffId: sub.id,
             payment: .init(
                 paymentMethod: .card,
@@ -51,13 +51,12 @@ final class M_BuySubscriptionInteractor: M_BuySubscriptionBusinessLogic, M_BuySu
             ),
             additionalData: nil
         )
-        let body = payRequest.createRequestBody()
-        M_SubPayStartRequest.sendRequestSub(with: body) { result in
-            switch result {
-            case .success(let response):
-                self.handle(response: response)
-            case .failure(let error):
-                let response = M_BuySubscriptionModels.Response.Error(title: error.errorTitle, descr: error.localizedDescription)
+        Task {
+            do {
+                let payStart = try await M_SubPayStartRequest.sendRequestSub(with: payRequestBody)
+                handle(response: payStart)
+            } catch {
+                let response = M_BuySubscriptionModels.Response.Error(title: "Произошла ошибка 🥲", descr: error.localizedDescription)
                 self.presenter?.prepareErrorState(response)
             }
         }
@@ -69,10 +68,9 @@ final class M_BuySubscriptionInteractor: M_BuySubscriptionBusinessLogic, M_BuySu
     }
     
     private func handle(response: M_SubPayStartResponse) {
-        M_PayStatusResponse.statusOfPayment(for: response.paymentId) { result in
-            switch result {
-            case .success(let payResponse):
-                print("😢😢😢 COUNT - \(self.repeats)")
+        Task {
+            do {
+                let payResponse = try await M_PayStatusResponse.statusOfPayment(for: response.paymentId)
                 if payResponse.payment.url.isEmpty {
                     if self.repeats < 5 {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
@@ -80,14 +78,14 @@ final class M_BuySubscriptionInteractor: M_BuySubscriptionBusinessLogic, M_BuySu
                             self.handle(response: response)
                         }
                     } else {
-                        let response = M_BuySubscriptionModels.Response.Error(title: "Что-то пошло не так", descr: "Попробуйте повторить позже")
-                        self.presenter?.prepareErrorState(response)
+                        let response = M_BuySubscriptionModels.Response.Error(title: "Произошла ошибка 🥲", descr: "Попробуйте повторить позже")
+                        presenter?.prepareErrorState(response)
                     }
                 } else {
-                    self.handlePaymentUrl(path: payResponse.payment.url)
+                    handlePaymentUrl(path: payResponse.payment.url)
                 }
-            case .failure(let error):
-                let response = M_BuySubscriptionModels.Response.Error(title: error.errorTitle, descr: error.localizedDescription)
+            } catch {
+                let response = M_BuySubscriptionModels.Response.Error(title: "Произошла ошибка 🥲", descr: error.localizedDescription)
                 self.presenter?.prepareErrorState(response)
             }
         }

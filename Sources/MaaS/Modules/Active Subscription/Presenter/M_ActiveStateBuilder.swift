@@ -79,11 +79,13 @@ struct M_ActiveStateBuilder: ActiveStateBuilder {
         response.user?.subscription?.tariffs.forEach { tariff in
             var currentProgress: CGFloat? = nil
             // currentProgress = CGFloat(1 - (Float(tariff.trip.count) / Float(tariff.trip.total)))
-            let titleHeight = tariff.name.ru.height(
+            let name = tariff.name?.ru ?? "unknown"
+            let descr = tariff.description?.ru ?? "unknown"
+            let titleHeight = name.height(
                 withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
             ) + 10
-            let typeHeight = tariff.description.ru.height(
+            let typeHeight = descr.height(
                 withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)
             ) + 10
@@ -91,8 +93,8 @@ struct M_ActiveStateBuilder: ActiveStateBuilder {
 //            let tariffType = tariff.trip.count == -1 ? tariff.trip.countDescr : "Осталось \(tariff.trip.count) поездки из \(tariff.trip.total)"
             let tariffRow = M_ActiveSubView.ViewState.TariffInfo(
                 id: tariff.tariffId,
-                transportTitle: tariff.name.ru,
-                tariffType: tariff.description.ru,
+                transportTitle: name,
+                tariffType: descr,
                 showProgress: currentProgress != nil,
                 currentProgress: currentProgress,
                 imageUrl: tariff.imageURL,

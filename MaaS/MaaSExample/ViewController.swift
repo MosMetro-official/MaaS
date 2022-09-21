@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     private var user: M_UserInfo? {
         didSet {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
@@ -69,13 +69,12 @@ class ViewController: UIViewController {
     }
     
     private func fetchUserInfo() {
-        maas.getUserInfo { [weak self] user, error in
-            guard let self = self else { return }
-            if let user = user {
+        Task {
+            do {
+                let user = try await maas.getUserInfo()
                 self.user = user
-            }
-            if let error = error {
-                self.error = error.errorTitle
+            } catch {
+                self.error = error.localizedDescription
             }
         }
     }
@@ -113,7 +112,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.authConfig(with: user) { [weak self] in
                     self?.showActiveFlow()
                 }
-            case .unknow:
+            case .unknown:
                 cell.nonAuthConfigure(message: "Нужно оформить подписку") { [weak self] in
                     self?.showChooseFlow()
                 }
@@ -160,7 +159,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 break
             case .expired, .canceled:
                 self.showChooseFlow()
-            case .unknow:
+            case .unknown:
                 self.showChooseFlow()
             default:
                 break

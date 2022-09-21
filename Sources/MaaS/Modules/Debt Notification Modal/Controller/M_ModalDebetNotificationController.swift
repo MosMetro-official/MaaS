@@ -72,21 +72,21 @@ public class M_ModalDebetNotificationController: UIViewController {
     }
     
     private func readMessage() {
-        debtNotification?.markAsRead(completion: { result in
-            switch result {
-            case .success(let isRead):
-                print("MESSAGE READ STATUS - \(isRead)")
-            case .failure(let error):
+        Task {
+            do {
+                let status = try await debtNotification?.markAsRead()
+                print("MESSAGE READ STATUS - \(String(describing: status))")
+            } catch {
                 let onRetry = Command { [weak self] in
                     self?.makeState()
                 }
                 self.showError(
-                    with: error.errorTitle,
-                    descr: error.errorSubtitle,
+                    with: "Произошла ошибка 🥲",
+                    descr: error.localizedDescription,
                     onRetry: onRetry
                 )
             }
-        })
+        }
     }
     
     private func makeState() {
@@ -113,6 +113,7 @@ public class M_ModalDebetNotificationController: UIViewController {
             titleText: message.title,
             buttonTitle: debtNotification?.url != nil ? "Подробнее" : "Закрыть"
         )
+        nestedView.viewState = viewState
     }
 }
 

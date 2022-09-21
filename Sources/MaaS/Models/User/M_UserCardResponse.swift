@@ -6,33 +6,16 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
-public struct M_UserCardResponse {
+public struct M_UserCardResponse: Codable {
     let paymentId: String
     let payment: M_PaymentInfo?
     
-    init?(data: JSON) {
-        self.paymentId = data["paymentId"].stringValue
-        self.payment = M_PaymentInfo(data: data["payment"])
-    }
-    
-    static func sendRequsetToChangeUserCard(body: [String: Any], completion: @escaping (Result<M_UserCardResponse, APIError>) -> Void) {
+    static func sendRequsetToChangeUserCard(body: M_UserCardRequest) async throws -> M_UserCardResponse {
         let client = APIClient.authClient
-        client.send(.POST(path: "/api/user/v1/key", body: body, contentType: .json)) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let userCard = M_UserCardResponse(data: json["data"]) else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(userCard))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.POST(path: "/api/user/v1/key", body: body, contentType: .json))
+        let cardResponse = try JSONDecoder().decode(M_UserCardResponse.self, from: response.data)
+        return cardResponse
     }
 }

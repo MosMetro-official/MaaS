@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
 
-public enum Status: String {
-    case unknow = "UNKNOWN" // процесс оформления подписки
+public enum Status: String, Codable, CodingKey {
+    case unknown = "UNKNOWN" // процесс оформления подписки
     case created = "CREATED" // процесс оплаты подписки
     case processing = "PROCESSING" // процесс оплаты подписки
     case active = "ACTIVE" // действующая
@@ -19,49 +19,52 @@ public enum Status: String {
     case blocked = "BLOCKED" // заблокирован
 }
 
-public typealias M_Description = (ru: String, en: String)
+public struct M_Description: Codable {
+    public let ru: String
+    public let en: String
+}
 
-public struct M_Subscription {
+public struct M_Subscription: Codable {
     public let id: String
     public let price: Int
-    public let name: M_Description
-    public let description: M_Description
+    public let name: M_Description?
+    public let description: M_Description?
     public let duration: Int
     public let tariffs: [M_Tariff]
     public let serviceId: String?
     public let valid: M_Valid?
     public let status: Status?
     
-    init?(data: JSON) {
-        self.id = data["id"].stringValue
-        self.price = data["price"].intValue
-        self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
-        self.description = (data["description"]["ru"].stringValue, data["description"]["en"].stringValue)
-        self.duration = data["duration"].intValue
-        self.tariffs = data["services"].arrayValue.compactMap { M_Tariff(data: $0) }
-        self.serviceId = data["serviceId"].stringValue
-        self.valid = M_Valid(data: data["valid"])
-        self.status = Status(rawValue: data["status"].stringValue)
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case price
+        case name
+        case description
+        case duration
+        case tariffs = "services"
+        case serviceId
+        case valid
+        case status
     }
     
-    static func fetchSubscriptions(completion: @escaping (Result<[M_Subscription], APIError>) -> Void) {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.price = try container.decode(Int.self, forKey: .price)
+        self.name = try container.decodeIfPresent(M_Description.self, forKey: .name)
+        self.description = try container.decodeIfPresent(M_Description.self, forKey: .description)
+        self.duration = try container.decode(Int.self, forKey: .duration)
+        self.tariffs = try container.decode([M_Tariff].self, forKey: .tariffs)
+        self.serviceId = try container.decodeIfPresent(String.self, forKey: .serviceId)
+        self.valid = try container.decodeIfPresent(M_Valid.self, forKey: .valid)
+        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
+    }
+    
+    static func fetchSubscriptions() async throws -> [M_Subscription] {
         let client = APIClient.authClient
-        client.send(.GET(path: "/api/subscription/v1/list")) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let array = json["data"].array else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                let subscriptions = array.compactMap { M_Subscription(data: $0) }
-                completion(.success(subscriptions))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.GET(path: "/api/subscription/v1/list"))
+        let subscriptions = try JSONDecoder().decode(M_BaseResponse<[M_Subscription]>.self, from: response.data).data
+        return subscriptions
     }
 }
 
@@ -71,47 +74,52 @@ extension M_Subscription: Equatable {
     }
 }
 
-public struct M_Tariff {
+public struct M_Tariff: Codable {
     public let serviceId: String
     public let tariffId: String
     public let imageURL: String
     public let price: Int
-    public let name: M_Description
-    public let description: M_Description
+    public let name: M_Description?
+    public let description: M_Description?
     public let duration: Int
     public let trip: M_Trip
     public let access: Bool
     public let valid: M_Valid?
     public let status: Status?
     
-    init?(data: JSON) {
-        guard
-            let serviceId = data["serviceId"].string,
-            let tariffId = data["tariffId"].string,
-            let imgUrl = data["imageURL"].string,
-            let price = data["price"].int,
-            let duration = data["duration"].int,
-            let trip = M_Trip(data: data["trip"]),
-            let access = data["access"].bool,
-            let status = data["status"].string else { return nil }
-        
-        self.serviceId = serviceId
-        self.tariffId = tariffId
-        self.imageURL = imgUrl
-        self.price = price
-        self.name = (data["name"]["ru"].stringValue, data["name"]["en"].stringValue)
-        self.description = (data["description"]["ru"].stringValue, data["description"]["en"].stringValue)
-        self.duration = duration
-        self.trip = trip
-        self.access = access
-        self.valid = M_Valid(data: data["valid"])
-        self.status = Status(rawValue: status)
+    enum CodingKeys: CodingKey {
+        case serviceId
+        case tariffId
+        case imageURL
+        case price
+        case name
+        case description
+        case duration
+        case trip
+        case access
+        case valid
+        case status
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.serviceId = try container.decode(String.self, forKey: .serviceId)
+        self.tariffId = try container.decode(String.self, forKey: .tariffId)
+        self.imageURL = try container.decode(String.self, forKey: .imageURL)
+        self.price = try container.decode(Int.self, forKey: .price)
+        self.name = try container.decodeIfPresent(M_Description.self, forKey: .name)
+        self.description = try container.decodeIfPresent(M_Description.self, forKey: .description)
+        self.duration = try container.decode(Int.self, forKey: .duration)
+        self.trip = try container.decode(M_Trip.self, forKey: .trip)
+        self.access = try container.decode(Bool.self, forKey: .access)
+        self.valid = try container.decodeIfPresent(M_Valid.self, forKey: .valid)
+        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
     }
 }
 
-public struct M_Trip {
+public struct M_Trip: Codable {
     
-    public enum TripType: String {
+    public enum TripType: String, Codable, CodingKey {
         case amount = "AMOUNT"
         case time = "TIME"
         case distance = "DISTANCE"
@@ -123,18 +131,6 @@ public struct M_Trip {
     public let single: Int
     public let total: Int
     
-    init?(data: JSON) {
-        guard
-            let count = data["count"].int,
-            let type = data["type"].string,
-            let single = data["single"].int,
-            let total = data["total"].int else { return nil }
-        self.count = count
-        self.type = TripType(rawValue: type)
-        self.single = single
-        self.total = total
-    }
-    
     public var countDescr: String {
         switch count {
         case -1:
@@ -145,14 +141,20 @@ public struct M_Trip {
     }
 }
 
-public struct M_Valid {
+public struct M_Valid: Codable {
     public let from: Date?
     public let to: Date?
-    private let dateFormatter = DateFormatter()
     
-    init?(data: JSON) {
-        guard let from = data["from"].string, let to = data["to"].string else { return nil }
-        self.from = from.converToDate()
-        self.to = to.converToDate()
+    enum CodingKeys: CodingKey {
+        case from
+        case to
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let from = try container.decodeIfPresent(String.self, forKey: .from)
+        let to = try container.decodeIfPresent(String.self, forKey: .to)
+        self.from = from?.converToDate()
+        self.to = to?.converToDate()
     }
 }

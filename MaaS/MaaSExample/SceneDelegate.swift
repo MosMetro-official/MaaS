@@ -9,8 +9,8 @@ import UIKit
 import MaaS
 
 class Dummy: MaaSNetworkDelegate {
-    func refreshToken(completion: @escaping (Bool) -> Void) {
-        completion(false)
+    func refreshToken() async throws {
+        debugPrint("-_- 401 -_-")
     }
 }
 

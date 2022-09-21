@@ -30,7 +30,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = "Sources/MaaS/**/*.{swift}"
   spec.exclude_files = "Tests/MaaS/**/*"
-  spec.dependency 'MMCoreNetworkCallbacks'
+  spec.dependency 'MMCoreNetworkAsync'
   spec.dependency 'CoreTableView'
   spec.dependency 'SDWebImage'
   spec.dependency 'OnBoardingModule'
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
 
   spec.test_spec 'MaaSTests' do |test_spec|
     test_spec.source_files = "Tests/MaaSTests**/*.{swift}"
-    test_spec.dependency 'MMCoreNetworkCallbacks'
+    test_spec.dependency 'MMCoreNetworkAsync'
     test_spec.dependency 'CoreTableView'
     test_spec.dependency 'SDWebImage'
     test_spec.dependency 'OnBoardingModule'

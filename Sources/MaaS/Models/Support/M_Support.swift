@@ -6,36 +6,20 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
-struct M_SupportResponse {
+struct M_SupportResponse: Codable {
     let url: String
     
-    init?(data: JSON) {
-        self.url = data["data"].stringValue
-    }
-    
-    static func sendSupportRequest(payId: String? = nil, redirectUrl: String, completion: @escaping (Result<M_SupportResponse, APIError>) -> Void) {
+    static func sendSupportRequest(payId: String? = nil, redirectUri: String) async throws -> M_SupportResponse {
         let client = APIClient.authClient
         var query: [String: String] = [:]
         if let payId = payId {
             query.updateValue(payId, forKey: "paymentId")
         }
-        query.updateValue(redirectUrl, forKey: "redirectURI")
-        client.send(.GET(path: "/api/issues/v1/form", query: query)) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let supportResponse = M_SupportResponse(data: json) else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(supportResponse))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        query.updateValue(redirectUri, forKey: "redirectURI")
+        let response = try await client.send(.GET(path: "/api/issues/v1/form", query: query))
+        let support = try JSONDecoder().decode(M_SupportResponse.self, from: response.data)
+        return support
     }
 }

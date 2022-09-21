@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
-public struct M_UserInfo {
+public struct M_UserInfo: Codable {
     public let status: Status?
     public let keyChangeLimit: Int
     public let keyChangeLeft: Int
-    public let reason: M_Description
+    public let reason: M_Description?
     public let hashKey: String
     public let type: String
     public let paySystem: PaySystem?
@@ -24,43 +24,37 @@ public struct M_UserInfo {
         return UserDefaults.standard.bool(forKey: "maasOnboarding")
     }
     
-    init?(data: JSON) {
-        guard
-            let status = data["status"].string,
-            let keyChangeLimit = data["keyChangeLimit"].int,
-            let keyChangeLeft = data["keyChangeLeft"].int,
-            let haskKey = data["hashKey"].string,
-            let paySystem = data["paySystem"].string,
-            let maskedPan = data["maskedPan"].string else { return nil }
-        
-        self.status = Status(rawValue: status)
-        self.keyChangeLimit = keyChangeLimit
-        self.keyChangeLeft = keyChangeLeft
-        self.reason = (data["reason"]["ru"].stringValue, data["reason"]["en"].stringValue)
-        self.hashKey = haskKey
-        self.type = data["type"].stringValue
-        self.paySystem = PaySystem(rawValue: paySystem)
-        self.maskedPan = maskedPan
-        self.subscription = M_Subscription(data: data["subscription"])
-        self.payment = M_AuthInfo(data: data["payment"])
+    private enum CodingKeys: String, CodingKey {
+        case status
+        case keyChangeLimit
+        case keyChangeLeft
+        case reason
+        case hashKey
+        case type
+        case paySystem
+        case maskedPan
+        case subscription
+        case payment
     }
     
-    public static func fetchUserInfo(completion: @escaping (Result<M_UserInfo, APIError>) -> Void) {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
+        self.keyChangeLimit = try container.decode(Int.self, forKey: .keyChangeLimit)
+        self.keyChangeLeft = try container.decode(Int.self, forKey: .keyChangeLeft)
+        self.reason = try container.decodeIfPresent(M_Description.self, forKey: .reason)
+        self.hashKey = try container.decode(String.self, forKey: .hashKey)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.paySystem = try container.decodeIfPresent(PaySystem.self, forKey: .paySystem)
+        self.maskedPan = try container.decode(String.self, forKey: .maskedPan)
+        self.subscription = try container.decodeIfPresent(M_Subscription.self, forKey: .subscription)
+        self.payment = try container.decodeIfPresent(M_AuthInfo.self, forKey: .payment)
+    }
+    
+    public static func fetchUserInfo() async throws -> M_UserInfo {
         let client = APIClient.authClient
-        client.send(.GET(path: "/api/user/v1/info")) { result in
-            switch result {
-            case .success(let resposne):
-                let json = JSON(resposne.data)
-                guard let userInfo = M_UserInfo(data: json["data"]) else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(userInfo))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.GET(path: "/api/user/v1/info"))
+        let userInfo = try JSONDecoder().decode(M_BaseResponse<M_UserInfo>.self, from: response.data).data
+        return userInfo
     }
 }

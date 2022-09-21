@@ -24,10 +24,11 @@ class TariffCell: UICollectionViewCell {
     }
 
     public func configure(with tariff: M_Tariff) {
-        if tariff.name.ru.contains("Общественный") {
+        let name = tariff.name?.ru ?? "unknown"
+        if name.contains("Общественный") {
             self.titleLabel.text = "Общ. транспорт"
         } else {
-            self.titleLabel.text = tariff.name.ru
+            self.titleLabel.text = name
         }
         guard let url = URL(string: tariff.imageURL) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in

@@ -68,25 +68,28 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
         sortedTariffs.forEach { tariff in
-            let titleHeight = tariff.name.ru.height(
+            let name = tariff.name?.ru ?? "unknown"
+            let descr = tariff.description?.ru ?? "unknown"
+            let titleHeight = name.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.debt)
             )
-            let descrHeight = tariff.description.ru.height(
+            let descrHeight = descr.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.body)
             )
-            let descr = M_BuySubView.ViewState.DescrRow(
+            let descrRow = M_BuySubView.ViewState.DescrRow(
                 id: tariff.tariffId,
-                title: tariff.name.ru,
-                descr: tariff.description.ru,
+                title: name,
+                descr: descr,
                 imageUrl: tariff.imageURL,
                 height: titleHeight + descrHeight + 15 + 30
             ).toElement()
-            let descrState = State(model: SectionState(id: "descr", header: nil, footer: nil), elements: [descr])
+            let descrState = State(model: SectionState(id: "descr", header: nil, footer: nil), elements: [descrRow])
             states.append(descrState)
         }
-        let titleHeaderHeight = response.sub.name.ru.height(
+        let name = response.sub.name?.ru ?? "unknown"
+        let titleHeaderHeight = name.height(
             withConstrainedWidth: width,
             font: Appearance.getFont(.header)
         )
@@ -96,7 +99,7 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
         )
         let subHeader = M_BuySubView.ViewState.SubHeader(
             id: response.sub.id,
-            title: response.sub.name.ru,
+            title: name,
             price: "\(response.sub.price / 100) ₽",
             height: titleHeaderHeight + priceHeight + 30
         )

@@ -36,7 +36,7 @@ final class M_CardChangeInteractor: M_CardChangeBusinessLogic, M_CardChangeDataS
     func sendRequestCardKey() {
         let loadingRequest = M_CardChangeModels.Request.Loading(title: "Загрузка...", descr: "Осталось совсем немного")
         requestLoading(loadingRequest)
-        let request = M_UserCardRequest(
+        let requestBody = M_UserCardRequest(
             payData: M_PayData(
                 redirectUrl: M_RedirectUrl(
                     succeed: MaaS.succeedUrlCard,
@@ -46,26 +46,25 @@ final class M_CardChangeInteractor: M_CardChangeBusinessLogic, M_CardChangeDataS
                 paymentMethod: .card
             )
         )
-        let body = request.createRequestBody()
-        M_UserCardResponse.sendRequsetToChangeUserCard(body: body) { result in
-            switch result {
-            case .success(let userResponse):
+        Task {
+            do {
+                let userResponse = try await M_UserCardResponse.sendRequsetToChangeUserCard(body: requestBody)
                 if let path = userResponse.payment?.url {
                     let response = M_CardChangeModels.Response.ChangeCardUrl(urlPath: path)
-                    self.presenter?.prepareSafariController(response)
+                    presenter?.prepareSafariController(response)
                 } else {
                     let response = M_CardChangeModels.Response.Error(
                         title: "Произошла ошибка 🥲",
                         descr: "Не удалось открыть страницу смены карты"
                     )
-                    self.presenter?.prepareError(response)
+                    presenter?.prepareError(response)
                 }
-            case .failure(let error):
+            } catch {
                 let response = M_CardChangeModels.Response.Error(
                     title: "Произошла ошибка 🥲",
                     descr: error.localizedDescription
                 )
-                self.presenter?.prepareError(response)
+                presenter?.prepareError(response)
             }
         }
     }

@@ -40,37 +40,36 @@ final class M_DebtUserNotificationsInteractor: M_DebtUserNotificationsBusinessLo
     }
     
     private func markUnreadMessage(_ notification: M_MaasDebtNotifification) {
-        notification.markAsRead { result in
-            switch result {
-            case .success(let isRead):
-                print("MESSAGE READ STATUS - \(isRead)")
-                return
-            case .failure(let error):
+        Task {
+            do {
+                let status = try await notification.markAsRead()
+                print("MESSAGE READ STATUS - \(status)")
+            } catch {
                 let response = M_DebtUserNotificationsModels.Response.Error(
-                    title: error.errorTitle,
+                    title: "Произошла ошибка 🥲",
                     descr: error.localizedDescription,
                     notification: notification
                 )
-                self.presenter?.prepareErrorState(response)
+                presenter?.prepareErrorState(response)
             }
         }
     }
     
     func requestReloadNotifications() {
         requestLoading()
-        M_MaasDebtNotifification.fetchDebts { result in
-            switch result {
-            case .success(let notifications):
+        Task {
+            do {
+                let notifications = try await M_MaasDebtNotifification.fetchDebts()
                 let newNotifications = notifications.filter { $0.read == false }
                 let response = M_DebtUserNotificationsModels.Response.Notifications(notifications: newNotifications)
-                self.presenter?.prepareViewModel(response)
-            case .failure(let error):
+                presenter?.prepareViewModel(response)
+            } catch {
                 let response = M_DebtUserNotificationsModels.Response.Error(
-                    title: error.errorTitle,
+                    title: "Произошла ошибка 🥲",
                     descr: error.localizedDescription,
                     notification: nil
                 )
-                self.presenter?.prepareErrorState(response)
+                presenter?.prepareErrorState(response)
             }
         }
     }

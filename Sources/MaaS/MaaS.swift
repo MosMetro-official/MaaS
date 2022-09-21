@@ -1,6 +1,6 @@
 import UIKit
 import CoreAnalytics
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
 public class MaaS {
     
@@ -26,7 +26,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "OxGwy2Y6mczQB_mHnaUrJSpc9cS_Dnp98fatNc14t-w"
+    public static var token: String? = "Qlat8Vl9mfIQIkDxmptoW4htc6hfqmLbZfU1m9NuKXQ"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
@@ -53,15 +53,9 @@ public class MaaS {
         _ = UIFont.registerFont(bundle: MaaS.bundle, fontName: "Comfortaa", fontExtension: "ttf")
     }
     
-    public func getUserInfo(completion: @escaping (M_UserInfo?, APIError?) -> Void) {
-        M_UserInfo.fetchUserInfo { result in
-            switch result {
-            case .success(let currentUser):
-                completion(currentUser, nil)
-            case .failure(let error):
-                completion(nil, error)
-            }
-        }
+    public func getUserInfo() async throws -> M_UserInfo {
+        let userInfo = try await M_UserInfo.fetchUserInfo()
+        return userInfo
     }
     
     static var deviceOS : String {

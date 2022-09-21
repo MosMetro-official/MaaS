@@ -6,52 +6,27 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
-public struct M_PayStatusResponse {
+public struct M_PayStatusResponse: Codable {
     public let subscription: M_Subscription
     public let payment: M_PaymentInfo
     
-    init?(data: JSON) {
-        guard
-            let sub = M_Subscription(data: data["subscription"]),
-            let payment = M_PaymentInfo(data: data["payment"]) else { return nil }
-        self.subscription = sub
-        self.payment = payment
-    }
-    
-    public static func statusOfPayment(for paymentId: String, completion: @escaping (Result<M_PayStatusResponse, APIError>) -> Void) {
+    public static func statusOfPayment(for paymentId: String) async throws -> M_PayStatusResponse {
         let query: [String: String] = ["paymentId": "\(paymentId)"]
         let client = APIClient.authClient
-        client.send(.GET(path: "/api/subscription/v1/pay/status", query: query)) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let payResponse = M_PayStatusResponse(data: json["data"]) else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                completion(.success(payResponse))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.GET(path: "/api/subscription/v1/pay/status", query: query))
+        let payStatus = try JSONDecoder().decode(M_PayStatusResponse.self, from: response.data)
+        return payStatus
     }
 }
 
-public struct M_PaymentInfo {
+public struct M_PaymentInfo: Codable {
     public let url: String
     public let authInfo: M_AuthInfo?
-    
-    init?(data: JSON) {
-        self.url = data["url"].stringValue
-        self.authInfo = M_AuthInfo(data: data["auth"])
-    }
 }
 
-public enum PayStatus: String {
+public enum PayStatus: String, Codable, CodingKey {
     case unknown = "UNKNOWN"
     case created = "CREATED"
     case processing = "PROCESSING"
@@ -68,47 +43,42 @@ public enum PayStatus: String {
     case hold = "HOLD"
 }
 
-public struct M_AuthInfo {
+public struct M_AuthInfo: Codable {
     public let status: M_AuthStatus?
     public let date: Date?
     public let rnn: String
     public let code: String
     public let card: M_CardInfo?
-    public let receiptUrl: String?
-
-    init?(data: JSON) {
-        guard
-            let rnn = data["rnn"].string,
-            let code = data["code"].string,
-            let date = data["date"].string else { return nil }
-
-        self.status = M_AuthStatus(data: data["status"])
-        self.date = date.converToDate()
-        self.rnn = rnn
-        self.code = code
-        self.card = M_CardInfo(data: data["card"])
-        self.receiptUrl = data["receiptUrl"].stringValue
+    public let receiptUrl: [String]?
+    
+    enum CodingKeys: CodingKey {
+        case status
+        case date
+        case rnn
+        case code
+        case card
+        case receiptUrl
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.status = try container.decodeIfPresent(M_AuthStatus.self, forKey: .status)
+        let date = try container.decodeIfPresent(String.self, forKey: .date)
+        self.date = date?.converToDate()
+        self.rnn = try container.decode(String.self, forKey: .rnn)
+        self.code = try container.decode(String.self, forKey: .code)
+        self.card = try container.decodeIfPresent(M_CardInfo.self, forKey: .card)
+        self.receiptUrl = try container.decodeIfPresent([String].self, forKey: .receiptUrl)
     }
 }
 
-public struct M_AuthStatus {
+public struct M_AuthStatus: Codable {
     public let responseCode: String
     public let responseDescr: String
     public let status: PayStatus?
-
-    init?(data: JSON) {
-        guard
-            let responseCode = data["responseCode"].string,
-            let responseDescr = data["responseDescr"].string,
-            let status = data["status"].string else { return nil }
-
-        self.responseCode = responseCode
-        self.responseDescr = responseDescr
-        self.status = PayStatus(rawValue: status)
-    }
 }
 
-public enum PaySystem: String {
+public enum PaySystem: String, Codable, CodingKey {
     case visa = "VISA"
     case mc = "MC"
     case mir = "MIR"
@@ -116,28 +86,31 @@ public enum PaySystem: String {
     case unknown = "UNKNOWN_PS"
 }
 
-public struct M_CardInfo {
+public struct M_CardInfo: Codable {
     public let hashKey: String
     public let paySystem: PaySystem?
     public let type: String
     public let maskedPan: String
     public let expDate: Date?
     public let cardId: String
-
-    init?(data: JSON) {
-        guard
-            let hash = data["hashKey"].string,
-            let type = data["type"].string,
-            let maskedPan = data["maskedPan"].string,
-            let expDate = data["expDate"].string,
-            let cardId = data["cardId"].string,
-            let paySystem = data["paySystem"].string else { return nil }
-
-        self.hashKey = hash
-        self.paySystem = PaySystem(rawValue: paySystem)
-        self.type = type
-        self.maskedPan = maskedPan
-        self.expDate = expDate.converToDate()
-        self.cardId = cardId
+    
+    enum CodingKeys: CodingKey {
+        case hashKey
+        case paySystem
+        case type
+        case maskedPan
+        case expDate
+        case cardId
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.hashKey = try container.decode(String.self, forKey: .hashKey)
+        self.paySystem = try container.decodeIfPresent(PaySystem.self, forKey: .paySystem)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.maskedPan = try container.decode(String.self, forKey: .maskedPan)
+        let expDate = try container.decodeIfPresent(String.self, forKey: .expDate)
+        self.expDate = expDate?.converToDate()
+        self.cardId = try container.decode(String.self, forKey: .cardId)
     }
 }

@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
 extension APIClient {
     public static var authClient: APIClient {
-        return APIClient(host: MaaS.host, interceptor: MaaSApiClientInterceptor(), httpProtocol: .HTTPS, configuration: .default)
+        return APIClient(host: MaaS.host, interceptor: MaaSApiClientInterceptor(), httpProtocol: .HTTPS, configuration: .default, serializer: nil, debug: true)
     }
 }
 
@@ -19,32 +19,20 @@ class MaaSApiClientInterceptor: APIClientInterceptor {
         request.appendAuthHeaders()
     }
     
-    func client(_ client: APIClient, initialRequest: Request, didReceiveInvalidResponse response: HTTPURLResponse, data: Data?, completion: @escaping (RetryPolicy) -> Void) {
+    func client(_ client: APIClient, initialRequest: Request, didReceiveInvalidResponse response: HTTPURLResponse, data: Data?) async -> RetryPolicy {
         if response.statusCode == 401 {
             guard let networkDelegate = MaaS.networkDelegate else {
-                fatalError("Вы не реализовали делегат работы с авторизацией")
+                fatalError("Не реализован механизм обновления токена")
             }
-            networkDelegate.refreshToken { result in
-
-                if result {
-                    completion(.shouldRetry)
-                    return
-                } else {
-                    completion(.doNotRetry)
-                    return
-                }
+            do {
+                try await networkDelegate.refreshToken()
+                return .shouldRetry
+            } catch {
+                return .doNotRetryWith(.badRequest)
             }
-
-        } else {
-            if let data = data {
-                let json = JSON(data)
-                print("🥰 ERROR - \(json)")
-                let message = json["error"]["message"].stringValue
-                completion(.doNotRetryWith(.genericError(message)))
-                return
-            }
-            completion(.doNotRetryWith(.unacceptableStatusCode(response.statusCode)))
-            return
         }
+        let error = String(data: data ?? Data(), encoding: .utf8)
+        print(error ?? "Auth error")
+        return .doNotRetry
     }
 }

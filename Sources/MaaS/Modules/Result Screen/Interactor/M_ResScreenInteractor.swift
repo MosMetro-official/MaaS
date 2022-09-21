@@ -48,18 +48,18 @@ final class M_ResScreenInteractor: M_ResScreenBusinessLogic, M_ResScreenDataStor
     func requestSupportUrl(with id: String) {
         let response = M_ResScreenModels.Response.Loading(title: "Загрузка...", descr: "Немного подождите")
         presenter?.prepareLoadingState(response)
-        M_SupportResponse.sendSupportRequest(payId: id, redirectUrl: MaaS.supportForm) { result in
-            switch result {
-            case .success(let supportForm):
+        Task {
+            do {
+                let supportForm = try await M_SupportResponse.sendSupportRequest(payId: id, redirectUri: MaaS.supportForm)
                 let response = M_ResScreenModels.Response.SupportForm(urlString: supportForm.url)
-                self.presenter?.prepareSupportForm(response)
-            case .failure(let error):
+                presenter?.prepareSupportForm(response)
+            } catch {
                 let response = M_ResScreenModels.Response.Error(
-                    title: error.errorTitle,
+                    title: "Произошла ошибка 🥲",
                     descr: error.localizedDescription,
                     id: id
                 )
-                self.presenter?.prepareErrorState(response)
+                presenter?.prepareErrorState(response)
             }
         }
     }

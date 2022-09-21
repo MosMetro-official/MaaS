@@ -31,6 +31,7 @@ final class M_ActiveSubInteractor: M_ActiveSubBusinessLogic, M_ActiveDataStore {
     }
     
     private var model = M_ActiveSubModels.Response.UserInfo()
+    private var count = 0
     
     init(presenter: M_ActiveSubPresentationLogic? = nil) {
         self.presenter = presenter
@@ -38,93 +39,63 @@ final class M_ActiveSubInteractor: M_ActiveSubBusinessLogic, M_ActiveDataStore {
     
     func fetchUserInfo() {
         showLoading()
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        M_MaasDebtNotifification.fetchDebts { result in
-            switch result {
-            case .success(let notifications):
-                self.model.debtNotifications = notifications
-                if self.model.findUnreadMessages() {
-                    if let notification = self.model.notification {
-                        let response = M_ActiveSubModels.Response.Debt(notification: notification)
-                        self.presenter?.prepareDebtNotifications(response)
-                    }
-                }
-                dispatchGroup.leave()
-            case .failure(let error):
+        Task {
+            do {
+                let notifications = try await M_MaasDebtNotifification.fetchDebts()
+                let userInfo = try await M_UserInfo.fetchUserInfo()
+                model.debtNotifications = notifications
+                model.user = userInfo
+                handleNotification()
+                presenter?.prepareResultState(model)
+            } catch {
                 let response = M_ActiveSubModels.Response.Error(
                     title: "Произошла ошибка 🥲",
-                    descr: error.errorDescription,
+                    descr: error.localizedDescription,
                     isCardError: false
                 )
-                self.presenter?.prepareError(response)
-                dispatchGroup.leave()
-                return
+                presenter?.prepareError(response)
             }
-        }
-        dispatchGroup.enter()
-        M_UserInfo.fetchUserInfo { result in
-            switch result {
-            case .success(let userInfo):
-                self.userInfo = userInfo
-                self.model.user = userInfo
-                self.model.newMaskedPan = userInfo.maskedPan
-                dispatchGroup.leave()
-            case .failure(let error):
-                let response = M_ActiveSubModels.Response.Error(
-                    title: "Произошла ошибка 🥲",
-                    descr: error.errorDescription,
-                    isCardError: false
-                )
-                self.presenter?.prepareError(response)
-                dispatchGroup.leave()
-                return
-            }
-        }
-        dispatchGroup.notify(queue: .main) {
-            print("All done")
-            self.presenter?.prepareResultState(self.model)
         }
     }
     
     func checkCardUpdates() {
-        var count = 0
-        M_UserInfo.fetchUserInfo { result in
-            switch result {
-            case .success(let userInfo):
-                self.model.newMaskedPan = userInfo.maskedPan
-                if self.model.needReloadCard, count <= 5 {
+        Task {
+            do {
+                let userInfo = try await M_UserInfo.fetchUserInfo()
+                model.newMaskedPan = userInfo.maskedPan
+                if model.needReloadCard, self.count <= 5 {
                     DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                        count += 1
+                        self.count += 1
                         self.checkCardUpdates()
                     }
                 }
-                self.presenter?.prepareResultState(self.model)
-            case .failure(let error):
+                self.count = 0
+                presenter?.prepareResultState(model)
+            } catch {
                 let response = M_ActiveSubModels.Response.Error(
                     title: "Произошла ошибка 🥲",
-                    descr: error.errorDescription,
+                    descr: error.localizedDescription,
                     isCardError: true
                 )
-                self.presenter?.prepareError(response)
+                presenter?.prepareError(response)
             }
         }
     }
     
     func fetchSupportUrl() {
         showLoading()
-        M_SupportResponse.sendSupportRequest(redirectUrl: MaaS.supportForm) { result in
-            switch result {
-            case .success(let supportForm):
-                let response = M_ActiveSubModels.Response.SupportForm(url: supportForm.url)
-                self.presenter?.prepareSupportForm(response)
-            case .failure(let error):
+        Task {
+            do {
+                let support = try await M_SupportResponse.sendSupportRequest(redirectUri: MaaS.supportForm)
+                let response = M_ActiveSubModels.Response.SupportForm(url: support.url)
+                presenter?.prepareSupportForm(response)
+            } catch {
                 let response = M_ActiveSubModels.Response.Error(
                     title: "Произошла ошибка 🥲",
-                    descr: error.errorDescription,
+                    descr: error.localizedDescription,
                     isCardError: false
                 )
-                self.presenter?.prepareError(response)
+                presenter?.prepareError(response)
             }
         }
     }
@@ -132,6 +103,15 @@ final class M_ActiveSubInteractor: M_ActiveSubBusinessLogic, M_ActiveDataStore {
     private func showLoading() {
         let response = M_ActiveSubModels.Response.Loading(title: "Загрузка", descr: "Подождите немного...")
         presenter?.prepareLoading(response)
+    }
+    
+    private func handleNotification() {
+        if self.model.findUnreadMessages() {
+            if let notification = self.model.notification {
+                let response = M_ActiveSubModels.Response.Debt(notification: notification)
+                self.presenter?.prepareDebtNotifications(response)
+            }
+        }
     }
     
     deinit {

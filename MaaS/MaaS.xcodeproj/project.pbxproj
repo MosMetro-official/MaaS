@@ -162,6 +162,7 @@
 		95A41D0F2854D63200637FA6 /* M_SubPayStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */; };
 		95A41D112854D81F00637FA6 /* M_SubPayStartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */; };
 		95A4FE8D2865FDDB00C3A967 /* M_Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A4FE8C2865FDDB00C3A967 /* M_Support.swift */; };
+		95A6AD1A28DB6CA4008DF790 /* M_BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A6AD1928DB6CA4008DF790 /* M_BaseResponse.swift */; };
 		95ADB2EF28D500AB00F5BEEE /* MaaSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB2EE28D500AB00F5BEEE /* MaaSTests.swift */; };
 		95ADB2F028D500AB00F5BEEE /* MaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509205B282E535B00C4E573 /* MaaS.framework */; platformFilter = ios; };
 		95C5FDED2860C9B000984F2F /* M_UserCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */; };
@@ -371,6 +372,7 @@
 		95A41D0E2854D63200637FA6 /* M_SubPayStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartRequest.swift; sourceTree = "<group>"; };
 		95A41D102854D81F00637FA6 /* M_SubPayStartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_SubPayStartResponse.swift; sourceTree = "<group>"; };
 		95A4FE8C2865FDDB00C3A967 /* M_Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_Support.swift; sourceTree = "<group>"; };
+		95A6AD1928DB6CA4008DF790 /* M_BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_BaseResponse.swift; sourceTree = "<group>"; };
 		95ADB2EC28D500AB00F5BEEE /* MaaSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaaSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ADB2EE28D500AB00F5BEEE /* MaaSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaaSTests.swift; sourceTree = "<group>"; };
 		95C5FDEC2860C9B000984F2F /* M_UserCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_UserCardResponse.swift; sourceTree = "<group>"; };
@@ -1300,6 +1302,7 @@
 			isa = PBXGroup;
 			children = (
 				95795B6A28531B2700634754 /* AuthClient.swift */,
+				95A6AD1928DB6CA4008DF790 /* M_BaseResponse.swift */,
 			);
 			path = "Api Client";
 			sourceTree = "<group>";
@@ -1676,6 +1679,7 @@
 				95154A0528D4ED6C00B16222 /* M_ChooseSubscriptionInteractor.swift in Sources */,
 				951549FC28D4ED6C00B16222 /* M_BuySubscriptionInteractor.swift in Sources */,
 				95154A3D28D4EEE400B16222 /* M_DebtInfoCell.swift in Sources */,
+				95A6AD1A28DB6CA4008DF790 /* M_BaseResponse.swift in Sources */,
 				951549E928D4ED6C00B16222 /* M_LoadingView.swift in Sources */,
 				950920C6282E55DC00C4E573 /* Ext+UIFont.swift in Sources */,
 				951549F728D4ED6C00B16222 /* M_ResScreenModels.swift in Sources */,

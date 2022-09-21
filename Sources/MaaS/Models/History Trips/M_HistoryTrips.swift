@@ -6,57 +6,29 @@
 //
 
 import Foundation
-import MMCoreNetworkCallbacks
+import MMCoreNetworkAsync
 
-public struct M_HistoryTrips {
+public struct M_HistoryTrips: Codable {
     let subscription: M_Subscription
     let trip: M_TripDetails
     let imageURL: URL?
     
-    init?(data: JSON) {
-        guard
-            let sub = M_Subscription(data: data["subscription"]),
-            let trip = M_TripDetails(data: data["trip"]) else { return nil }
-        self.subscription = sub
-        self.trip = trip
-        
-        if let imgURL = sub.tariffs.first(where: { $0.serviceId == trip.serviceId })?.imageURL {
-            self.imageURL = URL(string: imgURL)
-        } else {
-            self.imageURL = nil
-        }
-        
-    }
-    
-    static func fetchHistoryTrips(by limit: Int, offset: Int, completion: @escaping (Result<[M_HistoryTrips], APIError>) -> Void) {
+    static func fetchHistoryTrips(by limit: Int, offset: Int) async throws -> [M_HistoryTrips] {
         let client = APIClient.authClient
         let query = ["limit": "\(limit)", "offset": "\(offset)"]
-        client.send(.GET(path: "/api/user/v1/trips", query: query)) { result in
-            switch result {
-            case .success(let response):
-                let json = JSON(response.data)
-                guard let array = json["data"].array else {
-                    completion(.failure(.badMapping))
-                    return
-                }
-                let trips = array.compactMap { M_HistoryTrips(data: $0) }
-                completion(.success(trips))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
+        let response = try await client.send(.GET(path: "/api/user/v1/trips", query: query))
+        let trips = try JSONDecoder().decode([M_HistoryTrips].self, from: response.data)
+        return trips
     }
 }
 
-public enum TripStatus: String {
+public enum TripStatus: String, Codable {
     case started = "STARTED"
     case done = "DONE"
     case canceled = "CANCELED"
 }
 
-public struct M_TripDetails {
+public struct M_TripDetails: Codable {
     let serviceTripId: String
     let terminalId: String
     let count: Int
@@ -65,35 +37,42 @@ public struct M_TripDetails {
     let serviceId: String
     let route: M_Description
     
+    private enum CodingKeys: String, CodingKey {
+        case serviceTripId
+        case terminalId
+        case count
+        case time
+        case status
+        case serviceId
+        case route
+    }
     
-    init?(data: JSON) {
-        guard
-            let serviceTripId = data["serviceTripId"].string,
-            let terminalId = data["terminalId"].string,
-            let count = data["count"].int,
-            let time = M_TravelTime(data: data["time"]),
-            let status = data["status"].string,
-            let serviceId = data["serviceId"].string else { return nil }
-                
-        self.serviceTripId = serviceTripId
-        self.terminalId = terminalId
-        self.count = count
-        self.time = time
-        self.status = TripStatus(rawValue: status)
-        self.serviceId = serviceId
-        self.route = (data["route"]["ru"].stringValue, data["route"]["en"].stringValue)
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: M_TripDetails.CodingKeys.self)
+        serviceTripId = try values.decode(String.self, forKey: .serviceTripId)
+        terminalId = try values.decode(String.self, forKey: .terminalId)
+        count = try values.decode(Int.self, forKey: .count)
+        time = try values.decode(M_TravelTime.self, forKey: .time)
+        status = try values.decodeIfPresent(TripStatus.self, forKey: .status)
+        serviceId = try values.decode(String.self, forKey: .serviceId)
+        route = try values.decode(M_Description.self, forKey: .route)
     }
 }
 
-public struct M_TravelTime {
+public struct M_TravelTime: Codable {
     let start: Date?
     let end: Date?
     
-    init?(data: JSON) {
-        guard
-            let start = data["start"].string,
-            let end = data["end"].string else { return nil }
-        self.start = start.converToDate()
-        self.end = end.converToDate()
+    enum CodingKeys: CodingKey {
+        case start
+        case end
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let start = try container.decodeIfPresent(String.self, forKey: .start)
+        let end = try container.decodeIfPresent(String.self, forKey: .end)
+        self.start = start?.converToDate()
+        self.end = end?.converToDate()
     }
 }

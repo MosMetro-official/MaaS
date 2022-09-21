@@ -91,7 +91,7 @@ internal struct M_AnalyticsEvents {
             name: "mm.maas.buySubcription",
             metadata: [
                 "id": data.id,
-                "name": data.name.ru,
+                "name": data.name?.ru,
                 "price": data.price,
                 "serviceId": data.serviceId
             ]

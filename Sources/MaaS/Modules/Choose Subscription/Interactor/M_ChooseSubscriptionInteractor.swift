@@ -28,18 +28,17 @@ final class M_ChooseSubscriptionInteractor: M_ChooseSubscriptionBusinessLogic, M
     
     func fetchSubscriptions() {
         requestLoading()
-        M_Subscription.fetchSubscriptions { result in
-            switch result {
-            case .success(let subscriptions):
-                self.subscriptions = subscriptions
+        Task {
+            do {
+                let subscriptions = try await M_Subscription.fetchSubscriptions()
                 let response = M_ChooseSubscriptionModels.Response.Subscription(subs: subscriptions, selectedSub: self.subscription)
-                self.presenter?.prepareViewModel(response)
-            case .failure(let error):
+                presenter?.prepareViewModel(response)
+            } catch {
                 let response = M_ChooseSubscriptionModels.Response.Error(
-                    title: error.errorTitle,
-                    descr: error.errorSubtitle
+                    title: "Произошла ошибка 🥲",
+                    descr: error.localizedDescription
                 )
-                self.presenter?.prepareError(response)
+                presenter?.prepareError(response)
             }
         }
     }

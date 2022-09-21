@@ -85,9 +85,10 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 let onClose = Command {
                     self.controller?.popToActiveController()
                 }
+                let name = sub.name?.ru ?? "unknown"
                 let descr = sub.status == .active ?
-                "Мы привязали подписку \(sub.name.ru) к вашей карте" :
-                "Мы привязали подписку \(sub.name.ru) к вашей карте, профиль будет доступен позже"
+                "Мы привязали подписку \(name) к вашей карте" :
+                "Мы привязали подписку \(name) к вашей карте, профиль будет доступен позже"
                 let success = M_ResultView.ViewState.Action(
                     title: "Успешно",
                     descr: descr
@@ -161,6 +162,5 @@ final class M_ResScreenPresenter: M_ResScreenPresentationLogic {
                 return viewState
             }
         }
-        return .initial
     }
 }
