@@ -16,7 +16,7 @@ public struct M_PayStatusResponse: Codable {
         let query: [String: String] = ["paymentId": "\(paymentId)"]
         let client = APIClient.authClient
         let response = try await client.send(.GET(path: "/api/subscription/v1/pay/status", query: query))
-        let payStatus = try JSONDecoder().decode(M_PayStatusResponse.self, from: response.data)
+        let payStatus = try JSONDecoder().decode(M_BaseResponse<M_PayStatusResponse>.self, from: response.data).data
         return payStatus
     }
 }

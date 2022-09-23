@@ -28,6 +28,7 @@ class MaaSApiClientInterceptor: APIClientInterceptor {
                 try await networkDelegate.refreshToken()
                 return .shouldRetry
             } catch {
+                print("🥲🥲🥲 ERROR: \(error)")
                 return .doNotRetryWith(.badRequest)
             }
         }

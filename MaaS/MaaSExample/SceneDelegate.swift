@@ -8,16 +8,20 @@
 import UIKit
 import MaaS
 
-class Dummy: MaaSNetworkDelegate {
+fileprivate enum RefreshError: String, Error {
+    case tokenIsDead
+}
+
+fileprivate class Dummy: MaaSNetworkDelegate {
     func refreshToken() async throws {
-        debugPrint("-_- 401 -_-")
+        throw RefreshError.tokenIsDead
     }
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    let dummy = Dummy()
+    fileprivate let dummy = Dummy()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }

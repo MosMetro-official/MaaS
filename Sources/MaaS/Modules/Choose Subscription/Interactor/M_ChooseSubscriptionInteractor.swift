@@ -31,6 +31,7 @@ final class M_ChooseSubscriptionInteractor: M_ChooseSubscriptionBusinessLogic, M
         Task {
             do {
                 let subscriptions = try await M_Subscription.fetchSubscriptions()
+                self.subscriptions = subscriptions
                 let response = M_ChooseSubscriptionModels.Response.Subscription(subs: subscriptions, selectedSub: self.subscription)
                 presenter?.prepareViewModel(response)
             } catch {

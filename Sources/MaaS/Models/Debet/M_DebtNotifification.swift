@@ -33,7 +33,7 @@ struct M_MaasDebtNotifification: Codable {
     public static func fetchDebts() async throws -> [M_MaasDebtNotifification] {
         let client = APIClient.authClient
         let response = try await client.send(.GET(path: "/api/user/v1/messages"))
-        let notifications = try JSONDecoder().decode([M_MaasDebtNotifification].self, from: response.data)
+        let notifications = try JSONDecoder().decode(M_BaseResponse<[M_MaasDebtNotifification]>.self, from: response.data).data
         return notifications
     }
 }

@@ -15,7 +15,7 @@ public struct M_UserCardResponse: Codable {
     static func sendRequsetToChangeUserCard(body: M_UserCardRequest) async throws -> M_UserCardResponse {
         let client = APIClient.authClient
         let response = try await client.send(.POST(path: "/api/user/v1/key", body: body, contentType: .json))
-        let cardResponse = try JSONDecoder().decode(M_UserCardResponse.self, from: response.data)
+        let cardResponse = try JSONDecoder().decode(M_BaseResponse<M_UserCardResponse>.self, from: response.data).data
         return cardResponse
     }
 }

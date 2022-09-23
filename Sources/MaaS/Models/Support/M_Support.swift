@@ -19,7 +19,7 @@ struct M_SupportResponse: Codable {
         }
         query.updateValue(redirectUri, forKey: "redirectURI")
         let response = try await client.send(.GET(path: "/api/issues/v1/form", query: query))
-        let support = try JSONDecoder().decode(M_SupportResponse.self, from: response.data)
+        let support = try JSONDecoder().decode(M_BaseResponse<M_SupportResponse>.self, from: response.data).data
         return support
     }
 }

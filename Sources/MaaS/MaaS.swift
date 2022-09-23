@@ -26,7 +26,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "Qlat8Vl9mfIQIkDxmptoW4htc6hfqmLbZfU1m9NuKXQ"
+    public static var token: String? = "-s8nvouacxRmMOiA95rXOpHfIkPN-e6T9g450sDQdVc"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"

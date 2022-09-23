@@ -37,23 +37,9 @@ final class M_BuySubscriptionInteractor: M_BuySubscriptionBusinessLogic, M_BuySu
     func requestPayment() {
         guard let sub = subscription else { return }
         requestLoading()
-        let payRequestBody = M_SubPayStartRequest(
-            maaSTariffId: sub.id,
-            payment: .init(
-                paymentMethod: .card,
-                redirectUrl: .init(
-                    succeed: MaaS.succeedUrl,
-                    declined: MaaS.declinedUrl,
-                    canceled: MaaS.canceledUrl
-                ),
-                paymentToken: nil,
-                id: nil
-            ),
-            additionalData: nil
-        )
         Task {
             do {
-                let payStart = try await M_SubPayStartRequest.sendRequestSub(with: payRequestBody)
+                let payStart = try await M_SubPayStartRequest.sendRequestSub(with: sub.id)
                 handle(response: payStart)
             } catch {
                 let response = M_BuySubscriptionModels.Response.Error(title: "Произошла ошибка 🥲", descr: error.localizedDescription)

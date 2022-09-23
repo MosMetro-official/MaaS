@@ -17,7 +17,7 @@ public struct M_DebtInfo: Codable {
     static func fetchDebtInfo() async throws -> [M_DebtInfo] {
         let client = APIClient.authClient
         let response = try await client.send(.GET(path: "/api/user/v1/debt"))
-        let debts = try JSONDecoder().decode([M_DebtInfo].self, from: response.data)
+        let debts = try JSONDecoder().decode(M_BaseResponse<[M_DebtInfo]>.self, from: response.data).data
         return debts
     }
 }

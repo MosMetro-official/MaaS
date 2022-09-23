@@ -86,35 +86,6 @@ public struct M_Tariff: Codable {
     public let access: Bool
     public let valid: M_Valid?
     public let status: Status?
-    
-    enum CodingKeys: CodingKey {
-        case serviceId
-        case tariffId
-        case imageURL
-        case price
-        case name
-        case description
-        case duration
-        case trip
-        case access
-        case valid
-        case status
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.serviceId = try container.decode(String.self, forKey: .serviceId)
-        self.tariffId = try container.decode(String.self, forKey: .tariffId)
-        self.imageURL = try container.decode(String.self, forKey: .imageURL)
-        self.price = try container.decode(Int.self, forKey: .price)
-        self.name = try container.decodeIfPresent(M_Description.self, forKey: .name)
-        self.description = try container.decodeIfPresent(M_Description.self, forKey: .description)
-        self.duration = try container.decode(Int.self, forKey: .duration)
-        self.trip = try container.decode(M_Trip.self, forKey: .trip)
-        self.access = try container.decode(Bool.self, forKey: .access)
-        self.valid = try container.decodeIfPresent(M_Valid.self, forKey: .valid)
-        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
-    }
 }
 
 public struct M_Trip: Codable {
