@@ -42,7 +42,7 @@ public struct M_TravelTime: Codable {
     let start: Date?
     let end: Date?
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case start
         case end
     }

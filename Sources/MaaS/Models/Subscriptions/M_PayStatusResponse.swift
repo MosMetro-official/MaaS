@@ -19,6 +19,17 @@ public struct M_PayStatusResponse: Codable {
         let payStatus = try JSONDecoder().decode(M_BaseResponse<M_PayStatusResponse>.self, from: response.data).data
         return payStatus
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case subscription
+        case payment
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.subscription = try container.decode(M_Subscription.self, forKey: .subscription)
+        self.payment = try container.decode(M_PaymentInfo.self, forKey: .payment)
+    }
 }
 
 public struct M_PaymentInfo: Codable {
@@ -26,7 +37,7 @@ public struct M_PaymentInfo: Codable {
     public let authInfo: M_AuthInfo?
 }
 
-public enum PayStatus: String, Codable, CodingKey {
+public enum PayStatus: String, Codable {
     case unknown = "UNKNOWN"
     case created = "CREATED"
     case processing = "PROCESSING"
@@ -51,7 +62,7 @@ public struct M_AuthInfo: Codable {
     public let card: M_CardInfo?
     public let receiptUrl: [String]?
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case status
         case date
         case rnn
@@ -78,7 +89,7 @@ public struct M_AuthStatus: Codable {
     public let status: PayStatus?
 }
 
-public enum PaySystem: String, Codable, CodingKey {
+public enum PaySystem: String, Codable {
     case visa = "VISA"
     case mc = "MC"
     case mir = "MIR"
@@ -94,7 +105,7 @@ public struct M_CardInfo: Codable {
     public let expDate: Date?
     public let cardId: String
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case hashKey
         case paySystem
         case type

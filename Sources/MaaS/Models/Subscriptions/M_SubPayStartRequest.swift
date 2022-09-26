@@ -13,22 +13,21 @@ public struct M_SubPayStartRequest: Codable {
     public let payment: M_PayDataSub
     public let additionalData: [M_AppData]?
     
-    public static func sendRequestSub(with subId: String) async throws -> M_SubPayStartResponse {
+    private enum CodingKeys: String, CodingKey {
+        case maaSTariffId
+        case payment
+        case additionalData
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(maaSTariffId, forKey: .maaSTariffId)
+        try container.encode(payment, forKey: .payment)
+        try container.encodeIfPresent(additionalData, forKey: .additionalData)
+    }
+    
+    public static func sendRequestSub(with body: M_SubPayStartRequest) async throws -> M_SubPayStartResponse {
         let client = APIClient.authClient
-        let body = M_SubPayStartRequest(
-            maaSTariffId: subId,
-            payment: .init(
-                paymentMethod: .card,
-                redirectUrl: .init(
-                    succeed: MaaS.succeedUrl,
-                    declined: MaaS.declinedUrl,
-                    canceled: MaaS.canceledUrl
-                ),
-                paymentToken: nil,
-                id: nil
-            ),
-            additionalData: nil
-        )
         let response = try await client.send(.POST(path: "/api/subscription/v1/pay/start", body: body, contentType: .json))
         let subPayResponse = try JSONDecoder().decode(M_BaseResponse<M_SubPayStartResponse>.self, from: response.data).data
         return subPayResponse

@@ -10,7 +10,11 @@ import MMCoreNetworkAsync
 
 extension APIClient {
     public static var authClient: APIClient {
-        return APIClient(host: MaaS.host, interceptor: MaaSApiClientInterceptor(), httpProtocol: .HTTPS, configuration: .default, serializer: nil, debug: true)
+        let decoder = JSONDecoder()
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let serializer = Serializer(decoder: decoder, encoder: encoder)
+        return APIClient(host: MaaS.host, interceptor: MaaSApiClientInterceptor(), httpProtocol: .HTTPS, configuration: .default, serializer: serializer, debug: true)
     }
 }
 

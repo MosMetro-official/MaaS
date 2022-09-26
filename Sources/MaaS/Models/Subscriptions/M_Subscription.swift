@@ -9,7 +9,7 @@ import Foundation
 import MMCoreNetworkAsync
 
 
-public enum Status: String, Codable, CodingKey {
+public enum Status: String, Codable {
     case unknown = "UNKNOWN" // процесс оформления подписки
     case created = "CREATED" // процесс оплаты подписки
     case processing = "PROCESSING" // процесс оплаты подписки
@@ -17,6 +17,15 @@ public enum Status: String, Codable, CodingKey {
     case expired = "EXPIRED" // срок действия истек
     case canceled = "CANCELED" // аннулирована
     case blocked = "BLOCKED" // заблокирован
+    case maasError = "MAAS_ERROR"
+    case undefined = "UNDEFINED"
+    case refused = "REFUSED"
+    case declined = "DECLINED"
+    case error = "ERROR"
+    case preauth = "PREAUTH"
+    case authCanceled = "AUTH_CANCELED"
+    case hold = "HOLD"
+    case reserved = "RESERVED"
 }
 
 public struct M_Description: Codable {
@@ -60,6 +69,19 @@ public struct M_Subscription: Codable {
         self.status = try container.decodeIfPresent(Status.self, forKey: .status)
     }
     
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.id, forKey: .id)
+        try container.encode(self.price, forKey: .price)
+        try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.description, forKey: .description)
+        try container.encode(self.duration, forKey: .duration)
+        try container.encode(self.tariffs, forKey: .tariffs)
+        try container.encodeIfPresent(self.serviceId, forKey: .serviceId)
+        try container.encodeIfPresent(self.valid, forKey: .valid)
+        try container.encodeIfPresent(self.status, forKey: .status)
+    }
+    
     static func fetchSubscriptions() async throws -> [M_Subscription] {
         let client = APIClient.authClient
         let response = try await client.send(.GET(path: "/api/subscription/v1/list"))
@@ -86,11 +108,55 @@ public struct M_Tariff: Codable {
     public let access: Bool
     public let valid: M_Valid?
     public let status: Status?
+    
+    private enum CodingKeys: String, CodingKey {
+        case serviceId
+        case tariffId
+        case imageURL
+        case price
+        case name
+        case description
+        case duration
+        case trip
+        case access
+        case valid
+        case status
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.serviceId = try container.decode(String.self, forKey: .serviceId)
+        self.tariffId = try container.decode(String.self, forKey: .tariffId)
+        self.imageURL = try container.decode(String.self, forKey: .imageURL)
+        self.price = try container.decode(Int.self, forKey: .price)
+        self.name = try container.decodeIfPresent(M_Description.self, forKey: .name)
+        self.description = try container.decodeIfPresent(M_Description.self, forKey: .description)
+        self.duration = try container.decode(Int.self, forKey: .duration)
+        self.trip = try container.decode(M_Trip.self, forKey: .trip)
+        self.access = try container.decode(Bool.self, forKey: .access)
+        self.valid = try container.decodeIfPresent(M_Valid.self, forKey: .valid)
+        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.serviceId, forKey: .serviceId)
+        try container.encode(self.tariffId, forKey: .tariffId)
+        try container.encode(self.imageURL, forKey: .imageURL)
+        try container.encode(self.price, forKey: .price)
+        try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.description, forKey: .description)
+        try container.encode(self.duration, forKey: .duration)
+        try container.encode(self.trip, forKey: .trip)
+        try container.encode(self.access, forKey: .access)
+        try container.encodeIfPresent(self.valid, forKey: .valid)
+        try container.encodeIfPresent(self.status, forKey: .status)
+    }
 }
 
 public struct M_Trip: Codable {
     
-    public enum TripType: String, Codable, CodingKey {
+    public enum TripType: String, Codable {
         case amount = "AMOUNT"
         case time = "TIME"
         case distance = "DISTANCE"
@@ -110,13 +176,21 @@ public struct M_Trip: Codable {
             return "\(count) поездок"
         }
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.count = try container.decode(Int.self, forKey: .count)
+        self.type = try container.decodeIfPresent(M_Trip.TripType.self, forKey: .type)
+        self.single = try container.decode(Int.self, forKey: .single)
+        self.total = try container.decode(Int.self, forKey: .total)
+    }
 }
 
 public struct M_Valid: Codable {
     public let from: Date?
     public let to: Date?
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case from
         case to
     }
