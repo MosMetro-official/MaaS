@@ -79,8 +79,8 @@ struct M_ActiveStateBuilder: ActiveStateBuilder {
         response.user?.subscription?.tariffs.forEach { tariff in
             var currentProgress: CGFloat? = nil
             // currentProgress = CGFloat(1 - (Float(tariff.trip.count) / Float(tariff.trip.total)))
-            let name = tariff.name?.ru ?? "unknown"
-            let descr = tariff.description?.ru ?? "unknown"
+            let name = tariff.name.ru
+            let descr = tariff.description.ru
             let titleHeight = name.height(
                 withConstrainedWidth: UIScreen.main.bounds.width - 16 - 68,
                 font: Appearance.getFont(.body)

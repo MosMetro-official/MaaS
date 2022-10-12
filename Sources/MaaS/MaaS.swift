@@ -18,6 +18,7 @@ public class MaaS {
         return Bundle(url: url) ?? podBundle
     }
     
+//    public static var host: String = "maas.brndev.ru"
     public static var host: String = "maas.mosmetro.tech"
     
     static var applicationName: String = ""
@@ -26,7 +27,7 @@ public class MaaS {
     
     public static weak var networkDelegate: MaaSNetworkDelegate?
     
-    public static var token: String? = "n4ggJKgMcgNzdFXPE1VDUv7AeabZYW4EjmrqiB6qYgQ"
+    public static var token: String? = "23AA203A65045943FE57B4DAA8857A6AD3C084351227D3DE6FC3368F0E7C194A"
     
     public static var succeedUrl = "maasexample://main/maasPaymentSuccess"
     public static var declinedUrl = "maasexample://main/maasPaymentDeclined"
@@ -56,6 +57,11 @@ public class MaaS {
     public func getUserInfo() async throws -> M_UserInfo {
         let userInfo = try await M_UserInfo.fetchUserInfo()
         return userInfo
+    }
+    
+    public func checkIsSalesEnable() async throws -> Bool {
+        let isEnable = try await M_SalesIsEnable.fetchSalesIsEnable()
+        return isEnable
     }
     
     static var deviceOS : String {

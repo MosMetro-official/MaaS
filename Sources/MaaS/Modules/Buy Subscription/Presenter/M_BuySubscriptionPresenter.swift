@@ -28,7 +28,13 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
             guard let self = self else { return }
             self.controller?.startRequestPayment()
         }
-        let viewState = M_BuySubView.ViewState(state: states, dataState: .loaded, linkCardCommand: linkCommand)
+        let onOffer = Command { [weak self] in
+            guard
+                let self = self,
+                let url = URL(string: "https://multitransport.mosmetro.ru/docs/oferta.pdf") else { return }
+            self.controller?.displayPaymentController(url)
+        }
+        let viewState = M_BuySubView.ViewState(state: states, dataState: .loaded, linkCardCommand: linkCommand, onOffer: onOffer)
         let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
@@ -40,7 +46,7 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
     
     func prepareLoadingState(_ response: M_BuySubscriptionModels.Response.Loading) {
         let loading = M_BuySubView.ViewState.Loading(title: response.title, descr: response.descr)
-        let viewState = M_BuySubView.ViewState(state: [], dataState: .loading(loading), linkCardCommand: nil)
+        let viewState = M_BuySubView.ViewState(state: [], dataState: .loading(loading), linkCardCommand: nil, onOffer: nil)
         let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
@@ -58,7 +64,7 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
             onRetry: onRetry,
             onClose: onClose
         )
-        let viewState = M_BuySubView.ViewState(state: [], dataState: .error(error), linkCardCommand: nil)
+        let viewState = M_BuySubView.ViewState(state: [], dataState: .error(error), linkCardCommand: nil, onOffer: nil)
         let viewModel = M_BuySubscriptionModels.ViewModel(viewState: viewState)
         controller?.displaySubscription(viewModel)
     }
@@ -68,8 +74,8 @@ final class M_BuySubscriptionPresenter: M_BuySubscriptionPresentationLogic {
         let width: CGFloat = UIScreen.main.bounds.width - 16 - 16
         var states: [State] = []
         sortedTariffs.forEach { tariff in
-            let name = tariff.name?.ru ?? "unknown"
-            let descr = tariff.description?.ru ?? "unknown"
+            let name = tariff.name.ru
+            let descr = tariff.description.ru
             let titleHeight = name.height(
                 withConstrainedWidth: width,
                 font: Appearance.getFont(.debt)

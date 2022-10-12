@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MoscowSans-Regular.otf">
+            <string>MoscowSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="113" id="KGk-i7-Jjw" customClass="M_DescriptionCell" customModule="MaaS">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="309" height="113"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-68-n9c">
+                        <rect key="frame" x="16" y="10" width="277" height="93"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="L6s-1e-CeK">
+                                <rect key="frame" x="0.0" y="0.0" width="277" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Abd-8r-s4N">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Oko-m0-2MQ"/>
+                                            <constraint firstAttribute="width" constant="30" id="gFx-5l-4zH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Общественный транспорт" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHv-2a-SfW">
+                                        <rect key="frame" x="36" y="0.0" width="241" height="30"/>
+                                        <fontDescription key="fontDescription" name="MoscowSans-Medium" family="Moscow Sans" pointSize="17"/>
+                                        <color key="textColor" name="primaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qrJ-Tq-8R1">
+                                <rect key="frame" x="0.0" y="35" width="277" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Безлимит на проезд в центральной зоне" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="EFg-Yn-B3J">
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="58"/>
+                                        <fontDescription key="fontDescription" name="MoscowSans-Regular" family="Moscow Sans" pointSize="15"/>
+                                        <color key="textColor" name="secondaryText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="tZa-68-n9c" secondAttribute="bottom" constant="10" id="BFF-Ow-Nx0"/>
+                    <constraint firstItem="tZa-68-n9c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="JaV-D1-f90"/>
+                    <constraint firstItem="tZa-68-n9c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="XtV-82-l2h"/>
+                    <constraint firstAttribute="trailing" secondItem="tZa-68-n9c" secondAttribute="trailing" constant="16" id="tBf-KH-5gN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="content"/>
+            <connections>
+                <outlet property="descrLabel" destination="EFg-Yn-B3J" id="TFW-vh-t7I"/>
+                <outlet property="imageLogo" destination="Abd-8r-s4N" id="yxf-Qk-h3a"/>
+                <outlet property="titleLabel" destination="CHv-2a-SfW" id="mbo-3k-1ut"/>
+            </connections>
+            <point key="canvasLocation" x="116.66666666666667" y="88.727678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="content">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryText">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryText">
+            <color red="0.4309999942779541" green="0.4309999942779541" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

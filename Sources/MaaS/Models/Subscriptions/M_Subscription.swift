@@ -101,8 +101,8 @@ public struct M_Tariff: Codable {
     public let tariffId: String
     public let imageURL: String
     public let price: Int
-    public let name: M_Description?
-    public let description: M_Description?
+    public let name: M_Description
+    public let description: M_Description
     public let duration: Int
     public let trip: M_Trip
     public let access: Bool
@@ -129,8 +129,8 @@ public struct M_Tariff: Codable {
         self.tariffId = try container.decode(String.self, forKey: .tariffId)
         self.imageURL = try container.decode(String.self, forKey: .imageURL)
         self.price = try container.decode(Int.self, forKey: .price)
-        self.name = try container.decodeIfPresent(M_Description.self, forKey: .name)
-        self.description = try container.decodeIfPresent(M_Description.self, forKey: .description)
+        self.name = try container.decode(M_Description.self, forKey: .name)
+        self.description = try container.decode(M_Description.self, forKey: .description)
         self.duration = try container.decode(Int.self, forKey: .duration)
         self.trip = try container.decode(M_Trip.self, forKey: .trip)
         self.access = try container.decode(Bool.self, forKey: .access)
@@ -144,8 +144,8 @@ public struct M_Tariff: Codable {
         try container.encode(self.tariffId, forKey: .tariffId)
         try container.encode(self.imageURL, forKey: .imageURL)
         try container.encode(self.price, forKey: .price)
-        try container.encodeIfPresent(self.name, forKey: .name)
-        try container.encodeIfPresent(self.description, forKey: .description)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.description, forKey: .description)
         try container.encode(self.duration, forKey: .duration)
         try container.encode(self.trip, forKey: .trip)
         try container.encode(self.access, forKey: .access)

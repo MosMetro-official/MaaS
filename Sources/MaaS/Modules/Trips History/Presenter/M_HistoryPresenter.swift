@@ -82,7 +82,7 @@ final class M_HistoryPresenter: M_HistoryPresentationLogic {
                     dateTitle = "Ошибка"
                 }
                 let serviceName: String = {
-                    if let name = trip.subscription.tariffs.first(where: { $0.serviceId == trip.trip.serviceId } )?.name?.ru {
+                    if let name = trip.subscription.tariffs.first(where: { $0.serviceId == trip.trip.serviceId } )?.name.ru {
                         return name
                     } else {
                         return "Поездка MaaS"

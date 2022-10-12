@@ -36,6 +36,7 @@ public enum FontTextStyle: String {
     case card = "card"
     case debt = "debt"
     case price = "price"
+    case offer = "offer"
     case header = "header"
     case button = "button"
     case loading = "loading"
@@ -59,6 +60,7 @@ public final class Appearance: _Appearance {
         .header: UIFont(name: "MoscowSans-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular),
         .body: UIFont(name: "MoscowSans-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15, weight: .regular),
         .card: UIFont(name: "MoscowSans-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .regular),
+        .offer: UIFont(name: "MoscowSans-Regular", size: 12) ?? UIFont.systemFont(ofSize: 12, weight: .regular),
         .smallBody: UIFont(name: "MoscowSans-Regular", size: 13) ?? UIFont.systemFont(ofSize: 13, weight: .regular),
         .onboarding: UIFont(name: "MoscowSans-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .medium),
         .price: UIFont(name: "MoscowSans-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular),

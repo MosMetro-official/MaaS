@@ -71,7 +71,9 @@ class ViewController: UIViewController {
     private func fetchUserInfo() {
         Task {
             do {
+//                let isEnable = try await maas.checkIsSalesEnable()
                 let user = try await maas.getUserInfo()
+//                print("😈😈😈 sales is enable? => \(isEnable)")
                 self.user = user
             } catch {
                 self.error = error.localizedDescription

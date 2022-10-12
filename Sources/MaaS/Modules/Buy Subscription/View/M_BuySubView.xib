@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="M_BuySubView" customModule="MaaS">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="10" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-3V-0fD" customClass="BaseTableView" customModule="CoreTableView">
+                    <rect key="frame" x="0.0" y="48" width="414" height="683.5"/>
+                    <color key="backgroundColor" name="background"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-yp-QL2">
+                    <rect key="frame" x="20" y="794" width="374" height="44"/>
+                    <color key="backgroundColor" systemColor="linkColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ohh-xp-jYb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MoscowSans-Medium" family="Moscow Sans" pointSize="15"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Привязать карту">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="linkCardButtonTapped" destination="iN0-l3-epB" eventType="touchUpInside" id="OtR-0h-UG4"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zfh-hU-JVP">
+                    <rect key="frame" x="20" y="731.5" width="374" height="46.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нажимая на кнопку &quot;Привязать карту&quot; вы соглашаетесь с условиями" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34h-sG-RDL">
+                            <rect key="frame" x="19" y="0.0" width="336.5" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="secondaryText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Публичной оферты сервиса" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-Hc-vUd" customClass="GradientLabel" customModule="MaaS" customModuleProvider="target">
+                            <rect key="frame" x="104" y="32" width="166" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="secondaryText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="background"/>
+            <constraints>
+                <constraint firstItem="24Y-yp-QL2" firstAttribute="top" secondItem="zfh-hU-JVP" secondAttribute="bottom" constant="16" id="1mC-4X-omb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zfh-hU-JVP" secondAttribute="trailing" constant="20" id="513-wb-0hq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wdX-3V-0fD" secondAttribute="trailing" id="5nC-7W-dD9"/>
+                <constraint firstItem="zfh-hU-JVP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Cqv-MO-l9d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="24Y-yp-QL2" secondAttribute="trailing" constant="20" id="JCp-Ec-X3a"/>
+                <constraint firstItem="34h-sG-RDL" firstAttribute="top" secondItem="wdX-3V-0fD" secondAttribute="bottom" id="VZ1-cF-VF9"/>
+                <constraint firstItem="wdX-3V-0fD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZzU-pJ-yiy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="24Y-yp-QL2" secondAttribute="bottom" constant="24" id="fJ8-3f-U2Y"/>
+                <constraint firstItem="wdX-3V-0fD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jSE-Wy-0hk"/>
+                <constraint firstItem="24Y-yp-QL2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="pn4-DE-udO"/>
+            </constraints>
+            <connections>
+                <outlet property="offerPublicLabel" destination="kbC-Hc-vUd" id="8I0-Bx-3S0"/>
+                <outlet property="offerTitleLabel" destination="34h-sG-RDL" id="xWX-bs-pyS"/>
+                <outlet property="payButton" destination="24Y-yp-QL2" id="V1e-WA-dGc"/>
+                <outlet property="tableView" destination="wdX-3V-0fD" id="SMj-T8-lcN"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="kbC-Hc-vUd">
+            <size key="intrinsicContentSize" width="166" height="14.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="background">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryText">
+            <color red="0.4309999942779541" green="0.4309999942779541" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

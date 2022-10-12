@@ -31,3 +31,15 @@ public struct M_UserInfo: Codable {
         return userInfo
     }
 }
+
+public struct M_SalesIsEnable: Codable {
+    let success: Bool
+    let data: Bool
+    
+    public static func fetchSalesIsEnable() async throws -> Bool {
+        let client = APIClient.authClient
+        let response: M_SalesIsEnable = try await client.send(.GET(path: "/api/subscription/v1/is-enabled")).value
+        return response.data
+    }
+}
+

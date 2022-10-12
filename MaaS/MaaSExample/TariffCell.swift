@@ -24,7 +24,7 @@ class TariffCell: UICollectionViewCell {
     }
 
     public func configure(with tariff: M_Tariff) {
-        let name = tariff.name?.ru ?? "unknown"
+        let name = tariff.name.ru 
         if name.contains("Общественный") {
             self.titleLabel.text = "Общ. транспорт"
         } else {

@@ -1038,8 +1038,7 @@
 				95154A1628D4EEE400B16222 /* M_TitleHeader.xib */,
 				95154A1728D4EEE400B16222 /* M_TitleHeader.swift */,
 			);
-			name = Header;
-			path = "../../../../../../../Modules/Active Subscription/View/Header";
+			path = Header;
 			sourceTree = "<group>";
 		};
 		95154A1928D4EEE400B16222 /* Cell */ = {
@@ -1055,8 +1054,7 @@
 				95154A2B28D4EEE400B16222 /* Tariff info */,
 				95154A2E28D4EEE400B16222 /* Onboarding */,
 			);
-			name = Cell;
-			path = "../../../../../../../Modules/Active Subscription/View/Cell";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		95154A1A28D4EEE400B16222 /* Debt Notification */ = {
@@ -1128,8 +1126,7 @@
 				95154A4628D4EF0D00B16222 /* Subscription */,
 				95154A4928D4EF0D00B16222 /* Make my sub */,
 			);
-			name = Cell;
-			path = "../../../../../../../Modules/Choose Subscription/View/Cell";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		95154A4628D4EF0D00B16222 /* Subscription */ = {
@@ -1156,8 +1153,7 @@
 				95154A6028D4EF6100B16222 /* M_NotificationCell.swift */,
 				95154A6128D4EF6100B16222 /* M_NotificationCell.xib */,
 			);
-			name = Cell;
-			path = "../../../../../../../Modules/Debt Notifications/View/Cell";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		95154A6328D4EF6100B16222 /* Header */ = {
@@ -1166,8 +1162,7 @@
 				95154A6428D4EF6100B16222 /* M_DebtHeader.xib */,
 				95154A6528D4EF6100B16222 /* M_DebtHeader.swift */,
 			);
-			name = Header;
-			path = "../../../../../../../Modules/Debt Notifications/View/Header";
+			path = Header;
 			sourceTree = "<group>";
 		};
 		95154A6C28D4EF7B00B16222 /* View */ = {
@@ -1178,8 +1173,7 @@
 				95154A6F28D4EF7B00B16222 /* Cell */,
 				95154A7228D4EF7B00B16222 /* Header */,
 			);
-			name = View;
-			path = "../../../../../../Modules/Buy Subscription/View";
+			path = View;
 			sourceTree = "<group>";
 		};
 		95154A6F28D4EF7B00B16222 /* Cell */ = {
@@ -1207,8 +1201,7 @@
 				95154A8E28D4F06600B16222 /* History */,
 				95154A9128D4F06600B16222 /* Load More */,
 			);
-			name = Cell;
-			path = "../../../../../../../Modules/Trips History/View/Cell";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		95154A8B28D4F06600B16222 /* Empty */ = {
